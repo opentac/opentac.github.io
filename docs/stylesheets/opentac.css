@@ -1,0 +1,432 @@
+/* OpenTac site theme.
+ *
+ * Colours come from the hardware: dark coverlay/ink for the chrome, the amber
+ * of polyimide flex and printed TPU bumps as the one accent, copper for links.
+ * Plain white pages in light mode, a cool near-black in dark mode.
+ */
+
+/* ---------- colour tokens ---------- */
+
+:root {
+  --ot-ink: #161c23;            /* header, hero, dark bands */
+  --ot-ink-2: #1f2730;
+  --ot-amber: #e08a2c;          /* polyimide / TPU */
+  --ot-amber-soft: #f7c98c;
+  --ot-on-dark: #eef0f2;
+  --ot-on-dark-muted: #aab3bd;
+  --ot-radius: .35rem;
+  --ot-media-bg: #0b0e12;
+}
+
+[data-md-color-scheme="default"] {
+  --md-primary-fg-color: var(--ot-ink);
+  --md-primary-fg-color--light: var(--ot-ink-2);
+  --md-primary-fg-color--dark: #0e1217;
+  --md-primary-bg-color: #ffffff;
+  --md-primary-bg-color--light: rgba(255, 255, 255, .72);
+  --md-accent-fg-color: #c96f17;
+  --md-accent-fg-color--transparent: rgba(201, 111, 23, .1);
+  --md-accent-bg-color: #ffffff;
+  --md-typeset-a-color: #a5530f;     /* 5.5:1 on white */
+  --md-footer-bg-color: var(--ot-ink);
+  --md-footer-bg-color--dark: #0e1217;
+  --ot-muted: #5b6570;
+  --ot-rule: #e3e6ea;
+  --ot-paper: transparent;           /* figure background */
+}
+
+[data-md-color-scheme="slate"] {
+  --md-hue: 212;
+  --md-default-bg-color: #12161b;
+  --md-primary-fg-color: #0d1014;
+  --md-primary-fg-color--light: #1a2028;
+  --md-primary-fg-color--dark: #090b0e;
+  --md-primary-bg-color: #eef0f2;
+  --md-primary-bg-color--light: rgba(238, 240, 242, .7);
+  --md-accent-fg-color: #f5b46e;
+  --md-accent-fg-color--transparent: rgba(245, 180, 110, .12);
+  --md-typeset-a-color: #f0a55a;
+  --md-code-bg-color: #1a2027;
+  --md-footer-bg-color: #0d1014;
+  --md-footer-bg-color--dark: #090b0e;
+  --ot-muted: #9aa4ae;
+  --ot-rule: #262d36;
+  --ot-paper: #ffffff;               /* paper figures stay on white */
+}
+
+/* ---------- type ---------- */
+
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-weight: 600;
+  letter-spacing: -.01em;
+  color: var(--md-default-fg-color);
+}
+.md-typeset h1 { font-size: 1.9em; }
+.md-typeset h2 { font-size: 1.4em; }
+.md-typeset h3 { font-size: 1.12em; }
+.md-header__title { font-weight: 600; }
+.md-tabs__link { font-size: .72rem; }
+
+/* ---------- figures (all pages) ---------- */
+
+.md-typeset figure { max-width: 100%; }
+.md-typeset figure img { border-radius: var(--ot-radius); }
+/* Paper figures are drawn on white; in dark mode they sit on a white card.
+   Photos and cut-out figures opt out with ot-fig--clear. */
+[data-md-color-scheme="slate"] .md-typeset figure.ot-fig img {
+  background: var(--ot-paper);
+  padding: .5rem;
+}
+[data-md-color-scheme="slate"] .md-typeset figure.ot-fig--clear img {
+  background: transparent;
+  padding: 0;
+}
+.md-typeset figcaption {
+  max-width: 42rem;
+  font-size: .72rem;
+  line-height: 1.5;
+  color: var(--ot-muted);
+  font-style: normal;
+}
+.md-typeset figure.ot-fig figcaption { text-align: left; }
+.md-typeset figure.ot-fig { margin: 1.6em auto; }
+
+/* photo grids (build pages) */
+.md-typeset figure > br { display: none; }   /* md_in_html span mode adds one */
+.md-typeset .ot-photos {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: .6rem;
+  margin: 1em 0 1.6em;
+}
+.md-typeset .ot-photos--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.md-typeset .ot-photos--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.md-typeset .ot-photos--contain img { object-fit: contain; background: #fff; }
+.md-typeset .ot-photos figure { margin: 0; }
+.md-typeset .ot-photos img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+}
+.md-typeset .ot-photos--wide img { aspect-ratio: 4 / 3; }
+.md-typeset .ot-photos figcaption { font-size: .66rem; margin-top: .3em; text-align: left; }
+
+/* ---------- media frames + loops ---------- */
+
+.md-typeset .ot-media {
+  margin: 0;
+  border-radius: var(--ot-radius);
+  overflow: hidden;
+  background: var(--ot-media-bg);
+  line-height: 0;
+}
+.md-typeset .ot-media video,
+.md-typeset .ot-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 0;
+}
+.md-typeset .ot-media img { aspect-ratio: auto; }
+.md-typeset .ot-media--board { background: transparent; }
+.md-typeset .ot-media--board video { object-fit: contain; }
+
+/* ---------- home: hero ---------- */
+
+.ot-hero {
+  background: var(--ot-ink);
+  color: var(--ot-on-dark);
+}
+.ot-hero__inner {
+  padding: 2.6rem .8rem 1.8rem;
+  text-align: center;
+}
+.ot-hero__name {
+  margin: 0;
+  font-size: 3.2rem;
+  line-height: 1.05;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  color: #fff;
+}
+.ot-hero__title {
+  margin: .5rem auto 0;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--ot-amber-soft);
+  max-width: 34rem;
+}
+.ot-hero__lede {
+  margin: .9rem auto 0;
+  max-width: 32rem;
+  font-size: .9rem;
+  line-height: 1.55;
+  color: var(--ot-on-dark-muted);
+}
+.ot-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .5rem;
+  margin-top: 1.3rem;
+}
+.ot-hero__photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 34rem;
+  object-fit: cover;
+  object-position: 50% 62%;
+}
+
+/* buttons: plain, one filled */
+.ot-btn,
+.md-typeset a.ot-btn {
+  display: inline-block;
+  padding: .5em 1.15em;
+  border: 1px solid rgba(255, 255, 255, .35);
+  border-radius: 2em;
+  color: var(--ot-on-dark);
+  font-size: .78rem;
+  font-weight: 600;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: background-color 125ms, border-color 125ms, color 125ms;
+}
+.ot-btn:hover,
+.ot-btn:focus-visible,
+.md-typeset a.ot-btn:hover {
+  border-color: var(--ot-amber);
+  color: #fff;
+}
+.ot-btn--primary,
+.md-typeset a.ot-btn--primary {
+  background: var(--ot-amber);
+  border-color: var(--ot-amber);
+  color: #17110a;
+}
+.ot-btn--primary:hover,
+.md-typeset a.ot-btn--primary:hover {
+  background: #eea24c;
+  border-color: #eea24c;
+  color: #17110a;
+}
+.md-typeset a.ot-btn--dark {
+  border-color: var(--ot-rule);
+  color: var(--md-default-fg-color);
+}
+.md-typeset a.ot-btn--dark:hover { border-color: var(--md-accent-fg-color); color: var(--md-accent-fg-color); }
+
+/* ---------- home: story ---------- */
+
+/* The home page uses the full grid width (nav and toc hidden). */
+.md-typeset .ot-section-title { margin-top: 0; }
+
+.md-typeset .ot-video {
+  max-width: 46rem;
+  margin: 1.2rem auto 3rem;
+  text-align: center;
+}
+.md-typeset .ot-video__lede {
+  max-width: 36rem;
+  margin: 0 auto 1.2rem;
+  color: var(--ot-muted);
+}
+.md-typeset .ot-media--video video { object-fit: contain; }
+
+.md-typeset .ot-story {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  gap: 2.4rem;
+  align-items: center;
+  margin: 3.6rem 0;
+}
+.md-typeset .ot-story--flip > .ot-story__text { order: 2; }
+.md-typeset .ot-story__text h2 { margin-top: 0; }
+.md-typeset .ot-story__text p:last-child { margin-bottom: 0; }
+
+.md-typeset a.ot-more {
+  display: inline-block;
+  margin-right: 1.2em;
+  font-weight: 600;
+  text-decoration: none;
+}
+.md-typeset a.ot-more::after { content: " \2192"; }
+.md-typeset a.ot-more:hover { text-decoration: underline; }
+
+.md-typeset .ot-pair {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .8rem;
+}
+
+/* A row of clips with different shapes at one height: each item's flex-grow
+   is its aspect ratio, so widths come out proportional and heights equal. */
+.md-typeset .ot-strip {
+  display: flex;
+  gap: .8rem;
+  align-items: flex-start;
+  margin: -1.6rem 0 3.6rem;
+}
+.md-typeset .ot-strip__item { margin: 0; min-width: 0; }
+.md-typeset .ot-strip__item--wide { flex: 1.7778 1 0; }
+.md-typeset .ot-strip__item--tall { flex: .5624 1 0; }
+.md-typeset .ot-strip video {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--ot-media-bg);
+  border-radius: var(--ot-radius);
+  object-fit: cover;
+}
+.md-typeset .ot-strip__item--wide video { aspect-ratio: 16 / 9; }
+.md-typeset .ot-strip__item--tall video { aspect-ratio: 478 / 850; }
+.md-typeset .ot-strip figcaption {
+  margin: .45em 0 0;
+  text-align: left;
+  font-size: .68rem;
+}
+
+.md-typeset figure.ot-wide { margin: 0 0 3.6rem; }
+.md-typeset figure.ot-wide img { width: 100%; max-width: 54rem; }
+.md-typeset figure.ot-wide figcaption { margin-left: auto; margin-right: auto; text-align: center; }
+
+.md-typeset .ot-robots { margin: 3.6rem 0; }
+.md-typeset .ot-robots__text { max-width: 40rem; }
+.md-typeset .ot-robots__text h2 { margin-top: 0; }
+.md-typeset .ot-grid2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+  margin: 1.2em 0 2em;
+}
+.md-typeset .ot-grid2--narrow { grid-template-columns: minmax(0, 1fr); max-width: 32rem; margin-left: auto; margin-right: auto; }
+.md-typeset .ot-grid3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+  margin-top: 1.4rem;
+}
+
+.md-typeset .ot-start {
+  margin: 4rem 0 1rem;
+  padding: 1.6rem 1.8rem 1.8rem;
+  border: 1px solid var(--ot-rule);
+  border-radius: calc(var(--ot-radius) * 2);
+}
+.md-typeset .ot-start h2 { margin-top: 0; }
+.md-typeset .ot-start__buttons { justify-content: flex-start; }
+
+/* ---------- demos (results page): narrow clips, easy to extend ---------- */
+
+.md-typeset .ot-demos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.2rem;
+  margin: 1.2em 0 2em;
+}
+.md-typeset .ot-demo { margin: 0; flex: 0 0 auto; width: 11.5rem; }
+.md-typeset .ot-demo--wide { width: 32rem; max-width: 100%; }
+.md-typeset .ot-demo video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 478 / 850;
+  object-fit: cover;
+  background: var(--ot-media-bg);
+  border-radius: var(--ot-radius);
+}
+.md-typeset .ot-demo--wide video { aspect-ratio: 16 / 9; }
+.md-typeset .ot-demo figcaption {
+  margin: .5em 0 0;
+  max-width: none;
+  text-align: left;
+  font-size: .7rem;
+}
+.md-typeset .ot-demo figcaption strong { color: var(--md-default-fg-color); }
+
+/* ---------- hardware page ---------- */
+
+.md-typeset .ot-features {
+  counter-reset: ot-feature;
+  list-style: none;
+  margin-left: 0;
+  padding: 0;
+}
+.md-typeset .ot-features > li {
+  counter-increment: ot-feature;
+  position: relative;
+  margin: 0 0 1.4em;
+  padding-left: 2.2em;
+}
+.md-typeset .ot-features > li::before {
+  content: counter(ot-feature);
+  position: absolute;
+  left: 0;
+  top: .05em;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: var(--ot-amber);
+  color: #17110a;
+  font-weight: 700;
+  font-size: .85em;
+  line-height: 1.5em;
+  text-align: center;
+}
+.md-typeset .ot-boards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  margin: 1.2em 0;
+}
+.md-typeset .ot-boards figure { margin: 0; }
+.md-typeset .ot-boards img,
+.md-typeset .ot-boards video {
+  width: 100%;
+  height: auto;
+  border-radius: var(--ot-radius);
+}
+
+/* ---------- small screens ---------- */
+
+@media screen and (max-width: 59.984375em) {
+  .md-typeset .ot-story {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 2.6rem 0;
+  }
+  .md-typeset .ot-story--flip > .ot-story__text { order: 0; }
+  .md-typeset .ot-grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media screen and (max-width: 44.984375em) {
+  .ot-hero__inner { padding: 1.8rem .8rem 1.4rem; }
+  .ot-hero__name { font-size: 2.4rem; }
+  .ot-hero__title { font-size: 1rem; }
+  .ot-hero__photo { max-height: 15rem; }
+  .md-typeset .ot-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: -1rem;
+  }
+  .md-typeset .ot-strip__item--wide { grid-column: 1 / -1; }
+  .md-typeset .ot-grid3 { grid-template-columns: 1fr; }
+  .md-typeset .ot-grid2 { grid-template-columns: 1fr; }
+  .md-typeset .ot-boards { grid-template-columns: 1fr; }
+  .md-typeset .ot-photos,
+  .md-typeset .ot-photos--three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md-typeset .ot-demos { gap: .8rem; }
+  .md-typeset .ot-demo { width: calc(50% - .4rem); }
+  .md-typeset .ot-demo--wide { width: 100%; }
+  .md-typeset .ot-start { padding: 1.1rem 1rem 1.3rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ot-btn { transition: none; }
+}

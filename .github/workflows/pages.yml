@@ -1,0 +1,60 @@
+name: pages
+
+# Builds opentac.github.io: the MkDocs site from docs/, plus the CAD tool's
+# static frontend at /cad/ (served from the package's own files, not a copy in
+# docs/; its config.js picks the API host at runtime).
+#
+# Needs: repository Settings > Pages > Source = "GitHub Actions". On the Free
+# plan Pages only works once the repository is public.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deployment at a time; a newer push waits rather than cancelling a
+# deployment that is already running.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: astral-sh/setup-uv@v6
+
+      - name: Install the docs toolchain
+        run: uv sync --locked --extra docs
+
+      - name: Build the site
+        run: uv run mkdocs build -d site
+
+      - name: Add the CAD tool at /cad/
+        run: |
+          mkdir -p site/cad
+          rsync -a --exclude 'tests/' opentac/cad/web/ site/cad/
+          test -f site/cad/index.html
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
