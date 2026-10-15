@@ -1,0 +1,28 @@
+{#-
+  GitHub Pages serves this page for every path the site does not have, and the
+  sensor QR code relies on that. The code prints the link
+  HTTPS://OPENTAC.GITHUB.IO/Q/<payload>, a path that does not exist; the
+  script below sends /q/<payload> (any case) on to the decoder page with the
+  payload in the fragment, /qr/#<payload>. Any other path gets the ordinary
+  404. See docs/qr.md and opentac/cad/export/taxel_core.py (LINK_PREFIX).
+-#}
+{% extends "main.html" %}
+{% block extrahead %}
+  <script>
+    (function () {
+      var target = {{ ("qr/" | url) | tojson }};
+      var q = target.slice(0, -3) + "q/";
+      var path = location.pathname;
+      if (path.length > q.length && path.slice(0, q.length).toLowerCase() === q.toLowerCase()) {
+        location.replace(target + "#" + path.slice(q.length));
+      }
+    })();
+  </script>
+{% endblock %}
+{% block content %}
+  <h1>404 - Not found</h1>
+  <p>
+    Scanned the QR code on the back of an OpenTac sensor? Open the
+    <a href="{{ 'qr/' | url }}">QR decoder</a> and paste the text the scanner read.
+  </p>
+{% endblock %}

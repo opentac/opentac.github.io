@@ -86,6 +86,11 @@ markdown_extensions:
 plugins:
   - search
 
+# The QR decoder: a phone opens it from the code on a sensor's back (through
+# overrides/404.html), and use/qr-recovery.md links to it. Not a page to browse to.
+not_in_nav: |
+  /qr.md
+
 # Pages written by other workstreams are listed here before they land; until
 # then `mkdocs build` warns that they are missing, and that is expected.
 nav:

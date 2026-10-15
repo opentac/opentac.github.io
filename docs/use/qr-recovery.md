@@ -5,36 +5,66 @@ encodes the sensor's taxel grid: rows, columns, connector pads, which taxels
 exist, where they sit, and the taxel footprint. If a sensor has lost its
 files, the QR code is enough to read it.
 
-1. Scan the QR code with a phone camera or any QR scanner app, and copy the
-   text. It is short: 27 characters for the 81-taxel example sensor, 36 to
-   39 for sensors of about 100 taxels.
-2. Rebuild the manifest:
+## With a phone
 
-    ```sh
-    uv run opentac manifest from-qr "PASTE-THE-TEXT-HERE" -o my_sensor.json
-    ```
+Point the phone camera at the code and open the link it offers
+(`opentac.github.io/q/...`). The [QR decoder page](../qr.md) opens, decodes
+the code in the browser (nothing is uploaded), shows the grid, the pads and the
+taxel positions, and has a *Download manifest.json* button. Set the board up
+with that file, as usual:
 
-3. Set the board up with it, as usual:
+```sh
+uv run opentac setup manifest.json
+```
 
-    ```sh
-    uv run opentac setup my_sensor.json
-    ```
+## With the command line
+
+Any QR scanner app gives the code's text. Rebuild the manifest from it:
+
+```sh
+uv run opentac manifest from-qr 'PASTE-THE-TEXT-HERE' -o my_sensor.json
+uv run opentac setup my_sensor.json
+```
+
+The text can be the whole link (`HTTPS://OPENTAC.GITHUB.IO/Q/...`, in any case,
+with or without `https://`) or the bare code from an older board. Use single
+quotes: the text can contain `$`, which a shell expands inside double quotes,
+and `*`, which it expands when unquoted. A bare code that starts with `-` reads
+as an option; put `HTTPS://OPENTAC.GITHUB.IO/Q/` in front of it.
 
 In Python:
 
 ```python
 from opentac import manifest
 
-m = manifest.from_qr(text)
+m = manifest.from_qr(text)      # the link or the bare code
 m.save("my_sensor.json")
 ```
+
+The decoder page and the command line write the same file, byte for byte.
+
+## Older boards and small boards
+
+Boards exported before the QR became a link carry the bare code: a phone shows
+it as text rather than a link (27 characters for the 81-taxel example sensor,
+36 to 39 for sensors of about 100 taxels). Those codes still work: paste the
+text into the [QR decoder page](../qr.md) or pass it to
+`opentac manifest from-qr`.
+
+The link adds 28 characters to the code, which makes the QR one version
+larger (two on 1 of the 31 example designs), 1.4 mm more on each side per
+version. A board without room for the link inside its outline gets the bare
+code instead, and one without room for that gets no code. All 31
+[example designs](../design/examples.md) have room for the link.
 
 ## What comes back, and what does not
 
 A recovered manifest has the same rows, columns, pads and taxel mask as the
-original, and every taxel within 0.005 mm of its original position (the QR
-stores positions to 0.01 mm). That is all the readout board and the viewer
-need.
+original. The QR stores the grid origin and pitch to 0.01 mm, so every taxel is
+within 0.005 mm of its original position when the pitch is a whole number of
+0.01 mm. A pitch with a third decimal moves the far taxels further: up to
+0.12 mm on the example designs whose pitch was raised to fit the readout board.
+That is all the readout board and the viewer need.
 
 The QR does not carry:
 
