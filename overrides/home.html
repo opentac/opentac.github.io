@@ -1,0 +1,35 @@
+{#-
+  Home page: a full-width hero above the tabs' content, then the page's own
+  Markdown (docs/index.md) as the story. Text that people may want to edit
+  lives in docs/index.md; only the hero is here.
+-#}
+{% extends "main.html" %}
+
+{% block tabs %}
+  {{ super() }}
+  <section class="ot-hero" aria-labelledby="ot-hero-title">
+    <div class="ot-hero__inner md-grid">
+      <h1 id="ot-hero-title" class="ot-hero__name">OpenTac</h1>
+      <p class="ot-hero__title">Making tactile sensor design configurable for robot learning</p>
+      <!-- AUTHORS TODO: author list and affiliations go here once the paper is de-anonymized. -->
+      <p class="ot-hero__lede">
+        Open tools to design, fabricate, read and simulate flex-PCB tactile skins
+        that sense normal and shear force, shaped to any robot surface.
+      </p>
+      <div class="ot-hero__buttons">
+        <a class="ot-btn ot-btn--primary" href="{{ 'cad/' | url }}">Try it online</a>
+        <a class="ot-btn" href="{{ 'get-started/' | url }}">Get started</a>
+        <a class="ot-btn" href="{{ 'paper/' | url }}">Paper</a>
+        <a class="ot-btn" href="{{ config.repo_url }}">Code</a>
+      </div>
+    </div>
+    <img class="ot-hero__photo"
+         src="{{ 'assets/photos/skins.jpg' | url }}"
+         width="2200" height="938"
+         alt="OpenTac skins on robot parts: orange bump sheets over flex PCBs on gripper fingers, a fingertip, a foot and a curved pad, with bare flex PCBs in front.">
+  </section>
+{% endblock %}
+
+{% block content %}
+  {{ page.content }}
+{% endblock %}

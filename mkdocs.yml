@@ -1,13 +1,120 @@
 site_name: OpenTac
+site_description: >-
+  Open tools to design, fabricate, read and simulate flex-PCB tactile sensors
+  that sense normal and shear force, for any robot surface.
 site_url: https://opentac.github.io/
 repo_url: https://github.com/opentac/opentac.github.io
+repo_name: opentac/opentac.github.io
+edit_uri: edit/main/docs/
 docs_dir: docs
+copyright: OpenTac. License to be decided before release. <!-- LICENSE TODO -->
 
 theme:
   name: material
+  custom_dir: overrides
+  language: en
+  logo: assets/figures/logo.svg
+  favicon: assets/figures/logo.svg
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  palette:
+    # Follow the system setting; the toggle cycles auto -> light -> dark.
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to system preference
+  icon:
+    repo: fontawesome/brands/github
   features:
+    - navigation.tabs
     - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - navigation.footer
+    - toc.follow
+    - search.suggest
+    - search.highlight
     - content.code.copy
+    - content.tabs.link
 
+extra_css:
+  - stylesheets/opentac.css
+extra_javascript:
+  - javascripts/opentac.js
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/opentac/opentac.github.io
+      name: OpenTac on GitHub
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+plugins:
+  - search
+
+# Pages written by other workstreams are listed here before they land; until
+# then `mkdocs build` warns that they are missing, and that is expected.
 nav:
   - Home: index.md
+  - Get started: get-started.md
+  - Design:
+      - design/index.md
+      - Shapes and surfaces: design/shapes.md
+      - Design with an AI agent: design/agent.md
+      - What the export contains: design/export.md
+      - Ready-to-order designs: design/examples.md
+  - Build:
+      - build/index.md
+      - Readout boards: hardware.md
+      - Order the sensor: build/order-sensor.md
+      - Order the readout board: build/order-readout.md
+      - Materials and accessories: build/materials.md
+      - Assembly: build/assembly.md
+  - Use:
+      - Flash the firmware: use/flash.md
+      - Read a sensor: use/sensor.md
+      - Xampling (compressive sampling): use/xampling.md
+      - Daisy-chain boards: use/daisy-chain.md
+      - Recover a manifest from the QR: use/qr-recovery.md
+      - Simulate: sim.md
+      - Transfer between sensors: transfer.md
+  - How it works: learn/index.md
+  - Results: results.md
+  - Paper: paper.md
+  - Reference:
+      - Manifest: reference/manifest.md
+      - Wire protocol: reference/protocol.md
