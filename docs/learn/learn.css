@@ -1,0 +1,238 @@
+/* "How it works" page: interactive figures. Colours follow Material's
+   light (default) and dark (slate) schemes through CSS variables. */
+
+.otl {
+  --otl-ink: var(--md-default-fg-color, rgba(0, 0, 0, .87));
+  --otl-ink-2: var(--md-default-fg-color--light, rgba(0, 0, 0, .54));
+  --otl-ink-3: var(--md-default-fg-color--lighter, rgba(0, 0, 0, .32));
+  --otl-line: var(--md-default-fg-color--lightest, rgba(0, 0, 0, .07));
+  --otl-bg: var(--md-default-bg-color, #fff);
+  --otl-panel: #f7f7f5;
+  --otl-hair: rgba(0, 0, 0, .14);
+  /* sequential ramp, near-zero first (one hue, light to dark) */
+  --otl-seq-0: #eeeeea;
+  --otl-seq-1: #cde2fb;
+  --otl-seq-2: #9ec5f4;
+  --otl-seq-3: #6da7ec;
+  --otl-seq-4: #3987e5;
+  --otl-seq-5: #256abf;
+  --otl-seq-6: #184f95;
+  --otl-seq-7: #0d366b;
+  --otl-accent: #c94f1c;          /* shear, selections */
+  --otl-accent-2: #1a8f65;        /* second series */
+  --otl-copper: #b26b2a;
+  --otl-copper-2: #7d4a1d;
+  --otl-pcb: #d9b56a;             /* polyimide */
+  --otl-film: #2b2b2b;
+  --otl-textile: #8d8d86;
+  --otl-tpu: #e8e3d6;
+  --otl-base: #b9b9b2;
+  --otl-warn: #a35a00;
+}
+
+[data-md-color-scheme="slate"] .otl {
+  --otl-panel: #23252e;
+  --otl-hair: rgba(255, 255, 255, .16);
+  --otl-seq-0: #2c2e38;
+  --otl-seq-1: #123d73;
+  --otl-seq-2: #184f95;
+  --otl-seq-3: #256abf;
+  --otl-seq-4: #3987e5;
+  --otl-seq-5: #6da7ec;
+  --otl-seq-6: #9ec5f4;
+  --otl-seq-7: #d6e8fd;
+  --otl-accent: #f08a54;
+  --otl-accent-2: #3cc493;
+  --otl-copper: #d99550;
+  --otl-copper-2: #a8682c;
+  --otl-pcb: #a8853f;
+  --otl-film: #101010;
+  --otl-textile: #6f6f69;
+  --otl-tpu: #cfc9b8;
+  --otl-base: #5d5e64;
+  --otl-warn: #f0b44c;
+}
+
+.otl-fig {
+  border: 1px solid var(--otl-hair);
+  border-radius: 6px;
+  margin: 1.2em 0 1em;
+  background: var(--otl-bg);
+  overflow: hidden;
+}
+
+.otl-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .55rem 1.1rem;
+  align-items: center;
+  padding: .6rem .8rem;
+  border-bottom: 1px solid var(--otl-hair);
+  background: var(--otl-panel);
+  font-size: .68rem;
+  line-height: 1.3;
+}
+
+.otl-ctl {
+  display: flex;
+  align-items: center;
+  gap: .45rem;
+  color: var(--otl-ink-2);
+}
+
+.otl-ctl > span.otl-lab { white-space: nowrap; }
+
+.otl-ctl output {
+  color: var(--otl-ink);
+  font-variant-numeric: tabular-nums;
+  min-width: 4.2em;
+  display: inline-block;
+}
+
+.otl-ctl input[type="range"] {
+  width: 8.5rem;
+  accent-color: var(--otl-seq-4);
+}
+
+.otl-seg {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--otl-hair);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.otl-seg button,
+.otl-btn {
+  font: inherit;
+  color: var(--otl-ink-2);
+  background: transparent;
+  border: 0;
+  border-right: 1px solid var(--otl-hair);
+  padding: .28rem .55rem;
+  cursor: pointer;
+}
+
+.otl-seg button:last-child { border-right: 0; }
+
+.otl-seg button[aria-pressed="true"] {
+  color: var(--otl-bg);
+  background: var(--otl-ink-2);
+}
+
+.otl-btn {
+  border: 1px solid var(--otl-hair);
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.otl-btn:hover,
+.otl-seg button:hover { color: var(--otl-ink); }
+
+.otl-seg button[aria-pressed="true"]:hover { color: var(--otl-bg); }
+
+.otl-seg button:focus-visible,
+.otl-btn:focus-visible,
+.otl-ctl input:focus-visible,
+.otl canvas:focus-visible,
+.otl-pad:focus-visible {
+  outline: 2px solid var(--otl-seq-4);
+  outline-offset: 1px;
+}
+
+.otl-check { display: flex; align-items: center; gap: .35rem; color: var(--otl-ink-2); cursor: pointer; }
+
+.otl-stage {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.otl-stage canvas {
+  display: block;
+  width: 100%;
+  touch-action: pan-y;            /* keep page scrolling on phones; drags are horizontal */
+}
+
+.otl-stage canvas.otl-drag2d { touch-action: none; }
+
+.otl-stage > .otl-cell { flex: 1 1 300px; min-width: 0; position: relative; }
+
+.otl-stage > .otl-cell + .otl-cell { border-left: 1px solid var(--otl-hair); }
+
+.otl-svg { display: block; width: 100%; height: auto; }
+
+.otl-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.2rem, 1fr));
+  border-top: 1px solid var(--otl-hair);
+  font-size: .64rem;
+}
+
+.otl-metric {
+  padding: .45rem .8rem;
+  border-right: 1px solid var(--otl-hair);
+  color: var(--otl-ink-2);
+}
+
+.otl-metric:last-child { border-right: 0; }
+
+.otl-metric b {
+  display: block;
+  font-size: .82rem;
+  font-weight: 500;
+  color: var(--otl-ink);
+  font-variant-numeric: tabular-nums;
+  margin-top: .1rem;
+}
+
+.otl-status {
+  padding: .45rem .8rem;
+  border-top: 1px solid var(--otl-hair);
+  font-size: .64rem;
+  color: var(--otl-ink-2);
+  min-height: 1.6rem;
+}
+
+.otl-status.warn { color: var(--otl-warn); }
+
+.otl-pad {
+  width: 120px;
+  height: 120px;
+  border: 1px solid var(--otl-hair);
+  border-radius: 6px;
+  position: relative;
+  cursor: crosshair;
+  touch-action: none;
+  background: var(--otl-bg);
+  flex: none;
+}
+
+.otl-pad canvas { width: 120px; height: 120px; display: block; }
+
+.otl-note {
+  font-size: .72rem;
+  color: var(--otl-ink-2);
+  border-left: 2px solid var(--otl-hair);
+  padding-left: .7rem;
+  margin: .8em 0 1.2em;
+}
+
+.otl-credit { font-size: .68rem; color: var(--otl-ink-2); }
+
+.otl-loading {
+  padding: 2rem;
+  text-align: center;
+  color: var(--otl-ink-2);
+  font-size: .7rem;
+}
+
+@media screen and (max-width: 44.9375em) {
+  .otl-stage > .otl-cell + .otl-cell { border-left: 0; border-top: 1px solid var(--otl-hair); }
+  .otl-ctl input[type="range"] { width: 7rem; }
+  .otl-controls { padding: .5rem .6rem; gap: .5rem .8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .otl * { transition: none !important; animation: none !important; }
+}
