@@ -57,14 +57,14 @@ Pressing a bump raises all four taxels together; a sideways push tilts it, so th
   <figcaption>A finger presses and twists a sensor. Colour is normal force; arrows are shear.</figcaption>
 </figure>
 <figure class="ot-strip__item ot-strip__item--tall">
-  <video data-loop muted loop playsinline preload="none" poster="assets/video/dynamic_range.jpg"
+  <video data-loop muted loop playsinline preload="none" poster="assets/video/dynamic_range_poster.jpg"
          aria-label="Pressure readings from about 0.1 newton to about 10 newtons">
     <source src="assets/video/dynamic_range.mp4" type="video/mp4">
   </video>
   <figcaption>From about 0.1&nbsp;N to about 10&nbsp;N.</figcaption>
 </figure>
 <figure class="ot-strip__item ot-strip__item--tall">
-  <video data-loop muted loop playsinline preload="none" poster="assets/video/heat_gun.jpg"
+  <video data-loop muted loop playsinline preload="none" poster="assets/video/heat_gun_poster.jpg"
          aria-label="A heat gun blown at the sensor produces no false signal">
     <source src="assets/video/heat_gun.mp4" type="video/mp4">
   </video>
