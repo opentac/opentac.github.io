@@ -43,8 +43,7 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 </li>
 <li markdown>
 
-**Daisy-chain over I2C.** Each board has two 4-pin JST-SH connectors (5&nbsp;V, GND, SCL, SDA). Chain several boards with JST-SH cables and read them all through one controller, a Teensy 4.0, to cover a whole hand or several fingers from one USB port. See [Daisy-chain boards](use/daisy-chain.md).
-<!-- CHECK: bus v2 runs on three 30-pin boards; the 60-pin bus build still needs adding and testing (RELEASE_PLAN workstream A) -->
+**Daisy-chain over I2C.** Each board has two 4-pin JST-SH connectors (5&nbsp;V, GND, SCL, SDA). Chain several 30-pin boards with JST-SH cables and read them all through one controller, a Teensy 4.0, to cover a whole hand or several fingers from one USB port. See [Daisy-chain boards](use/daisy-chain.md). The 60-pin board has the connectors, but its firmware does not run as a chain node yet: a 30 x 30 sensor does not fit the node's memory.
 
 </li>
 <li markdown>
@@ -78,7 +77,7 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 | Gain | four steps, set over I2C (MAX14662 switch) | fixed |
 | IMU | LSM6DSV16BX | LSM6DSV16BX |
 | Computer link | micro-USB, serial | micro-USB, serial |
-| Daisy chain | 2 &times; JST-SH 4-pin, I2C | 2 &times; JST-SH 4-pin, I2C |
+| Daisy chain | connectors fitted; firmware not yet | 2 &times; JST-SH 4-pin, I2C |
 | Copper layers | 4 | 4 (top), 2 (bottom) |
 | Files | [`hardware/readout_60pin/`](https://github.com/opentac/opentac.github.io/tree/main/hardware/readout_60pin) | [`hardware/readout_30pin/`](https://github.com/opentac/opentac.github.io/tree/main/hardware/readout_30pin) |
 

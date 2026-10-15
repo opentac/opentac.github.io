@@ -119,8 +119,7 @@ The bump sheet and the board come from the same design file, so the cross-shaped
 
 ## Read it over USB { #read }
 
-The 60-pin readout board reads up to 30&times;30 taxels in 37&nbsp;&times;&nbsp;34.3&nbsp;mm and plugs straight into USB; a stacked 30-pin pair reads up to 15&times;15 in a 16&nbsp;&times;&nbsp;22.8&nbsp;mm footprint. Each board carries an IMU and can be daisy-chained with others over I2C.
-<!-- CHECK: daisy chain is tested on 30-pin boards; the 60-pin bus build is still to be tested (RELEASE_PLAN workstream A) -->
+The 60-pin readout board reads up to 30&times;30 taxels in 37&nbsp;&times;&nbsp;34.3&nbsp;mm and plugs straight into USB; a stacked 30-pin pair reads up to 15&times;15 in a 16&nbsp;&times;&nbsp;22.8&nbsp;mm footprint. Each board carries an IMU, and 30-pin boards can be daisy-chained over I2C to read a whole hand from one USB port.
 
 The board keeps the sensor's manifest, so after a one-time setup the live view knows the layout.
 
