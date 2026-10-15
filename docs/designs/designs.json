@@ -18,7 +18,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 277
+  "zip_kb": 278
  },
  {
   "slug": "calibration-square-p2p0-gap0p2",
@@ -39,7 +39,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 200
+  "zip_kb": 208
  },
  {
   "slug": "calibration-square-p4p0-gap0p2",
@@ -60,7 +60,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 93
+  "zip_kb": 98
  },
  {
   "slug": "calibration-square-p2p0-gap0p1",
@@ -81,7 +81,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 199
+  "zip_kb": 207
  },
  {
   "slug": "calibration-square-p2p0-gap0p3",
@@ -102,7 +102,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 200
+  "zip_kb": 207
  },
  {
   "slug": "calibration-square-p2p0-gap0p4",
@@ -123,7 +123,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 199
+  "zip_kb": 207
  },
  {
   "slug": "calibration-square-p2p0-gap0p5",
@@ -144,7 +144,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 199
+  "zip_kb": 207
  },
  {
   "slug": "calibration-rectangle-p2p0-gap0p2",
@@ -165,7 +165,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 197
+  "zip_kb": 199
  },
  {
   "slug": "calibration-triangle-p2p0-gap0p2",
@@ -186,7 +186,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 384
+  "zip_kb": 385
  },
  {
   "slug": "calibration-hexagon-p2p0-gap0p2",
@@ -207,7 +207,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 298
+  "zip_kb": 303
  },
  {
   "slug": "calibration-circle-p2p0-gap0p2",
@@ -228,7 +228,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 291
+  "zip_kb": 297
  },
  {
   "slug": "calibration-lshape-p2p0-gap0p2",
@@ -249,7 +249,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 278
+  "zip_kb": 280
  },
  {
   "slug": "so101-jaw-06x15",
@@ -270,7 +270,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 100
+  "zip_kb": 101
  },
  {
   "slug": "robotiq-2f85-pad-08x04",
@@ -291,7 +291,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 64
+  "zip_kb": 72
  },
  {
   "slug": "yubi-finger-pad-08x27",
@@ -312,7 +312,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 210
+  "zip_kb": 213
  },
  {
   "slug": "strip-09x09-long",
@@ -333,7 +333,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 79
+  "zip_kb": 85
  },
  {
   "slug": "strip-09x09",
@@ -354,7 +354,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 78
+  "zip_kb": 84
  },
  {
   "slug": "so101-jaw-09x26",
@@ -375,7 +375,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 178
+  "zip_kb": 183
  },
  {
   "slug": "leap-fingertip-14x07",
@@ -396,7 +396,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 137
+  "zip_kb": 139
  },
  {
   "slug": "agilex-piper-jaw-15x11",
@@ -417,7 +417,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 149
+  "zip_kb": 150
  },
  {
   "slug": "finger-16x06",
@@ -459,7 +459,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 122
+  "zip_kb": 130
  },
  {
   "slug": "leap-palm-28x18",
@@ -480,7 +480,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 270
+  "zip_kb": 271
  },
  {
   "slug": "umi-finger-29x04",
@@ -501,7 +501,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 190
+  "zip_kb": 193
  },
  {
   "slug": "strip-32x12",
@@ -522,7 +522,7 @@
   ],
   "pitch_raised": true,
   "drc_violations": 0,
-  "zip_kb": 228
+  "zip_kb": 231
  },
  {
   "slug": "agilex-piper-jaw-32x25",
@@ -543,7 +543,7 @@
   ],
   "pitch_raised": true,
   "drc_violations": 0,
-  "zip_kb": 379
+  "zip_kb": 383
  },
  {
   "slug": "large-32x32",
@@ -585,7 +585,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 211
+  "zip_kb": 215
  },
  {
   "slug": "umi-finger-29x06",
@@ -606,7 +606,7 @@
   ],
   "pitch_raised": false,
   "drc_violations": 0,
-  "zip_kb": 218
+  "zip_kb": 221
  },
  {
   "slug": "unitree-b2-foot-long",
@@ -627,7 +627,7 @@
   ],
   "pitch_raised": true,
   "drc_violations": 0,
-  "zip_kb": 264
+  "zip_kb": 265
  },
  {
   "slug": "unitree-b2-foot-short",
@@ -648,6 +648,6 @@
   ],
   "pitch_raised": true,
   "drc_violations": 0,
-  "zip_kb": 227
+  "zip_kb": 228
  }
 ]
