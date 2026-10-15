@@ -1,0 +1,13 @@
+site_name: OpenTac
+site_url: https://opentac.github.io/
+repo_url: https://github.com/opentac/opentac.github.io
+docs_dir: docs
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - content.code.copy
+
+nav:
+  - Home: index.md
