@@ -1,6 +1,6 @@
 # Manifest
 
-`manifest.json` describes one sensor. OpenTac CAD writes it into every design
+`manifest.json` describes one sensor. OpenTac-CAD writes it into every design
 `.zip`. It is JSON, lengths are in millimetres, and coordinates are Y up with
 the cable edge at the bottom.
 
@@ -21,7 +21,7 @@ code written for version 3 reads all of them.
 | `v` | Added |
 |---|---|
 | 3 | the base fields below |
-| 4 | `design`: the recipe OpenTac CAD uses to rebuild or edit the board |
+| 4 | `design`: the recipe OpenTac-CAD uses to rebuild or edit the board |
 | 5 | `shear`: which taxels share a shear bump |
 | 6 | `sim3d`: where each taxel sits on the 3-D part it was unrolled from |
 
@@ -44,7 +44,7 @@ code written for version 3 reads all of them.
 | `_readme` | notes for people; ignored by programs |
 
 Scan row and column indices are in connector pad order, which is not
-geometric order: OpenTac CAD reverses the lower half of the rows so they meet
+geometric order: OpenTac-CAD reverses the lower half of the rows so they meet
 the routing on the right side. So `ox + col * px` does not place a taxel.
 `pixels` does.
 

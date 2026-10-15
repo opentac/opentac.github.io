@@ -1,11 +1,11 @@
 ---
 title: Design a sensor
-description: How OpenTac CAD turns an outline or a surface into a routed flex PCB, a printed case and a manifest, and which settings matter.
+description: How OpenTac-CAD turns an outline or a surface into a routed flex PCB, a printed case and a manifest, and which settings matter.
 ---
 
 # Design a sensor
 
-OpenTac CAD turns a shape into a sensor you can order. It packs taxels (sensing spots) into the shape, routes every row and column to a flat-cable connector, checks the result against design rules, and writes the fabrication files, a printed case and the sensor's manifest. The same tool runs [online](../../cad/) and [on your computer](../get-started.md#run-it-on-your-computer).
+OpenTac-CAD turns a shape into a sensor you can order. It packs taxels (sensing spots) into the shape, routes every row and column to a flat-cable connector, checks the result against design rules, and writes the fabrication files, a printed case and the sensor's manifest. The same tool runs [online](../../cad/) and [on your computer](../get-started.md#run-it-on-your-computer).
 
 <div class="ot-media" style="margin: 1.2em 0 1.6em">
   <video data-loop muted loop playsinline preload="none" poster="../../assets/loops/cad_demo.jpg"

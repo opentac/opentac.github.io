@@ -5,7 +5,7 @@ description: Use a coding agent with the OpenTac skill to design a sensor from a
 
 # Design with an AI agent
 
-Some sensors are easier to describe than to draw: "a pressure-sensing insole, size 9, cable at the heel". The repository includes a skill that lets a coding agent turn such a request into a finished board. The agent looks up the real dimensions, builds the outline, runs the same OpenTac CAD compiler on your computer, and hands back the KiCad files, Gerbers and manifest.
+Some sensors are easier to describe than to draw: "a pressure-sensing insole, size 9, cable at the heel". The repository includes a skill that lets a coding agent turn such a request into a finished board. The agent looks up the real dimensions, builds the outline, runs the same OpenTac-CAD compiler on your computer, and hands back the KiCad files, Gerbers and manifest.
 
 ## Set up
 
@@ -31,7 +31,7 @@ The agent can also start from a DXF outline or an STL part: give it the file and
 
 <figure class="ot-fig" markdown="span">
   ![Boards designed by a coding agent from one-sentence prompts: an Allegro fingertip with the agent's logged decisions, a humanoid sole, a hand palm, a bike saddle, the state of Massachusetts, a gecko and a star.](../assets/figures/cad_agentic.png){ loading=lazy }
-  <figcaption>Skins designed from one-sentence requests by a coding agent using OpenTac CAD and web search. (A) The agent's logged decisions for an Allegro fingertip: it looked up the finger's dimensions, noticed the tip cap is doubly curved and covered only part of it, and raised the pitch from 2.0 to 2.2&nbsp;mm so the connector fits the finger width. (B) Further designs. All nine agent-generated designs in the paper passed the design-rule check.</figcaption>
+  <figcaption>Skins designed from one-sentence requests by a coding agent using OpenTac-CAD and web search. (A) The agent's logged decisions for an Allegro fingertip: it looked up the finger's dimensions, noticed the tip cap is doubly curved and covered only part of it, and raised the pitch from 2.0 to 2.2&nbsp;mm so the connector fits the finger width. (B) Further designs. All nine agent-generated designs in the paper passed the design-rule check.</figcaption>
 </figure>
 
 ## What to check in the result
@@ -42,7 +42,7 @@ The agent reports what was built: the taxel count, the board size and the design
 - print the 1:1 PDF from the export and hold it against the part;
 - confirm the connector matches your [readout board](../hardware.md).
 
-You can also open the agent's `design.json` (or the whole ZIP) in OpenTac CAD to adjust it by hand.
+You can also open the agent's `design.json` (or the whole ZIP) in OpenTac-CAD to adjust it by hand.
 
 ## Online: the Describe tab
 

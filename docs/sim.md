@@ -8,7 +8,7 @@ on simulated and real data alike.
 from opentac import manifest
 from opentac.sim import Sensor
 
-m = manifest.load("manifest.json")      # or the design .zip from OpenTac CAD
+m = manifest.load("manifest.json")      # or the design .zip from OpenTac-CAD
 s = Sensor(m)                           # foam model
 frame = s.press("sphere", center_mm=(10, 12), force_n=5.0, radius_mm=5.0)
 
@@ -29,7 +29,7 @@ frame.image(m)      # the same values as a 2-D array laid out like the sensor
 | Needs | numpy | numpy; the full solver also needs `mujoco` (`uv sync --extra sim`) |
 
 **The default is always `"foam"`.** Pass `model="mujoco"` if you print the
-bump sheet. The manifest cannot decide this for you: OpenTac CAD writes a
+bump sheet. The manifest cannot decide this for you: OpenTac-CAD writes a
 `shear` block (where bumps *would* go) into every manifest, whether or not a
 sheet is printed. The skins in the paper had `shear` blocks and no bump sheet.
 

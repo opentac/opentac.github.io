@@ -2,11 +2,11 @@
 
 You need a readout board with the OpenTac firmware ([flash it](flash.md)), a
 sensor plugged into it, and that sensor's manifest: the `manifest.json` in the
-design `.zip` from OpenTac CAD.
+design `.zip` from OpenTac-CAD.
 
 ## Which board
 
-OpenTac CAD's *readout board* setting picks the board a sensor is made for. A
+OpenTac-CAD's *readout board* setting picks the board a sensor is made for. A
 sensor for the 30-pin board ends in a 30-position connector (up to 15 rows and
 15 columns); a sensor for the 60-pin board ends in a 60-position one (up to 30
 by 30). To check a design:

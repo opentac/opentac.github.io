@@ -1,6 +1,6 @@
 ---
 title: Get started
-description: Try OpenTac CAD online, or clone the repository and run everything on your own computer.
+description: Try OpenTac-CAD online, or clone the repository and run everything on your own computer.
 ---
 
 # Get started
@@ -9,7 +9,7 @@ OpenTac is one repository: the CAD tool, the readout firmware and Python package
 
 ## Try it online
 
-Open [OpenTac CAD](../cad/){ .md-button .md-button--primary } in your browser. You can draw an outline, import a DXF or STL, generate a board and download the files.
+Open [OpenTac-CAD](../cad/){ .md-button .md-button--primary } in your browser. You can draw an outline, import a DXF or STL, generate a board and download the files.
 
 The online tool runs its design engine on a free server that sleeps when idle, so the first **Generate** of the day can take up to a minute while it wakes. Locally, a design generates in a second or two and your files never leave your computer.
 
@@ -31,7 +31,7 @@ You need [git](https://git-scm.com/downloads) (or download the repository as a Z
     | Windows | `Start_OpenTac.bat` |
     | Linux | run `bash Start_OpenTac.command` in a terminal |
 
-3. The first run downloads what the tool needs into the folder's own environment (a few minutes, once). After that it starts in seconds and opens OpenTac CAD in your browser.
+3. The first run downloads what the tool needs into the folder's own environment (a few minutes, once). After that it starts in seconds and opens OpenTac-CAD in your browser.
 
 !!! note "If macOS blocks the double-click"
     Open Terminal, type `bash ` (with a trailing space), drag `Start_OpenTac.command` onto the window and press Enter.
@@ -50,7 +50,7 @@ The repository includes a skill that teaches a coding agent to design sensors wi
 
 The whole path, with a page for each step:
 
-1. **Design** the sensor in [OpenTac CAD](design/index.md) and download the ZIP.
+1. **Design** the sensor in [OpenTac-CAD](design/index.md) and download the ZIP.
 2. **Print the 1:1 PDF** from the ZIP and hold it against the part to check the fit (see [Assembly](build/assembly.md#check-the-fit-on-paper)).
 3. **Order** the [flex PCB](build/order-sensor.md) and, if you don't have one, a [readout board](build/order-readout.md).
 4. **Gather** the [materials](build/materials.md): a piezoresistive film or fabric, TPU filament, a USB cable.

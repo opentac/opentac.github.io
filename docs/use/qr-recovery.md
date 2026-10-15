@@ -1,6 +1,6 @@
 # Recover a manifest from the QR code
 
-Sensors made with OpenTac CAD carry a QR code on the back silkscreen. It
+Sensors made with OpenTac-CAD carry a QR code on the back silkscreen. It
 encodes the sensor's taxel grid: rows, columns, connector pads, which taxels
 exist, where they sit, and the taxel footprint. If a sensor has lost its
 files, the QR code is enough to read it.
@@ -39,7 +39,7 @@ need.
 The QR does not carry:
 
 - `outline` and `edge_cuts`, the sensor's drawn shape and cut edge,
-- `design`, the recipe OpenTac CAD needs to rebuild or edit the board,
+- `design`, the recipe OpenTac-CAD needs to rebuild or edit the board,
 - `shear`, which taxels share a shear bump, so there are no shear arrows.
 
 Scanner apps sometimes trim or lowercase the text; both still decode. The

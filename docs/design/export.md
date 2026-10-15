@@ -1,6 +1,6 @@
 ---
 title: What the export contains
-description: Every file in the OpenTac CAD download, what it is for, and the QR code on the back of the board.
+description: Every file in the OpenTac-CAD download, what it is for, and the QR code on the back of the board.
 ---
 
 # What the export contains
@@ -13,7 +13,7 @@ description: Every file in the OpenTac CAD download, what it is for, and the QR 
 | `board.kicad_pcb` | the board in KiCad format | inspecting or editing the board in KiCad |
 | `*_pos_0.5mm_FPC.kicad_mod` | the tail's connector footprint | opening the board in KiCad |
 | `manifest.json` | machine-readable description of the sensor | the readout, the viewer, simulation and transfer |
-| `design.json` | the design itself: outline, settings and hand-edited routes | reopening the design in OpenTac CAD |
+| `design.json` | the design itself: outline, settings and hand-edited routes | reopening the design in OpenTac-CAD |
 | `printable_1to1.pdf` | full-size paper template of the board | checking the fit before ordering |
 | `velostat/velostat_cut.dxf` | outline of the sensing area, in mm | laser-cutting the piezoresistive layer |
 | `velostat/velostat_fold_template.pdf` | the same outline, mirrored about a fold line | cutting the piezoresistive layer by hand |

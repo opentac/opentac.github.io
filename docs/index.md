@@ -77,7 +77,7 @@ Pressing a bump raises all four taxels together; a sideways push tilts it, so th
 
 ## Design a sensor for any surface { #design }
 
-OpenTac CAD fills a drawn outline, a DXF, or a surface picked on an STL model with taxels, routes every row and column to the connector, and writes the Gerbers, a printed case and the sensor's manifest. A coding agent can drive the same compiler from a one-sentence request.
+OpenTac-CAD fills a drawn outline, a DXF, or a surface picked on an STL model with taxels, routes every row and column to the connector, and writes the Gerbers, a printed case and the sensor's manifest. A coding agent can drive the same compiler from a one-sentence request.
 
 Five representative designs compile in 0.7&ndash;2.6&nbsp;s and cover 75&ndash;93% of their target regions.
 
@@ -86,7 +86,7 @@ Five representative designs compile in 0.7&ndash;2.6&nbsp;s and cover 75&ndash;9
 </div>
 <div class="ot-media">
   <video data-loop muted loop playsinline preload="none" poster="assets/loops/cad_demo.jpg"
-         aria-label="Screen recording of OpenTac CAD sensorizing a gripper finger: load the model, select the surface, set the cable edge and taxel size, generate, add the case and export">
+         aria-label="Screen recording of OpenTac-CAD sensorizing a gripper finger: load the model, select the surface, set the cable edge and taxel size, generate, add the case and export">
     <source src="assets/loops/cad_demo.mp4" type="video/mp4">
   </video>
 </div>
