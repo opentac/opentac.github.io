@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:09.000
+Finger press: the heatmap responds.
+
+2
+00:00:09.000 --> 00:00:11.000
+Thermal camera in view. Hottest point: 38 °C.
+
+3
+00:00:11.000 --> 00:00:40.000
+Heat gun on. Hottest point 57 to 64 °C. The heatmap stays dark.
+
+4
+00:00:40.000 --> 00:00:54.500
+Heat gun off. A finger press on the warm sensor still reads.

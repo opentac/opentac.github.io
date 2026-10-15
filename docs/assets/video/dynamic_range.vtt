@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.000 --> 00:00:13.000
+Light presses, 0.15 to 1.6 N. Top right of the plot: load cell (Fz) and sensor (tactile), in newtons.
+
+2
+00:00:13.000 --> 00:00:30.500
+Firmer presses, up to about 6 N. The sensor follows the load cell.
+
+3
+00:00:30.500 --> 00:00:36.000
+Hard press. The load cell reaches about 21 N; the sensor stops near 11 N, the top of its range.
+
+4
+00:00:36.000 --> 00:00:40.000
+Two fingers, over 20 N: outside the calibrated range (shown as "beyond fit").
