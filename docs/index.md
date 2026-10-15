@@ -139,7 +139,7 @@ The board keeps the sensor's manifest, so after a one-time setup the live view k
 
 ## Read faster where contact happens { #xampling }
 
-Xampling is compressive sampling for touch: each frame reads only a few taxels, chosen around where contact is, instead of the whole array. It works on any sensor layout.
+Xampling is compressive sampling for touch: instead of the whole array, each frame reads a small search sample of taxels and then grows around any contact until it is covered, so a large contact is read whole. It works on any sensor layout.
 
 On a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels per frame gives 1286 partial frames/s. Raster scanning caught two of six ~3&nbsp;ms tennis-ball impacts; budgets of 16 to 256 taxels per frame caught all three impacts tested at each budget.
 

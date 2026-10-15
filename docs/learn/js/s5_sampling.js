@@ -1,4 +1,4 @@
-/* Study 5: what a fixed-budget xampling frame reads, replayed on a real
+/* Study 5: what an xampling frame (grow mode) reads, replayed on a real
  * raster recording. The selection is js/xampling.js, a port of the firmware's
  * ot_xampling.h checked against it (scripts/learn/check_xampling.py). Frame
  * rates are the measured ones (xampling_m_vs_fps.csv). */
@@ -75,7 +75,7 @@
         if (!take) return;
         var fps = xm.fps[String(st.m)];
         var idx = X.schedule(take.t_ms, fps);
-        var settings = {mode: X.FIXED, m: st.m, threshold: d.XAMP_THRESH, searchMin: d.XAMP_SEARCH_MIN,
+        var settings = {mode: X.GROW, m: st.m, threshold: d.XAMP_THRESH, searchMin: d.XAMP_SEARCH_MIN,
                         bumpFill: !!d.XAMP_BUMP_FILL};
         var frames = X.replay(grid, settings, take.z_base, take.z_noise, idx.length,
                               function (k) { return take.raw[idx[k]]; }, xm.pattern);
@@ -237,9 +237,7 @@
         m.reads.textContent = fr.fromPriority + ' · ' + fr.fromPattern + ' · ' + fr.fromGrowth;
         m.hit.textContent = c[1] ? c[0] + ' of ' + c[1] : 'no contact';
         var msg;
-        var reserve = Math.min(st.m, d.XAMP_SEARCH_MIN), left = st.m - reserve;
-        if (left < 8) msg = 'At M = ' + st.m + ', ' + reserve + ' reads go to the search (SEARCH_MIN = ' + d.XAMP_SEARCH_MIN + '), leaving ' + left + ' to follow a contact.';
-        else if (c[1] > st.m) msg = 'The contact covers ' + c[1] + ' taxels, more than the budget: a fixed frame cannot read all of it.';
+        if (c[1] > st.m) msg = 'The contact covers ' + c[1] + ' taxels, more than M = ' + st.m + ': growth reads past M to follow all of it, and that frame takes longer.';
         else msg = 'Unread taxels are unknown in this frame, not zero.';
         status.textContent = msg;
       });

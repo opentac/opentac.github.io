@@ -11,8 +11,8 @@ more frames per second.
 Zero first, with nothing touching the sensor, then switch:
 
 ```sh
-uv run opentac view --xampling 128            # 128 reads per frame
-uv run opentac view --xampling 64 --grow      # 64 search reads, then grow around contacts
+uv run opentac view --xampling 64             # 64 search reads, then grow around every contact
+uv run opentac view --xampling 128 --fixed    # exactly 128 reads per frame, for a steady frame rate
 ```
 
 ```python
@@ -20,7 +20,7 @@ from opentac.device import Sensor
 
 s = Sensor()
 s.zero()                       # nothing touching: measures each taxel's zero and noise
-s.xampling(budget=128)         # XAMP_M = 128, TAC_MODE = xamp_fixed
+s.xampling(budget=128)         # XAMP_M = 128, TAC_MODE = xamp_grow (grow=False for xamp_fixed)
 frame = s.read()
 frame.mask                     # True for the taxels read this frame
 frame.taxels                   # counts above the zero; NaN where not read
@@ -34,8 +34,8 @@ board again.
 
 | Mode | `TAC_MODE` | Reads per frame |
 |---|---|---|
-| fixed | `xamp_fixed` (1) | exactly `XAMP_M`, growth included: a steady frame rate |
-| grow | `xamp_grow` (2) | `XAMP_M` search reads, plus every taxel growth reaches: a large contact is followed completely |
+| grow (default) | `xamp_grow` (2) | `XAMP_M` search reads, plus every taxel growth reaches: a large contact is read whole, never cut off |
+| fixed | `xamp_fixed` (1) | exactly `XAMP_M`, growth included: a steady frame rate, but a contact larger than the budget is read in part |
 
 In both, growth starts only after `XAMP_SEARCH_MIN` search reads, so last
 frame's contact cannot use up a whole frame. Contacts found in one frame are
