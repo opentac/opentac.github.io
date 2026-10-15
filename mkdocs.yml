@@ -7,7 +7,7 @@ repo_url: https://github.com/opentac/opentac.github.io
 repo_name: opentac/opentac.github.io
 edit_uri: edit/main/docs/
 docs_dir: docs
-copyright: OpenTac. License to be decided before release. <!-- LICENSE TODO -->
+copyright: "OpenTac. Code MIT, hardware CERN-OHL-P-2.0, docs and media CC BY 4.0."
 
 theme:
   name: material
