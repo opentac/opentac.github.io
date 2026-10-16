@@ -171,6 +171,33 @@
   color: var(--ot-amber-soft);
   max-width: 34rem;
 }
+.ot-hero__authors {
+  margin: .9rem auto 0;
+  max-width: 44rem;
+  font-size: .78rem;
+  line-height: 1.6;
+  color: var(--ot-on-dark);
+}
+.ot-hero__affil {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .1rem 1.1rem;
+  margin: .3rem auto 0;
+  max-width: 44rem;
+  font-size: .72rem;
+  color: var(--ot-on-dark-muted);
+}
+.ot-author { white-space: nowrap; }
+.ot-hero__authors a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  text-underline-offset: .15em;
+}
+.ot-hero__authors a:hover { color: var(--ot-amber-soft); }
+.ot-hero__authors sup,
+.ot-hero__affil sup { font-size: .7em; margin-left: .05em; }
 .ot-hero__lede {
   margin: .9rem auto 0;
   max-width: 32rem;
