@@ -58,7 +58,7 @@ We compiled and fabricated 31 boards. All passed the design-rule check and all w
 
 ## Material and spatial response { #material-and-spatial-response }
 
-Load-cell measurements that vary one design variable at a time show that the piezoresistive film strongly affects sensitivity and saturation: at 2.0&nbsp;mm pitch and 0.2&nbsp;mm electrode gap, LINQSTAT does not saturate through 60&nbsp;N, while Chibitronics saturates early. A larger taxel pitch gives more signal per taxel and lower spatial resolution; the measurable force range depends on the sensor geometry.
+Load-cell measurements, read at 1&nbsp;kΩ feedback, that vary one design variable at a time show that the piezoresistive film strongly affects sensitivity and saturation: at 2.0&nbsp;mm pitch and 0.2&nbsp;mm electrode gap, LINQSTAT does not saturate through 60&nbsp;N, while Chibitronics saturates early. A larger taxel pitch gives more signal per taxel and lower spatial resolution; the measurable force range depends on the sensor geometry.
 
 On a bumped 4&times;4 patch, the bump decoding (sum of the four taxels under a bump for normal force, their differences for shear) reaches an in-sample R&sup2; of 0.95, 0.93 and 0.96 for F<sub>x</sub>, F<sub>y</sub> and F<sub>z</sub>, with RMSE of 0.11&ndash;0.16&nbsp;N, against an OptoForce reference.
 
