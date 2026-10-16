@@ -27,14 +27,12 @@ We present OpenTac, a novel sensor and a full-stack ecosystem for tactile skins 
 ```bibtex
 @misc{opentac2026,
   title         = {{OpenTac}: An Open Ecosystem for Customizable, Scalable, and Transferable {3D} Tactile Sensing},
-  author        = {TODO},
+  author        = {{The OpenTac authors}},
   year          = {2026},
-  eprint        = {TODO},
-  archivePrefix = {arXiv},
   url           = {https://opentac.github.io/}
 }
 ```
-<!-- AUTHORS TODO: fill author and eprint once the arXiv version is up -->
+<!-- AUTHORS TODO: author list, and eprint + archivePrefix = {arXiv} once the arXiv version is up -->
 
 ## Background
 
