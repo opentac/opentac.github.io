@@ -24,7 +24,7 @@ Short clips of single sensor properties.
          aria-label="Pressure readings from about 0.1 newton to about 10 newtons">
     <source src="../assets/video/dynamic_range.mp4" type="video/mp4">
   </video>
-  <figcaption><strong>Dynamic range.</strong> Pressure from about 0.1&nbsp;N to about 10&nbsp;N. The piezoresistive layer sets the range: it can go higher at the cost of the low end.</figcaption>
+  <figcaption><strong>Dynamic range.</strong> Pressure from about 0.1&nbsp;N to about 10&nbsp;N, read at 10&nbsp;k&Omega; feedback (the default gain). A lower gain, or a different piezoresistive layer, reaches higher forces at the cost of the low end.</figcaption>
 </figure>
 <figure class="ot-demo">
   <video data-loop muted loop playsinline preload="none" poster="../assets/video/heat_gun_poster.jpg"

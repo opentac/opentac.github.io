@@ -12,11 +12,11 @@ Besides the flex PCB and the readout board, a sensor needs a piezoresistive laye
 
 ## Piezoresistive layer
 
-The layer between the taxels and the lid is what turns pressure into a change in resistance. Its choice changes the sensor more than any other material: in the paper's load-cell tests, at 2.0&nbsp;mm pitch, LINQSTAT did not saturate through 60&nbsp;N, while Chibitronics Velostat saturated early ([Results](../results.md#material-and-spatial-response)).
+The layer between the taxels and the lid is what turns pressure into a change in resistance. Its choice changes the sensor more than any other material: in the paper's load-cell tests, read at 1&nbsp;k&Omega; feedback, at 2.0&nbsp;mm pitch, LINQSTAT did not saturate through 60&nbsp;N, while Chibitronics Velostat saturated early ([Results](../results.md#material-and-spatial-response)).
 
 | Material | What it is | Notes | Where |
 |---|---|---|---|
-| **LINQSTAT** | Velostat-like carbon-loaded polyethylene film | did not saturate through 60&nbsp;N in the paper's tests; used for the transfer experiments | [LINQSTAT films at Krayden](https://www.krayden.com/s/conductive-plastic-films) |
+| **LINQSTAT** | Velostat-like carbon-loaded polyethylene film | did not saturate through 60&nbsp;N in the paper's tests, read at 1&nbsp;k&Omega; feedback; used for the transfer experiments | [LINQSTAT films at Krayden](https://www.krayden.com/s/conductive-plastic-films) |
 | **Yunjia textile** | piezoresistive conductive fabric, 0.15&nbsp;mm | one of the three materials in the paper's comparison; used in the build-guide sensor | [Faraday Fiber (Yunjia Textile)](https://faradayfiber.com/en-us/products/pressure-sensor-piezoresistive-fabric) |
 | **Chibitronics Velostat** | pressure-sensitive conductive plastic sheet | saturated early in the paper's tests | [Chibitronics shop](https://shop.chibitronics.com/products/conductive-plastic-sheets-velostat-linqstat) |
 

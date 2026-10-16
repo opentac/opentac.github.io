@@ -14,7 +14,7 @@ Open [OpenTac-CAD](../cad/){ .md-button .md-button--primary } in your browser. Y
 The online tool runs its design engine on a free server that sleeps when idle, so the first **Generate** of the day can take up to a minute while it wakes. Locally, a design generates in a second or two and your files never leave your computer.
 
 <figure class="ot-fig ot-fig--clear ot-screen" markdown="span" style="max-width: 32rem">
-  [![OpenTac-CAD after Generate on its Yubi finger pad example: the result panel lists 122 sensing spots, the 60-pin readout board, the board grown to fit the wiring, 2 copper layers and 0 design-check violations; below it the PCB preview of the routed board, and the download bar with the design name and buttons for the printable PDF, the velostat DXF and fold PDF, and the ZIP.](assets/screens/cad_generated.webp){ loading=lazy width="939" height="976" }](assets/screens/cad_generated.webp)
+  [![OpenTac-CAD after Generate on its Yubi finger pad example: the result panel lists 122 sensing spots, the 60-pin readout board, the board grown to fit the wiring, 2 copper layers, a 22 mm tail chosen automatically so the printed case clears the connector, and 0 design-check violations; below it the PCB preview of the routed board, and the download bar with the design name and buttons for the printable PDF, the velostat DXF and fold PDF, and the ZIP.](assets/screens/cad_generated.webp){ loading=lazy width="939" height="995" }](assets/screens/cad_generated.webp)
   <figcaption>OpenTac-CAD after <strong>Generate</strong> on one of its examples, the Yubi finger pad: the design check, the routed board, and the downloads.</figcaption>
 </figure>
 

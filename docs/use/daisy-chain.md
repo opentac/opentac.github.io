@@ -9,9 +9,9 @@ Each board is set up and read the same way as a single board on USB.
   <figcaption>Only the Teensy is on USB; the boards share four bus wires (5&nbsp;V, SDA, SCL, GND). Pins and pull-ups as in <a href="#3-wire">3. Wire</a>.</figcaption>
 </figure>
 
-Up to 18 boards. The bus runs at 1 MHz. Tested on three 30-pin boards
-(2026-09-29): 0 errors over 7,213 bus transactions, about 240 frames per second
-per board with two boards streaming.
+Up to 18 boards. The bus runs at 1 MHz. Measured on three 30-pin boards: 0
+errors over 7,213 bus transactions, about 240 frames per second per board with
+two boards streaming.
 
 ## 1. Flash every board for the bus
 

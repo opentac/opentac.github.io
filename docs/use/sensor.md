@@ -176,7 +176,7 @@ stack and readout settings it was measured with.
 
 <figure class="ot-fig" markdown="span" style="max-width: 24rem">
   [![Per-taxel response curves against force for three films, five electrode gaps and three pitches, and three-axis force estimates against a reference sensor.](../assets/figures/calibration.png){ loading=lazy }](../assets/figures/calibration.png)
-  <figcaption>Why a calibration is per design: in the paper's load-cell tests the counts a taxel gives for a force change with the film (a), the electrode gap (b) and the pitch (c). See <a href="../../results/#material-and-spatial-response">Results</a>.</figcaption>
+  <figcaption>Why a calibration is per design: in the paper's load-cell tests, read at 1&nbsp;k&Omega; feedback, the counts a taxel gives for a force change with the film (a), the electrode gap (b) and the pitch (c). See <a href="../../results/#material-and-spatial-response">Results</a>.</figcaption>
 </figure>
 
 ```python

@@ -48,7 +48,7 @@ hide:
          aria-label="Pressure readings from about 0.1 newton to about 10 newtons">
     <source src="assets/video/dynamic_range.mp4" type="video/mp4">
   </video>
-  <figcaption>From about 0.1&nbsp;N to about 10&nbsp;N.</figcaption>
+  <figcaption>From about 0.1&nbsp;N to about 10&nbsp;N at 10&nbsp;k&Omega; feedback, the default gain; a lower gain reaches higher forces.</figcaption>
 </figure>
 <figure class="ot-strip__item ot-strip__item--tall">
   <video data-loop muted loop playsinline preload="none" data-poster="assets/video/heat_gun_poster.jpg"

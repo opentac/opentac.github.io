@@ -60,8 +60,8 @@ The robot gallery on the start screen has surfaces of real grippers, hands and f
 **Tail.** The tail is cut down to the traces it carries and widens back to the connector's width just before the connector, with rounded corners where it leaves the board. It is narrowed after routing, so it never costs a taxel. **Tail length** sets how far the connector sits from the board. Left blank it is automatic: long enough for the tail to narrow to its traces and for the [printed case](../build/index.md#the-printed-case) to clear the connector, and at least 12 mm. A length typed in is used as given.
 
 <figure class="ot-fig" markdown="span" style="max-width: 30rem">
-  [![OpenTac-CAD's board preview of its Yubi finger pad example, with labels: a taxel, 3 mm on a 3.2 mm pitch; the rows on the bottom copper in blue dashes; the columns on the top copper in red; the cable edge in orange where the tail leaves the outline; the tail cut down to the traces it carries; and the connector end with 60 positions at 0.5 mm pitch.](../assets/diagrams/design_settings.svg){ loading=lazy }](../assets/diagrams/design_settings.svg)
-  <figcaption>OpenTac-CAD's preview of its Yubi finger pad example: 3&nbsp;mm taxels on a 3.2&nbsp;mm pitch, grown, 2 layers. 122 taxels in 20 rows and 7 columns, so the readout board picked is the 60-pin one. Labels added.</figcaption>
+  [![OpenTac-CAD's board preview of its Yubi finger pad example, with labels: a taxel, 3 mm on a 3.2 mm pitch; the rows on the bottom copper in blue dashes; the columns on the top copper in red; the cable edge in orange where the tail leaves the outline; the tail, 22 mm long, cut down to the traces it carries; and the connector end with 60 positions at 0.5 mm pitch.](../assets/diagrams/design_settings.svg){ loading=lazy }](../assets/diagrams/design_settings.svg)
+  <figcaption>OpenTac-CAD's preview of its Yubi finger pad example: 3&nbsp;mm taxels on a 3.2&nbsp;mm pitch, grown, 2 layers. 122 taxels in 20 rows and 7 columns, so the readout board picked is the 60-pin one. Tail length left blank: 22&nbsp;mm, so the printed case clears the connector. Labels added.</figcaption>
 </figure>
 
 **Taxel size and pitch.** The default is 4&nbsp;mm taxels on a 4.2&nbsp;mm pitch. Smaller pitch gives finer spatial resolution and more taxels; larger pitch gives more signal per taxel (see [Results](../results.md#material-and-spatial-response)). Width and height are set independently, so an elongated shape can have elongated taxels. Keep both above 1.5&nbsp;mm. You can instead give the rows and columns you want and let the tool solve the taxel size (grow mode only).
@@ -91,7 +91,7 @@ On **4 layers**, rows are wired on two inner layers instead: one carries each ro
 
 <figure class="ot-fig" markdown="span">
   [![Three OpenTac-CAD previews of the same arch outline at one scale. Grow, 2 layers: the board spreads past the drawn shape and holds 144 taxels. Fixed outline, 2 layers: the board is the drawn shape, a wiring band runs inside its edge, 63 taxels. Fixed outline, 4 layers: rows run on the inner layers in amber and green, 83 taxels.](../assets/diagrams/design_modes.svg){ loading=lazy }](../assets/diagrams/design_modes.svg)
-  <figcaption>OpenTac-CAD's Arch example (60&nbsp;&times;&nbsp;40&nbsp;mm, 3&nbsp;mm taxels on a 3.2&nbsp;mm pitch) generated three ways, at one scale. Red: columns, top copper. Blue: rows, bottom copper. Amber and green: rows on the two inner layers.</figcaption>
+  <figcaption>OpenTac-CAD's Arch example (60&nbsp;&times;&nbsp;40&nbsp;mm, 3&nbsp;mm taxels on a 3.2&nbsp;mm pitch) generated three ways, at one scale, the drawn shapes aligned; each tail length was left automatic. Red: columns, top copper. Blue: rows, bottom copper. Amber and green: rows on the two inner layers.</figcaption>
 </figure>
 
 ## The printed case
