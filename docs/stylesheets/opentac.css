@@ -103,7 +103,7 @@
 }
 .md-typeset .ot-photos--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .md-typeset .ot-photos--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-.md-typeset .ot-photos--contain img { object-fit: contain; background: #fff; }
+.md-typeset .ot-photos.ot-photos--contain img { object-fit: contain; background: #fff; }
 .md-typeset .ot-photos figure { margin: 0; }
 .md-typeset .ot-photos img {
   width: 100%;

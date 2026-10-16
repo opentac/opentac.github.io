@@ -35,9 +35,9 @@ The sensor's tail plugs straight into the readout board. When the board has to s
 | | 60-pin readout board | 30-pin readout board |
 |---|---|---|
 | Extension board | [uxcell 60-to-60 pin extension adapter](https://www.amazon.com/uxcell-Extension-Connector-Aapter-Extend/dp/B07SSG7JTG) | [MECCANIXITY 30-pin extension board, single side, pack of 4](https://www.amazon.com/MECCANIXITY-Extension-Extend-Connector-Printer/dp/B0CLH5VVMM) |
-| Cable | [uxcell 60-pin FFC, 150&nbsp;mm, B type, 5 pieces](https://www.amazon.com/uxcell-Flexible-Ribbon-Player-Laptop/dp/B07S18DDZZ/) | [uxcell 30-pin FFC, 250&nbsp;mm, A type, 20 pieces](https://www.amazon.com/uxcell-Flexible-Ribbon-Player-Laptop/dp/B0FXB5DV3Z) |
+| Cable | [uxcell 60-pin FFC, 150&nbsp;mm, A type, 5 pieces](https://www.amazon.com/uxcell-Flexible-Ribbon-Player-Laptop/dp/B07S1BFNCF) | [uxcell 30-pin FFC, 250&nbsp;mm, A type, 20 pieces](https://www.amazon.com/uxcell-Flexible-Ribbon-Player-Laptop/dp/B0FXB5DV3Z) |
 
-Other lengths and sellers work if the pitch, the pin count and the contact type match.
+Both cables are **A type**: contacts on the same face at both ends, facing down into both connectors. Other lengths and sellers work if the pitch, the pin count and the contact type match.
 
 **Contact type.** A flat cable has bare contacts at both ends, either on the same face (A type, "same side") or on opposite faces (B type, "opposite side"). The readout boards' connector (Molex 505110) touches only the bottom face of whatever is plugged into it, so at each end the contacts must face that connector:
 

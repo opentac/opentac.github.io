@@ -26,10 +26,19 @@ In the STL importer, pick the surface in one of four ways:
 Approximate it instead:
 
 1. **Split it into flat facets.** Model the curved region as a set of flat faces, and design the sensor over those faces. The facets fold along straight lines, which a flex PCB does well.
-2. **Prefer hexagons where they fit.** A hexagonal facet pattern follows a rounded surface more closely than squares with the same number of folds. The D'Claw fingertip designs use a square body with a faceted, hexagon-based tip.
+2. **Prefer hexagons where they fit.** A hexagonal facet pattern follows a rounded surface more closely than squares with the same number of folds. The D'Claw fingertip below is a hexagonal prism: six side faces, a hexagon on the tip, and a leaf on each face that folds onto the chamfer between them.
 3. **Or sensorize only the part that matters.** The paper's agent-designed Allegro fingertip covers the palmar face plus the first 7&nbsp;mm of the curved tip cap, and leaves the rest of the cap bare (see [Design with an AI agent](agent.md)).
 
-<!-- TODO: add a picture of the D'Claw hexagon fingertip (unfolded board + on the finger) once the lead picks one from design/examples.md -->
+<div class="ot-photos ot-photos--two ot-photos--contain" markdown>
+<figure markdown="span">
+  ![The D'Claw fingertip sensor unfolded: six strips of taxels side by side, each with a pointed leaf at the top, a small hexagon above the first strip, and a single tail running down to a 60-pin connector.](../assets/photos/shapes/dclaw-hex-flat.jpg){ loading=lazy }
+  <figcaption>Unfolded: six faces with a leaf each, the hexagon for the tip, one tail.</figcaption>
+</figure>
+<figure markdown="span">
+  ![The same sensor folded onto the hexagonal fingertip core, taxels on all six sides and on the leaves around the tip.](../assets/photos/shapes/dclaw-hex-folded.jpg){ loading=lazy }
+  <figcaption>Folded onto the printed core: 546 taxels, 2&nbsp;mm, five columns centred on every face and leaf, 25 &times; 30 on the 60-pin board.</figcaption>
+</figure>
+</div>
 
 ## Practical rules
 
