@@ -17,8 +17,11 @@
    1.5
   ],
   "pitch_raised": false,
+  "cable_length_mm": 17.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 281
+  "zip_kb": 1114,
+  "case_warnings": []
  },
  {
   "slug": "calibration-square-p2p0-gap0p2",
@@ -38,8 +41,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 20.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 210
+  "zip_kb": 773,
+  "case_warnings": []
  },
  {
   "slug": "calibration-square-p4p0-gap0p2",
@@ -59,8 +65,11 @@
    4.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 13.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 102
+  "zip_kb": 443,
+  "case_warnings": []
  },
  {
   "slug": "calibration-square-p2p0-gap0p1",
@@ -80,8 +89,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 20.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 210
+  "zip_kb": 773,
+  "case_warnings": []
  },
  {
   "slug": "calibration-square-p2p0-gap0p3",
@@ -101,8 +113,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 20.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 210
+  "zip_kb": 773,
+  "case_warnings": []
  },
  {
   "slug": "calibration-square-p2p0-gap0p4",
@@ -122,8 +137,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 20.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 210
+  "zip_kb": 773,
+  "case_warnings": []
  },
  {
   "slug": "calibration-square-p2p0-gap0p5",
@@ -143,8 +161,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 20.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 209
+  "zip_kb": 772,
+  "case_warnings": []
  },
  {
   "slug": "calibration-rectangle-p2p0-gap0p2",
@@ -164,8 +185,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 21.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 202
+  "zip_kb": 759,
+  "case_warnings": []
  },
  {
   "slug": "calibration-triangle-p2p0-gap0p2",
@@ -185,8 +209,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 16.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 390
+  "zip_kb": 1117,
+  "case_warnings": []
  },
  {
   "slug": "calibration-hexagon-p2p0-gap0p2",
@@ -206,8 +233,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 19.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 307
+  "zip_kb": 958,
+  "case_warnings": []
  },
  {
   "slug": "calibration-circle-p2p0-gap0p2",
@@ -227,8 +257,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 19.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 301
+  "zip_kb": 960,
+  "case_warnings": []
  },
  {
   "slug": "calibration-lshape-p2p0-gap0p2",
@@ -248,8 +281,11 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 15.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 284
+  "zip_kb": 921,
+  "case_warnings": []
  },
  {
   "slug": "so101-jaw-06x15",
@@ -269,8 +305,11 @@
    4.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 12.0,
+  "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 105
+  "zip_kb": 392,
+  "case_warnings": []
  },
  {
   "slug": "robotiq-2f85-pad-08x04",
@@ -290,8 +329,13 @@
    4.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 12.0,
+  "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 74
+  "zip_kb": 285,
+  "case_warnings": [
+   "Perimeter is only 140mm, so the rib pattern was scaled to 17.5mm period / 8.8mm gap to keep enough bridges holding the lid together."
+  ]
  },
  {
   "slug": "yubi-finger-pad-08x27",
@@ -311,8 +355,11 @@
    3.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 26.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 216
+  "zip_kb": 674,
+  "case_warnings": []
  },
  {
   "slug": "strip-09x09-long",
@@ -332,8 +379,13 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 12.0,
+  "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 88
+  "zip_kb": 366,
+  "case_warnings": [
+   "Perimeter is only 111mm, so the rib pattern was scaled to 13.9mm period / 7.0mm gap to keep enough bridges holding the lid together."
+  ]
  },
  {
   "slug": "strip-09x09",
@@ -353,8 +405,13 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 12.0,
+  "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 87
+  "zip_kb": 365,
+  "case_warnings": [
+   "Perimeter is only 111mm, so the rib pattern was scaled to 13.9mm period / 7.0mm gap to keep enough bridges holding the lid together."
+  ]
  },
  {
   "slug": "so101-jaw-09x26",
@@ -374,8 +431,11 @@
    3.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 25.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 187
+  "zip_kb": 732,
+  "case_warnings": []
  },
  {
   "slug": "leap-fingertip-14x07",
@@ -395,8 +455,11 @@
    3.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 14.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 143
+  "zip_kb": 506,
+  "case_warnings": []
  },
  {
   "slug": "agilex-piper-jaw-15x11",
@@ -416,8 +479,11 @@
    4.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 12.0,
+  "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 153
+  "zip_kb": 582,
+  "case_warnings": []
  },
  {
   "slug": "finger-16x06",
@@ -437,8 +503,11 @@
    4.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 28.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 118
+  "zip_kb": 507,
+  "case_warnings": []
  },
  {
   "slug": "robotiq-2f85-pad-17x09",
@@ -458,8 +527,13 @@
    2.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 22.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 137
+  "zip_kb": 507,
+  "case_warnings": [
+   "Perimeter is only 150mm, so the rib pattern was scaled to 18.7mm period / 9.4mm gap to keep enough bridges holding the lid together."
+  ]
  },
  {
   "slug": "leap-palm-28x18",
@@ -479,8 +553,11 @@
    4.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 19.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 275
+  "zip_kb": 1114,
+  "case_warnings": []
  },
  {
   "slug": "umi-finger-29x04",
@@ -500,8 +577,11 @@
    4.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 24.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 196
+  "zip_kb": 643,
+  "case_warnings": []
  },
  {
   "slug": "strip-32x12",
@@ -521,8 +601,11 @@
    2.122
   ],
   "pitch_raised": true,
+  "cable_length_mm": 23.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 235
+  "zip_kb": 870,
+  "case_warnings": []
  },
  {
   "slug": "agilex-piper-jaw-32x25",
@@ -542,8 +625,11 @@
    2.122
   ],
   "pitch_raised": true,
+  "cable_length_mm": 13.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 388
+  "zip_kb": 1291,
+  "case_warnings": []
  },
  {
   "slug": "large-32x32",
@@ -563,8 +649,11 @@
    4.244
   ],
   "pitch_raised": true,
+  "cable_length_mm": 16.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 396
+  "zip_kb": 1660,
+  "case_warnings": []
  },
  {
   "slug": "yubi-finger-pad-08x27-b",
@@ -584,8 +673,11 @@
    3.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 26.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 219
+  "zip_kb": 677,
+  "case_warnings": []
  },
  {
   "slug": "umi-finger-29x06",
@@ -605,8 +697,11 @@
    4.0
   ],
   "pitch_raised": false,
+  "cable_length_mm": 27.5,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 224
+  "zip_kb": 778,
+  "case_warnings": []
  },
  {
   "slug": "unitree-b2-foot-long",
@@ -626,8 +721,11 @@
    3.289
   ],
   "pitch_raised": true,
+  "cable_length_mm": 22.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 268
+  "zip_kb": 1069,
+  "case_warnings": []
  },
  {
   "slug": "unitree-b2-foot-short",
@@ -647,7 +745,10 @@
    3.289
   ],
   "pitch_raised": true,
+  "cable_length_mm": 22.0,
+  "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 232
+  "zip_kb": 970,
+  "case_warnings": []
  }
 ]

@@ -22,7 +22,7 @@ That alignment is what makes the shear reading accurate. A sideways push tilts a
   <figcaption>The bumped lid on its board. The cross-shaped base of each bump seats in the gaps between taxels, which centres the bump over its 2&times;2 group.</figcaption>
 </figure>
 
-**Download ZIP** in OpenTac-CAD puts the case in the ZIP's `case/` folder: the bottom, the bumped lid as the primary one, the flat and hatched lids, and a README with the settings used ([What the export contains](../design/export.md)). The case panel in OpenTac-CAD (**Add a printed case**) previews the parts and changes their settings. The ZIPs of the [ready-to-order designs](../design/examples.md) have no case: open one in OpenTac-CAD and press **Download ZIP** to get it. Printing and fitting are in the assembly guide: [Print the case](assembly.md#print-the-case) and [Assemble](assembly.md#assemble).
+**Download ZIP** in OpenTac-CAD puts the case in the ZIP's `case/` folder: the bottom, the bumped lid as the primary one, the flat and hatched lids, and a README with the settings used ([What the export contains](../design/export.md)). The case panel in OpenTac-CAD (**Add a printed case**) previews the parts and changes their settings. The ZIPs of the [ready-to-order designs](../design/examples.md) include it too. Printing and fitting are in the assembly guide: [Print the case](assembly.md#print-the-case) and [Assemble](assembly.md#assemble).
 
 ## Steps
 
