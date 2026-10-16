@@ -112,9 +112,8 @@ board on the bus.
 ## Known limitation
 
 Only run the OpenTac bus controller firmware against these boards. A
-controller that reads more bytes than a board sends (the older v1 controller
-does) makes the board hold SCL low, and the whole bus stays down until the
-boards are power-cycled.
+controller that reads more bytes than a board sends makes the board hold SCL
+low, and the whole bus stays down until the boards are power-cycled.
 
 The bus firmware is for the 30-pin board only. A 60-pin board needs more
 memory for its frame buffers than its firmware has left.

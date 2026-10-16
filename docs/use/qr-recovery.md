@@ -50,7 +50,7 @@ uv run opentac setup my_sensor.json
 ```
 
 The text can be the whole link (`HTTPS://OPENTAC.GITHUB.IO/Q/...`, in any case,
-with or without `https://`) or the bare code from an older board. Use single
+with or without `https://`) or, on a small board, the bare code. Use single
 quotes: the text can contain `$`, which a shell expands inside double quotes,
 and `*`, which it expands when unquoted. A bare code that starts with `-` reads
 as an option; put `HTTPS://OPENTAC.GITHUB.IO/Q/` in front of it.
@@ -66,24 +66,21 @@ m.save("my_sensor.json")
 
 The decoder page and the command line write the same file, byte for byte.
 
-## Older boards and small boards
+## Small boards
 
-Boards exported before the QR became a link carry the bare code: a phone shows
-it as text rather than a link (27 characters for the 81-taxel example sensor,
-36 to 39 for sensors of about 100 taxels). Those codes still work: paste the
-text into the [QR decoder page](../qr.md) or pass it to
-`opentac manifest from-qr`.
+The link adds 28 characters to the code, which makes the QR one version
+larger (two on 1 of the 31 example designs), 1.4 mm more on each side per
+version. A board without room for the link inside its outline gets the bare
+code instead (27 characters for the 81-taxel example sensor, 36 to 39 for
+sensors of about 100 taxels); a phone shows it as text rather than a link.
+Paste that text into the [QR decoder page](../qr.md) or pass it to
+`opentac manifest from-qr`. A board without room for either gets no code. All
+31 [example designs](../design/examples.md) have room for the link.
 
 <figure class="ot-fig" markdown="span" style="max-width: 22rem">
   ![Two QR codes at the same scale: the link, 55 characters, version 3, 12.95 mm square; and the bare code, 27 characters, version 2, 11.55 mm square.](../assets/diagrams/qr_forms.png){ loading=lazy width="1090" height="595" }
   <figcaption>The 9&nbsp;&times;&nbsp;9 patch's code both ways, at one scale, quiet zone included, as the export builds them (unmirrored here).</figcaption>
 </figure>
-
-The link adds 28 characters to the code, which makes the QR one version
-larger (two on 1 of the 31 example designs), 1.4 mm more on each side per
-version. A board without room for the link inside its outline gets the bare
-code instead, and one without room for that gets no code. All 31
-[example designs](../design/examples.md) have room for the link.
 
 ## What comes back, and what does not
 
