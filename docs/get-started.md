@@ -48,10 +48,10 @@ The repository includes a skill that teaches a coding agent to design sensors wi
 
 ## From a design to live readings
 
-The whole path, with a page for each step:
+The whole path, with a page for each step. The [assembly guide](build/assembly.md) covers steps 2, 5 and 6 on one page, with photos and a video.
 
 1. **Design** the sensor in [OpenTac-CAD](design/index.md) and download the ZIP.
-2. **Print the 1:1 PDF** from the ZIP and hold it against the part to check the fit (see [Assembly](build/assembly.md#check-the-fit-on-paper)).
+2. **Print the 1:1 PDF** from the ZIP and hold it against the part to check the fit (see [Check the fit on paper](build/assembly.md#check-the-fit-on-paper)).
 3. **Order** the [flex PCB](build/order-sensor.md) and, if you don't have one, a [readout board](build/order-readout.md).
 4. **Gather** the [materials](build/materials.md): a piezoresistive film or fabric, TPU filament, a USB cable.
 5. **Print the case**, cut the film, and [assemble](build/assembly.md).
@@ -63,7 +63,7 @@ The whole path, with a page for each step:
     uv run opentac view                   # live heatmap
     ```
 
-    These are covered in [Flash the firmware](use/flash.md) and [Read a sensor](use/sensor.md).
+    The end of the [assembly guide](build/assembly.md#read-the-sensor) says what you should see and what to check if something looks wrong. [Flash the firmware](use/flash.md) and [Read a sensor](use/sensor.md) have the details.
 
 ## What you need on the bench
 
@@ -72,4 +72,5 @@ The whole path, with a page for each step:
 - a piezoresistive layer, such as LINQSTAT film or a piezoresistive textile (see [Materials](build/materials.md));
 - a 3D printer and TPU filament (85&ndash;95A) for the case and bump sheet;
 - double-sided tape, scissors, printer paper;
-- a USB cable for the readout board.
+- a micro-USB data cable for the readout board;
+- `dfu-util` or STM32CubeProgrammer, to flash the readout board (see [Flash the firmware](use/flash.md)).

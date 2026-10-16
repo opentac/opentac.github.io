@@ -119,7 +119,7 @@ The flex PCB is an ordinary order from a board house; the case and bump sheet pr
 
 The bump sheet and the board come from the same design file, so the cross-shaped base of each bump drops into the gaps between taxels. No jig and no alignment step.
 
-[Build guide](build/index.md){ .ot-more } [Assembly video](build/assembly.md){ .ot-more }
+[Assembly guide](build/assembly.md){ .ot-more } [Build steps](build/index.md){ .ot-more }
 
 </div>
 <figure class="ot-media" markdown="span">
@@ -228,6 +228,8 @@ git clone https://github.com/opentac/opentac.github.io opentac
 cd opentac
 uv run opentac cad
 ```
+
+To build a sensor from a design, follow the [assembly guide](build/assembly.md): it goes from a paper fit check to the sensor showing live readings.
 
 Working with an AI coding agent? The repository ships a skill for designing sensors: Claude Code loads it automatically, and other agents read `AGENTS.md`.
 

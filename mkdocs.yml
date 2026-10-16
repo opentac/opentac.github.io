@@ -104,11 +104,11 @@ nav:
       - Ready-to-order designs: design/examples.md
   - Build:
       - build/index.md
-      - Readout boards: hardware.md
+      - Assembly guide: build/assembly.md
       - Order the sensor: build/order-sensor.md
       - Order the readout board: build/order-readout.md
       - Materials and accessories: build/materials.md
-      - Assembly: build/assembly.md
+      - Readout boards: hardware.md
   - Use:
       - Flash the firmware: use/flash.md
       - Read a sensor: use/sensor.md

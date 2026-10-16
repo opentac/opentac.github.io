@@ -5,7 +5,7 @@ description: How OpenTac-CAD turns an outline or a surface into a routed flex PC
 
 # Design a sensor
 
-OpenTac-CAD turns a shape into a sensor you can order. It packs taxels (sensing spots) into the shape, routes every row and column to a flat-cable connector, checks the result against design rules, and writes the fabrication files, a printed case and the sensor's manifest. The same tool runs [online](../../cad/) and [on your computer](../get-started.md#run-it-on-your-computer).
+OpenTac-CAD turns a shape into a sensor you can order. It packs taxels (sensing spots) into the shape, routes every row and column to a flat-cable connector, checks the result against design rules, and writes the fabrication files, a printed case and the sensor's manifest. The same tool runs [online](../cad/) and [on your computer](../get-started.md#run-it-on-your-computer).
 
 <div class="ot-media" style="margin: 1.2em 0 1.6em">
   <video data-loop muted loop playsinline preload="none" poster="../../assets/loops/cad_demo.jpg"
@@ -86,3 +86,5 @@ You do not have to open the case panel to get a case: **Download ZIP** puts the 
 2. Check that the design-rule check reports no violations.
 3. Download the **printable PDF**, print it at 100% (measure the 100&nbsp;mm ruler), cut it out and hold it against the part. This catches a wrong outline before you pay for boards.
 4. Download the **ZIP**. [What the export contains](export.md) lists every file; [Order the sensor](../build/order-sensor.md) covers the board order.
+
+Then follow the [assembly guide](../build/assembly.md): it takes the ordered board, the printed case and the piezoresistive layer to a sensor showing live readings.

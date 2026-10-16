@@ -1,11 +1,11 @@
 ---
-title: Assembly
-description: Check the fit, print the case, cut the piezoresistive layer, and assemble an OpenTac sensor. No glue, screws or alignment jig.
+title: Assembly guide
+description: Check the fit, print the case, cut the piezoresistive layer, assemble an OpenTac sensor, and read it over USB. No glue, screws or alignment jig.
 ---
 
-# Assembly
+# Assembly guide
 
-Assembly takes a few minutes and needs no tools beyond scissors. The tray, the piezoresistive cut and the bump sheet are all generated from the board's own outline, so each part drops onto the one below it in the right place.
+This page takes a downloaded design to a working sensor: check the fit on paper, print the case, cut the piezoresistive layer, assemble, then plug the sensor in and read it. Assembly itself takes a few minutes and needs no tools beyond scissors. The tray, the piezoresistive cut and the bump sheet are all generated from the board's own outline, so each part drops onto the one below it in the right place.
 
 <div class="ot-media ot-media--video" style="margin: 1.2em 0 .4em">
   <video controls preload="none" playsinline poster="../../assets/video/assembly_poster.jpg"
@@ -145,6 +145,63 @@ The export has the sensing area's outline twice: `velostat/velostat_cut.dxf` for
 
 <!-- CHECK: connector photos show the earlier 70-pin board; replace with the 60-pin board once photographed -->
 
+## Read the sensor { #read-the-sensor }
+
+With the tail in the readout board, the sensor is ready to read. The first time takes about ten minutes. Run the commands in the repository folder ([Get started](../get-started.md#run-it-on-your-computer)).
+
+1. **Plug the readout board into the computer** with a micro-USB cable that carries data (some cables only charge). The board shows up as a serial port, with no adapter or programmer.
+2. **Flash the firmware, once per board.** Install `dfu-util` (macOS: `brew install dfu-util`; Linux: `sudo apt install dfu-util`), or STM32CubeProgrammer on Windows, then:
+
+    ```bash
+    uv run opentac flash
+    ```
+
+    It asks the board which board it is, restarts it into its bootloader and writes the matching firmware. A board fresh from assembly has no firmware and cannot answer: hold its BOOT0 button while you plug it in, release it, and name the board, `uv run opentac flash --board readout60` for the 60-pin board or `--board node16` for the 30-pin pair. [Flash the firmware](../use/flash.md) has the details and two other ways to flash.
+
+3. **Tell the board which sensor it has, once per sensor.** Give it the ZIP you downloaded from OpenTac-CAD (or the `manifest.json` inside it):
+
+    ```bash
+    uv run opentac setup my_design.zip
+    ```
+
+    The board stores the sensor's layout in its own flash and keeps it through power cycles and reflashing. `uv run opentac info` shows what the board holds.
+
+4. **Open the live view.** `--shear` adds the shear arrows; use it with the bump sheet.
+
+    ```bash
+    uv run opentac view --shear
+    ```
+
+    Click the window, then press `b` with nothing touching the sensor. That zeroes it: the reading at rest is subtracted from every frame.
+
+### What you should see
+
+The window draws every taxel where it sits on the sensor, inside the outline you drew, with axes in millimetres. After zeroing, every taxel is dark. Press one bump with a fingertip: the taxels under it turn bright, and the title line shows the frame rate and the peak reading. The colour scale is in raw ADC counts, 0 to 4095, not newtons. Then push the bump sideways without lifting your finger: with `--shear` and the bump sheet on, an arrow on that bump points the way you push. A bump gets an arrow only once its taxels read a few hundred counts in total. With a flat or hatched lid the arrows mean nothing; leave out `--shear`.
+
+`a` switches autoscaling of the colours, `s` shows or hides the arrows, and `q` quits. [Read a sensor](../use/sensor.md) lists every key and covers recording, reading frames in Python, and converting counts to newtons.
+
+<figure class="ot-fig">
+<div class="ot-media ot-media--video">
+  <video data-loop muted loop playsinline preload="none" poster="../../assets/loops/real_sensor.jpg"
+         aria-label="A finger presses and twists a sensor with a bump sheet, wired to a 30-pin readout board; a live map beside it shows normal force as colour and shear as arrows">
+    <source src="../../assets/loops/real_sensor.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>A finger presses and twists a sensor with a bump sheet. Colour is normal force; arrows are shear. The map in this clip was not drawn by <code>opentac view</code>, which shows the same two things in its own colours.</figcaption>
+</figure>
+
+### If something looks wrong
+
+| What you see | What to check |
+|---|---|
+| `no OpenTac readout board ... found on USB` | The cable carries data. No other program has the board's port open: close any other viewer or serial monitor. The board has been flashed. |
+| `the board holds no skin` | Run `uv run opentac setup` with the sensor's ZIP. |
+| Nothing responds to a press | The contacts face the wrong way somewhere. At the readout board the tail goes in with the stiffener up and the contacts down. Through an extension cable, the cable must be A type (contacts on the same face at both ends), with the contacts down into both connectors ([Cables and extension boards](materials.md#cables-and-extension-boards)). |
+| A row or a column stays dark, or several | The tail is not fully seated. Open the latch, push the tail in square to the stop, and close the latch. Check the tail and the cable for a crease or a cut. |
+| A press shows up in the wrong place, or mirrored | Through an extension: a cable of the wrong type, or one end the wrong way round ([Cables and extension boards](materials.md#cables-and-extension-boards)). Without one: the board holds another sensor's layout. Run `opentac setup` with this sensor's ZIP. |
+| Taxels show a reading with nothing touching | Press `b` with hands off to zero again. |
+| A firm press turns many taxels to the top of the scale, on the 60-pin board | Lower the gain: `uv run opentac view --set GAIN_SW=2` ([Gain](../use/sensor.md#gain-60-pin-board)). |
+
 ## Next
 
-[Flash the firmware](../use/flash.md) on the readout board (once per board), then [read the sensor](../use/sensor.md). Zero the sensor with nothing touching it before you look at readings.
+[Read a sensor](../use/sensor.md) covers recording takes, reading frames in Python, the board's settings and calibration to newtons. To read several 30-pin boards over one USB port, see [Daisy-chain boards](../use/daisy-chain.md).
