@@ -8,7 +8,7 @@ description: Ordering the OpenTac sensor as a flex PCB from JLCPCB, with a polyi
 The sensor is a flex PCB: polyimide about 0.1&nbsp;mm thick, so it bends around the part. Any board house that makes flex PCBs can build it from the Gerbers. This page walks through an order at [JLCPCB](https://jlcpcb.com/), which made the boards in the paper.
 
 !!! info "As of October 2026"
-    Option names, values and screenshots below are from JLCPCB's quote form and capability pages in October 2026; the screenshots were taken on 16 October 2026, logged out, with the dense AgileX Piper jaw (`agilex-piper-jaw-32x25`, 2 layers, 60-pin) from [Ready-to-order designs](../design/examples.md). Board houses change their forms; if something looks different, the [flex PCB capabilities page](https://jlcpcb.com/capabilities/flex-pcb-capabilities) is the reference.
+    Option names, values and screenshots below are from JLCPCB's quote form and capability pages in October 2026; the screenshots were taken on 16 October 2026 with the dense AgileX Piper jaw (`agilex-piper-jaw-32x25`, 2 layers, 60-pin) from [Ready-to-order designs](../design/examples.md). Board houses change their forms; if something looks different, the [flex PCB capabilities page](https://jlcpcb.com/capabilities/flex-pcb-capabilities) is the reference.
 
 ## Before you upload
 
@@ -38,7 +38,7 @@ On jlcpcb.com, start a quote and **Add gerber file** with your ZIP. The board si
 | Gold Fingers | **Yes** | the connector end of the tail |
 | Gold Fingers Thickness | **0.3** mm | total thickness of the connector end; see [Stiffener](#stiffener) |
 | Stiffener | **Polyimide** | selected by itself when Gold Fingers is Yes |
-| Polyimide Thickness | **0.225mm** for a 2-layer sensor | from JLC's PI calculator; see below |
+| Polyimide Thickness | **0.20mm** for a 2-layer sensor | what our sensors use; see below |
 | PCB Remark | the stiffener note below | the form has no option for the stiffener's side |
 
 That is all we change for our boards; substrate, board thickness (0.11&nbsp;mm), coverlay, finish and copper stay at the defaults.
@@ -62,15 +62,15 @@ JLCPCB does not read these layers automatically, so set the options by hand.
 **Gold fingers.** Set **Gold Fingers** to **Yes** and **Gold Fingers Thickness** to **0.3**&nbsp;mm, the total at the fingers. Choosing Yes switches **Stiffener** to **Polyimide** and adds a **Polyimide Thickness** row. JLC does not work that out from the 0.3&nbsp;mm; you pick it.
 
 <figure class="ot-fig" markdown="span">
-  [![The flex options on the JLCPCB form: Gold Fingers Yes, Gold Fingers Thickness 0.3 mm, EDA Software Other with a note that stiffeners from other software need manual review, Stiffener Polyimide, Polyimide Thickness 0.225mm. The four settings are outlined in orange.](../assets/photos/jlcpcb/sensor-gold-fingers-stiffener.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-gold-fingers-stiffener.png)
+  [![The flex options on the JLCPCB form: Gold Fingers Yes, Gold Fingers Thickness 0.3 mm, EDA Software Other with a note that stiffeners from other software need manual review, Stiffener Polyimide, Polyimide Thickness 0.20mm. The four settings are outlined in orange.](../assets/photos/jlcpcb/sensor-gold-fingers-stiffener.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-gold-fingers-stiffener.png)
   <figcaption>Gold fingers and stiffener set. The grey note under EDA Software is why the stiffener needs a remark: for files not made in EasyEDA Pro, JLC places the stiffener by hand.</figcaption>
 </figure>
 
-**Polyimide thickness.** Use JLC's [gold-finger PI thickness calculator](https://jlcpcb.com/gold-fingers-pi-thickness-calculator), also linked under the thickness box. For a 2-layer sensor at the default 0.11&nbsp;mm, answer **Yes** to *Any copper on the opposite side of the contacts*: the export puts the connector pads on both copper layers. It then recommends **0.225&nbsp;mm**, for about 0.31&nbsp;mm at the fingers. The calculator covers 1- and 2-layer flex only; for a 4-layer sensor, ask JLC which PI thickness gives 0.3&nbsp;mm.
+**Polyimide thickness.** Use JLC's [gold-finger PI thickness calculator](https://jlcpcb.com/gold-fingers-pi-thickness-calculator), also linked under the thickness box. For a 2-layer sensor at the default 0.11&nbsp;mm, answer **Yes** to *Any copper on the opposite side of the contacts*: the export puts the connector pads on both copper layers. It then recommends 0.225&nbsp;mm. We order **0.20&nbsp;mm**, which is what the sensors in the paper were made with; with the 0.11&nbsp;mm flex it comes to about 0.3&nbsp;mm at the fingers. The calculator covers 1- and 2-layer flex only; for a 4-layer sensor, ask JLC which PI thickness gives 0.3&nbsp;mm.
 
 <figure class="ot-fig" markdown="span">
   [![JLCPCB's Gold Fingers Polyimide Thickness Calculator with 0.30 mm total, 2 layers, 0.11 mm FPC and copper on the opposite side of the contacts: theoretical thickness 0.2175 mm, recommended 0.225 mm.](../assets/photos/jlcpcb/sensor-pi-calculator.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-pi-calculator.png)
-  <figcaption>The calculator for a 2-layer sensor: 0.30&nbsp;mm total, copper on the opposite side, 0.225&nbsp;mm PI.</figcaption>
+  <figcaption>The calculator for a 2-layer sensor: 0.30&nbsp;mm total, copper on the opposite side; it suggests 0.225&nbsp;mm PI. We use 0.20&nbsp;mm.</figcaption>
 </figure>
 
 **Which side.** The form has no option for the side or position of the stiffener. Write it in **PCB Remark** (the pencil at the bottom of the PCB options, 200 characters at most), for example: *"PI stiffener on the TOP side over the connector area, outline on layer User_Drawings, 0.3 mm total thickness at the gold fingers. Contacts are on the bottom."*
@@ -100,7 +100,7 @@ After you pay, JLCPCB's engineers review the files and sometimes send an enginee
 : The top (the taxel side), opposite the contacts, so that the connector end is 0.3&nbsp;mm thick in total.
 
 **"Please confirm the stiffener size / thickness."**
-: Size as drawn on User_Drawings (6&nbsp;mm by the connector width), polyimide (0.225&nbsp;mm on a 2-layer board), total thickness 0.3&nbsp;mm at the fingers.
+: Size as drawn on User_Drawings (6&nbsp;mm by the connector width), polyimide (0.20&nbsp;mm on a 2-layer board), total thickness 0.3&nbsp;mm at the fingers.
 
 **"There is text or a drawing on a user layer; should it be fabricated?"**
 : No. User_Drawings and User_Comments are notes for the stiffener; they are not copper, mask or silkscreen.
