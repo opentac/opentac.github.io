@@ -33,7 +33,7 @@ code written for version 3 reads all of them.
 | `w`, `h` | one taxel's width and height |
 | `footprint` | the rest of the taxel copper: `trace_w`, `gap`, `center_clear`, `edge_clear`, `via_drill`, `via_dia` |
 | `outline` | the shape the user drew |
-| `edge_cuts` | the board as manufactured: grown board, cable tail and connector |
+| `edge_cuts` | the board as manufactured up to the connector: grown board and cable tail, closed across the connector's open edge (the Gerber `Edge.Cuts` adds the connector tab) |
 | `r`, `c` | number of scan rows and columns |
 | `m` | which taxels exist: `r` strings of `c` characters, `1` for a taxel |
 | `rp`, `cp` | connector pad of each scan row and column |
