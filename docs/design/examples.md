@@ -1,10 +1,20 @@
-# Example designs
+---
+title: Ready-to-order designs
+description: The sensors fabricated for the OpenTac paper, regenerated for the OpenTac readout boards, as complete OpenTac-CAD exports to download and order.
+---
+
+# Ready-to-order designs
 
 These are the sensors we fabricated for the paper, regenerated with the current
 OpenTac-CAD for the OpenTac readout boards. Each download is a complete export:
 KiCad board, Gerbers, manifest, the saved design (open it in OpenTac-CAD to edit),
 a printable 1:1 PDF and the piezoresistive-layer cut files. Order it as described
-in [Order the sensor](../build/order-sensor.md).
+in [Order the sensor](../build/order-sensor.md), then build it with the
+[assembly guide](../build/assembly.md).
+
+These ZIPs do not contain the printed case. To get it, open the ZIP in OpenTac-CAD
+(**Open** in the mode switcher) and press **Download ZIP**: the new ZIP has the case
+in its `case/` folder.
 
 All are 2-layer boards made in grow mode. Open a design in OpenTac-CAD to switch to
 4 layers, change the outline or the taxel size.

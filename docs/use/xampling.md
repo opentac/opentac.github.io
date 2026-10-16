@@ -1,6 +1,6 @@
 # Xampling
 
-Xampling is OpenTac's compressive (sub-sampled) acquisition. Each frame the
+Xampling (OpenTac-Xampling) is OpenTac's compressive (sub-sampled) acquisition. Each frame the
 board reads a chosen subset of the taxels instead of all of them: it searches
 the sensor coarse-to-fine, and wherever a reading crosses its threshold it
 reads the neighbours, growing around the contact. Fewer reads per frame means

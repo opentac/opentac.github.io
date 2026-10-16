@@ -11,7 +11,7 @@ description: Every file in the OpenTac-CAD download, what it is for, and the QR 
 |---|---|---|
 | `gerber/` | Gerber layers and the drill file | ordering the flex PCB ([Order the sensor](../build/order-sensor.md)) |
 | `board.kicad_pcb` | the board in KiCad format | inspecting or editing the board in KiCad |
-| `*_pos_0.5mm_FPC.kicad_mod` | the tail's connector footprint | opening the board in KiCad |
+| `tactile_pixel_*.kicad_mod` | the taxel footprint | opening the board in KiCad |
 | `manifest.json` | machine-readable description of the sensor | the readout, the viewer, simulation and transfer |
 | `design.json` | the design itself: outline, settings and hand-edited routes | reopening the design in OpenTac-CAD |
 | `printable_1to1.pdf` | full-size paper template of the board | checking the fit before ordering |

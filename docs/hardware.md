@@ -73,7 +73,7 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 | Microcontroller | STM32G431 | STM32G431 |
 | Row drive | four 74HC595 shift registers | two 74HC595 shift registers |
 | Column select | ADG732 (32:1) | ADG706 (16:1) |
-| Gain | four steps, set over I2C (MAX14662 switch) | fixed |
+| Gain | 16 settings: four feedback resistors switched in by a MAX14662 over I2C ([Gain](use/sensor.md#gain-60-pin-board)) | fixed |
 | IMU | LSM6DSV16BX | LSM6DSV16BX |
 | Computer link | micro-USB, serial | micro-USB, serial |
 | Daisy chain | connectors fitted; firmware not yet | 2 &times; JST-SH 4-pin, I2C |

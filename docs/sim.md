@@ -1,7 +1,7 @@
 # Simulation
 
-`opentac.sim` presses an object into a flat OpenTac sensor and returns a
-`Frame`: the same type a real board returns. Code written against frames runs
+OpenTac-Sim, the `opentac.sim` module, presses an object into a flat OpenTac
+sensor and returns a `Frame`: the same type a real board returns. Code written against frames runs
 on simulated and real data alike.
 
 ```python

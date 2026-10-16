@@ -7,9 +7,10 @@ A readout board runs one firmware, built for that board:
 | 60-pin board | `READOUT60` | `firmware/prebuilt/READOUT60.bin` |
 | 30-pin board | `NODE16` | `firmware/prebuilt/NODE16.bin` |
 | 30-pin board in a daisy chain | `NODE16` bus node | `firmware/prebuilt/NODE16_bus.bin` ([daisy chain](daisy-chain.md)) |
+| earlier 70-pin board | `READOUT32` | `firmware/prebuilt/READOUT32.bin` |
 
-Flashing goes over the board's own USB cable. You do not need the BOOT0 button:
-the running firmware reboots into the STM32's built-in bootloader (DFU) when it
+Flashing goes over the board's own USB cable. Once a board runs OpenTac
+firmware you do not need the BOOT0 button: the running firmware reboots into the STM32's built-in bootloader (DFU) when it
 receives the line `B`. The sensor the board holds survives a reflash.
 
 There are three ways to flash. The first is the simplest.
@@ -35,15 +36,16 @@ without changing anything:
 uv run opentac flash --dry-run
 ```
 
-If the board has no firmware, or does not answer, name the board:
+**A new board** has no firmware, so it cannot restart itself into the
+bootloader. Unplug it, hold the BOOT0 button while plugging it back in,
+release it, and name the board:
 
 ```sh
-uv run opentac flash --board readout60     # or node16
+uv run opentac flash --board readout60     # or node16, readout32
 ```
 
-**If the board never appears in the bootloader:** unplug it, hold the BOOT0
-button while plugging it back in, release it, and run the command again with
-`--board`.
+Do the same if the board's firmware does not answer, or if the board never
+appears in the bootloader.
 
 dfu-util may print `Error during download get_status` after
 `Submitting leave request`. This is harmless: the firmware is written and the
@@ -122,3 +124,7 @@ or by hand, after sending `B` to the board:
 ```sh
 dfu-util -a 0 -d 0483:df11 -s 0x08000000:leave -D firmware/build/READOUT60.bin
 ```
+
+## Next
+
+With the firmware on, tell the board which sensor it has and look at it: [Read a sensor](sensor.md).

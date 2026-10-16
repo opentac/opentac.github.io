@@ -1,4 +1,4 @@
-# Use the sensor
+# Read a sensor
 
 You need a readout board with the OpenTac firmware ([flash it](flash.md)), a
 sensor plugged into it, and that sensor's manifest: the `manifest.json` in the

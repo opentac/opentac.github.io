@@ -1,6 +1,6 @@
 # Transfer
 
-`opentac.transfer` takes a frame from skin A and gives the frame skin B would
+OpenTac-Transfer, the `opentac.transfer` module, takes a frame from skin A and gives the frame skin B would
 have read for the same contact. A and B can have different taxel sizes,
 outlines and taxel counts. Use it to reuse recorded or simulated data on a new
 sensor design.
