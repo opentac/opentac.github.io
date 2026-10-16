@@ -25,7 +25,7 @@ OpenTac-CAD turns a shape into a sensor you can order. It packs taxels (sensing 
 
 Both run the same code; a design saved in one opens in the other.
 
-## Four ways to start
+## Five ways to start
 
 **Draw.** Sketch the outline with line, rectangle and arc tools. Select an edge or a vertex to type an exact length and angle, as in a CAD program.
 
@@ -34,6 +34,8 @@ Both run the same code; a design saved in one opens in the other.
 **Import an STL.** Upload a 3D model of the part, select the surface the sensor should cover, and unfold it flat at true scale. See [Shapes and surfaces](shapes.md) for which surfaces can be covered.
 
 **Open a saved design.** Every download contains `design.json`; open the ZIP again (no need to unzip) and the board comes back as you left it, hand-moved routes included.
+
+**Describe it.** The **Describe** tab takes a sentence ("an insole for a size 9 shoe, cable at the heel") and a chat assistant designs the board with the same generator, then loads it into the editor. See [Design with an AI agent](agent.md).
 
 The robot gallery on the start screen has surfaces of real grippers, hands and feet already unfolded, and finished example designs to start from.
 

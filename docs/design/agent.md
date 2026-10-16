@@ -46,4 +46,9 @@ You can also open the agent's `design.json` (or the whole ZIP) in OpenTac-CAD to
 
 ## Online: the Describe tab
 
-The hosted tool at [`/cad/`](../../cad/) has a **Describe** tab: a chat assistant that designs with the same generator and loads the result into the editor. It needs no install but is slower and less capable than a local agent with web search, and it is not available when you run the tool locally.
+The hosted tool at [`/cad/`](../../cad/) has a **Describe** tab: a chat assistant that designs with the same generator and loads the result into the editor. It needs no install but is slower and less capable than a local agent with web search. To have it in a local copy, give it a Gemini API key (free from [Google AI Studio](https://aistudio.google.com/)) and start the tool with the chat's extra packages:
+
+```sh
+export GEMINI_API_KEY=your-key        # or put GEMINI_API_KEY=... in opentac/cad/.env
+uv run --extra demo opentac cad
+```
