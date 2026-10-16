@@ -20,7 +20,7 @@ You need [git](https://git-scm.com/downloads) (or download the repository as a Z
 1. Get the code:
 
     ```bash
-    git clone https://github.com/opentac/opentac.github.io opentac
+    git clone --depth 1 https://github.com/opentac/opentac.github.io opentac
     ```
 
 2. Open the `opentac` folder and double-click the start script:

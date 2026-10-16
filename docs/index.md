@@ -223,7 +223,7 @@ We deployed the skins on four robots and a handheld gripper. On an SO-101 arm, p
 Everything runs on your own computer. Clone the repository and double-click `Start_OpenTac.command` (macOS) or `Start_OpenTac.bat` (Windows); the CAD tool opens in your browser. Or try the hosted version first, no install needed.
 
 ```bash
-git clone https://github.com/opentac/opentac.github.io opentac
+git clone --depth 1 https://github.com/opentac/opentac.github.io opentac
 cd opentac
 uv run opentac cad
 ```
