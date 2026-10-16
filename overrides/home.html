@@ -27,9 +27,14 @@
         <a class="ot-btn" href="{{ config.repo_url }}">Code</a>
       </div>
     </div>
+    {#- 800/1400 px copies of the 2200 px photo, so a phone does not fetch the
+        full file; it is the page's largest paint, so it is fetched first. -#}
     <img class="ot-hero__photo"
          src="{{ 'assets/photos/skins.jpg' | url }}"
+         srcset="{{ 'assets/photos/skins-800.jpg' | url }} 800w, {{ 'assets/photos/skins-1400.jpg' | url }} 1400w, {{ 'assets/photos/skins.jpg' | url }} 2200w"
+         sizes="100vw"
          width="2200" height="938"
+         fetchpriority="high"
          alt="OpenTac skins on robot parts: orange bump sheets over flex PCBs on gripper fingers, a fingertip, a foot and a curved pad, with bare flex PCBs in front.">
   </section>
 {% endblock %}
