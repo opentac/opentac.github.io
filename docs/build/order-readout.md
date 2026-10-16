@@ -30,7 +30,7 @@ The BOM lists every part with its LCSC number (the `LCSC Part #` column), which 
 2. Leave the PCB options at their defaults unless you have a reason to change them.
 3. Turn on **PCB Assembly**.
     - **PCBA Type.** The 60-pin board has parts on one side only, so **Economic** works (cheaper, quicker; 2&ndash;50 boards). Both 30-pin boards have parts on both sides, which needs **Standard**.
-    - **Tooling holes:** let JLCPCB add them. <!-- TODO verify: exact option label ("Added by JLCPCB") -->
+    - **Tooling holes:** leave the default, which has JLCPCB add them. Don't pick "Added by Customer"; the boards have no tooling holes of their own.
 4. Press **Confirm**, then upload the **BOM** and the **CPL** file (the `_positions.csv`) and press **Process BOM & CPL**.
 5. **Check every line.** Each BOM line should show a matched part. A line marked as having no part selected needs a part: search by the LCSC number from the BOM. For a resistor or capacitor out of stock, a part of the same value, rating and package is fine. For a chip or connector, don't substitute; wait for stock or ask on the repository's issue tracker.
 6. **Check the placement preview.** Look at the chips (pin-1 marks), the USB connector, the sensor connector and the LED. If a part sits rotated or off its pads, note it in the order or choose **Confirm Parts Placement** (an engineer checks placement before soldering; $0.45 in October 2026).
