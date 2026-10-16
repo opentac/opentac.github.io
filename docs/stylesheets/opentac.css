@@ -188,6 +188,13 @@
   font-size: .72rem;
   color: var(--ot-on-dark-muted);
 }
+.ot-hero__contact {
+  margin: .3rem auto 0;
+  max-width: 44rem;
+  font-size: .72rem;
+  color: var(--ot-on-dark-muted);
+}
+.ot-hero__contact a { color: var(--ot-amber-soft); }
 .ot-author { white-space: nowrap; }
 .ot-hero__authors a {
   color: inherit;
