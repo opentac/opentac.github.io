@@ -433,23 +433,78 @@
 
 /* ---------- QR decoder page (docs/qr.md, docs/javascripts/qr.js) ---------- */
 
-.md-typeset .ot-qr__facts {
-  display: grid;
-  grid-template-columns: max-content minmax(0, 1fr);
-  gap: .25em 1.2em;
-  margin: 1em 0;
+/* Rows blue, columns red, as in the design previews (docs/designs/files/*.svg). */
+[data-md-color-scheme="default"] {
+  --ot-qr-row: #2b46c0;
+  --ot-qr-col: #c0352b;
+  --ot-qr-cell: rgba(224, 138, 44, .2);
+  --ot-qr-cell-edge: #c96f17;
+  --ot-qr-hole: #8a949e;
+  --ot-qr-unused: #c4cad0;
 }
-.md-typeset .ot-qr__facts dt { font-weight: 600; }
-.md-typeset .ot-qr__facts dd { margin: 0; }
-.md-typeset .ot-qr__figure { margin: 1em 0; }
-.md-typeset .ot-qr__svg {
-  display: block;
+[data-md-color-scheme="slate"] {
+  --ot-qr-row: #8ea4ff;
+  --ot-qr-col: #ff8b7e;
+  --ot-qr-cell: rgba(224, 138, 44, .2);
+  --ot-qr-cell-edge: #e08a2c;
+  --ot-qr-hole: #7d8791;
+  --ot-qr-unused: #3d4651;
+}
+.md-typeset .ot-qr__status { font-weight: 600; }
+.md-typeset .ot-qr__fig { width: 100%; margin: 1em 0 1.6em; }
+.md-typeset .ot-qr__fig figcaption { max-width: 42rem; margin-left: auto; margin-right: auto; text-align: left; }
+.md-typeset .ot-qr__drawing { display: block; max-width: 100%; height: auto; margin: 0 auto; }
+.md-typeset .ot-qr__drawing text {
+  font-family: var(--md-text-font-family, sans-serif);
+  font-size: 11px;
+  fill: var(--md-default-fg-color);
+}
+.md-typeset .ot-qr__drawing .ot-qr-t-muted { fill: var(--ot-muted); }
+.md-typeset .ot-qr__drawing .ot-qr-t-row { fill: var(--ot-qr-row); }
+.md-typeset .ot-qr__drawing .ot-qr-t-col { fill: var(--ot-qr-col); }
+.ot-qr-cell { fill: var(--ot-qr-cell); stroke: var(--ot-qr-cell-edge); }
+.ot-qr-cell--big { stroke: var(--ot-muted); stroke-width: 1; stroke-dasharray: 4 3; }
+.ot-qr-hole { fill: none; stroke: var(--ot-qr-hole); stroke-dasharray: 2 2; }
+.ot-qr-cu-row, .ot-qr-cu-col { fill: none; stroke-linecap: round; }
+.ot-qr-cu-row { stroke: var(--ot-qr-row); }
+.ot-qr-cu-col { stroke: var(--ot-qr-col); }
+.ot-qr-via { fill: var(--ot-qr-row); }
+.ot-qr-drill { fill: var(--md-default-bg-color); }
+.ot-qr-origin, .ot-qr-dim, .ot-qr-scale { fill: none; stroke: var(--md-default-fg-color); stroke-width: 1; }
+.ot-qr-cable { fill: none; stroke: var(--ot-muted); stroke-width: 1; stroke-dasharray: 3 3; }
+.ot-qr-break { fill: none; stroke: var(--ot-muted); stroke-width: 1; }
+.ot-qr-contact--row { fill: var(--ot-qr-row); }
+.ot-qr-contact--col { fill: var(--ot-qr-col); }
+.ot-qr-contact--none { fill: var(--ot-qr-unused); }
+.md-typeset .ot-qr__tablewrap { overflow-x: auto; margin: 1em 0; }
+.md-typeset table.ot-qr__table {
+  display: table;
   width: 100%;
-  max-width: 26rem;
-  max-height: 55vh;
-  margin: 0 auto;
+  border-collapse: collapse;
+  font-size: .7rem;
+  line-height: 1.45;
 }
-.md-typeset .ot-qr__svg rect { fill: var(--ot-amber); }
+.md-typeset .ot-qr__table th,
+.md-typeset .ot-qr__table td {
+  padding: .45em .6em;
+  border-bottom: 1px solid var(--ot-rule);
+  text-align: left;
+  vertical-align: top;
+}
+.md-typeset .ot-qr__table th { font-weight: 600; }
+.md-typeset .ot-qr__table td:first-child { width: 48%; }
+.md-typeset .ot-qr__table tfoot td { border-bottom: 0; }
+.md-typeset .ot-qr__table .ot-qr__num { text-align: right; font-variant-numeric: tabular-nums; }
+.md-typeset .ot-qr__table td:nth-child(2) { overflow-wrap: anywhere; }
+.md-typeset .ot-qr__table--lines { width: auto; min-width: 16rem; display: inline-table; margin: .6em 1.2em .6em 0; vertical-align: top; }
+.md-typeset .ot-qr__table--lines td:first-child { width: auto; }
+.md-typeset .ot-qr__meaning {
+  display: block;
+  margin-top: .15em;
+  color: var(--ot-muted);
+  font-size: .95em;
+}
+.md-typeset .ot-qr__details { margin: 1em 0; }
 .md-typeset .ot-qr__error { color: var(--md-typeset-a-color); font-weight: 600; }
 .md-typeset .ot-qr__form label { display: block; font-weight: 600; margin-bottom: .3em; }
 .md-typeset .ot-qr__form textarea {

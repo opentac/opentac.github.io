@@ -8,14 +8,21 @@ files, the QR code is enough to read it.
 ## With a phone
 
 Point the phone camera at the code and open the link it offers
-(`opentac.github.io/q/...`). The [QR decoder page](../qr.md) opens, decodes
-the code in the browser (nothing is uploaded), shows the grid, the pads and the
-taxel positions, and has a *Download manifest.json* button. Set the board up
-with that file, as usual:
+(`opentac.github.io/q/...`). The [QR decoder page](../qr.md) opens and
+decodes the code in the browser (nothing is uploaded). It draws the sensor to
+scale from the code: every taxel with its copper, the row and column numbers
+and the connector contact each one uses, the empty grid positions, and one
+taxel's electrode pattern with its dimensions. Below that it lists every field
+in the code with its value and the bits it takes, and it has a *Download
+manifest.json* button. Set the board up with that file, as usual:
 
 ```sh
 uv run opentac setup manifest.json
 ```
+
+To see what a code holds without a sensor, open the code of the
+[9 x 9 patch](../qr.md#YJ77YN9I2O-QN0AOBT.:VW3NG90){ data-design="strip-09x09" }
+example design in the decoder. The decoder page links a few more.
 
 ## With the command line
 
