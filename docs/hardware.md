@@ -131,6 +131,6 @@ The connector is a bottom-contact ZIF type that takes a 0.30&nbsp;mm thick flex 
 
 ## Files and ordering
 
-Each board's folder has the KiCad project (schematic and layout) and a `production/` folder ready for JLCPCB assembly: a Gerber ZIP, a bill of materials with LCSC part numbers, and a placement (CPL) file. [Order the readout board](build/order-readout.md) walks through the order.
+Each board's folder in the repository ([`hardware/readout_60pin`](https://github.com/opentac/opentac.github.io/tree/main/hardware/readout_60pin), [`hardware/readout_30pin`](https://github.com/opentac/opentac.github.io/tree/main/hardware/readout_30pin)) has the KiCad project (schematic and layout) and a `production/` folder ready for JLCPCB assembly: a Gerber ZIP, a bill of materials with LCSC part numbers, and a placement (CPL) file. [Order the readout board](build/order-readout.md) walks through the order.
 
 An earlier 70-pin board (READOUT32) is still supported by the firmware for boards already in use, but new designs use the 60-pin board or the 30-pin pair ([Firmware](#firmware)).
