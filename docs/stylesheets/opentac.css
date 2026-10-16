@@ -393,6 +393,64 @@
   border-radius: var(--ot-radius);
 }
 
+/* ---------- ready-to-order designs (design/examples.md, generated) ---------- */
+
+/* One card per design: the board preview (its SVG, on white in both schemes,
+   like the paper figures), then name, numbers and the download. The preview box
+   has a fixed shape, so nothing moves as the lazy images arrive. */
+.md-typeset .ot-designs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .8rem;
+  margin: 1em 0 2em;
+}
+.md-typeset figure.ot-design {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: auto;
+  margin: 0;
+  border: 1px solid var(--ot-rule);
+  border-radius: var(--ot-radius);
+  overflow: hidden;
+  text-align: left;
+}
+.md-typeset .ot-design > a { display: block; line-height: 0; }
+.md-typeset .ot-design img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: contain;
+  padding: .4rem;
+  background: #fff;
+  border-radius: 0;
+}
+.md-typeset .ot-design figcaption {
+  max-width: none;
+  margin: 0;
+  padding: .55em .7em .7em;
+  border-top: 1px solid var(--ot-rule);
+  font-size: .68rem;
+  line-height: 1.5;
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.md-typeset .ot-design .ot-nowrap { white-space: nowrap; }
+.md-typeset .ot-design figcaption strong {
+  display: inline-block;
+  margin-bottom: .15em;
+  color: var(--md-default-fg-color);
+  font-size: 1.08em;
+  line-height: 1.35;
+}
+
+/* ---------- build overview: the steps table (build/index.md) ---------- */
+
+.md-typeset .ot-steps table:not([class]) th:first-child,
+.md-typeset .ot-steps table:not([class]) td:first-child { width: 1.6em; min-width: 0; padding-right: 0; }
+
 /* ---------- small screens ---------- */
 
 @media screen and (max-width: 59.984375em) {
@@ -425,6 +483,11 @@
   .md-typeset .ot-demo { width: calc(50% - .4rem); }
   .md-typeset .ot-demo--wide { width: 100%; }
   .md-typeset .ot-start { padding: 1.1rem 1rem 1.3rem; }
+  .md-typeset .ot-designs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+  /* all four columns on a phone, so the page links are not off to the side */
+  .md-typeset .ot-steps table:not([class]) { font-size: .62rem; }
+  .md-typeset .ot-steps table:not([class]) th,
+  .md-typeset .ot-steps table:not([class]) td { min-width: 0; padding: .65em .5em; }
 }
 
 @media (prefers-reduced-motion: reduce) {

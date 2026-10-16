@@ -50,11 +50,11 @@ The repository includes a skill that teaches a coding agent to design sensors wi
 
 The whole path, with a page for each step. The [assembly guide](build/assembly.md) covers steps 2, 5 and 6 on one page, with photos and a video.
 
-1. **Design** the sensor in [OpenTac-CAD](design/index.md) and download the ZIP.
+1. **Design** the sensor in [OpenTac-CAD](design/index.md) and download the ZIP: the board files and the [printed case](build/index.md#the-printed-case), generated from the same design so they line up.
 2. **Print the 1:1 PDF** from the ZIP and hold it against the part to check the fit (see [Check the fit on paper](build/assembly.md#check-the-fit-on-paper)).
 3. **Order** the [flex PCB](build/order-sensor.md) and, if you don't have one, a [readout board](build/order-readout.md).
 4. **Gather** the [materials](build/materials.md): a piezoresistive film or fabric, TPU filament, a USB cable.
-5. **Print the case**, cut the film, and [assemble](build/assembly.md).
+5. **Print the case** from the ZIP's `case/` folder, cut the film, and [assemble](build/assembly.md).
 6. **Flash** the readout board, **set it up** once with your design, and **view** the live map:
 
     ```bash

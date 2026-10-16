@@ -76,7 +76,7 @@ Tick **Add a printed case** after generating. The case is two TPU parts cut from
 - **Hatched**: grooves or cuts between taxels, so a press stays where it lands instead of spreading to neighbours.
 - **Shear-sensing bumps**: one bump over each 2&times;2 group of taxels. A sideways push tips the bump and loads its four taxels unequally, which is how the sensor reads shear.
 
-Print it soft (TPU around 85&ndash;95A); a rigid lid does not tip and does not read shear. The case fits one exact board, so pressing Generate again clears it on purpose.
+The case and the board come from the same design, so each bump seats over its group when the lid goes on, with nothing to align by hand ([The printed case](../build/index.md#the-printed-case)). Print it soft (TPU around 85&ndash;95A); a rigid lid does not tip and does not read shear. The case fits one exact board, so pressing Generate again clears it on purpose.
 
 You do not have to open the case panel to get a case: **Download ZIP** puts the bottom and all three lids in the ZIP's `case/` folder, built with the panel's settings (or its defaults). See [What the export contains](export.md).
 
