@@ -15,6 +15,19 @@ hide:
   Numbers here come only from the paper text; see results.md for the full list.
 -->
 
+<section class="ot-video" aria-labelledby="flow">
+<h2 id="flow" class="ot-section-title">From a robot surface to a sensor</h2>
+<figure>
+<div class="ot-media ot-media--video">
+  <video data-loop muted loop playsinline preload="none" poster="assets/loops/concept.jpg"
+         aria-label="Animation: a surface is picked on six robots, OpenTac-CAD lays out a sensor for each, and each sensor plugs into a readout board that streams contact data">
+    <source src="assets/loops/concept.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>Animation. The six layouts are OpenTac-CAD's output for these surfaces; the contacts are simulated. Robot models from <a href="https://github.com/google-deepmind/mujoco_menagerie">MuJoCo Menagerie</a> (Unitree G1 and Go2, LEAP Hand, AgileX Piper, Robotiq 2F-85, UMI gripper).</figcaption>
+</figure>
+</section>
+
 <section class="ot-video" aria-labelledby="video">
 <h2 id="video" class="ot-section-title">Overview</h2>
 <p class="ot-video__lede">
