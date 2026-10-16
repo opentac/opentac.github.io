@@ -8,6 +8,7 @@
 -#}
 {% extends "main.html" %}
 {% block extrahead %}
+  {{ super() }}
   <script>
     (function () {
       var target = {{ ("qr/" | url) | tojson }};

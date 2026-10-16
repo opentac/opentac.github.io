@@ -59,10 +59,17 @@ extra_javascript:
 
 extra:
   generator: false
+  # The share-card title of the home page (overrides/main.html).
+  paper_title: >-
+    OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable
+    3D Tactile Sensing
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/opentac/opentac.github.io
       name: OpenTac on GitHub
+    - icon: octicons/issue-opened-16
+      link: https://github.com/opentac/opentac.github.io/issues
+      name: Questions and bug reports (GitHub Issues)
 
 markdown_extensions:
   - abbr
