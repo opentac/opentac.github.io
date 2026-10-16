@@ -20,7 +20,7 @@
   "cable_length_mm": 17.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1114,
+  "zip_kb": 1115,
   "case_warnings": []
  },
  {
@@ -41,10 +41,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 20.0,
+  "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 773,
+  "zip_kb": 774,
   "case_warnings": []
  },
  {
@@ -68,7 +68,7 @@
   "cable_length_mm": 13.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 443,
+  "zip_kb": 444,
   "case_warnings": []
  },
  {
@@ -89,10 +89,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 20.0,
+  "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 773,
+  "zip_kb": 775,
   "case_warnings": []
  },
  {
@@ -113,10 +113,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 20.0,
+  "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 773,
+  "zip_kb": 774,
   "case_warnings": []
  },
  {
@@ -137,10 +137,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 20.0,
+  "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 773,
+  "zip_kb": 774,
   "case_warnings": []
  },
  {
@@ -161,10 +161,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 20.0,
+  "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 772,
+  "zip_kb": 774,
   "case_warnings": []
  },
  {
@@ -185,10 +185,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 21.5,
+  "cable_length_mm": 14.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 759,
+  "zip_kb": 761,
   "case_warnings": []
  },
  {
@@ -212,7 +212,7 @@
   "cable_length_mm": 16.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1117,
+  "zip_kb": 1118,
   "case_warnings": []
  },
  {
@@ -233,10 +233,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 19.5,
+  "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 958,
+  "zip_kb": 960,
   "case_warnings": []
  },
  {
@@ -257,10 +257,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 19.5,
+  "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 960,
+  "zip_kb": 962,
   "case_warnings": []
  },
  {
@@ -308,7 +308,7 @@
   "cable_length_mm": 12.0,
   "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 392,
+  "zip_kb": 393,
   "case_warnings": []
  },
  {
@@ -332,7 +332,7 @@
   "cable_length_mm": 12.0,
   "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 285,
+  "zip_kb": 286,
   "case_warnings": [
    "Perimeter is only 140mm, so the rib pattern was scaled to 17.5mm period / 8.8mm gap to keep enough bridges holding the lid together."
   ]
@@ -355,10 +355,10 @@
    3.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 26.0,
+  "cable_length_mm": 18.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 674,
+  "zip_kb": 675,
   "case_warnings": []
  },
  {
@@ -382,7 +382,7 @@
   "cable_length_mm": 12.0,
   "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 366,
+  "zip_kb": 367,
   "case_warnings": [
    "Perimeter is only 111mm, so the rib pattern was scaled to 13.9mm period / 7.0mm gap to keep enough bridges holding the lid together."
   ]
@@ -408,7 +408,7 @@
   "cable_length_mm": 12.0,
   "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 365,
+  "zip_kb": 367,
   "case_warnings": [
    "Perimeter is only 111mm, so the rib pattern was scaled to 13.9mm period / 7.0mm gap to keep enough bridges holding the lid together."
   ]
@@ -431,10 +431,10 @@
    3.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 25.0,
+  "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 732,
+  "zip_kb": 733,
   "case_warnings": []
  },
  {
@@ -458,7 +458,7 @@
   "cable_length_mm": 14.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 506,
+  "zip_kb": 507,
   "case_warnings": []
  },
  {
@@ -503,10 +503,10 @@
    4.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 28.0,
+  "cable_length_mm": 14.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 507,
+  "zip_kb": 508,
   "case_warnings": []
  },
  {
@@ -527,10 +527,10 @@
    2.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 22.0,
+  "cable_length_mm": 14.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 507,
+  "zip_kb": 508,
   "case_warnings": [
    "Perimeter is only 150mm, so the rib pattern was scaled to 18.7mm period / 9.4mm gap to keep enough bridges holding the lid together."
   ]
@@ -553,10 +553,10 @@
    4.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 19.5,
+  "cable_length_mm": 15.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1114,
+  "zip_kb": 1116,
   "case_warnings": []
  },
  {
@@ -577,7 +577,7 @@
    4.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 24.0,
+  "cable_length_mm": 14.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
   "zip_kb": 643,
@@ -601,10 +601,10 @@
    2.122
   ],
   "pitch_raised": true,
-  "cable_length_mm": 23.5,
+  "cable_length_mm": 17.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 870,
+  "zip_kb": 871,
   "case_warnings": []
  },
  {
@@ -628,7 +628,7 @@
   "cable_length_mm": 13.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1291,
+  "zip_kb": 1293,
   "case_warnings": []
  },
  {
@@ -652,7 +652,7 @@
   "cable_length_mm": 16.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1660,
+  "zip_kb": 1661,
   "case_warnings": []
  },
  {
@@ -673,10 +673,10 @@
    3.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 26.0,
+  "cable_length_mm": 20.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 677,
+  "zip_kb": 678,
   "case_warnings": []
  },
  {
@@ -697,10 +697,10 @@
    4.0
   ],
   "pitch_raised": false,
-  "cable_length_mm": 27.5,
+  "cable_length_mm": 15.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 778,
+  "zip_kb": 779,
   "case_warnings": []
  },
  {
@@ -721,10 +721,10 @@
    3.289
   ],
   "pitch_raised": true,
-  "cable_length_mm": 22.0,
+  "cable_length_mm": 17.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1069,
+  "zip_kb": 1070,
   "case_warnings": []
  },
  {
@@ -745,10 +745,10 @@
    3.289
   ],
   "pitch_raised": true,
-  "cable_length_mm": 22.0,
+  "cable_length_mm": 15.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 970,
+  "zip_kb": 971,
   "case_warnings": []
  }
 ]
