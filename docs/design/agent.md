@@ -36,6 +36,11 @@ The agent can also start from a DXF outline or an STL part: give it the file and
 
 ## What to check in the result
 
+<figure class="ot-fig ot-fig--aside" markdown="span">
+  [![The preview of a size 9 insole designed with the skill: a foot-shaped board with a grid of large square taxels, rows and columns routed down to a connector at the heel.](../assets/diagrams/agent_insole.svg){ loading=lazy }](../assets/diagrams/agent_insole.svg)
+  <figcaption><code>preview.svg</code> from the skill's worked example, a size 9 insole with the cable at the heel: 200 taxels of 8.4&nbsp;mm in 28 rows and 10 columns.</figcaption>
+</figure>
+
 The agent reports what was built: the taxel count, the board size and the design-rule check. Before ordering, do what you would for any design:
 
 - open the generated board preview and look at it;

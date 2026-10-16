@@ -247,6 +247,7 @@ We deployed the skins on four robots and a handheld gripper. On an SO-101 arm, p
 </section>
 
 <section class="ot-start" aria-labelledby="start" markdown>
+<div class="ot-start__cols" markdown>
 <div markdown>
 
 ## Use it { #start }
@@ -263,6 +264,11 @@ To build a sensor from a design, follow the [assembly guide](build/assembly.md):
 
 Working with an AI coding agent? The repository ships a skill for designing sensors: Claude Code loads it automatically, and other agents read `AGENTS.md`.
 
+</div>
+<figure class="ot-start__shot" markdown="span">
+  ![OpenTac-CAD's start screen: the robot gallery, with cards for the ALOHA ViperX 300 gripper finger, the AgileX Piper jaw, an Allegro Hand fingertip and the Allegro Hand palm, each with its sensor surface in orange and a Use this shape button.](assets/screens/cad_robot_gallery.webp){ loading=lazy width="988" height="443" }
+  <figcaption>OpenTac-CAD's start screen, first row of the robot gallery. Orange is the surface the sensor covers, already unfolded.</figcaption>
+</figure>
 </div>
 <div class="ot-hero__buttons ot-start__buttons">
   <a class="ot-btn ot-btn--primary" href="cad/">Try it online</a>

@@ -30,8 +30,14 @@ uv run opentac flash
 ```
 
 It asks the board which board it is, reboots it into the bootloader, and
-writes the matching file from `firmware/prebuilt/`. To see what it would do
-without changing anything:
+writes the matching file from `firmware/prebuilt/`:
+
+<figure class="ot-fig" markdown="span" style="max-width: 36rem">
+  [![Sequence between opentac flash and a 60-pin board. The computer sends a question mark; the OpenTac firmware answers R,CAPS ending in READOUT60. The computer sends B; the board reboots into the STM32 bootloader, USB DFU 0483:df11, and its serial port goes away. dfu-util writes firmware/prebuilt/READOUT60.bin from the start of flash, only the pages it covers, so the stored sensor is kept, then sends leave, and the board restarts into the new firmware. A new board has no firmware to answer: hold BOOT0 while plugging it in and name the board with --board.](../assets/diagrams/flash_sequence.svg){ loading=lazy }](../assets/diagrams/flash_sequence.svg)
+  <figcaption>What <code>opentac flash</code> does, shown for the 60-pin board; the 30-pin pair is the same with <code>NODE16.bin</code>. With STM32CubeProgrammer instead of dfu-util, only the writing step differs.</figcaption>
+</figure>
+
+To see what it would do without changing anything:
 
 ```sh
 uv run opentac flash --dry-run
@@ -41,6 +47,11 @@ uv run opentac flash --dry-run
 bootloader, and `opentac flash` reports that no board answered and none is
 in the bootloader. Unplug it, hold the BOOT0 button while plugging it back in,
 release it, and name the board:
+
+<figure class="ot-fig" markdown="span">
+  ![Top-view renders of the 60-pin board and the top board of the 30-pin pair, with the BOOT0 push button circled on each: near the bottom-left corner of the 60-pin board, at the right edge of the 30-pin top board.](../assets/diagrams/boot0_button.jpg){ loading=lazy width="1461" height="830" }
+  <figcaption>The BOOT0 button (S4), circled. Renders of the boards' KiCad files, not to scale with each other.</figcaption>
+</figure>
 
 ```sh
 uv run opentac flash --board readout60     # the 60-pin board

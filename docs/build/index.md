@@ -7,6 +7,11 @@ description: The steps from a downloaded design to an assembled OpenTac sensor p
 
 A sensor is four layers and a cable: a printed tray, the flex PCB, a piezoresistive sheet, and a printed lid (flat, hatched, or with shear bumps), with the flex tail plugged into a readout board. OpenTac-CAD generates the tray, the lid and the piezoresistive cut from the same design as the flex PCB, so the parts fit each other without measuring.
 
+<figure class="ot-fig ot-fig--clear" markdown="span" style="max-width: 34rem">
+  ![The parts of one sensor laid out on a desk: the printed TPU tray, the flex PCB with its tail, the black piezoresistive textile cut to shape, and the printed bump sheet.](../assets/video/assembly_poster.jpg){ loading=lazy width="1280" height="720" }
+  <figcaption>The four layers of one sensor, from left: printed tray, flex PCB, piezoresistive textile, bump sheet (the lid).</figcaption>
+</figure>
+
 The [assembly guide](assembly.md) covers the whole build on one page, with photos and a video: the paper fit check, printing the case, cutting the piezoresistive layer, assembly, and plugging the sensor in to see live readings. The other pages in this section cover ordering, materials and the [readout boards](../hardware.md).
 
 [Assembly guide](assembly.md){ .md-button .md-button--primary }

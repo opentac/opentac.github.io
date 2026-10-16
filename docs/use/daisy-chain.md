@@ -4,9 +4,10 @@ Many 30-pin boards can share one USB cable. The boards are chained on an I²C
 bus behind a Teensy 4.0, and only the Teensy is plugged into the computer.
 Each board is set up and read the same way as a single board on USB.
 
-```
-computer -- USB -- Teensy 4.0 -- 5V/SDA/SCL/GND -- board -- board -- board ...
-```
+<figure class="ot-fig" markdown="span">
+  [![Wiring of a daisy chain: the computer connects by USB to a Teensy 4.0; four bus wires, 5 V from VIN, SDA from pin 18, SCL from pin 19 and GND, run from the Teensy through three 30-pin boards, each with a sensor below it; pull-up resistors from SDA and SCL to 3.3 V sit at the Teensy end; up to 18 boards.](../assets/diagrams/daisy_chain.svg){ loading=lazy }](../assets/diagrams/daisy_chain.svg)
+  <figcaption>Only the Teensy is on USB; the boards share four bus wires (5&nbsp;V, SDA, SCL, GND). Pins and pull-ups as in <a href="#3-wire">3. Wire</a>.</figcaption>
+</figure>
 
 Up to 18 boards. The bus runs at 1 MHz. Tested on three 30-pin boards
 (2026-09-29): 0 errors over 7,213 bus transactions, about 240 frames per second
@@ -20,6 +21,11 @@ version of the firmware:
 ```sh
 uv run opentac flash --bin firmware/prebuilt/NODE16_bus.bin
 ```
+
+<figure class="ot-fig ot-fig--clear ot-fig--aside" markdown="span">
+  ![Top-view render of the top board of the 30-pin pair with the BOOT0 push button circled, at its right edge.](../assets/diagrams/boot0_30pin.jpg){ loading=lazy width="594" height="760" }
+  <figcaption>BOOT0 (S4) on the 30-pin top board. Render of its KiCad file.</figcaption>
+</figure>
 
 A new board has no firmware yet: hold its BOOT0 button while plugging it in,
 then run the same command. The bus firmware still answers `B` on USB, so the
@@ -49,6 +55,11 @@ choose Board **Teensy 4.0** and USB Type **Serial**, and click Upload.
 
 Each board has two 4-pin JST-SH bus connectors, wired the same way, so the
 cable goes in on one and out on the other:
+
+<figure class="ot-fig ot-fig--clear ot-fig--aside" markdown="span">
+  ![Top-view render of the top board of the 30-pin pair with its two 4-pin JST-SH connectors circled, one at the top edge and one at the bottom edge.](../assets/diagrams/bus_connectors.jpg){ loading=lazy width="516" height="760" }
+  <figcaption>The two bus connectors (CN1, CN2) on the 30-pin top board. Render of its KiCad file.</figcaption>
+</figure>
 
 | Pin | Signal | Teensy 4.0 |
 |---|---|---|

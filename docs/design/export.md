@@ -45,7 +45,17 @@ Zip the `gerber/` folder on its own for the board house. The two `User` layers a
 
 `manifest.json` records, for every taxel, its physical position, its row and column scan index, its footprint, its bump group and its surface frame, plus the connector pad of every row and column. It is the one hand-off between the design and everything that reads it: the readout board stores it, the viewer draws with it, and the simulator and transfer tools build the sensor from it. The format is specified in [Manifest](../reference/manifest.md).
 
+<figure class="ot-fig" markdown="span">
+  [![Two drawings of one manifest, a 45-taxel fingertip sensor. Left: each taxel at its position, labelled with its scan row and column, and the connector pad of each row and column; the lower four rows are numbered 7, 6, 5, 4 from the top. Right: the taxels coloured by shear bump, one bump over each 2 by 2 group, with the bump centres marked.](../assets/diagrams/manifest_fields.png){ loading=lazy }](../assets/diagrams/manifest_fields.png)
+  <figcaption>What a manifest holds, drawn from <code>examples/manifests/finger_8x6_60pin.json</code>: each taxel's position, scan row and column, and the pad of every row and column (left); the bump groups (right). Dashed: the drawn outline. Solid: the board edge as cut (<code>edge_cuts</code>).</figcaption>
+</figure>
+
 ## The QR code on the back
+
+<figure class="ot-fig ot-fig--clear ot-fig--aside" markdown="span">
+  ![KiCad render of the back of the 9 by 9 patch example: amber flex with a white millimetre grid, the QR code in a white square, and the gold connector fingers at the end of the tail.](../assets/diagrams/qr_back.jpg){ loading=lazy width="601" height="900" }
+  <figcaption>The back of the <a href="../examples/">9&nbsp;&times;&nbsp;9 patch</a> example, rendered by KiCad from its export: the QR code, the 5&nbsp;mm grid, and the connector fingers.</figcaption>
+</figure>
 
 The back silkscreen carries a small QR code and a millimetre registration grid. The QR holds the sensor's *taxel core*: grid size, pitches, taxel footprint, which connector pad drives each row and column, and which taxels exist. That is everything needed to read the sensor. A board that has been separated from its files can be read again from a photo of its back; see [Recover a manifest from the QR](../use/qr-recovery.md).
 

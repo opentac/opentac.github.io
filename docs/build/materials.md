@@ -28,6 +28,11 @@ Cut it with the fold template or the DXF from the export ([Cut the piezoresistiv
 - **Foam**, optional, as a compliant backing between the case and a rigid mount.
 - **Double-sided tape**, thin, to hold the flex PCB in the tray.
 
+<figure class="ot-fig ot-fig--clear" markdown="span" style="max-width: 18rem">
+  ![The two printed orange TPU case parts side by side: the bump sheet and the tray.](../assets/photos/steps/case-both-parts.jpg){ loading=lazy width="750" height="1000" }
+  <figcaption>A case printed in TPU: the lid with bumps (left) and the tray.</figcaption>
+</figure>
+
 ## Cables and extension boards
 
 The sensor's tail plugs straight into the readout board. When the board has to sit further away, put an extension board and a flat flexible cable (FFC) in between: *sensor tail &rarr; extension board &rarr; cable &rarr; readout board*. Everything is 0.5&nbsp;mm pitch; use 60-pin parts with the 60-pin readout board and 30-pin parts with the 30-pin one. These are the parts we use:
@@ -44,6 +49,11 @@ Both cables are **A type**: contacts on the same face at both ends, facing down 
 - both connectors on the same face of a flat run: same side (A type);
 - connectors on opposite faces, or one fold that flips the cable over: opposite side (B type);
 - every 180&deg; fold flips which face is down, so count folds.
+
+<figure class="ot-fig" markdown="span" style="max-width: 36rem">
+  [![Side views of a flat cable between an extension board and a readout board. Same side, A type: both connectors face up from their boards, and the cable's contacts face down at both ends. Opposite side, B type: the readout board is upside down, so the cable's contacts face down at one end and up at the other.](../assets/diagrams/ffc_types.svg){ loading=lazy }](../assets/diagrams/ffc_types.svg)
+  <figcaption>Which cable: at each end the contacts must face the connector's own contact, on its board's side.</figcaption>
+</figure>
 
 **Check the pin order** the first time you add an extension: press near one corner of the sensor and see that the viewer lights the same corner. A mirrored image means pin 1 arrives at the wrong end somewhere in the chain; check the cable type and which way round each end is inserted.
 

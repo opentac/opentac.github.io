@@ -157,6 +157,11 @@ With the tail in the readout board, the sensor is ready to read. The first time 
 
     It asks the board which board it is, restarts it into its bootloader and writes the matching firmware. A board fresh from assembly has no firmware and cannot answer: hold its BOOT0 button while you plug it in, release it, and name the board, `uv run opentac flash --board readout60` for the 60-pin board or `--board node16` for the 30-pin pair. [Flash the firmware](../use/flash.md) has the details and two other ways to flash.
 
+    <figure class="ot-fig" markdown="span">
+      ![Top-view renders of the 60-pin board and the top board of the 30-pin pair, with the BOOT0 push button circled on each: near the bottom-left corner of the 60-pin board, at the right edge of the 30-pin top board.](../assets/diagrams/boot0_button.jpg){ loading=lazy width="1461" height="830" }
+      <figcaption>The BOOT0 button (S4), circled. Renders of the boards' KiCad files, not to scale with each other.</figcaption>
+    </figure>
+
 3. **Tell the board which sensor it has, once per sensor.** Give it the ZIP you downloaded from OpenTac-CAD (or the `manifest.json` inside it):
 
     ```bash
@@ -176,6 +181,11 @@ With the tail in the readout board, the sensor is ready to read. The first time 
 ### What you should see
 
 The window draws every taxel where it sits on the sensor, inside the outline you drew, with axes in millimetres. After zeroing, every taxel is dark. Press one bump with a fingertip: the taxels under it turn bright, and the title line shows the frame rate and the peak reading. The colour scale is in raw ADC counts, 0 to 4095, not newtons. Then push the bump sideways without lifting your finger: with `--shear` and the bump sheet on, an arrow on that bump points the way you push. A bump gets an arrow only once its taxels read a few hundred counts in total. With a flat or hatched lid the arrows mean nothing; leave out `--shear`.
+
+<figure class="ot-fig" markdown="span" style="max-width: 24rem">
+  ![The opentac view window drawing one frame: the AgileX jaw skin's 502 taxels at their positions inside the outline, axes in millimetres, a bright block of taxels where a square block presses and dark taxels elsewhere, a colour bar in counts from 0 to 4095, and the title line "peak 3890 (zeroed)".](../assets/diagrams/view_frame.jpg){ loading=lazy width="890" height="948" }
+  <figcaption>The live view's drawing (<code>opentac/view.py</code>) of one recorded frame: a square block pressed by hand on a 502-taxel skin for an AgileX jaw, with no bump sheet, so no arrows.</figcaption>
+</figure>
 
 `a` switches autoscaling of the colours, `s` shows or hides the arrows, and `q` quits. [Read a sensor](../use/sensor.md) lists every key and covers recording, reading frames in Python, and converting counts to newtons.
 

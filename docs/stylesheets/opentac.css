@@ -484,6 +484,42 @@
 .md-typeset .ot-steps table:not([class]) th:first-child,
 .md-typeset .ot-steps table:not([class]) td:first-child { width: 1.6em; min-width: 0; padding-right: 0; }
 
+/* ---------- pictures on the design, build and use pages ---------- */
+
+/* Screenshots of OpenTac-CAD are dark; a hairline keeps them from merging
+   into a dark page, and they skip the white card of the paper figures. */
+.md-typeset figure.ot-screen img { border: 1px solid var(--ot-rule); }
+/* A row of pictures that keep their own shape (screenshots, drawings), inside
+   one figure with one caption; each picture may carry a one-word label. */
+.md-typeset .ot-shots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .8rem;
+  align-items: end;
+  margin: 0 0 .4em;
+}
+.md-typeset .ot-shots--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.md-typeset .ot-shots figure { margin: 0; }
+.md-typeset .ot-shots img { display: block; width: 100%; height: auto; }
+.md-typeset .ot-shots figcaption { margin: .3em 0 0; font-size: .66rem; text-align: left; }
+.md-typeset figure.ot-fig > .ot-shots + figcaption { margin-top: .4em; }
+/* A tall, narrow figure beside the text it illustrates (centred on small screens). */
+.md-typeset figure.ot-fig.ot-fig--aside { max-width: 12rem; }
+@media screen and (min-width: 60em) {
+  .md-typeset figure.ot-fig.ot-fig--aside { float: right; margin: .2em 0 1em 1.6em; }
+  .md-typeset .ot-fig--aside ~ h2 { clear: both; }
+}
+/* Home, "Use it": the text and a screenshot of the start screen side by side. */
+.md-typeset .ot-start__cols {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 4fr);
+  gap: 1.6rem;
+  align-items: start;
+}
+.md-typeset .ot-start__shot { margin: .4rem 0 0; }
+.md-typeset .ot-start__shot img { width: 100%; height: auto; border: 1px solid var(--ot-rule); }
+.md-typeset .ot-start__shot figcaption { margin: .45em 0 0; font-size: .68rem; text-align: left; }
+
 /* ---------- small screens ---------- */
 
 @media screen and (max-width: 59.984375em) {
@@ -494,6 +530,7 @@
   }
   .md-typeset .ot-story--flip > .ot-story__text { order: 0; }
   .md-typeset .ot-grid3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .md-typeset .ot-start__cols { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
 }
 
 @media screen and (max-width: 44.984375em) {
@@ -517,6 +554,7 @@
   .md-typeset .ot-demo--wide { width: 100%; }
   .md-typeset .ot-start { padding: 1.1rem 1rem 1.3rem; }
   .md-typeset .ot-designs { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
+  .md-typeset .ot-shots:not(.ot-shots--three) { grid-template-columns: minmax(0, 1fr); }
   /* all four columns on a phone, so the page links are not off to the side */
   .md-typeset .ot-steps table:not([class]) { font-size: .62rem; }
   .md-typeset .ot-steps table:not([class]) th,

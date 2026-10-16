@@ -19,6 +19,20 @@ In the STL importer, pick the surface in one of four ways:
 
 **Unfold selection** flattens the patch triangle by triangle at true scale. If the selection spans surfaces that don't share a mesh edge (a fingertip's front face and its two sides, say), the tool asks you to match the corners where they join, one cut at a time.
 
+<figure class="ot-fig ot-fig--clear ot-screen" markdown>
+<div class="ot-shots" markdown>
+<figure markdown="span">
+  ![The AgileX Piper jaw in OpenTac-CAD's 3D view, its curved contact surface selected in orange.](../assets/screens/cad_stl_surface.webp){ loading=lazy width="374" height="417" }
+  <figcaption>On the model</figcaption>
+</figure>
+<figure markdown="span">
+  ![The same surface unfolded flat in the outline editor: a tapered outline 56 mm across the top and 20 mm across the bottom, with each edge length marked.](../assets/screens/cad_stl_unfolded.webp){ loading=lazy width="780" height="512" }
+  <figcaption>Unfolded</figcaption>
+</figure>
+</div>
+<figcaption>The AgileX Piper jaw from the robot gallery: its curved contact surface, selected on the model and unfolded at true scale into the board outline.</figcaption>
+</figure>
+
 ## Surfaces that don't
 
 **Doubly curved surfaces** (a sphere, a dome, the rounded cap of a fingertip, a saddle) cannot be covered by one flat sheet without wrinkling or stretching it, and copper does not stretch. Such a surface cannot be sensorized directly.

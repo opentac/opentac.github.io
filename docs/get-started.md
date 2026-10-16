@@ -13,6 +13,11 @@ Open [OpenTac-CAD](../cad/){ .md-button .md-button--primary } in your browser. Y
 
 The online tool runs its design engine on a free server that sleeps when idle, so the first **Generate** of the day can take up to a minute while it wakes. Locally, a design generates in a second or two and your files never leave your computer.
 
+<figure class="ot-fig ot-fig--clear ot-screen" markdown="span" style="max-width: 32rem">
+  [![OpenTac-CAD after Generate on its Yubi finger pad example: the result panel lists 122 sensing spots, the 60-pin readout board, the board grown to fit the wiring, 2 copper layers and 0 design-check violations; below it the PCB preview of the routed board, and the download bar with the design name and buttons for the printable PDF, the velostat DXF and fold PDF, and the ZIP.](assets/screens/cad_generated.webp){ loading=lazy width="939" height="976" }](assets/screens/cad_generated.webp)
+  <figcaption>OpenTac-CAD after <strong>Generate</strong> on one of its examples, the Yubi finger pad: the design check, the routed board, and the downloads.</figcaption>
+</figure>
+
 ## Run it on your computer
 
 You need [git](https://git-scm.com/downloads) (or download the repository as a ZIP from GitHub) and nothing else: the start script installs [uv](https://docs.astral.sh/uv/), a small Python installer, if you don't have it.
@@ -50,6 +55,33 @@ The repository includes a skill that teaches a coding agent to design sensors wi
 
 The whole path, with a page for each step. The [assembly guide](build/assembly.md) covers steps 2, 5 and 6 on one page, with photos and a video.
 
+<div class="ot-photos ot-photos--three" markdown>
+<figure markdown="span">
+  ![The AgileX Piper jaw in OpenTac-CAD's 3D view, its curved contact surface selected in orange.](assets/screens/cad_stl_surface.webp){ loading=lazy }
+  <figcaption>1. Design.</figcaption>
+</figure>
+<figure markdown="span">
+  ![The paper cutout of the 1:1 PDF held against the gripper jaw.](assets/photos/steps/fit-held-to-jaw.jpg){ loading=lazy }
+  <figcaption>2. Check the fit on paper.</figcaption>
+</figure>
+<figure markdown="span">
+  ![The flex PCB as delivered: yellow polyimide with a gold taxel grid and a stiffened connector end.](assets/photos/steps/flex-pcb-delivered.jpg){ loading=lazy }
+  <figcaption>3. Order the flex PCB.</figcaption>
+</figure>
+<figure markdown="span">
+  ![The piezoresistive fabric cut to the shape of the sensing area.](assets/photos/steps/fabric-cut-piece.jpg){ loading=lazy }
+  <figcaption>4. Gather materials and cut the piezoresistive layer.</figcaption>
+</figure>
+<figure markdown="span">
+  ![The assembled sensor in its printed TPU case, bump sheet on top.](assets/photos/steps/assembly-lid-on.jpg){ loading=lazy }
+  <figcaption>5. Print the case and assemble.</figcaption>
+</figure>
+<figure markdown="span">
+  ![The live view drawing a press on the AgileX jaw skin: bright taxels where a square block presses, dark elsewhere.](assets/diagrams/view_frame.jpg){ loading=lazy }
+  <figcaption>6. Flash, set up and view.</figcaption>
+</figure>
+</div>
+
 1. **Design** the sensor in [OpenTac-CAD](design/index.md) and download the ZIP: the board files and the [printed case](build/index.md#the-printed-case), generated from the same design so they line up.
 2. **Print the 1:1 PDF** from the ZIP and hold it against the part to check the fit (see [Check the fit on paper](build/assembly.md#check-the-fit-on-paper)).
 3. **Order** the [flex PCB](build/order-sensor.md) and, if you don't have one, a [readout board](build/order-readout.md).
@@ -66,6 +98,11 @@ The whole path, with a page for each step. The [assembly guide](build/assembly.m
     The end of the [assembly guide](build/assembly.md#read-the-sensor) says what you should see and what to check if something looks wrong. [Flash the firmware](use/flash.md) and [Read a sensor](use/sensor.md) have the details.
 
 ## What you need on the bench
+
+<figure class="ot-fig ot-fig--clear" markdown="span" style="max-width: 34rem">
+  ![The parts of one sensor laid out on a desk: the printed TPU tray, the flex PCB with its tail, the black piezoresistive textile cut to shape, and the printed bump sheet.](assets/video/assembly_poster.jpg){ loading=lazy width="1280" height="720" }
+  <figcaption>The parts of one sensor, from left: printed tray, flex PCB, piezoresistive textile, bump sheet. A readout board and a USB cable complete it.</figcaption>
+</figure>
 
 - the flex PCB from your design, as ordered;
 - a readout board: the 60-pin board for sensors up to 30&times;30 taxels, or the 30-pin pair for up to 15&times;15 (see [Readout boards](hardware.md));

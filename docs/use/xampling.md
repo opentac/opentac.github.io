@@ -6,6 +6,16 @@ the sensor coarse-to-fine, and wherever a reading crosses its threshold it
 reads the neighbours, growing around the contact. Fewer reads per frame means
 more frames per second.
 
+<figure class="ot-clip" style="max-width: 34rem; margin: 1.2em auto 1.6em">
+<div class="ot-media">
+  <video data-loop muted loop playsinline preload="none" poster="../../assets/loops/xampling.jpg"
+         aria-label="Two tennis-ball drops at 128 times slow motion: raster scanning misses the impact, Xampling at 32 taxels per frame captures it">
+    <source src="../../assets/loops/xampling.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>Two 30&nbsp;cm tennis-ball drops at 128&times; slow motion: raster scanning misses the impact; Xampling at <code>XAMP_M</code>&nbsp;=&nbsp;32 catches it. The 996 updates/s on the clip is the rate of that recording.</figcaption>
+</figure>
+
 ## Use it
 
 Zero first, with nothing touching the sensor, then switch:

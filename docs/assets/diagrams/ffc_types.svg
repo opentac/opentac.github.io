@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 450" width="720" height="450" font-family="IBM Plex Sans, Helvetica, Arial, sans-serif">
+<style>
+text { font-family: IBM Plex Sans, Helvetica, Arial, sans-serif; fill: #161c23; font-size: 13px; }
+.m { fill: #5b6570; font-size: 12px; } .b { font-weight: 600; }
+.s { font-size: 11.5px; } .mid { text-anchor: middle; } .end { text-anchor: end; }
+.code { font-family: IBM Plex Mono, Menlo, monospace; font-size: 12px; }
+.lead { stroke: #5b6570; stroke-width: 1; fill: none; }
+</style>
+<rect width="100%" height="100%" fill="white"/>
+<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#161c23"/></marker><marker id="am" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5b6570"/></marker></defs>
+<text x="20" y="28" class="b">Same side (A type)</text>
+<text x="20" y="46" class="m s">Both connectors on the same face of a flat run.</text>
+<rect x="20" y="138" width="250" height="14" rx="2" fill="#2f5d3a"/><text x="145" y="174" class="mid s">extension board</text>
+<rect x="160" y="98" width="104" height="40" rx="3" fill="#e8e3d8" stroke="#8a8170"/>
+<rect x="186" y="110.0" width="78" height="16" fill="white" stroke="#8a8170" stroke-width="0.8"/>
+<rect x="200" y="123.0" width="50" height="4" fill="#9a7a10"/>
+<rect x="450" y="138" width="250" height="14" rx="2" fill="#2f5d3a"/><text x="575" y="174" class="mid s">readout board</text>
+<rect x="456" y="98" width="104" height="40" rx="3" fill="#e8e3d8" stroke="#8a8170"/>
+<rect x="456" y="110.0" width="78" height="16" fill="white" stroke="#8a8170" stroke-width="0.8"/>
+<rect x="470" y="123.0" width="50" height="4" fill="#9a7a10"/>
+<path d="M 256 118.0 C 356 118.0, 346 118.0, 464 118.0" fill="none" stroke="#b8b0a0" stroke-width="6"/>
+<rect x="192" y="115.0" width="66" height="6" fill="#b8b0a0"/>
+<rect x="196" y="121.0" width="58" height="4" fill="#d9a21b"/>
+<rect x="462" y="115.0" width="66" height="6" fill="#b8b0a0"/>
+<rect x="466" y="121.0" width="58" height="4" fill="#d9a21b"/>
+<text x="226" y="88.0" class="mid s">contacts down</text><text x="496" y="88.0" class="mid s">contacts down</text>
+<text x="20" y="236" class="b">Opposite side (B type)</text>
+<text x="20" y="254" class="m s">Connectors on opposite faces, or one fold that flips the cable over.</text>
+<rect x="20" y="346" width="250" height="14" rx="2" fill="#2f5d3a"/><text x="145" y="382" class="mid s">extension board</text>
+<rect x="160" y="306" width="104" height="40" rx="3" fill="#e8e3d8" stroke="#8a8170"/>
+<rect x="186" y="318.0" width="78" height="16" fill="white" stroke="#8a8170" stroke-width="0.8"/>
+<rect x="200" y="331.0" width="50" height="4" fill="#9a7a10"/>
+<rect x="450" y="274" width="250" height="14" rx="2" fill="#2f5d3a"/><text x="575" y="262" class="mid s">readout board, upside down</text>
+<rect x="456" y="288" width="104" height="40" rx="3" fill="#e8e3d8" stroke="#8a8170"/>
+<rect x="456" y="300.0" width="78" height="16" fill="white" stroke="#8a8170" stroke-width="0.8"/>
+<rect x="470" y="299.0" width="50" height="4" fill="#9a7a10"/>
+<path d="M 256 326.0 C 356 326.0, 346 308.0, 464 308.0" fill="none" stroke="#b8b0a0" stroke-width="6"/>
+<rect x="192" y="323.0" width="66" height="6" fill="#b8b0a0"/>
+<rect x="196" y="329.0" width="58" height="4" fill="#d9a21b"/>
+<rect x="462" y="305.0" width="66" height="6" fill="#b8b0a0"/>
+<rect x="466" y="301.0" width="58" height="4" fill="#d9a21b"/>
+<text x="226" y="296.0" class="mid s">contacts down</text><text x="496" y="354.0" class="mid s">contacts up</text>
+<text x="20" y="420" class="s m">Side view, not to scale. Gold: the cable's bare contacts; dark: the connector's contact. The connector (Molex 505110)</text><text x="20" y="437" class="s m">touches only the face of the cable on its board's side.</text>
+</svg>

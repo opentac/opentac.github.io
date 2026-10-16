@@ -52,6 +52,11 @@ That is all we change for our boards; substrate, board thickness (0.11&nbsp;mm),
 
 The readout boards use a Molex 505110 ZIF connector: a bottom-contact connector that takes a flex end **0.30&nbsp;mm** thick (&plusmn;0.05&nbsp;mm). The sensor tail's contacts are on its **bottom** copper; the export opens the solder mask there, at the connector fingers only, and leaves the top covered. A bare 2-layer flex is much thinner than 0.3&nbsp;mm, so the connector end gets a polyimide (PI) stiffener on the **top** of the tail (the taxel side), opposite the contacts.
 
+<figure class="ot-fig" markdown="span" style="max-width: 36rem">
+  [![Section along the tail's connector end: the 0.11 mm flex, a 0.20 mm polyimide stiffener on top over the last 6 mm, and the gold contacts on the bottom copper where the solder mask is open, 0.3 mm thick in total at the contacts, going into the readout board's bottom-contact connector.](../assets/diagrams/stiffener_section.svg){ loading=lazy }](../assets/diagrams/stiffener_section.svg)
+  <figcaption>The connector end in section: stiffener on top, contacts underneath. Thicknesses not to scale.</figcaption>
+</figure>
+
 The export already describes it:
 
 - `board-User_Drawings.gbr` draws the stiffener outline: 6&nbsp;mm deep and as wide as the connector end (31.6&nbsp;mm for the 60-pin connector, 16.6&nbsp;mm for the 30-pin).
@@ -108,3 +113,8 @@ After you pay, JLCPCB's engineers review the files and sometimes send an enginee
 ## When the boards arrive
 
 Check the connector end against the readout board's connector before assembly: it should slide in under the open latch with light force. Then [assemble](assembly.md).
+
+<figure class="ot-fig ot-fig--clear" markdown="span" style="max-width: 20rem">
+  ![The stiffened tail fully inserted in the readout board's connector, latch closed.](../assets/photos/steps/connector-inserted.jpg){ loading=lazy width="750" height="1000" }
+  <figcaption>A tail in the connector, stiffener up, latch closed.</figcaption>
+</figure>

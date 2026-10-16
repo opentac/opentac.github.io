@@ -48,6 +48,11 @@ geometric order: OpenTac-CAD reverses the lower half of the rows so they meet
 the routing on the right side. So `ox + col * px` does not place a taxel.
 `pixels` does.
 
+<figure class="ot-fig" markdown="span">
+  [![Two drawings of one manifest, a 45-taxel fingertip sensor. Left: each taxel at its position, labelled with its scan row and column, with the pad of each row on the left and of each column underneath; the lower four rows are numbered 7, 6, 5, 4 from the top. Right: the taxels coloured by shear bump, one bump over each 2 by 2 group, with the bump centres marked.](../assets/diagrams/manifest_fields.png){ loading=lazy }](../assets/diagrams/manifest_fields.png)
+  <figcaption><code>examples/manifests/finger_8x6_60pin.json</code> drawn: <code>pixels</code> with their scan rows (r) and columns (c), <code>rp</code> and <code>cp</code> (pads), and <code>shear</code> (right). Rows 4&ndash;7, the lower half, run upward. Dashed: <code>outline</code>; solid: <code>edge_cuts</code>.</figcaption>
+</figure>
+
 ## Rules a manifest must follow
 
 `manifest.load()` checks these and names the first one broken:

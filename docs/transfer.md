@@ -17,6 +17,11 @@ frame_b = transfer(frame_a, a, b)      # frame_a in newtons per taxel
 `examples/transfer.py` simulates a press on a 4 mm skin, transfers it to a
 2.5 mm skin, and compares it with the same press simulated on that skin.
 
+<figure class="ot-fig" markdown="span">
+  [![Three frames at one millimetre scale: a simulated ball press on a 4 mm grid, a bright 2 by 2 block; the same press transferred onto a 2.5 mm pitch board, a dimmer, finer spot; and the press simulated directly on that board, a similar spot.](assets/diagrams/transfer_example.jpg){ loading=lazy width="1412" height="497" }](assets/diagrams/transfer_example.jpg)
+  <figcaption><code>examples/transfer.py</code> drawn: a 10&nbsp;mm ball at 3&nbsp;N simulated on skin A (4&nbsp;mm pitch), its transfer onto skin B (2.5&nbsp;mm pitch), and the same press simulated on B. Each taxel shows the newtons on its own area, so B's smaller taxels read less each.</figcaption>
+</figure>
+
 ## Inputs
 
 - `frame`: a `Frame` from skin A in **newtons** per taxel (`units == "N"`).
@@ -63,6 +68,11 @@ centre. So a frame in newtons is a pressure that is constant over each cell.
 3. **Drop what B cannot see.** Shares that land outside B's taxels (past the
    outline, or in a gap) are dropped and counted in `lost()`.
 
+<figure class="ot-fig" markdown="span">
+  [![Left: the 4 mm cells of skin A, turned 20 degrees and laid over the smaller 2.5 mm cells of skin B. Right, two of A's cells close up: each holds a 7 by 7 pattern of share points, coloured by the B cell each lands in; in the cell that hangs over B's edge, the points outside B are crosses.](assets/diagrams/transfer_steps.png){ loading=lazy width="1490" height="688" }](assets/diagrams/transfer_steps.png)
+  <figcaption>The three steps for the two skins of <code>examples/transfer.py</code>, with A turned 20&deg;. The share points are the ones <code>Transfer</code> bins; of the cell over B's edge, 47% lands on B.</figcaption>
+</figure>
+
 ## What transfers and what does not
 
 The paper scored transfer on hand presses: four skins (409, 502, 96 and 174
@@ -86,6 +96,16 @@ see [Simulation](sim.md#how-well-it-matches-real-presses)).
 **Carries over: contact shape and size.** In a separate demo, three objects
 were pressed freehand on skins of 4.2, 3.1 and 2.0 mm pitch. An allen key read
 10.3, 9.7 and 9.5 mm wide on the three.
+
+<figure class="ot-clip" style="max-width: 34rem; margin: 1.2em auto 1.6em">
+<div class="ot-media">
+  <video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/transfer.jpg"
+         aria-label="One block pressed into three skins of different shape and pitch, mapped onto one millimetre grid">
+    <source src="../assets/loops/transfer.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>From that demo: one block pressed into three skins of different shape and pitch, each placed on one millimetre grid through its manifest.</figcaption>
+</figure>
 
 **Does not carry over:**
 
