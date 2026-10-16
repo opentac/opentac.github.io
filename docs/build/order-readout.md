@@ -36,14 +36,6 @@ The BOM lists every part with its LCSC number (the `LCSC Part #` column), which 
 6. **Check the placement preview.** Look at the chips (pin-1 marks), the USB connector, the sensor connector and the LED. If a part sits rotated or off its pads, note it in the order or choose **Confirm Parts Placement** (an engineer checks placement before soldering; $0.45 in October 2026).
 7. Add to cart.
 
-## Basic and extended parts
-
-JLCPCB keeps a set of common parts (**Basic**) permanently loaded on its machines. Every other part is **Extended** and must be loaded for your job, which costs a one-time fee per distinct extended part on each order: $3.07 per part for Economic assembly and $1.53 per part for Standard (both Basic and Extended), as of September 2026. A few extended parts that JLC promotes (shown as "Promotional Extended" or "Preferred Extended") skip the fee in Economic assembly.
-
-The readout boards' passives are mostly common values, but the microcontroller, the multiplexer, the IMU, the gain switch and the connectors are extended parts, so expect several loading fees per board design. The BOM step of the order shows each line's type and the fee before you pay. <!-- TODO verify: per-board count of extended parts at the time of release -->
-
-Setup and loading fees are paid once per order, not per board, so a few spare boards in the same order add only their parts and assembly.
-
 ## When the boards arrive
 
 Plug the board into USB and [flash the firmware](../use/flash.md). A new board has no firmware, so the first flash needs the BOOT0 button held while plugging in; after that, the firmware can restart itself into the bootloader.
