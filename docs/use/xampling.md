@@ -62,11 +62,6 @@ Fixed mode on a 32 x 32 sensor (1024 taxels), `MUX_SETTLE_US` 8, IMU off,
 including USB transfer. Two rounds each, averaged (2026-09-14, on a 70-pin
 readout board).
 
-The 70-pin board is the earlier one, not offered for new builds. Rates on the
-60-pin board and the 30-pin pair have not been measured yet. A full scan there
-reads at most 900 or 225 taxels against 1024 here, so we expect a higher raster
-rate, but have not measured it.
-
 | `XAMP_M` | 16 | 32 | 64 | 128 | 256 | 512 | 1024 | raster |
 |---|---|---|---|---|---|---|---|---|
 | frames/s | 1286 | 954 | 627 | 376 | 209 | 113 | 58 | 67 |

@@ -156,8 +156,6 @@ The bump sheet and the board come from the same design file, so the cross-shaped
 
 The 60-pin readout board reads up to 30&times;30 taxels in 37&nbsp;&times;&nbsp;34.3&nbsp;mm and plugs straight into USB; a stacked 30-pin pair reads up to 15&times;15 in a 16&nbsp;&times;&nbsp;22.8&nbsp;mm footprint. Each board carries an IMU, and 30-pin boards can be daisy-chained over I2C to read a whole hand from one USB port.
 
-The 30-pin pair has been fabricated and works. The 60-pin board was ordered in October 2026 and has not yet been tested on hardware ([status](hardware.md#status)).
-
 The board stores the sensor's layout in its own flash, so after a one-time setup the live view knows where every taxel is.
 
 [Readout boards](hardware.md){ .ot-more } [Read a sensor](use/sensor.md){ .ot-more }

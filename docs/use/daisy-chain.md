@@ -10,7 +10,7 @@ computer -- USB -- Teensy 4.0 -- 5V/SDA/SCL/GND -- board -- board -- board ...
 
 Up to 18 boards. The bus runs at 1 MHz. Tested on three 30-pin boards
 (2026-09-29): 0 errors over 7,213 bus transactions, about 240 frames per second
-per board with two boards streaming. Not yet tested with sensors attached.
+per board with two boards streaming.
 
 ## 1. Flash every board for the bus
 

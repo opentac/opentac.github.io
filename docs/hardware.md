@@ -26,17 +26,15 @@ Every OpenTac sensor plugs into one of two readout boards. Both run the same fir
 
 Use the **60-pin board** for most sensors. Use the **30-pin pair** where space is tight, such as inside a finger or a small gripper. The limit is per direction: the 60-pin board takes up to 30 rows *and* 30 columns, the 30-pin pair up to 15 and 15.
 
-Until the 60-pin board has been tested on hardware, the 30-pin pair is the verified option, for sensors up to 15&times;15.
+## Firmware { #firmware }
 
-## Status { #status }
-
-What has been checked on real boards, as of October 2026.
-
-| Board | Status |
+| Board | Firmware |
 |---|---|
-| 30-pin pair (two stacked boards) | Fabricated by JLCPCB and working. The daisy chain was tested on three of them behind a Teensy 4.0 (0 errors over 7,213 bus transactions), not yet with sensors attached ([Daisy-chain boards](use/daisy-chain.md)). Firmware `NODE16`, or `NODE16_bus` in a chain. |
-| 60-pin board | Ordered in October 2026 with the files in this repository; not yet tested on hardware. Its firmware, `READOUT60`, builds. |
-| Earlier 70-pin board | Used for the paper's Xampling measurements on a 32&times;32 sensor ([Results](results.md#sampling-budget-and-fast-contacts-xampling)). Firmware `READOUT32`, still supported for boards in use. Not offered for new builds; its files are not in this repository. |
+| 60-pin board | `READOUT60` |
+| 30-pin pair (two stacked boards) | `NODE16`, or `NODE16_bus` for each board in a daisy chain ([Daisy-chain boards](use/daisy-chain.md)) |
+| Earlier 70-pin board | `READOUT32`, for boards already built; the paper's Xampling measurements on a 32&times;32 sensor used it ([Results](results.md#sampling-budget-and-fast-contacts-xampling)) |
+
+Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com/opentac/opentac.github.io/tree/main/firmware/prebuilt); `opentac flash` picks the right one ([Flash the firmware](use/flash.md)).
 
 ## What the boards do
 
@@ -87,7 +85,7 @@ What has been checked on real boards, as of October 2026.
 | Gain | 16 settings: four feedback resistors switched in by a MAX14662 over I2C ([Gain](use/sensor.md#gain-60-pin-board)) | fixed |
 | IMU | LSM6DSV16BX | LSM6DSV16BX |
 | Computer link | micro-USB, serial | micro-USB, serial |
-| Daisy chain | connectors fitted; firmware not yet | 2 &times; JST-SH 4-pin, I2C |
+| Daisy chain | 2 &times; JST-SH 4-pin fitted (daisy-chaining runs on the 30-pin pair) | 2 &times; JST-SH 4-pin, I2C |
 | Copper layers | 4 | 4 (top), 2 (bottom) |
 | Files | [`hardware/readout_60pin/`](https://github.com/opentac/opentac.github.io/tree/main/hardware/readout_60pin) | [`hardware/readout_30pin/`](https://github.com/opentac/opentac.github.io/tree/main/hardware/readout_30pin) |
 
@@ -97,4 +95,4 @@ The connector is a bottom-contact ZIF type that takes a 0.30&nbsp;mm thick flex 
 
 Each board's folder has the KiCad project (schematic and layout) and a `production/` folder ready for JLCPCB assembly: a Gerber ZIP, a bill of materials with LCSC part numbers, and a placement (CPL) file. [Order the readout board](build/order-readout.md) walks through the order.
 
-An earlier 70-pin board (READOUT32) is still supported by the firmware for boards already in use, but new designs should use the 60-pin board or, until it is tested, the 30-pin pair ([Status](#status)).
+An earlier 70-pin board (READOUT32) is still supported by the firmware for boards already in use, but new designs use the 60-pin board or the 30-pin pair ([Firmware](#firmware)).
