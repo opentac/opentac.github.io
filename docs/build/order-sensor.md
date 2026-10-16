@@ -29,23 +29,17 @@ The sensor is a flex PCB: polyimide about 0.1&nbsp;mm thick, so it bends around 
 
 ## The order form
 
-On jlcpcb.com, start a quote and **Add gerber file** with your ZIP. The board size is read from the outline. Then set:
+On jlcpcb.com, start a quote and **Add gerber file** with your ZIP. The board size is read from the outline. Leave every option at JLC's default except these:
 
 | Option | Choose | Why |
 |---|---|---|
 | Base Material | **Flex** | the sensor is a flex PCB |
 | Layers | **2**, or **4** for a design made with 4 copper layers | must match the design |
-| PCB Qty | 5 (the minimum) or more | |
-| Substrate type | **25&micro;m dielectric thickness** <!-- TODO verify: exact on-screen label --> | the thinner, more flexible base |
-| FPC Thickness | **0.11 mm** for 2 layers; for 4 layers the thinnest offered (0.2 mm) <!-- TODO verify: 4-layer choice on our 4L orders --> | the sensor is meant to be thin |
-| Coverlay Color | **Yellow** (JLC's recommendation) or Black | cosmetic |
-| Silkscreen | White | |
-| Surface Finish | **ENIG**, 1u" | gold on the taxel electrodes and connector fingers |
-| Copper weight | leave the default <!-- TODO verify: copper weight used for the paper's boards --> | |
-| Stiffener | **Polyimide**, see below | the connector needs a 0.3 mm thick end |
-| EMI Shielding Film | none | |
-| Cutting Method | laser cutting (the default) | |
-| Delivery Format | Single PCB | |
+| Gold fingers | **Yes** | the connector end of the tail |
+| Stiffener | **Polyimide (PI)**, on the top side | the connector needs a 0.3 mm thick end; see below |
+| Thickness at the gold fingers | **0.3 mm** total | |
+
+That is all we change for our boards; substrate, thickness, coverlay, finish and copper stay at the defaults.
 
 ### Stiffener { #stiffener }
 
@@ -56,16 +50,15 @@ The export already describes it:
 - `board-User_Drawings.gbr` draws the stiffener outline: 6&nbsp;mm deep and as wide as the connector end (31.6&nbsp;mm for the 60-pin connector, 16.6&nbsp;mm for the 30-pin).
 - `board-User_Comments.gbr` carries the note, for example `31.6x6 PI stiffener on TOP (taxel side), T = 0.3 total, contacts on BOTTOM`.
 
-JLCPCB does not read these layers automatically, so also set the options by hand:
+JLCPCB does not read these layers automatically, so set the options by hand:
 
-- **Stiffener: Polyimide, on the top side** over the connector area. JLC offers PI in 0.1, 0.15, 0.20, 0.225 and 0.25&nbsp;mm.
-- **The total thickness at the connector fingers: 0.3&nbsp;mm.** If the form asks whether the board has gold fingers, answer yes and enter 0.3&nbsp;mm as the finger-area thickness. <!-- TODO verify: exact label of the gold-finger thickness field -->
-- **Pick the PI thickness that gives 0.3&nbsp;mm in total** with JLC's [gold-finger PI thickness calculator](https://jlcpcb.com/gold-fingers-pi-thickness-calculator). JLC's own pages disagree slightly for a 0.11&nbsp;mm flex (the capability page gives 0.225&nbsp;mm PI, the calculator recommends 0.25&nbsp;mm); either lands inside the connector's tolerance. <!-- TODO verify: PI thickness JLC applied on our last order -->
-- **Add a remark** to the order, for example: *"PI stiffener on the TOP side over the connector area, outline on layer User_Drawings, 0.3 mm total thickness at the gold fingers. Contacts are on the bottom."* <!-- TODO verify: name of JLC's remark field -->
+- **Gold fingers: yes**, with **0.3&nbsp;mm total thickness** at the fingers. JLC picks the PI stiffener thickness that adds up to it.
+- **Stiffener: polyimide, on the top side** over the connector area, opposite the contacts.
+- If the form has a remark box, a note helps the engineer who reviews the files, for example: *"PI stiffener on the TOP side over the connector area, outline on layer User_Drawings, 0.3 mm total thickness at the gold fingers. Contacts are on the bottom."*
 
 ### 2 or 4 layers: cost
 
-A 4-layer flex costs noticeably more than a 2-layer one at the same size. Design on 2 layers unless 4 layers are what make your sensor fit (see [Two or four copper layers](../design/index.md#two-or-four-copper-layers)). The quote updates as you change the options, so compare both before deciding. <!-- TODO: typical 2L vs 4L price for a ~40 x 60 mm sensor, as of October 2026 -->
+A 4-layer flex costs noticeably more than a 2-layer one at the same size. Design on 2 layers unless 4 layers are what make your sensor fit (see [Two or four copper layers](../design/index.md#two-or-four-copper-layers)). The quote updates as you change the options, so compare both before deciding.
 
 ## If JLC asks
 

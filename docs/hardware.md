@@ -31,8 +31,7 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 <ol class="ot-features" markdown>
 <li markdown>
 
-**Zero-potential readout, so taxels don't leak into each other.** A sensor is a passive grid: every taxel connects one row to one column. Read it naively, and current from the driven row also finds paths through other pressed taxels into the measured column, so a press shows up where nobody touched (crosstalk, or "ghosting"). The readout boards hold every line that is not being read at the same potential as the sense node. With no voltage across them, the other taxels carry no current, and each reading comes from the one taxel at the selected row and column.
-<!-- CHECK: zero-potential wording vs schematic (which lines are driven, which are held, and at what potential, on both boards) -->
+**Zero-potential readout, so taxels don't leak into each other.** A sensor is a passive grid: every taxel connects one row to one column. Read it naively, and current from the driven row also finds paths through other pressed taxels into the measured column, so a press shows up where nobody touched (crosstalk, or "ghosting"). The board drives one row to the supply voltage and holds every other row at ground. A multiplexer connects one column to an inverting amplifier whose + input is grounded, so that column sits at virtual ground: the same potential as the idle rows. The other taxels on that column have no voltage across them and carry no current, and current leaking through other pressed taxels drains into the grounded rows rather than into the amplifier. Each reading is the one taxel at the driven row and the selected column.
 
 </li>
 <li markdown>
