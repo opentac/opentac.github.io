@@ -99,7 +99,9 @@ taxel, so it compares contact shape, not intensity.
 
 The model put the contact centre closer than a repeat press did (median
 1.56 mm against 2.29 mm), but predicted a contact area 1.44 times too large.
-`tests/sim/test_paper_numbers.py` recomputes these from the stored rows.
+`tests/sim/test_paper_numbers.py` recomputes these numbers from the stored
+result rows, `results_pose.json` (29 MB). That file is not in this repository,
+so the test is skipped unless `OPENTAC_PAPER_RESULTS` points at a copy.
 
 ## Bump model (`"mujoco"`)
 
@@ -112,11 +114,35 @@ back as a force per bump.
 ```python
 s = Sensor(m, model="mujoco")                      # BumpParams fields as keywords, e.g. e_eff_mpa=3.5
 frame = s.press("sphere", force_n=5.0, radius_mm=10.0)
-frames = s.twist([0, 1, 2, 4], force_n=8.0, radius_mm=40.0)   # press, then turn the object
+angles = [0, 0.25, 0.5, 1, 2]                      # degrees
+frames = s.twist(angles, force_n=8.0, radius_mm=250.0)  # press, then turn the object
 shear = s.decode_shear(frames[-1])                 # (n_bumps, 2) N
 s.degenerate_axes()                                # True where a cut-short bump cannot read shear
 s.bump_xy_mm                                       # bump centres, same order
+
+before = s.decode_shear(frames[0])
+for a, f in zip(angles, frames):                   # the largest shear the turn added to a bump, N
+    print(a, abs(s.decode_shear(f) - before).max().round(2))
 ```
+
+With `m` loaded from `tests/sim/fixtures/flat_square.json` (48 taxels at
+2.5 mm pitch, 12 bumps 5 mm apart) the loop prints:
+
+    0 0.0
+    0.25 0.28
+    0.5 0.53
+    1 0.69
+    2 0.69
+
+The shear grows while the bumps stick and levels off once they slip, here from
+1°. Compare with the frame before the turn: a curved object loads each bump
+unevenly, and `decode_shear` reads that as shear too.
+
+**Use an object that touches several bumps.** The object turns about
+`center_mm`, by default the centre of one bump. That bump only turns in place
+and reads no shear, so the turn shows up on the bumps around it. On this board
+a 40 mm ball at 8 N touches only the centre bump and decodes 0.0 N at every
+angle; the 250 mm ball above, close to flat, also loads its four neighbours.
 
 Shapes: `"sphere"`, `"cylinder"` (axis along y) and `"plane"` (`tilt_deg`).
 `center_mm` defaults to a bump near the middle of the board: between bumps a
