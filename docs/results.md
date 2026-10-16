@@ -1,11 +1,11 @@
 ---
 title: Results
-description: What the OpenTac paper measured, with its figures - fabrication and coverage, material response, shear decoding, policy learning, grasp control, adaptive sampling, transfer and simulation.
+description: What the OpenTac paper measured, with its figures - fabrication and coverage, material response, shear decoding, policy learning, grasp control, adaptive sampling, transfer and simulation - and two durability tests.
 ---
 
 # Results
 
-The paper's findings, with its figures. Every number on this page is from the [paper](paper.md).
+The paper's findings, with its figures, and two durability tests that are not in the paper ([Repeated pressing over 10 hours](#repeated-pressing) and [Durability](#durability)). Every other number on this page is from the [paper](paper.md).
 
 ## Demos
 
@@ -67,6 +67,33 @@ On a bumped 4&times;4 patch, the bump decoding (sum of the four taxels under a b
   <figcaption>Per-taxel normal response against a load cell (median and interquartile range; diamonds mark the onset of saturation) for (a) three films, (b) electrode gaps of 0.1&ndash;0.5&nbsp;mm and (c) pitches of 1.5&ndash;4.0&nbsp;mm. (d) Three-axis calibration of a bumped 4&times;4 patch.</figcaption>
 </figure>
 
+## Repeated pressing over 10 hours { #repeated-pressing }
+
+A UR5 pressed into a bump of a sensor over and over at a fixed baseline force, with an OptoForce sensor measuring the force. Every 30 minutes it ran one cycle of presses at 3, 3.5, 4, 4.5 and 5&nbsp;N, for 10 hours in all: 5,423 presses in 21 blocks. The reading at each force rose over the first ~3&nbsp;hours and then held nearly constant, and the five forces stayed separated throughout.
+
+<div class="ot-grid2 ot-grid2--narrow">
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/pressing_10h.jpg" aria-label="A UR5 end effector with a force sensor presses repeatedly into a bump of an orange flex sensor, at 50 times speed"><source src="../assets/loops/pressing_10h.mp4" type="video/mp4"></video></div><figcaption>The pressing at 50&times; speed: 12&nbsp;s of video is 10 minutes.</figcaption></figure>
+</div>
+
+<figure class="ot-fig" markdown="span" style="max-width: 40rem">
+  [![Line plot of the tactile reading against time over 10 hours at five measured forces from 3 to 5 newtons: each line rises over the first three hours, then stays nearly level, and the five lines stay apart.](assets/figures/pressing_10h.webp){ loading=lazy width="1500" height="780" }](assets/figures/pressing_10h.webp)
+  <figcaption>Tactile reading (summed counts) at each measured force, from a quadratic fit per ~30-minute block: 5,423 presses in 21 blocks over 10&nbsp;h at 3&ndash;5&nbsp;N. Readings rise over the first ~3&nbsp;h, then hold nearly constant; the five forces stay separated throughout.</figcaption>
+</figure>
+
+## Durability
+
+A connected sensor was touched lightly with a pen, a tape roll and a hand, struck hard with a hammer several times, and touched again. It was then unplugged, thrown on the floor, stomped and jumped on, and run over with an office chair. Plugged back in, it still responded to light touches and object contacts.
+
+<figure class="ot-fig" style="max-width: 40rem">
+<div class="ot-media ot-media--video">
+  <video controls preload="none" playsinline data-poster="../assets/video/durability_poster.jpg"
+         aria-label="Durability test with sound: light touches with a tape roll, a pen and a hand; hammer strikes; the same touches; the sensor unplugged, thrown on the floor, stomped and jumped on, and run over with an office chair; then plugged back in and touched again. An enlarged inset shows the live map.">
+    <source src="../assets/video/durability.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>Shortened from 2&nbsp;min&nbsp;12&nbsp;s, in order, with the original sound. Inset: the monitor's live map, enlarged; colour is normal force, arrows are shear.</figcaption>
+</figure>
+
 ## Policy learning with shear
 
 On an SO-101 arm, action-chunking-transformer (ACT) policies perform peg-in-hole and plug insertion with one of three sensors: FlexiTac, OpenTac-1D (normal force only) or OpenTac-3D (normal and shear). For each sensor, policies are trained on touch plus joint angles ("full") or joint angles alone ("pose"), each with 100 demonstrations, and evaluated over 50 trials, without vision.
@@ -82,8 +109,15 @@ Each sensor has its own pose-only baseline, and the bumps change contact mechani
   <figcaption>Success over 50 trials per condition, without vision. "Pose": joint angles only; "full": joint angles and touch. Conditions that share no letter differ significantly (&gt;90% confidence).</figcaption>
 </figure>
 
-<div class="ot-grid2">
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/so101.jpg" aria-label="SO-101 plug insertion from the same start pose: the OpenTac-3D policy succeeds, the FlexiTac policy fails"><source src="../assets/loops/so101.mp4" type="video/mp4"></video></div><figcaption>SO-101 arm, plug insertion from one start pose: the OpenTac-3D policy succeeds, the FlexiTac policy fails. 2&times; speed.</figcaption></figure>
+The clips are single rollouts with three kinds of policy from the same start: OpenTac-3D (proprioception, normal and shear), OpenTac-1D (proprioception and normal) and proprioception only. Besides SO-101 plug insertion they include a key-lock insertion on two YAM arms; there the left gripper, which lifts the key, has a sensor on each finger, and the right gripper, which lifts the lock, has none.
+
+<div class="ot-stack">
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/so101_plug.jpg" style="aspect-ratio: 1920 / 786" aria-label="Three SO-101 arms insert a plug from the same start pose: the OpenTac-3D policy succeeds, the OpenTac-1D and proprioception-only policies fail"><source src="../assets/loops/so101_plug.mp4" type="video/mp4"></video></div><figcaption>SO-101 plug insertion from one start pose with the same plug: OpenTac-3D inserts the plug; OpenTac-1D and proprioception only fail.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/so101_plug_reference.jpg" style="aspect-ratio: 1920 / 786" aria-label="Three SO-101 arms insert a plug from the same start pose, and all three policies succeed"><source src="../assets/loops/so101_plug_reference.mp4" type="video/mp4"></video></div><figcaption>A start pose where all three policies insert the plug.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/yam_keylock.jpg" style="aspect-ratio: 1920 / 620" aria-label="Two YAM arms insert a key into a lock under three policies: the OpenTac-3D policy inserts the key, the OpenTac-1D policy fails at the insertion, and the proprioception-only policy stalls there"><source src="../assets/loops/yam_keylock.mp4" type="video/mp4"></video></div><figcaption>YAM key-lock insertion: OpenTac-3D inserts the key; OpenTac-1D fails at the insertion; with proprioception only, the policy stalls there and does not open the gripper.</figcaption></figure>
+</div>
+
+<div class="ot-grid2 ot-grid2--narrow">
   <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/sim_peg.jpg" aria-label="Simulated peg insertion: the normal-and-shear policy inserts the peg, the normal-only policy fails"><source src="../assets/loops/sim_peg.mp4" type="video/mp4"></video></div><figcaption>Peg insertion in simulation, with the deformable pads described under <a href="#simulation">Simulation</a>: the normal-and-shear policy inserts the peg, the normal-only policy does not.</figcaption></figure>
 </div>
 
@@ -100,17 +134,17 @@ A Dexmate Vega-1 Pro holds a paper cup between two OpenTac probes under proprioc
 
 Held: trials reaching 40&nbsp;s. Slip: net displacement, mean &plusmn; standard deviation; &mdash;: dropped.
 
-UR5 ball rolling and teleoperation on bimanual YAM arms show the skins on further robot surfaces.
+In the paper's ball-rolling task, a UR5 with a 32&times;32 skin on a square end effector rolls a ball along the end effector's edges without feedback on the ball's position, steering toward a shear vector that points along the edge; the shear controller returns from the borderline region to the valid one more reliably than the normal-force controller. In the clip, the normal-force controller moves the ball in quick straight runs but cuts across the sensor; the shear-force controller is slower and oscillates, most at the corners, but does not cut across. A skin on a Dexmate forearm also drives a compliant arm: pushed with a stick, the arm yields in the direction of the push and holds its pose once the push stops.
 
 <figure class="ot-fig" markdown="span">
   [![Four panels: SO-101 plug insertion with normal and shear maps, bimanual YAM key insertion and fork picking, UR5 ball control along an edge, and Dexmate bimanual cup holding with and without load.](assets/figures/robots.jpg){ loading=lazy }](assets/figures/robots.jpg)
   <figcaption>OpenTac on four robots: SO-101 plug insertion, YAM teleoperation, UR5 ball control and Dexmate bimanual cup holding.</figcaption>
 </figure>
 
-<div class="ot-grid3">
+<div class="ot-grid2">
+  <figure class="ot-clip ot-clip--tall2"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/ur5_controllers.jpg" style="aspect-ratio: 720 / 804" aria-label="A UR5 moves a ball along the edge of a sensor plate under a normal-force controller (top) and a shear-force controller (bottom), each with its contact map"><source src="../assets/loops/ur5_controllers.mp4" type="video/mp4"></video></div><figcaption>UR5 ball rolling: the normal-force controller (top) and the shear-force controller (bottom), with their contact maps.</figcaption></figure>
   <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/dexmate.jpg" aria-label="Dexmate holding a cup, force-only versus force-and-shear feedback"><source src="../assets/loops/dexmate.mp4" type="video/mp4"></video></div><figcaption>Dexmate Vega-1 Pro, bimanual cup holding: normal-only feedback (left) and normal-and-shear feedback (right).</figcaption></figure>
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/ur5.jpg" aria-label="UR5 ball control with normal-force and shear-force controllers"><source src="../assets/loops/ur5.mp4" type="video/mp4"></video></div><figcaption>UR5 ball rolling under a normal-force controller (top) and a shear-force controller (bottom).</figcaption></figure>
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/yam.jpg" aria-label="YAM bimanual teleoperation with tactile readout"><source src="../assets/loops/yam.mp4" type="video/mp4"></video></div><figcaption>YAM arms, bimanual teleoperation with the tactile readout below.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/dexmate_admittance.jpg" aria-label="A stick pushes a Dexmate forearm covered in a tactile skin; the arm moves with the push and stops when it ends, next to the skin's live map"><source src="../assets/loops/dexmate_admittance.mp4" type="video/mp4"></video></div><figcaption>Dexmate forearm skin and its live map: the arm yields to the push and holds its pose when it stops.</figcaption></figure>
 </div>
 
 ## Sampling budget and fast contacts (Xampling)
@@ -146,12 +180,22 @@ OpenTac-Transfer maps calibrated normal-force distributions between skins of dif
 
 The paper's policy-learning simulation is a MuJoCo SO-101 peg-insertion environment with CAD-derived tetrahedral pads attached to the gripper fingers. Each pad has 40 bumps on a 10&times;4 reduced deformation grid (165 degrees of freedom), with collision on the detailed surface mesh; each bump reports one normal and two tangential displacements, interpolated to 16&times;32 tactile images.
 
-What ships as OpenTac-Sim (`opentac.sim`) builds flat sensors from their manifests, with two models. Smooth skins use the reduced foam-contact model of the transfer study (a Winkler layer, smoothed and integrated over the manifest's taxels before the target calibration is applied). Bump sheets use rigid bumps on spring joints, which report normal force per taxel and shear per bump. See [Simulate](sim.md).
-
-<figure class="ot-fig" markdown="span" style="max-width: 40rem">
-  [![SO-101 peg insertion in simulation with deformable tactile pads, training and evaluation start poses, and close-ups of the pads with per-bump displacement arrows.](assets/figures/simulation.jpg){ loading=lazy }](assets/figures/simulation.jpg)
-  <figcaption>SO-101 peg insertion with deformable tactile pads (the paper's environment). Blue spheres and orange cubes: training (n&nbsp;=&nbsp;100) and held-out evaluation (n&nbsp;=&nbsp;50) start poses. Right: the pads during insertion; arrows show per-bump tangential displacement.</figcaption>
+<figure class="ot-fig" markdown="span">
+  [![Simulated SO-101 arm following a trajectory toward an insertion target, with blue spheres and yellow cubes for training and evaluation positions; enlarged views of the fixed and moving gripper pads with per-bump shear arrows at 8.2 s and 13.5 s; on the right, the SO-101 grasping a can and two ALOHA arms in a dual-arm insertion.](assets/figures/sim_scenes.webp){ loading=lazy width="1600" height="920" }](assets/figures/sim_scenes.webp)
+  <figcaption>OpenTac-Sim scenes from the paper, in MuJoCo with CAD-derived tetrahedral bump pads. Left: the SO-101 follows a trajectory toward the insertion target; blue spheres and yellow cubes mark training and evaluation positions, and the enlarged views show the shear at each bump of the fixed and moving pads at two moments. Right: grasping a can with the SO-101, and dual-arm insertion with ALOHA.</figcaption>
 </figure>
+
+<figure class="ot-fig" markdown="span" style="max-width: 32rem">
+  [![A simulated robot arm with tactile pads holds a can; arcs trace paths of objects from the table into a basket that holds a red ball and a cube.](assets/figures/sim_sorting.webp){ loading=lazy width="1200" height="785" }](assets/figures/sim_sorting.webp)
+  <figcaption>A simulated tabletop sorting task: the arm picks up objects and places them in a basket.</figcaption>
+</figure>
+
+<div class="ot-grid2">
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/sim_elastomer.jpg" style="aspect-ratio: 1280 / 672" aria-label="Simulation: the same cylindrical indenter presses two textured elastomer pads, 33.6 MPa on the left and 5 MPa on the right"><source src="../assets/loops/sim_elastomer.mp4" type="video/mp4"></video></div><figcaption>Two textured elastomer pads, elastic modulus 33.6&nbsp;MPa (left) and 5&nbsp;MPa (right), under the same cylindrical indenter: the softer pad deforms more locally.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/sim_closeup.jpg" style="aspect-ratio: 1280 / 672" aria-label="Simulation: a cylindrical indenter presses a 5 MPa textured pad, shown as its surface and, in sync, as its tetrahedral mesh"><source src="../assets/loops/sim_closeup.mp4" type="video/mp4"></video></div><figcaption>The 5&nbsp;MPa pad under the indenter: its surface (left) and its tetrahedral mesh (right), in sync.</figcaption></figure>
+</div>
+
+What ships as OpenTac-Sim (`opentac.sim`) builds flat sensors from their manifests, with two models. Smooth skins use the reduced foam-contact model of the transfer study (a Winkler layer, smoothed and integrated over the manifest's taxels before the target calibration is applied). Bump sheets use rigid bumps on spring joints, which report normal force per taxel and shear per bump. See [Simulate](sim.md).
 
 ## Example data
 

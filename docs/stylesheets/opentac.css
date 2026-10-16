@@ -346,6 +346,19 @@
   text-align: left;
   font-size: .68rem;
 }
+/* Four clips: the two wide ones stacked on the left, the two tall ones beside
+   them, each as tall as the stack. */
+.md-typeset .ot-strip--stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .66fr) minmax(0, .66fr);
+  gap: .8rem;
+  align-items: start;
+}
+/* figures are fit-content by default: take the whole cell before the clip loads */
+.md-typeset .ot-strip--stack > .ot-strip__item { width: 100%; }
+.md-typeset .ot-strip--stack > .ot-strip__item--wide { grid-column: 1; }
+.md-typeset .ot-strip--stack > .ot-strip__item--tall { grid-row: 1 / span 2; grid-column: 2; }
+.md-typeset .ot-strip--stack > .ot-strip__item--tall ~ .ot-strip__item--tall { grid-column: 3; }
 
 .md-typeset figure.ot-wide { margin: 0 0 3.6rem; }
 .md-typeset figure.ot-wide img { width: 100%; max-width: 54rem; }
@@ -367,6 +380,20 @@
   gap: .8rem;
   margin-top: 1.4rem;
 }
+/* Wide comparison clips, one per row at the full width. A clip whose shape
+   is not 16:9 sets aspect-ratio on its <video>. */
+.md-typeset .ot-stack {
+  display: grid;
+  gap: 1.2rem;
+  margin: 1.4rem 0 2em;
+}
+.md-typeset .ot-stack > .ot-clip,
+.md-typeset .ot-grid2 > .ot-clip,
+.md-typeset .ot-grid3 > .ot-clip { width: 100%; }
+.md-typeset .ot-stack + .ot-grid3 { margin-top: 0; }
+/* A portrait clip in a grid takes two rows. */
+.md-typeset .ot-grid2 > .ot-clip--tall2,
+.md-typeset .ot-grid3 > .ot-clip--tall2 { grid-row: span 2; }
 
 .md-typeset .ot-start {
   margin: 4rem 0 1rem;
@@ -584,8 +611,13 @@
     margin-top: -1rem;
   }
   .md-typeset .ot-strip__item--wide { grid-column: 1 / -1; }
+  .md-typeset .ot-strip--stack > .ot-strip__item--wide { grid-column: 1 / -1; }
+  .md-typeset .ot-strip--stack > .ot-strip__item--tall,
+  .md-typeset .ot-strip--stack > .ot-strip__item--tall ~ .ot-strip__item--tall { grid-row: auto; grid-column: auto; }
   .md-typeset .ot-grid3 { grid-template-columns: 1fr; }
   .md-typeset .ot-grid2 { grid-template-columns: 1fr; }
+  .md-typeset .ot-grid2 > .ot-clip--tall2,
+  .md-typeset .ot-grid3 > .ot-clip--tall2 { grid-row: auto; }
   .md-typeset .ot-boards { grid-template-columns: 1fr; }
   /* on a phone a feature's clip also takes the column of the number badges */
   .md-typeset .ot-features figure.ot-clip { margin-left: -2.2em; width: calc(100% + 2.2em); max-width: none; }

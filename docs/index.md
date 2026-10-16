@@ -12,6 +12,8 @@ hide:
     ot-story        one section: text + one visual (add ot-story--flip to swap sides)
     ot-media        a rounded media frame; data-loop videos autoplay when visible
     ot-strip        a row of clips of different shapes at one height
+                    (ot-strip--stack: two wide clips stacked beside two tall ones)
+    ot-stack        wide comparison clips, one per row at full width
     ot-clip         a figure: one ot-media clip with a one-line caption under it
   A clip below the first screen names its still as data-poster="..." (set by
   docs/javascripts/opentac.js when it nears the screen); only a clip in the
@@ -35,13 +37,20 @@ hide:
 <section class="ot-evidence" aria-labelledby="evidence" markdown>
 <h2 id="evidence" class="ot-section-title">Measured on real sensors</h2>
 
-<div class="ot-strip">
+<div class="ot-strip ot-strip--stack">
 <figure class="ot-strip__item ot-strip__item--wide">
   <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/real_sensor.jpg"
          aria-label="A finger presses and twists a bump sensor; the live map shows normal force as colour and shear as arrows">
     <source src="assets/loops/real_sensor.mp4" type="video/mp4">
   </video>
   <figcaption>A finger presses and twists a sensor. Colour is normal force; arrows are shear.</figcaption>
+</figure>
+<figure class="ot-strip__item ot-strip__item--wide">
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/durability.jpg"
+         aria-label="A sensor is touched lightly, struck with a hammer, unplugged, thrown on the floor, stomped on and run over with an office chair, then plugged back in and touched again; an enlarged inset shows the live map">
+    <source src="assets/loops/durability.mp4" type="video/mp4">
+  </video>
+  <figcaption>Hammered, thrown, stomped on and run over with an office chair, then plugged back in: the sensor still reads touch.</figcaption>
 </figure>
 <figure class="ot-strip__item ot-strip__item--tall">
   <video data-loop muted loop playsinline preload="none" data-poster="assets/video/dynamic_range_poster.jpg"
@@ -233,15 +242,20 @@ OpenTac-Transfer maps calibrated contact between skins of different shape and ta
 
 We deployed the skins on four robots and a handheld gripper. On an SO-101 arm, policies with normal and shear touch had the highest success on both insertion tasks (82% peg-in-hole, 62% plug insertion); on plug insertion, normal-only touch did not beat joint angles alone. On a Dexmate Vega-1 Pro holding a cup under impulsive loading, shear feedback kept the grasp in 16 of 20 trials, against 9 of 20 with wrist force/torque or normal-only feedback.
 
+The first two clips run three policies from the same start: OpenTac-3D (proprioception, normal and shear), OpenTac-1D (proprioception and normal) and proprioception only.
+
 [All results](results.md){ .ot-more }
 
 </div>
+<div class="ot-stack">
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/so101_plug.jpg" style="aspect-ratio: 1920 / 786" aria-label="Three SO-101 arms insert a plug from the same start pose: the OpenTac-3D policy succeeds, the OpenTac-1D and proprioception-only policies fail"><source src="assets/loops/so101_plug.mp4" type="video/mp4"></video></div><figcaption>SO-101 arm, plug insertion from one start pose with the same plug: OpenTac-3D inserts the plug; OpenTac-1D and proprioception only fail.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/yam_keylock.jpg" style="aspect-ratio: 1920 / 620" aria-label="Two YAM arms insert a key into a lock under three policies: the OpenTac-3D policy inserts the key, the OpenTac-1D and proprioception-only policies fail at the insertion"><source src="assets/loops/yam_keylock.mp4" type="video/mp4"></video></div><figcaption>Two YAM arms, key-lock insertion (sensors on the left gripper only): OpenTac-3D inserts the key; OpenTac-1D and proprioception only fail at the insertion.</figcaption></figure>
+</div>
 <div class="ot-grid3">
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/so101.jpg" aria-label="SO-101 plug insertion: the normal-and-shear policy succeeds, the FlexiTac policy fails"><source src="assets/loops/so101.mp4" type="video/mp4"></video></div><figcaption>SO-101 arm, plug insertion from one start pose: the OpenTac-3D policy succeeds, the FlexiTac policy fails. 2&times; speed.</figcaption></figure>
+  <figure class="ot-clip ot-clip--tall2"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/ur5_controllers.jpg" style="aspect-ratio: 720 / 804" aria-label="A UR5 moves a ball along the edge of a sensor plate under a normal-force controller (top) and a shear-force controller (bottom), each with its contact map"><source src="assets/loops/ur5_controllers.mp4" type="video/mp4"></video></div><figcaption>UR5 moving a ball along the plate's edge: the normal-force controller (top) is quicker but cuts across the sensor; the shear-force controller (bottom) is slower and does not.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/dexmate_admittance.jpg" aria-label="A stick pushes a Dexmate forearm covered in a tactile skin; the arm moves with the push and stops when it ends, next to the skin's live map"><source src="assets/loops/dexmate_admittance.mp4" type="video/mp4"></video></div><figcaption>Dexmate forearm skin: pushed with a stick, the arm yields in the direction of the push and holds its pose when the push stops.</figcaption></figure>
   <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/dexmate.jpg" aria-label="Dexmate humanoid holding a cup with two probes, force-only versus force-and-shear feedback"><source src="assets/loops/dexmate.mp4" type="video/mp4"></video></div><figcaption>Dexmate Vega-1 Pro, bimanual cup holding: normal-only feedback (left) and normal-and-shear feedback (right).</figcaption></figure>
   <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/umi_ball.jpg" aria-label="UMI gripper holding a ball that a hand turns, with live normal and shear maps from both finger skins"><source src="assets/loops/umi_ball.mp4" type="video/mp4"></video></div><figcaption>UMI gripper: a hand turns the held ball; normal and shear on both finger skins.</figcaption></figure>
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/ur5.jpg" aria-label="UR5 rolling a ball under normal-force and shear-force controllers"><source src="assets/loops/ur5.mp4" type="video/mp4"></video></div><figcaption>UR5 ball rolling under a normal-force controller (top) and a shear-force controller (bottom).</figcaption></figure>
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/yam.jpg" aria-label="Two YAM arms in teleoperation with tactile readout"><source src="assets/loops/yam.mp4" type="video/mp4"></video></div><figcaption>YAM arms, bimanual teleoperation with the tactile readout below.</figcaption></figure>
   <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/umi_external.jpg" aria-label="A hand pushes a screwdriver held by the UMI gripper; the contact shows in both finger skins"><source src="assets/loops/umi_external.mp4" type="video/mp4"></video></div><figcaption>UMI gripper, external contact: a hand pushes the held screwdriver, and the force shows in both finger skins.</figcaption></figure>
 </div>
 </section>
