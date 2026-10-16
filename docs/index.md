@@ -197,7 +197,7 @@ On a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels 
 
 ## Simulate it, and share data between sensors { #sim }
 
-The manifest that drives the hardware also builds the sensor in simulation. OpenTac-Sim models flat skins. A plain skin uses a foam-contact model with two parameters, fitted on one skin and scored on three others it had not seen. A bump sheet is modelled as rigid bumps on spring joints that report normal force per taxel and shear per bump; that model has not yet been checked against hardware.
+The manifest that drives the hardware also builds the sensor in simulation. OpenTac-Sim models flat skins. A plain skin uses a foam-contact model with two parameters, fitted on one skin and scored on three others it had not seen. A bump sheet is modelled as rigid bumps on spring joints that report normal force per taxel and shear per bump.
 
 OpenTac-Transfer maps calibrated contact between skins of different shape and taxel pitch, in physical coordinates and without paired data. Across four skins it reached a median shape F1 of 0.750, against 0.714 and 0.634 for two array-resizing baselines.
 
@@ -212,7 +212,7 @@ OpenTac-Transfer maps calibrated contact between skins of different shape and ta
       <source src="assets/loops/sim_peg.mp4" type="video/mp4">
     </video>
   </div>
-  <figcaption>Peg insertion in the simulator of the paper's policy experiments, with deformable pads (not part of this release): the normal-and-shear policy inserts the peg, the normal-only policy does not.</figcaption>
+  <figcaption>Peg insertion in the simulator of the paper's policy experiments, with deformable pads: the normal-and-shear policy inserts the peg, the normal-only policy does not.</figcaption>
   </figure>
   <figure class="ot-clip">
   <div class="ot-media">

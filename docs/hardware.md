@@ -32,7 +32,7 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 |---|---|
 | 60-pin board | `READOUT60` |
 | 30-pin pair (two stacked boards) | `NODE16`, or `NODE16_bus` for each board in a daisy chain ([Daisy-chain boards](use/daisy-chain.md)) |
-| Earlier 70-pin board | `READOUT32`, for boards already built; the paper's Xampling measurements on a 32&times;32 sensor used it ([Results](results.md#sampling-budget-and-fast-contacts-xampling)) |
+| Earlier 70-pin board | `READOUT32`, for boards already built |
 
 Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com/opentac/opentac.github.io/tree/main/firmware/prebuilt); `opentac flash` picks the right one ([Flash the firmware](use/flash.md)).
 

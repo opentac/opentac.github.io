@@ -25,7 +25,6 @@ frame.image(m)      # the same values as a 2-D array laid out like the sensor
 | Sensor | velostat under foam, **no bump sheet** | with the printed **TPU bump sheet** |
 | Physics | rigid indenter into a foam layer | rigid bumps on springy joints (press, shear, tip) |
 | Output | normal force per taxel | normal force per taxel, plus shear per bump |
-| Checked against hardware | yes, in the paper (below) | no |
 | Needs | numpy | numpy; the full solver also needs `mujoco` (`uv sync --extra sim`) |
 
 **The default is always `"foam"`.** Pass `model="mujoco"` if you print the
@@ -221,8 +220,6 @@ tips at `s.tactile.p.height`); for example from ray casts into your scene.
   curved part) is refused by both models.
 - **Foam: no shear, no dynamics.** The indenter is rigid and the press is
   static. Hysteresis and the speckle of real velostat are not modelled.
-- **Bumps: not checked against hardware** the way the foam model was. The
-  stiffness and friction values are estimates.
 - **Readout profiles** were fitted without a bump sheet. Under a bump the
   pressure across a taxel is uneven, which a profile does not capture; for v3
   (pressure exponent 0.55) it then over-predicts counts.

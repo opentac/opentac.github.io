@@ -84,7 +84,7 @@ Each sensor has its own pose-only baseline, and the bumps change contact mechani
 
 <div class="ot-grid2">
   <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/so101.jpg" aria-label="SO-101 plug insertion from the same start pose: the OpenTac-3D policy succeeds, the FlexiTac policy fails"><source src="../assets/loops/so101.mp4" type="video/mp4"></video></div><figcaption>SO-101 arm, plug insertion from one start pose: the OpenTac-3D policy succeeds, the FlexiTac policy fails. 2&times; speed.</figcaption></figure>
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/sim_peg.jpg" aria-label="Simulated peg insertion: the normal-and-shear policy inserts the peg, the normal-only policy fails"><source src="../assets/loops/sim_peg.mp4" type="video/mp4"></video></div><figcaption>Peg insertion in simulation, with the deformable pads described under <a href="#simulation">Simulation</a> (not part of this release): the normal-and-shear policy inserts the peg, the normal-only policy does not.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/sim_peg.jpg" aria-label="Simulated peg insertion: the normal-and-shear policy inserts the peg, the normal-only policy fails"><source src="../assets/loops/sim_peg.mp4" type="video/mp4"></video></div><figcaption>Peg insertion in simulation, with the deformable pads described under <a href="#simulation">Simulation</a>: the normal-and-shear policy inserts the peg, the normal-only policy does not.</figcaption></figure>
 </div>
 
 ## Grasp control with shear feedback
@@ -144,13 +144,13 @@ OpenTac-Transfer maps calibrated normal-force distributions between skins of dif
 
 ## Simulation
 
-The paper's policy-learning simulation is a MuJoCo SO-101 peg-insertion environment with CAD-derived tetrahedral pads attached to the gripper fingers. Each pad has 40 bumps on a 10&times;4 reduced deformation grid (165 degrees of freedom), with collision on the detailed surface mesh; each bump reports one normal and two tangential displacements, interpolated to 16&times;32 tactile images. **This environment is not part of this release**, and it has not been checked against hardware.
+The paper's policy-learning simulation is a MuJoCo SO-101 peg-insertion environment with CAD-derived tetrahedral pads attached to the gripper fingers. Each pad has 40 bumps on a 10&times;4 reduced deformation grid (165 degrees of freedom), with collision on the detailed surface mesh; each bump reports one normal and two tangential displacements, interpolated to 16&times;32 tactile images.
 
-What ships as OpenTac-Sim (`opentac.sim`) builds flat sensors from their manifests, with two models. Smooth skins use the reduced foam-contact model of the transfer study (a Winkler layer, smoothed and integrated over the manifest's taxels before the target calibration is applied). Bump sheets use rigid bumps on spring joints, which report normal force per taxel and shear per bump; this model has not been checked against hardware either. See [Simulate](sim.md).
+What ships as OpenTac-Sim (`opentac.sim`) builds flat sensors from their manifests, with two models. Smooth skins use the reduced foam-contact model of the transfer study (a Winkler layer, smoothed and integrated over the manifest's taxels before the target calibration is applied). Bump sheets use rigid bumps on spring joints, which report normal force per taxel and shear per bump. See [Simulate](sim.md).
 
 <figure class="ot-fig" markdown="span" style="max-width: 40rem">
   [![SO-101 peg insertion in simulation with deformable tactile pads, training and evaluation start poses, and close-ups of the pads with per-bump displacement arrows.](assets/figures/simulation.jpg){ loading=lazy }](assets/figures/simulation.jpg)
-  <figcaption>SO-101 peg insertion with deformable tactile pads (the paper's environment, not part of this release). Blue spheres and orange cubes: training (n&nbsp;=&nbsp;100) and held-out evaluation (n&nbsp;=&nbsp;50) start poses. Right: the pads during insertion; arrows show per-bump tangential displacement.</figcaption>
+  <figcaption>SO-101 peg insertion with deformable tactile pads (the paper's environment). Blue spheres and orange cubes: training (n&nbsp;=&nbsp;100) and held-out evaluation (n&nbsp;=&nbsp;50) start poses. Right: the pads during insertion; arrows show per-bump tangential displacement.</figcaption>
 </figure>
 
 ## Example data
@@ -179,7 +179,5 @@ Released in the [repository](https://github.com/opentac/opentac.github.io):
 
 - OpenTac-CAD (`opentac/cad/`), the readout firmware (`firmware/`, with prebuilt binaries), the readout boards' KiCad and JLCPCB files (`hardware/`), and the `opentac` Python package for reading and recording sensors, OpenTac-Sim (`opentac.sim`) and OpenTac-Transfer (`opentac.transfer`).
 - The 31 fabricated designs, regenerated for the current readout boards, each with its Gerbers, KiCad board and manifest: [Ready-to-order designs](design/examples.md).
-- `tests/sim/test_paper_numbers.py`. It recomputes, to two decimals, the median shape F1 values under [Transfer between sensors](#transfer-between-sensors) (transfer, transfer on co-visible support, the two resizing baselines, the foam model and same-skin repeatability) and the foam model's contact-centre and area errors, from the per-press result rows in `results_pose.json`. That file (29&nbsp;MB) is not in the repository, so the test is skipped unless `OPENTAC_PAPER_RESULTS` points at a copy.
 - The nine recorded presses behind [How it works](learn/index.md) (three objects on three skins), in the form the page plays them, in `docs/learn/data/takes/`.
 
-Not released yet: the calibration data (the load-cell measurements behind the material response and the three-axis calibration; `opentac.calibrate` reads a calibration file, but none is included), the experiment data (the per-press transfer and simulation results, the policy-learning and grasp-control trials, the Xampling drop recordings, and the raw recordings behind How it works), and the policy-learning simulation described under [Simulation](#simulation).

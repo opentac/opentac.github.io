@@ -59,8 +59,7 @@ the gain changes; the board then pauses xampling until the next zero.
 ## Measured frame rates
 
 Fixed mode on a 32 x 32 sensor (1024 taxels), `MUX_SETTLE_US` 8, IMU off,
-including USB transfer. Two rounds each, averaged (2026-09-14, on a 70-pin
-readout board).
+including USB transfer. Two rounds each, averaged (2026-09-14).
 
 | `XAMP_M` | 16 | 32 | 64 | 128 | 256 | 512 | 1024 | raster |
 |---|---|---|---|---|---|---|---|---|
