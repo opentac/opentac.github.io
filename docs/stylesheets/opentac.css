@@ -92,6 +92,9 @@
 }
 .md-typeset figure.ot-fig figcaption { text-align: left; }
 .md-typeset figure.ot-fig { margin: 1.6em auto; }
+/* A figure image that links to the full-size file (too small to read on a
+   phone otherwise). */
+.md-typeset figure a > img { cursor: zoom-in; }
 
 /* photo grids (build pages) */
 .md-typeset figure > br { display: none; }   /* md_in_html span mode adds one */
@@ -132,6 +135,14 @@
   border-radius: 0;
 }
 .md-typeset .ot-media img { aspect-ratio: auto; }
+/* A clip with a caption: <figure class="ot-clip"><div class="ot-media">...</div><figcaption> */
+.md-typeset figure.ot-clip { margin: 0; text-align: left; }
+.md-typeset figure.ot-clip figcaption {
+  max-width: none;
+  margin: .45em 0 0;
+  font-size: .68rem;
+  text-align: left;
+}
 .md-typeset .ot-media--board { background: transparent; }
 .md-typeset .ot-media--board video { object-fit: contain; }
 
@@ -263,6 +274,17 @@
   grid-template-columns: 1fr;
   gap: .8rem;
 }
+
+/* Home: real-sensor clips and the key results, right after the animation. */
+.md-typeset .ot-evidence { margin: 1.2rem 0 3.6rem; }
+.md-typeset .ot-evidence > .ot-section-title { text-align: center; margin-bottom: 1.2rem; }
+.md-typeset .ot-evidence .ot-strip { margin: 0 0 1.6rem; }
+.md-typeset .ot-keys { max-width: 46rem; margin: 0 auto; }
+.md-typeset .ot-keys table:not([class]) { font-size: .72rem; }
+.md-typeset .ot-keys table:not([class]) td:first-child { font-weight: 600; white-space: nowrap; }
+.md-typeset .ot-keys table:not([class]) th,
+.md-typeset .ot-keys table:not([class]) td { padding: .6em .9em; }
+.md-typeset .ot-keys .ot-more { margin-top: .2em; }
 
 /* A row of clips with different shapes at one height: each item's flex-grow
    is its aspect ratio, so widths come out proportional and heights equal. */
@@ -446,6 +468,17 @@
   line-height: 1.35;
 }
 
+/* ---------- order the readout board: the file table (build/order-readout.md) ---------- */
+
+/* The only table whose cells link into a board production folder. Without this,
+   a phone breaks its file names letter by letter; with it, they stay whole and
+   the table scrolls sideways in Material's table wrapper. */
+.md-typeset table:not([class]):has(a[href*="/production"]) code {
+  white-space: nowrap;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
 /* ---------- build overview: the steps table (build/index.md) ---------- */
 
 .md-typeset .ot-steps table:not([class]) th:first-child,
@@ -488,6 +521,18 @@
   .md-typeset .ot-steps table:not([class]) { font-size: .62rem; }
   .md-typeset .ot-steps table:not([class]) th,
   .md-typeset .ot-steps table:not([class]) td { min-width: 0; padding: .65em .5em; }
+}
+
+@media screen and (max-width: 29.984375em) {
+  .ot-hero .ot-hero__buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 20rem;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .ot-hero .ot-btn { text-align: center; padding-left: .6em; padding-right: .6em; }
+  .md-typeset .ot-keys table:not([class]) td:first-child { white-space: normal; }
 }
 
 @media (prefers-reduced-motion: reduce) {

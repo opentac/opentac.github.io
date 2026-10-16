@@ -68,9 +68,21 @@ The whole path, with a page for each step. The [assembly guide](build/assembly.m
 ## What you need on the bench
 
 - the flex PCB from your design, as ordered;
-- a readout board: the 60-pin board for sensors up to 30&times;30 taxels, or the 30-pin pair for up to 15&times;15 (see [Readout boards](hardware.md));
+- a readout board: the 60-pin board for sensors up to 30&times;30 taxels, or the 30-pin pair for up to 15&times;15 (see [Readout boards](hardware.md); the 30-pin pair is the one tested on hardware so far);
 - a piezoresistive layer, such as LINQSTAT film or a piezoresistive textile (see [Materials](build/materials.md));
 - a 3D printer and TPU filament (85&ndash;95A) for the case and bump sheet;
 - double-sided tape, scissors, printer paper;
 - a micro-USB data cable for the readout board;
 - `dfu-util` or STM32CubeProgrammer, to flash the readout board (see [Flash the firmware](use/flash.md)).
+
+## What it costs
+
+Example quotes from JLCPCB, October 2026, shipping extra:
+
+- $16 for 5 flex PCBs of an example two-layer sensor, 89 &times; 60&nbsp;mm, at a special-offer price ([Order the sensor](build/order-sensor.md));
+- $378 for 5 assembled 60-pin readout boards ([Order the readout board](build/order-readout.md));
+- about $372 for 5 assembled 30-pin pairs ($205.85 for the top boards and $165.98 for the bottom boards).
+
+## Getting help
+
+Questions and bug reports go to the repository's [issue tracker](https://github.com/opentac/opentac.github.io/issues). For a problem with a board or a sensor, include the output of `uv run opentac info`, run with the board plugged in, and attach the design ZIP if a design is involved.

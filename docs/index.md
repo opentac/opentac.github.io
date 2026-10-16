@@ -12,6 +12,10 @@ hide:
     ot-story        one section: text + one visual (add ot-story--flip to swap sides)
     ot-media        a rounded media frame; data-loop videos autoplay when visible
     ot-strip        a row of clips of different shapes at one height
+    ot-clip         a figure: one ot-media clip with a one-line caption under it
+  A clip below the first screen names its still as data-poster="..." (set by
+  docs/javascripts/opentac.js when it nears the screen); only a clip in the
+  first screen uses poster="...".
   Numbers here come only from the paper text; see results.md for the full list.
 -->
 
@@ -28,13 +32,55 @@ hide:
 </figure>
 </section>
 
+<section class="ot-evidence" aria-labelledby="evidence" markdown>
+<h2 id="evidence" class="ot-section-title">Measured on real sensors</h2>
+
+<div class="ot-strip">
+<figure class="ot-strip__item ot-strip__item--wide">
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/real_sensor.jpg"
+         aria-label="A finger presses and twists a bump sensor; the live map shows normal force as colour and shear as arrows">
+    <source src="assets/loops/real_sensor.mp4" type="video/mp4">
+  </video>
+  <figcaption>A finger presses and twists a sensor. Colour is normal force; arrows are shear.</figcaption>
+</figure>
+<figure class="ot-strip__item ot-strip__item--tall">
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/video/dynamic_range_poster.jpg"
+         aria-label="Pressure readings from about 0.1 newton to about 10 newtons">
+    <source src="assets/video/dynamic_range.mp4" type="video/mp4">
+  </video>
+  <figcaption>From about 0.1&nbsp;N to about 10&nbsp;N.</figcaption>
+</figure>
+<figure class="ot-strip__item ot-strip__item--tall">
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/video/heat_gun_poster.jpg"
+         aria-label="A heat gun blown at the sensor produces no false signal">
+    <source src="assets/video/heat_gun.mp4" type="video/mp4">
+  </video>
+  <figcaption>A heat gun gives no false signal.</figcaption>
+</figure>
+</div>
+
+<div class="ot-keys" markdown>
+
+| | Result in the paper |
+|---|---|
+| Fabrication | 31 sensors laid out by OpenTac-CAD and fabricated; all passed the design-rule check and all work. |
+| Normal and shear | One two-layer flex PCB under a printed bump sheet. On a bumped 4&times;4 patch, R&sup2; of 0.95, 0.93 and 0.96 for F<sub>x</sub>, F<sub>y</sub> and F<sub>z</sub> against a reference force sensor (in-sample). |
+| Readout | On a 1024-taxel skin: 67 full frames/s by raster scanning; 1286 partial frames/s reading 16 taxels per frame (Xampling). |
+| Policy learning | SO-101 arm, normal and shear touch, no vision: 82% success on peg-in-hole and 62% on plug insertion, over 50 trials each. |
+| Grasp control | Dexmate Vega-1 Pro holding a cup under impulsive loading: held in 16 of 20 trials with shear feedback, 9 of 20 with wrist force/torque or normal-only feedback. |
+
+[All results](results.md){ .ot-more }
+
+</div>
+</section>
+
 <section class="ot-video" aria-labelledby="video">
 <h2 id="video" class="ot-section-title">Overview</h2>
 <p class="ot-video__lede">
 OpenTac turns a robot surface into a tactile skin: it designs the flex PCB, the printed case and a machine-readable description of the sensor, and the same description drives the readout, the simulator and data transfer between sensors.
 </p>
 <div class="ot-media ot-media--video">
-  <video controls preload="none" playsinline poster="assets/loops/overview.jpg"
+  <video controls preload="none" playsinline data-poster="assets/loops/overview.jpg"
          aria-label="Three-minute narrated overview of OpenTac, with subtitles in the picture">
     <source src="assets/loops/overview.mp4" type="video/mp4">
   </video>
@@ -54,36 +100,12 @@ Pressing a bump raises all four taxels together; a sideways push tilts it, so th
 
 </div>
 <div class="ot-media">
-  <video data-loop muted loop playsinline preload="none" poster="assets/loops/bump_principle.jpg"
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/bump_principle.jpg"
          aria-label="Animation of the sensor layers and of a bump responding to press, shear and twist">
     <source src="assets/loops/bump_principle.mp4" type="video/mp4">
   </video>
 </div>
 </section>
-
-<div class="ot-strip">
-<figure class="ot-strip__item ot-strip__item--wide">
-  <video data-loop muted loop playsinline preload="none" poster="assets/loops/real_sensor.jpg"
-         aria-label="A finger presses and twists a bump sensor; the live map shows normal force as colour and shear as arrows">
-    <source src="assets/loops/real_sensor.mp4" type="video/mp4">
-  </video>
-  <figcaption>A finger presses and twists a sensor. Colour is normal force; arrows are shear.</figcaption>
-</figure>
-<figure class="ot-strip__item ot-strip__item--tall">
-  <video data-loop muted loop playsinline preload="none" poster="assets/video/dynamic_range_poster.jpg"
-         aria-label="Pressure readings from about 0.1 newton to about 10 newtons">
-    <source src="assets/video/dynamic_range.mp4" type="video/mp4">
-  </video>
-  <figcaption>From about 0.1&nbsp;N to about 10&nbsp;N.</figcaption>
-</figure>
-<figure class="ot-strip__item ot-strip__item--tall">
-  <video data-loop muted loop playsinline preload="none" poster="assets/video/heat_gun_poster.jpg"
-         aria-label="A heat gun blown at the sensor produces no false signal">
-    <source src="assets/video/heat_gun.mp4" type="video/mp4">
-  </video>
-  <figcaption>A heat gun gives no false signal.</figcaption>
-</figure>
-</div>
 
 <section class="ot-story ot-story--flip" aria-labelledby="design" markdown>
 <div class="ot-story__text" markdown>
@@ -98,7 +120,7 @@ Five representative designs compile in 0.7&ndash;2.6&nbsp;s and cover 75&ndash;9
 
 </div>
 <div class="ot-media">
-  <video data-loop muted loop playsinline preload="none" poster="assets/loops/cad_demo.jpg"
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/cad_demo.jpg"
          aria-label="Screen recording of OpenTac-CAD sensorizing a gripper finger: load the model, select the surface, set the cable edge and taxel size, generate, add the case and export">
     <source src="assets/loops/cad_demo.mp4" type="video/mp4">
   </video>
@@ -106,8 +128,8 @@ Five representative designs compile in 0.7&ndash;2.6&nbsp;s and cover 75&ndash;9
 </section>
 
 <figure class="ot-wide" markdown="span">
-  ![All 31 fabricated OpenTac flex PCBs laid out flat, from small fingertip pads to a 1024-taxel square.](assets/figures/fabricated.png){ loading=lazy }
-  <figcaption>The 31 sensors we have fabricated. All passed the design-rule check and work.</figcaption>
+  [![All 31 fabricated OpenTac flex PCBs laid out flat, from small fingertip pads to a 1024-taxel square.](assets/figures/fabricated.jpg){ loading=lazy }](assets/figures/fabricated.jpg)
+  <figcaption>The 31 sensors we have fabricated from OpenTac-CAD layouts. All passed the design-rule check and work.</figcaption>
 </figure>
 
 <section class="ot-story" aria-labelledby="build" markdown>
@@ -134,13 +156,15 @@ The bump sheet and the board come from the same design file, so the cross-shaped
 
 The 60-pin readout board reads up to 30&times;30 taxels in 37&nbsp;&times;&nbsp;34.3&nbsp;mm and plugs straight into USB; a stacked 30-pin pair reads up to 15&times;15 in a 16&nbsp;&times;&nbsp;22.8&nbsp;mm footprint. Each board carries an IMU, and 30-pin boards can be daisy-chained over I2C to read a whole hand from one USB port.
 
+The 30-pin pair has been fabricated and works. The 60-pin board was ordered in October 2026 and has not yet been tested on hardware ([status](hardware.md#status)).
+
 The board stores the sensor's layout in its own flash, so after a one-time setup the live view knows where every taxel is.
 
 [Readout boards](hardware.md){ .ot-more } [Read a sensor](use/sensor.md){ .ot-more }
 
 </div>
 <div class="ot-media ot-media--board">
-  <video data-loop muted loop playsinline preload="none" poster="assets/boards/readout60.png"
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/boards/readout60_poster.jpg"
          aria-label="Turntable render of the 60-pin OpenTac readout board">
     <source src="assets/boards/readout60_spin.mp4" type="video/mp4">
   </video>
@@ -159,12 +183,15 @@ On a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels 
 [Xampling](use/xampling.md){ .ot-more }
 
 </div>
+<figure class="ot-clip">
 <div class="ot-media">
-  <video data-loop muted loop playsinline preload="none" poster="assets/loops/xampling.jpg"
-         aria-label="The same tennis-ball impact in slow motion: raster scanning misses it, Xampling captures it">
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/xampling.jpg"
+         aria-label="Two tennis-ball drops in slow motion: raster scanning misses the impact, Xampling at 32 taxels per frame captures it">
     <source src="assets/loops/xampling.mp4" type="video/mp4">
   </video>
 </div>
+<figcaption>Two 30&nbsp;cm drops at 128&times; slow motion: raster scanning misses the impact; Xampling at 32 taxels per frame catches it. The 996 updates/s on the clip is the rate of that recording.</figcaption>
+</figure>
 </section>
 
 <section class="ot-story ot-story--flip ot-story--pair" aria-labelledby="sim" markdown>
@@ -172,7 +199,7 @@ On a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels 
 
 ## Simulate it, and share data between sensors { #sim }
 
-The manifest that drives the hardware also builds the sensor in simulation. OpenTac-Sim models flat skins: a plain skin with a foam-contact model, and a bump sheet with deformable MuJoCo pads that report normal and shear.
+The manifest that drives the hardware also builds the sensor in simulation. OpenTac-Sim models flat skins. A plain skin uses a foam-contact model with two parameters, fitted on one skin and scored on three others it had not seen. A bump sheet is modelled as rigid bumps on spring joints that report normal force per taxel and shear per bump; that model has not yet been checked against hardware.
 
 OpenTac-Transfer maps calibrated contact between skins of different shape and taxel pitch, in physical coordinates and without paired data. Across four skins it reached a median shape F1 of 0.750, against 0.714 and 0.634 for two array-resizing baselines.
 
@@ -180,18 +207,24 @@ OpenTac-Transfer maps calibrated contact between skins of different shape and ta
 
 </div>
 <div class="ot-pair">
+  <figure class="ot-clip">
   <div class="ot-media">
-    <video data-loop muted loop playsinline preload="none" poster="assets/loops/sim_peg.jpg"
+    <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/sim_peg.jpg"
            aria-label="Simulated peg insertion with deformable tactile pads: the normal-and-shear policy inserts the peg, the normal-only policy fails">
       <source src="assets/loops/sim_peg.mp4" type="video/mp4">
     </video>
   </div>
+  <figcaption>Peg insertion in the simulator of the paper's policy experiments, with deformable pads (not part of this release): the normal-and-shear policy inserts the peg, the normal-only policy does not.</figcaption>
+  </figure>
+  <figure class="ot-clip">
   <div class="ot-media">
-    <video data-loop muted loop playsinline preload="none" poster="assets/loops/transfer.jpg"
+    <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/transfer.jpg"
            aria-label="One block pressed into three skins of different shape and pitch, mapped onto one millimetre grid">
       <source src="assets/loops/transfer.mp4" type="video/mp4">
     </video>
   </div>
+  <figcaption>OpenTac-Transfer: one block pressed into three skins of different shape and pitch, placed on one millimetre grid.</figcaption>
+  </figure>
 </div>
 </section>
 
@@ -206,12 +239,12 @@ We deployed the skins on four robots and a handheld gripper. On an SO-101 arm, p
 
 </div>
 <div class="ot-grid3">
-  <div class="ot-media"><video data-loop muted loop playsinline preload="none" poster="assets/loops/so101.jpg" aria-label="SO-101 plug insertion: the normal-and-shear policy succeeds, the FlexiTac policy fails"><source src="assets/loops/so101.mp4" type="video/mp4"></video></div>
-  <div class="ot-media"><video data-loop muted loop playsinline preload="none" poster="assets/loops/dexmate.jpg" aria-label="Dexmate humanoid holding a cup with two probes, force-only versus force-and-shear feedback"><source src="assets/loops/dexmate.mp4" type="video/mp4"></video></div>
-  <div class="ot-media"><video data-loop muted loop playsinline preload="none" poster="assets/loops/umi_ball.jpg" aria-label="UMI gripper holding a ball that a hand turns, with live normal and shear maps from both finger skins"><source src="assets/loops/umi_ball.mp4" type="video/mp4"></video></div>
-  <div class="ot-media"><video data-loop muted loop playsinline preload="none" poster="assets/loops/ur5.jpg" aria-label="UR5 rolling a ball under normal-force and shear-force controllers"><source src="assets/loops/ur5.mp4" type="video/mp4"></video></div>
-  <div class="ot-media"><video data-loop muted loop playsinline preload="none" poster="assets/loops/yam.jpg" aria-label="Two YAM arms in teleoperation with tactile readout"><source src="assets/loops/yam.mp4" type="video/mp4"></video></div>
-  <div class="ot-media"><video data-loop muted loop playsinline preload="none" poster="assets/loops/umi_external.jpg" aria-label="A hand pushes a screwdriver held by the UMI gripper; the contact shows in both finger skins"><source src="assets/loops/umi_external.mp4" type="video/mp4"></video></div>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/so101.jpg" aria-label="SO-101 plug insertion: the normal-and-shear policy succeeds, the FlexiTac policy fails"><source src="assets/loops/so101.mp4" type="video/mp4"></video></div><figcaption>SO-101 arm, plug insertion from one start pose: the OpenTac-3D policy succeeds, the FlexiTac policy fails. 2&times; speed.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/dexmate.jpg" aria-label="Dexmate humanoid holding a cup with two probes, force-only versus force-and-shear feedback"><source src="assets/loops/dexmate.mp4" type="video/mp4"></video></div><figcaption>Dexmate Vega-1 Pro, bimanual cup holding: normal-only feedback (left) and normal-and-shear feedback (right).</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/umi_ball.jpg" aria-label="UMI gripper holding a ball that a hand turns, with live normal and shear maps from both finger skins"><source src="assets/loops/umi_ball.mp4" type="video/mp4"></video></div><figcaption>UMI gripper: a hand turns the held ball; normal and shear on both finger skins.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/ur5.jpg" aria-label="UR5 rolling a ball under normal-force and shear-force controllers"><source src="assets/loops/ur5.mp4" type="video/mp4"></video></div><figcaption>UR5 ball rolling under a normal-force controller (top) and a shear-force controller (bottom).</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/yam.jpg" aria-label="Two YAM arms in teleoperation with tactile readout"><source src="assets/loops/yam.mp4" type="video/mp4"></video></div><figcaption>YAM arms, bimanual teleoperation with the tactile readout below.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/umi_external.jpg" aria-label="A hand pushes a screwdriver held by the UMI gripper; the contact shows in both finger skins"><source src="assets/loops/umi_external.mp4" type="video/mp4"></video></div><figcaption>UMI gripper, external contact: a hand pushes the held screwdriver, and the force shows in both finger skins.</figcaption></figure>
 </div>
 </section>
 

@@ -87,8 +87,8 @@ Print both in TPU (85&ndash;95A). The bumps must be soft enough to tip; a rigid 
 
 The export has the sensing area's outline twice: `velostat/velostat_cut.dxf` for a laser cutter or cutting plotter, and `velostat/velostat_fold_template.pdf` for scissors. The fold template draws the outline twice, mirrored across a dashed line, so a thin sheet that curls can be held flat between two layers of paper while you cut. It covers the taxels only, not the tail.
 
-1. Print the fold template at 100% and fold it on the dashed line, printed side out.
-2. Trim the folded paper roughly around the shape.
+1. Print the fold template at 100%.
+2. Fold it on the dashed line, printed side out, and trim the folded paper roughly around the shape.
 3. Slide the sheet inside the fold. Both outlines line up, so the cut line shows on both sides.
 4. Cut through paper and sheet together on the line, then peel the paper off.
 
@@ -99,7 +99,7 @@ The export has the sensing area's outline twice: `velostat/velostat_cut.dxf` for
 </figure>
 <figure markdown="span">
   ![The template folded on the dashed line.](../assets/photos/steps/fold-template-folded.jpg){ loading=lazy }
-  <figcaption>1. Folded.</figcaption>
+  <figcaption>2. Folded.</figcaption>
 </figure>
 <figure markdown="span">
   ![The folded template on the black piezoresistive fabric.](../assets/photos/steps/fabric-inside-fold.jpg){ loading=lazy }
@@ -181,7 +181,7 @@ The window draws every taxel where it sits on the sensor, inside the outline you
 
 <figure class="ot-fig">
 <div class="ot-media ot-media--video">
-  <video data-loop muted loop playsinline preload="none" poster="../../assets/loops/real_sensor.jpg"
+  <video data-loop muted loop playsinline preload="none" data-poster="../../assets/loops/real_sensor.jpg"
          aria-label="A finger presses and twists a sensor with a bump sheet, wired to a 30-pin readout board; a live map beside it shows normal force as colour and shear as arrows">
     <source src="../../assets/loops/real_sensor.mp4" type="video/mp4">
   </video>

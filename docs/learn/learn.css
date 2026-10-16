@@ -75,6 +75,7 @@
 
 .otl-ctl {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: .45rem;
   color: var(--otl-ink-2);

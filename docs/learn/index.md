@@ -1,4 +1,5 @@
 ---
+description: Five interactive studies of how an OpenTac skin turns contact into numbers - the taxel stack, normal and shear under one bump, shear and twist fields, transfer between skins, and partial updates with Xampling.
 hide:
   - toc
 ---
@@ -23,7 +24,7 @@ An OpenTac skin is a two-layer flex PCB with a taxel at every row-column crossin
 
 A bump stands on a 2 × 2 block of taxels. Pressing it straight down loads all four; pushing it sideways tilts it, so the two taxels it leans toward read more and the other two read less. The sum h<sub>z</sub> = Σ z and the signed differences h<sub>x</sub> = Σ u·z and h<sub>y</sub> = Σ v·z separate the two, with each taxel's side (u, v = ±1) taken from the manifest's shear groups.
 
-<p class="otl otl-note"><b>Shows:</b> a real 2 × 2 block from each skin's manifest, and a lumped model of the bump (TactileSim's statics, bump-sheet default size) read through the fitted film profiles, including saturation and one side unloading. A press off the bump's centre gives the same differential as shear. <b>Does not show:</b> measured data. Bump stiffness, friction and the calibration that maps h to newtons are left out; the decoded forces invert the model, not a calibration.</p>
+<p class="otl otl-note"><b>Shows:</b> a real 2 × 2 block from each skin's manifest, and a lumped model of the bump (the statics of OpenTac-Sim's bump model, at the bump sheet's default size) read through the fitted film profiles, including saturation and one side unloading. A press off the bump's centre gives the same differential as shear. <b>Does not show:</b> measured data. Bump stiffness, friction and the calibration that maps h to newtons are left out; the decoded forces invert the model, not a calibration.</p>
 
 ## 3. What changes when a contact is sheared or twisted?
 

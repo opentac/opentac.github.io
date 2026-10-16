@@ -9,14 +9,14 @@ Every OpenTac sensor plugs into one of two readout boards. Both run the same fir
 
 <div class="ot-boards">
 <figure>
-  <video data-loop muted loop playsinline preload="none" poster="../assets/boards/readout60.png"
+  <video data-loop muted loop playsinline preload="none" poster="../assets/boards/readout60_poster.jpg"
          aria-label="Turntable render of the 60-pin readout board">
     <source src="../assets/boards/readout60_spin.mp4" type="video/mp4">
   </video>
   <figcaption><strong>60-pin board.</strong> Up to 30&times;30 taxels; 37&nbsp;&times;&nbsp;34.3&nbsp;mm.</figcaption>
 </figure>
 <figure>
-  <video data-loop muted loop playsinline preload="none" poster="../assets/boards/readout30.png"
+  <video data-loop muted loop playsinline preload="none" data-poster="../assets/boards/readout30_poster.jpg"
          aria-label="Turntable render of the stacked 30-pin readout boards">
     <source src="../assets/boards/readout30_spin.mp4" type="video/mp4">
   </video>
@@ -25,6 +25,18 @@ Every OpenTac sensor plugs into one of two readout boards. Both run the same fir
 </div>
 
 Use the **60-pin board** for most sensors. Use the **30-pin pair** where space is tight, such as inside a finger or a small gripper. The limit is per direction: the 60-pin board takes up to 30 rows *and* 30 columns, the 30-pin pair up to 15 and 15.
+
+Until the 60-pin board has been tested on hardware, the 30-pin pair is the verified option, for sensors up to 15&times;15.
+
+## Status { #status }
+
+What has been checked on real boards, as of October 2026.
+
+| Board | Status |
+|---|---|
+| 30-pin pair (two stacked boards) | Fabricated by JLCPCB and working. The daisy chain was tested on three of them behind a Teensy 4.0 (0 errors over 7,213 bus transactions), not yet with sensors attached ([Daisy-chain boards](use/daisy-chain.md)). Firmware `NODE16`, or `NODE16_bus` in a chain. |
+| 60-pin board | Ordered in October 2026 with the files in this repository; not yet tested on hardware. Its firmware, `READOUT60`, builds. |
+| Earlier 70-pin board | Used for the paper's Xampling measurements on a 32&times;32 sensor ([Results](results.md#sampling-budget-and-fast-contacts-xampling)). Firmware `READOUT32`, still supported for boards in use. Not offered for new builds; its files are not in this repository. |
 
 ## What the boards do
 
@@ -57,7 +69,7 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 </ol>
 
 <figure class="ot-fig" markdown="span">
-  ![Exploded render of the 30-pin readout pair: the bottom board with the sensor connector and the top board with the microcontroller, separated above it.](assets/boards/readout30_exploded.png){ loading=lazy }
+  [![Exploded render of the 30-pin readout pair: the bottom board with the sensor connector and the top board with the microcontroller, separated above it.](assets/boards/readout30_exploded.png){ loading=lazy }](assets/boards/readout30_exploded.png)
   <figcaption>The 30-pin pair, pulled apart.</figcaption>
 </figure>
 
@@ -85,4 +97,4 @@ The connector is a bottom-contact ZIF type that takes a 0.30&nbsp;mm thick flex 
 
 Each board's folder has the KiCad project (schematic and layout) and a `production/` folder ready for JLCPCB assembly: a Gerber ZIP, a bill of materials with LCSC part numbers, and a placement (CPL) file. [Order the readout board](build/order-readout.md) walks through the order.
 
-An earlier 70-pin board (READOUT32) is still supported by the firmware for boards already in use, but new designs should use the 60-pin board.
+An earlier 70-pin board (READOUT32) is still supported by the firmware for boards already in use, but new designs should use the 60-pin board or, until it is tested, the 30-pin pair ([Status](#status)).
