@@ -37,7 +37,6 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 <li markdown>
 
 **An IMU on the board.** Each board carries an ST LSM6DSV16BX inertial sensor. The firmware streams its accelerometer for vibration, at up to 1920&nbsp;Hz (960&nbsp;Hz by default), and its orientation as a quaternion computed on the chip by its own sensor-fusion block, at up to 480&nbsp;Hz (240&nbsp;Hz by default). On a gripper or a fingertip, that adds vibration and orientation alongside the tactile frames, from the same board.
-<!-- CHECK: IMU on while scanning (README notes IMU-related spikes on one board; post-drain-wait fix in RELEASE_PLAN workstream A) -->
 
 </li>
 <li markdown>

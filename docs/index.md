@@ -172,8 +172,7 @@ On a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels 
 
 ## Simulate it, and share data between sensors { #sim }
 
-The manifest that drives the hardware also builds the sensor in simulation. OpenTac-Sim models a plain skin with a foam-contact model and a bump sheet with deformable MuJoCo pads that report normal and shear.
-<!-- CHECK: sim scope at release (flat skins only, per RELEASE_PLAN) matches sim.md -->
+The manifest that drives the hardware also builds the sensor in simulation. OpenTac-Sim models flat skins: a plain skin with a foam-contact model, and a bump sheet with deformable MuJoCo pads that report normal and shear.
 
 OpenTac-Transfer maps calibrated contact between skins of different shape and taxel pitch, in physical coordinates and without paired data. Across four skins it reached a median shape F1 of 0.750, against 0.714 and 0.634 for two array-resizing baselines.
 

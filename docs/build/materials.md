@@ -16,7 +16,7 @@ The layer between the taxels and the lid is what turns pressure into a change in
 
 | Material | What it is | Notes | Where |
 |---|---|---|---|
-| **LINQSTAT** | Velostat-like carbon-loaded polyethylene film | did not saturate through 60&nbsp;N in the paper's tests; used for the transfer experiments | [LINQSTAT films at Krayden](https://www.krayden.com/s/conductive-plastic-films) <!-- TODO: grade used in the paper (Krayden lists MVCF-4S50K, MVCF-8S10K, MVCF-8S50K, XVCF-...) --> |
+| **LINQSTAT** | Velostat-like carbon-loaded polyethylene film | did not saturate through 60&nbsp;N in the paper's tests; used for the transfer experiments | [LINQSTAT films at Krayden](https://www.krayden.com/s/conductive-plastic-films) |
 | **Yunjia textile** | piezoresistive conductive fabric, 0.15&nbsp;mm | one of the three materials in the paper's comparison; used in the build-guide sensor | [Faraday Fiber (Yunjia Textile)](https://faradayfiber.com/en-us/products/pressure-sensor-piezoresistive-fabric) |
 | **Chibitronics Velostat** | pressure-sensitive conductive plastic sheet | saturated early in the paper's tests | [Chibitronics shop](https://shop.chibitronics.com/products/conductive-plastic-sheets-velostat-linqstat) |
 
@@ -24,8 +24,8 @@ Cut it with the fold template or the DXF from the export ([Cut the piezoresistiv
 
 ## Printed parts
 
-- **TPU filament, shore 85&ndash;95A**, for the case and the bump sheet. The bumps must be soft to tip under shear; a rigid plastic does not read shear. Any brand that your printer handles works. <!-- TODO: filament brand and print settings used for the paper's bump sheets (layer height, infill, speed) -->
-- **Foam**, optional, as a compliant backing between the case and a rigid mount. <!-- TODO: foam type and thickness from Arik -->
+- **TPU filament, shore 85&ndash;95A**, for the case and the bump sheet. The bumps must be soft to tip under shear; a rigid plastic does not read shear. Any brand that your printer handles works.
+- **Foam**, optional, as a compliant backing between the case and a rigid mount.
 - **Double-sided tape**, thin, to hold the flex PCB in the tray.
 
 ## Cables and extension boards

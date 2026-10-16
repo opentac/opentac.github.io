@@ -7,11 +7,9 @@ description: The OpenTac paper, its abstract, and how to cite it.
 
 **OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable 3D Tactile Sensing**
 
-<!-- AUTHORS TODO: author list and affiliations (the copy we have is the anonymous submission) -->
 *Authors to be added.*
 
-[Paper (arXiv)](#){ .md-button .md-button--primary } [Video](index.md#video){ .md-button } [Code](https://github.com/opentac/opentac.github.io){ .md-button }
-<!-- TODO: replace "#" with the arXiv URL once the paper is posted -->
+[Video](index.md#video){ .md-button .md-button--primary } [Code](https://github.com/opentac/opentac.github.io){ .md-button }
 
 ## Abstract
 
@@ -32,7 +30,6 @@ We present OpenTac, a novel sensor and a full-stack ecosystem for tactile skins 
   url           = {https://opentac.github.io/}
 }
 ```
-<!-- AUTHORS TODO: author list, and eprint + archivePrefix = {arXiv} once the arXiv version is up -->
 
 ## Background
 
