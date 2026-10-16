@@ -5,7 +5,7 @@ description: The OpenTac paper, its abstract, and how to cite it.
 
 # Paper
 
-**OpenTac: Making Tactile Sensor Design Configurable for Robot Learning**
+**OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable 3D Tactile Sensing**
 
 <!-- AUTHORS TODO: author list and affiliations (the copy we have is the anonymous submission) -->
 *Authors to be added.*
@@ -15,7 +15,7 @@ description: The OpenTac paper, its abstract, and how to cite it.
 
 ## Abstract
 
-Tactile observations depend on sensor geometry, material response, measured force components, and acquisition strategy, yet these choices are often fixed by the available hardware. We present OpenTac, an open design ecosystem that makes these choices configurable through a shared fabrication and readout pipeline. OpenTac-CAD compiles a 2D outline, 3D surface, or text request into a fabrication-ready flex-PCB-based tactile sensor and a machine-readable manifest shared by acquisition, simulation, and cross-sensor transfer tools. A structured overlay enables normal and shear sensing. We fabricated 31 functional sensors; five representative designs compile in 0.7&ndash;2.6&nbsp;s and cover 75&ndash;93% of their target regions. Material and taxel-pitch comparisons reveal changes in sensitivity, saturation, and spatial resolution. Adaptive readout on a 1024-taxel skin reaches 1286 partial frames/s versus 67 full frames/s, detecting brief impacts missed by raster scanning. Deployments on four robots demonstrate policy learning and contact-rich control. OpenTac enables researchers to vary tactile sensor design within a shared fabrication and acquisition pipeline.
+We present OpenTac, a novel sensor and a full-stack ecosystem for tactile skins that are highly customizable, scalable, and readily deployed in downstream robot control and learning applications. Our core contribution is twofold. First, we develop a scalable resistive tactile skin with a structured deformable overlay that converts tangential loading into spatially varying pressure. Differential responses across neighboring &lsquo;taxels&rsquo; support decoding of local shear vectors, and the common-mode response provides normal-force information. Second, we provide a highly customizable sensor design tool that is able to automatically generate fabrication files for these tactile skins from 2D outlines and developable 3D surfaces, including from abstract descriptions such as text (e.g., &ldquo;*design a sensor for a size 9 shoe insole*&rdquo;). We develop an ecosystem around the OpenTac sensor, including the CAD design tool, a sensor simulator, cross-sensor transfer, and fast/adaptive data acquisition. We demonstrate the broad applicability of the OpenTac-CAD sensor design tool by designing and fabricating more than 30 sensors across a variety of robot embodiments. We characterize the three-dimensional tactile fields produced by OpenTac with a commercial, high-precision force/torque sensor. We demonstrate the broad applicability of 3D tactile sensing across contact-rich feedback control and manipulation policy learning on four real-world robot embodiments. Additionally, adaptive acquisition enables kilohertz-rate partial readouts, exceeding full-array raster scanning on the same sensor by 19.2&times; at 16 sampled taxels per update on a 1024-taxel skin.
 
 <figure class="ot-fig" markdown="span">
   ![The OpenTac ecosystem: tactile skins on robot hands, grippers and feet; OpenTac-CAD turning a text request, a 2D drawing or a 3D model into Gerbers, a shear-bump case and a sensor manifest; OpenTac-Sim, Transfer and Xampling using the manifest; deployments on four robots.](assets/figures/overview.jpg){ loading=lazy }
@@ -26,7 +26,7 @@ Tactile observations depend on sensor geometry, material response, measured forc
 
 ```bibtex
 @misc{opentac2026,
-  title         = {{OpenTac}: Making Tactile Sensor Design Configurable for Robot Learning},
+  title         = {{OpenTac}: An Open Ecosystem for Customizable, Scalable, and Transferable {3D} Tactile Sensing},
   author        = {TODO},
   year          = {2026},
   eprint        = {TODO},
