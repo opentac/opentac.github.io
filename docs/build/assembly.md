@@ -61,7 +61,7 @@ If it does not fit, change the design and print again.
 
 ## Print the case { #print-the-case }
 
-In OpenTac-CAD, after **Generate PCB**, tick **Add a printed case**, choose the top piece and press **Generate case**, then **Download bottom** and **Download top**.
+The case STLs are in the `case/` folder of the ZIP from **Download ZIP**: the bottom and three lids. Print the bottom and one lid. To change the case settings or preview the parts first, tick **Add a printed case** in OpenTac-CAD, choose the top piece and press **Generate case**. **Download bottom** and **Download top** save single parts, and the next **Download ZIP** uses the same settings.
 
 - **Bottom (tray):** a shallow pocket cut to the board's exact outline, holding the flex and the piezoresistive layer.
 - **Top:** *Flat*, *Hatched*, or *Shear-sensing bumps*. For shear, choose bumps: one bump sits over each 2&times;2 group of taxels.

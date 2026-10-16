@@ -17,8 +17,12 @@ description: Every file in the OpenTac-CAD download, what it is for, and the QR 
 | `printable_1to1.pdf` | full-size paper template of the board | checking the fit before ordering |
 | `velostat/velostat_cut.dxf` | outline of the sensing area, in mm | laser-cutting the piezoresistive layer |
 | `velostat/velostat_fold_template.pdf` | the same outline, mirrored about a fold line | cutting the piezoresistive layer by hand |
+| `case/*_case_bottom.stl` | the bottom of the printed case | 3D printing |
+| `case/*_case_top_bumps.stl` | the lid with shear-sensing bumps | 3D printing |
+| `case/*_case_top_flat.stl`, `case/*_case_top_hatched.stl` | the flat and hatched lids, which fit the same bottom | 3D printing |
+| `case/README.txt` | which lid is the primary one, the case settings used, and any warnings | choosing what to print |
 
-The printed case is downloaded separately, as two STL files (**Download bottom**, **Download top**), after **Generate case**.
+The `*` is the design name. Print the bottom and one lid. The case is built from the settings in the case panel, or its defaults if you have not opened it. The primary lid is the one you last chose there, or the bumped lid if you have not chosen one. The case is added when you press **Download ZIP**, which takes a few seconds more on a typical board and longer on a large one. If it cannot be built for a design, the ZIP still downloads without it, and a note under the button says why.
 
 ## The Gerbers
 

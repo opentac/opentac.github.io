@@ -78,6 +78,8 @@ Tick **Add a printed case** after generating. The case is two TPU parts cut from
 
 Print it soft (TPU around 85&ndash;95A); a rigid lid does not tip and does not read shear. The case fits one exact board, so pressing Generate again clears it on purpose.
 
+You do not have to open the case panel to get a case: **Download ZIP** puts the bottom and all three lids in the ZIP's `case/` folder, built with the panel's settings (or its defaults). See [What the export contains](export.md).
+
 ## Before you order
 
 1. Give the design a **name** in the download bar before generating: it is printed on the board.
