@@ -21,8 +21,9 @@ version of the firmware:
 uv run opentac flash --bin firmware/prebuilt/NODE16_bus.bin
 ```
 
-The bus firmware still answers `B` on USB, so the same command reflashes it
-later.
+A new board has no firmware yet: hold its BOOT0 button while plugging it in,
+then run the same command. The bus firmware still answers `B` on USB, so the
+same command reflashes it later.
 
 In the Arduino IDE, add a file named `build_opt.h` next to
 `opentac_readout.ino` containing this one line, then upload as in

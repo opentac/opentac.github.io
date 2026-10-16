@@ -5,8 +5,8 @@ A readout board runs one firmware, built for that board:
 | Board | Firmware | File |
 |---|---|---|
 | 60-pin board | `READOUT60` | `firmware/prebuilt/READOUT60.bin` |
-| 30-pin board | `NODE16` | `firmware/prebuilt/NODE16.bin` |
-| 30-pin board in a daisy chain | `NODE16` bus node | `firmware/prebuilt/NODE16_bus.bin` ([daisy chain](daisy-chain.md)) |
+| 30-pin pair | `NODE16` | `firmware/prebuilt/NODE16.bin` |
+| 30-pin pair in a daisy chain | `NODE16` bus node | `firmware/prebuilt/NODE16_bus.bin` ([daisy chain](daisy-chain.md)) |
 | earlier 70-pin board | `READOUT32` | `firmware/prebuilt/READOUT32.bin` |
 
 Flashing goes over the board's own USB cable. Once a board runs OpenTac
@@ -20,6 +20,7 @@ There are three ways to flash. The first is the simplest.
 Install one flashing tool:
 
 - **dfu-util**: `brew install dfu-util` (macOS) or `sudo apt install dfu-util` (Linux).
+  On Linux, also do the one-time setup in [On Linux](#on-linux).
 - or **STM32CubeProgrammer**, from st.com. Use this on Windows.
 
 Plug the board in by USB, then:
@@ -37,19 +38,48 @@ uv run opentac flash --dry-run
 ```
 
 **A new board** has no firmware, so it cannot restart itself into the
-bootloader. Unplug it, hold the BOOT0 button while plugging it back in,
+bootloader, and `opentac flash` reports that no board answered and none is
+in the bootloader. Unplug it, hold the BOOT0 button while plugging it back in,
 release it, and name the board:
 
 ```sh
-uv run opentac flash --board readout60     # or node16, readout32
+uv run opentac flash --board readout60     # the 60-pin board
+uv run opentac flash --board node16        # the 30-pin pair
 ```
 
 Do the same if the board's firmware does not answer, or if the board never
-appears in the bootloader.
+appears in the bootloader. A board in the bootloader cannot say which board it
+is, so `--board` is needed there. `--board` also takes `60pin` and `30pin`
+(and `readout32` or `70pin` for the earlier 70-pin board). With `--board`,
+`--dry-run` prints the command it would run even with no board attached.
 
 dfu-util may print `Error during download get_status` after
 `Submitting leave request`. This is harmless: the firmware is written and the
 board has restarted.
+
+The prebuilt files are also packed into the Python wheel, so `opentac flash`
+works when OpenTac is installed with pip instead of run from this repository.
+
+### On Linux
+
+Two one-time steps let your user reach the board without `sudo`.
+
+The board's serial port (`/dev/ttyACM0`) belongs to the `dialout` group. If
+`opentac` says it found the port but cannot open it (permission denied), add
+yourself to the group, then log out and back in:
+
+```sh
+sudo usermod -aG dialout $USER
+```
+
+The bootloader (USB id `0483:df11`) needs a udev rule. If `opentac flash`
+says a board is in the bootloader but this user may not open it, add the rule,
+then unplug and replug the board:
+
+```sh
+echo 'SUBSYSTEMS=="usb", ATTRS{idVendor}=="0483", ATTRS{idProduct}=="df11", MODE="0666"' | sudo tee /etc/udev/rules.d/50-opentac-dfu.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
 
 ## 2. Arduino IDE
 

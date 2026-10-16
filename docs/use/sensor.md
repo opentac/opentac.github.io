@@ -4,6 +4,10 @@ You need a readout board with the OpenTac firmware ([flash it](flash.md)), a
 sensor plugged into it, and that sensor's manifest: the `manifest.json` in the
 design `.zip` from OpenTac-CAD.
 
+On Linux, your user must be in the `dialout` group to open the board's port
+(`sudo usermod -aG dialout $USER`, then log out and back in; see
+[On Linux](flash.md#on-linux)).
+
 ## Which board
 
 OpenTac-CAD's *readout board* setting picks the board a sensor is made for. A
