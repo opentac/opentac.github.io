@@ -5,6 +5,11 @@
 -#}
 {% extends "main.html" %}
 
+{# The site name alone, not "OpenTac - OpenTac". #}
+{% block htmltitle %}
+  <title>{{ config.site_name }}</title>
+{% endblock %}
+
 {% block tabs %}
   {{ super() }}
   <section class="ot-hero" aria-labelledby="ot-hero-title">
