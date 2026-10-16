@@ -143,7 +143,6 @@ The export has the sensing area's outline twice: `velostat/velostat_cut.dxf` for
   <figcaption>Why no jig is needed: the bump sheet and the board come from the same design file, so the cross-shaped bases of the bumps seat in the gaps between taxels.</figcaption>
 </figure>
 
-<!-- CHECK: connector photos show the earlier 70-pin board; replace with the 60-pin board once photographed -->
 
 ## Read the sensor { #read-the-sensor }
 
