@@ -5,7 +5,7 @@ description: What the OpenTac paper measured, with its figures - fabrication and
 
 # Results
 
-The paper's findings, with its figures, and two durability tests that are not in the paper ([Repeated pressing over 10 hours](#repeated-pressing) and [Durability](#durability)). Every other number on this page is from the [paper](paper.md).
+The [paper](paper.md)'s findings, with its figures, and two durability tests: [Repeated pressing over 10 hours](#repeated-pressing) and [Durability](#durability).
 
 ## Demos
 
@@ -184,6 +184,14 @@ The paper's policy-learning simulation is a MuJoCo SO-101 peg-insertion environm
   [![Simulated SO-101 arm following a trajectory toward an insertion target, with blue spheres and yellow cubes for training and evaluation positions; enlarged views of the fixed and moving gripper pads with per-bump shear arrows at 8.2 s and 13.5 s; on the right, the SO-101 grasping a can and two ALOHA arms in a dual-arm insertion.](assets/figures/sim_scenes.webp){ loading=lazy width="1600" height="920" }](assets/figures/sim_scenes.webp)
   <figcaption>OpenTac-Sim scenes from the paper, in MuJoCo with CAD-derived tetrahedral bump pads. Left: the SO-101 follows a trajectory toward the insertion target; blue spheres and yellow cubes mark training and evaluation positions, and the enlarged views show the shear at each bump of the fixed and moving pads at two moments. Right: grasping a can with the SO-101, and dual-arm insertion with ALOHA.</figcaption>
 </figure>
+
+Simulated insertion success (%), from the paper. Adding shear to normal touch raised success from 74% to 86% on peg insertion and from 18% to 90% on plug insertion, and on the unfixtured dual-arm ALOHA task from 1 to 3 of 30 trials. Peg insertion uses a shear-based executor guard; ALOHA uses none.
+
+| Tactile input | Peg | Plug | ALOHA |
+|---|---|---|---|
+| Proprioception | 26 | 0 | 0 |
+| + normal | 74 | 18 | 3.3 |
+| + normal and shear | **86** | **90** | **10.0** |
 
 <figure class="ot-fig" markdown="span" style="max-width: 32rem">
   [![A simulated robot arm with tactile pads holds a can; arcs trace paths of objects from the table into a basket that holds a red ball and a cube.](assets/figures/sim_sorting.webp){ loading=lazy width="1200" height="785" }](assets/figures/sim_sorting.webp)
