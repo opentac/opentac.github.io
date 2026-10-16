@@ -9,7 +9,7 @@ OpenTac-CAD turns a shape into a sensor you can order. It packs taxels (sensing 
 
 <div class="ot-media" style="margin: 1.2em 0 1.6em">
   <video data-loop muted loop playsinline preload="none" poster="../../assets/loops/cad_demo.jpg"
-         aria-label="Screen recording: load a gripper finger, select its contact surface, set the cable edge and taxel size, generate the board and case, export">
+         aria-label="Screen recording: load a gripper finger, click its contact surface, set the cable edge and taxel size, generate the board, then the printed case">
     <source src="../../assets/loops/cad_demo.mp4" type="video/mp4">
   </video>
 </div>

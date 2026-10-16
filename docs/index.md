@@ -90,7 +90,7 @@ OpenTac turns a robot surface into a tactile skin: it designs the flex PCB, the 
 </p>
 <div class="ot-media ot-media--video">
   <video controls preload="none" playsinline data-poster="assets/loops/overview.jpg"
-         aria-label="Three-minute narrated overview of OpenTac, with subtitles in the picture">
+         aria-label="Four-minute narrated overview of OpenTac, with subtitles in the picture">
     <source src="assets/loops/overview.mp4" type="video/mp4">
   </video>
 </div>
@@ -130,7 +130,7 @@ Five representative designs compile in 0.7&ndash;2.6&nbsp;s and cover 75&ndash;9
 </div>
 <div class="ot-media">
   <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/cad_demo.jpg"
-         aria-label="Screen recording of OpenTac-CAD sensorizing a gripper finger: load the model, select the surface, set the cable edge and taxel size, generate, add the case and export">
+         aria-label="Screen recording of OpenTac-CAD sensorizing a gripper finger: load the model, click the contact surface, set the cable edge and taxel size, generate the board, then the printed case">
     <source src="assets/loops/cad_demo.mp4" type="video/mp4">
   </video>
 </div>
