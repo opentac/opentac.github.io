@@ -61,32 +61,40 @@ Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com
 <figure class="ot-clip">
 <div class="ot-media ot-media--4x3">
   <video data-loop muted loop playsinline preload="none" data-poster="../assets/boards/imu_poster.jpg"
-         aria-label="Recording from a gripper finger: a readout board turned by the quaternion from its IMU, the angle it has turned, its accelerometer trace, and the tactile frame from the same board, as the gripper turns toward a can, grasps it while a hand moves the can, and turns back.">
+         aria-label="Recording from a gripper finger: a readout board turned by the quaternion from its IMU, the angle it has turned, the vibration from its accelerometer with gravity removed, and the tactile frame from the same board, as the gripper turns toward a can, grasps it while a hand moves the can, and turns back.">
     <source src="../assets/boards/imu.mp4" type="video/mp4">
   </video>
 </div>
-<figcaption>Recorded on a gripper finger turning toward a can and grasping it, at recorded speed: the board's orientation from its IMU's quaternion, its accelerometer, and the tactile frame from the same board.</figcaption>
+<figcaption>Recorded on a gripper finger turning toward a can and grasping it, at recorded speed: the board's orientation from its IMU's quaternion, the vibration its accelerometer picks up, and the tactile frame from the same board.</figcaption>
 </figure>
 
 </li>
 <li markdown>
 
-**Daisy-chain over I2C.** Each board has two 4-pin JST-SH connectors (5&nbsp;V, GND, SCL, SDA). Chain several 30-pin boards with JST-SH cables and read them all through one controller, a Teensy 4.0, to cover a whole hand or several fingers from one USB port. See [Daisy-chain boards](use/daisy-chain.md). The 60-pin board has the connectors, but its firmware does not run as a chain node yet: a 30 x 30 sensor does not fit the node's memory.
+**Daisy-chain over I2C.** Each board has two 4-pin JST-SH connectors (5&nbsp;V, GND, SCL, SDA). Chain several 30-pin boards with JST-SH cables and read them all through one controller, a Teensy 4.0, to cover a whole hand or several fingers from one USB port. See [Daisy-chain boards](use/daisy-chain.md). Chaining runs on the 30-pin boards; the 60-pin board has the connectors too, but the frame buffers for a 30&nbsp;&times;&nbsp;30 sensor do not fit in a chain node's memory.
 
 <figure class="ot-clip">
 <div class="ot-media ot-media--4x3">
   <video data-loop muted loop playsinline preload="none" data-poster="../assets/boards/daisy_chain_poster.jpg"
-         aria-label="Animation: three stacked 30-pin readout boards are set down and chained with JST-SH cables to a Teensy 4.0; one USB cable runs from the Teensy to the computer, where opentac view shows one panel per board, and each board's LED lights in its panel's colour.">
+         aria-label="Illustration: close up, JST-SH cable plugs go into the sockets of stacked 30-pin readout boards; the view pulls back to three boards chained to a Teensy 4.0, whose USB cable runs to the computer, where opentac view shows one panel per board, and each board's LED lights in its panel's colour.">
     <source src="../assets/boards/daisy_chain.mp4" type="video/mp4">
   </video>
 </div>
-<figcaption>Animation: three 30-pin pairs chained with JST-SH cables to a Teensy 4.0, the only board on USB. Each board's LED takes its panel's colour in <code>opentac view</code>; the contacts are made up.</figcaption>
+<figcaption>Illustration: three 30-pin pairs chained with JST-SH cables to a Teensy 4.0, the only board on USB. Each board's LED takes its panel's colour in <code>opentac view</code>.</figcaption>
 </figure>
 
 </li>
 <li markdown>
 
 **Plugs straight into USB.** A micro-USB cable connects the board to the computer. It shows up as a serial port, with no adapter or programmer, and the same cable flashes new firmware ([Flash the firmware](use/flash.md)).
+
+<figure class="ot-clip">
+<div class="ot-media">
+  <img src="../assets/boards/usb.jpg" width="1280" height="640" loading="lazy"
+       alt="Render of the 60-pin readout board and the stacked 30-pin pair, each with a micro-USB cable plugged into the micro-USB socket at its edge.">
+</div>
+<figcaption>The 60-pin board and the 30-pin pair, each with a micro-USB cable plugged in.</figcaption>
+</figure>
 
 </li>
 <li markdown>
