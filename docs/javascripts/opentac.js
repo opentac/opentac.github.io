@@ -64,8 +64,13 @@
           if (v.preload === "none") v.preload = "auto";
           var p = v.play();
           // A missing or unplayable file must not leave an error in the console
-          // loop; show the controls so the poster still reads as a video.
-          if (p && p.catch) p.catch(function () { v.controls = true; });
+          // loop; show the controls so the poster still reads as a video. A play
+          // that a pause interrupted (scrolling past quickly) rejects with an
+          // AbortError: that clip is fine and plays when it comes back.
+          if (p && p.catch) p.catch(function (err) {
+            if (err && err.name === "AbortError") return;
+            v.controls = true;
+          });
         } else {
           v.pause();
         }
