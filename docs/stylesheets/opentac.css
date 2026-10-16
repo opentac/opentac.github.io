@@ -401,6 +401,12 @@
   line-height: 1.5em;
   text-align: center;
 }
+/* A feature's clip or picture sits under its text, across the text column. */
+.md-typeset .ot-features figure.ot-clip,
+.md-typeset .ot-features figure.ot-fig { margin: 1em 0 0; }
+.md-typeset .ot-features figure.ot-fig { text-align: left; }
+.md-typeset .ot-features figure.ot-fig img { max-width: min(100%, 18rem); }
+.md-typeset .ot-media--4x3 video { aspect-ratio: 4 / 3; }
 .md-typeset .ot-boards {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -547,6 +553,8 @@
   .md-typeset .ot-grid3 { grid-template-columns: 1fr; }
   .md-typeset .ot-grid2 { grid-template-columns: 1fr; }
   .md-typeset .ot-boards { grid-template-columns: 1fr; }
+  /* on a phone a feature's clip also takes the column of the number badges */
+  .md-typeset .ot-features figure.ot-clip { margin-left: -2.2em; width: calc(100% + 2.2em); max-width: none; }
   .md-typeset .ot-photos,
   .md-typeset .ot-photos--three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .md-typeset .ot-demos { gap: .8rem; }

@@ -43,15 +43,45 @@ Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com
 
 **Zero-potential readout, so taxels don't leak into each other.** A sensor is a passive grid: every taxel connects one row to one column. Read it naively, and current from the driven row also finds paths through other pressed taxels into the measured column, so a press shows up where nobody touched (crosstalk, or "ghosting"). The board drives one row to the supply voltage and holds every other row at ground. A multiplexer connects one column to an inverting amplifier whose + input is grounded, so that column sits at virtual ground: the same potential as the idle rows. The other taxels on that column have no voltage across them and carry no current, and current leaking through other pressed taxels drains into the grounded rows rather than into the amplifier. Each reading is the one taxel at the driven row and the selected column.
 
+<figure class="ot-clip">
+<div class="ot-media ot-media--4x3">
+  <video data-loop muted loop playsinline preload="none" data-poster="../assets/boards/zero_potential_poster.jpg"
+         aria-label="Animation: a 4 by 4 sensor with three taxels pressed is scanned twice. With the other rows left open, current reaches the amplifier through the three pressed taxels and an unpressed taxel reads as pressed; with the other rows held at 0 V, that current drains into the grounded row and the unpressed taxel reads zero.">
+    <source src="../assets/boards/zero_potential.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>Animation: a 4&nbsp;&times;&nbsp;4 sensor with three taxels pressed, read with the other rows left open, then held at 0&nbsp;V. The currents come from a resistor model of the grid, as in <a href="../learn/">How it works</a>.</figcaption>
+</figure>
+
 </li>
 <li markdown>
 
 **An IMU on the board.** Each board carries an ST LSM6DSV16BX inertial sensor. The firmware streams its accelerometer for vibration, at up to 1920&nbsp;Hz (960&nbsp;Hz by default), and its orientation as a quaternion computed on the chip by its own sensor-fusion block, at up to 480&nbsp;Hz (240&nbsp;Hz by default). On a gripper or a fingertip, that adds vibration and orientation alongside the tactile frames, from the same board.
 
+<figure class="ot-clip">
+<div class="ot-media ot-media--4x3">
+  <video data-loop muted loop playsinline preload="none" data-poster="../assets/boards/imu_poster.jpg"
+         aria-label="Recording from a gripper finger: a readout board turned by the quaternion from its IMU, the angle it has turned, its accelerometer trace, and the tactile frame from the same board, as the gripper turns toward a can, grasps it while a hand moves the can, and turns back.">
+    <source src="../assets/boards/imu.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>Recorded on a gripper finger turning toward a can and grasping it, at recorded speed: the board's orientation from its IMU's quaternion, its accelerometer, and the tactile frame from the same board.</figcaption>
+</figure>
+
 </li>
 <li markdown>
 
 **Daisy-chain over I2C.** Each board has two 4-pin JST-SH connectors (5&nbsp;V, GND, SCL, SDA). Chain several 30-pin boards with JST-SH cables and read them all through one controller, a Teensy 4.0, to cover a whole hand or several fingers from one USB port. See [Daisy-chain boards](use/daisy-chain.md). The 60-pin board has the connectors, but its firmware does not run as a chain node yet: a 30 x 30 sensor does not fit the node's memory.
+
+<figure class="ot-clip">
+<div class="ot-media ot-media--4x3">
+  <video data-loop muted loop playsinline preload="none" data-poster="../assets/boards/daisy_chain_poster.jpg"
+         aria-label="Animation: three stacked 30-pin readout boards are set down and chained with JST-SH cables to a Teensy 4.0; one USB cable runs from the Teensy to the computer, where opentac view shows one panel per board, and each board's LED lights in its panel's colour.">
+    <source src="../assets/boards/daisy_chain.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>Animation: three 30-pin pairs chained with JST-SH cables to a Teensy 4.0, the only board on USB. Each board's LED takes its panel's colour in <code>opentac view</code>; the contacts are made up.</figcaption>
+</figure>
 
 </li>
 <li markdown>
@@ -63,13 +93,13 @@ Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com
 
 **Small.** The 60-pin board is 37&nbsp;&times;&nbsp;34.3&nbsp;mm. The 30-pin version splits the circuit over two 16&nbsp;&times;&nbsp;22.8&nbsp;mm boards stacked on 1.27&nbsp;mm headers: the bottom board carries the sensor connector and the analog front end, the top board the microcontroller, IMU, USB and daisy-chain connectors.
 
-</li>
-</ol>
-
 <figure class="ot-fig" markdown="span">
   [![Exploded render of the 30-pin readout pair: the bottom board with the sensor connector and the top board with the microcontroller, separated above it.](assets/boards/readout30_exploded.png){ loading=lazy }](assets/boards/readout30_exploded.png)
   <figcaption>The 30-pin pair, pulled apart.</figcaption>
 </figure>
+
+</li>
+</ol>
 
 ## Specifications
 
