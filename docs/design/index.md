@@ -43,7 +43,7 @@ The robot gallery on the start screen has surfaces of real grippers, hands and f
 
 **Cable edge.** The edge where the flex tail leaves the sensor to plug into the readout board. Generate stays blocked until you set it, so a stray stroke never becomes the connector edge. Pick a straight edge at least as wide as the connector, on the side where the cable can run.
 
-**Tail.** The tail is cut down to the traces it carries and widens back to the connector's width just before the connector, with rounded corners where it leaves the board. It is narrowed after routing, so it never costs a taxel. **Tail length** sets how far the connector sits from the board; a tail too short to narrow and widen again stays as wide as the connector.
+**Tail.** The tail is cut down to the traces it carries and widens back to the connector's width just before the connector, with rounded corners where it leaves the board. It is narrowed after routing, so it never costs a taxel. **Tail length** sets how far the connector sits from the board. Left blank it is automatic: long enough for the tail to narrow to its traces and for the [printed case](../build/index.md#the-printed-case) to clear the connector, and at least 12 mm. A length typed in is used as given.
 
 **Taxel size and pitch.** The default is 4&nbsp;mm taxels on a 4.2&nbsp;mm pitch. Smaller pitch gives finer spatial resolution and more taxels; larger pitch gives more signal per taxel (see [Results](../results.md#material-and-spatial-response)). Width and height are set independently, so an elongated shape can have elongated taxels. Keep both above 1.5&nbsp;mm. You can instead give the rows and columns you want and let the tool solve the taxel size (grow mode only).
 
