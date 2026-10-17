@@ -53,7 +53,7 @@ columns red (top copper) and rows blue (bottom copper); click one to open it ful
 </figure>
 <figure class="ot-design" markdown="span">
 [![AgileX Piper jaw: board preview, 102 taxels, 15 × 11 grid](../designs/files/agilex-piper-jaw-15x11.svg){ width="126" height="180" loading="lazy" }](../designs/files/agilex-piper-jaw-15x11.svg)
-<figcaption markdown="span">**AgileX Piper jaw**<br>102 taxels, 15 × 11 grid<br><span class="ot-nowrap">4.2 mm pitch,</span> <span class="ot-nowrap">30-pin board</span><br>[Download ZIP (582 KB)](../designs/files/agilex-piper-jaw-15x11.zip)</figcaption>
+<figcaption markdown="span">**AgileX Piper jaw**<br>102 taxels, 15 × 11 grid<br><span class="ot-nowrap">4.2 mm pitch,</span> <span class="ot-nowrap">30-pin board</span><br>[Download ZIP (583 KB)](../designs/files/agilex-piper-jaw-15x11.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Finger strip 16 x 6: board preview, 96 taxels, 16 × 6 grid](../designs/files/finger-16x06.svg){ width="78" height="180" loading="lazy" }](../designs/files/finger-16x06.svg)
@@ -81,7 +81,7 @@ columns red (top copper) and rows blue (bottom copper); click one to open it ful
 </figure>
 <figure class="ot-design" markdown="span">
 [![Large 32 x 32 array: board preview, 900 taxels, 30 × 30 grid](../designs/files/large-32x32.svg){ width="170" height="180" loading="lazy" }](../designs/files/large-32x32.svg)
-<figcaption markdown="span">**Large 32 x 32 array**<br>900 taxels, 30 × 30 grid<br><span class="ot-nowrap">4.244 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1661 KB)](../designs/files/large-32x32.zip)</figcaption>
+<figcaption markdown="span">**Large 32 x 32 array**<br>900 taxels, 30 × 30 grid<br><span class="ot-nowrap">4.244 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1662 KB)](../designs/files/large-32x32.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![YUBI finger pad (variant): board preview, 164 taxels, 8 × 27 grid](../designs/files/yubi-finger-pad-08x27-b.svg){ width="240" height="157" loading="lazy" }](../designs/files/yubi-finger-pad-08x27-b.svg)
@@ -98,7 +98,7 @@ columns red (top copper) and rows blue (bottom copper); click one to open it ful
 <div class="ot-designs" markdown>
 <figure class="ot-design" markdown="span">
 [![Unitree B2 foot (long): board preview, 390 taxels, 30 × 13 grid](../designs/files/unitree-b2-foot-long.svg){ width="91" height="180" loading="lazy" }](../designs/files/unitree-b2-foot-long.svg)
-<figcaption markdown="span">**Unitree B2 foot (long)**<br>390 taxels, 30 × 13 grid<br><span class="ot-nowrap">3.289 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1070 KB)](../designs/files/unitree-b2-foot-long.zip)</figcaption>
+<figcaption markdown="span">**Unitree B2 foot (long)**<br>390 taxels, 30 × 13 grid<br><span class="ot-nowrap">3.289 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1071 KB)](../designs/files/unitree-b2-foot-long.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Unitree B2 foot (short): board preview, 390 taxels, 13 × 30 grid](../designs/files/unitree-b2-foot-short.svg){ width="240" height="154" loading="lazy" }](../designs/files/unitree-b2-foot-short.svg)

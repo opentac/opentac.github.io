@@ -482,7 +482,7 @@
   "cable_length_mm": 12.0,
   "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 582,
+  "zip_kb": 583,
   "case_warnings": []
  },
  {
@@ -652,7 +652,7 @@
   "cable_length_mm": 16.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1661,
+  "zip_kb": 1662,
   "case_warnings": []
  },
  {
@@ -724,7 +724,7 @@
   "cable_length_mm": 17.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1070,
+  "zip_kb": 1071,
   "case_warnings": []
  },
  {
