@@ -42,7 +42,7 @@ The robot gallery on the start screen has surfaces of real grippers, hands and f
 <figure class="ot-fig ot-fig--clear ot-screen" markdown>
 <div class="ot-shots" markdown>
 <figure markdown="span">
-  [![The Choose how to start cards on OpenTac-CAD's start screen: Draw a shape, Import a DXF, Import an STL, and Continue a saved design, each with its button.](../assets/screens/cad_ways_to_start.webp){ loading=lazy width="988" height="483" }](../assets/screens/cad_ways_to_start.webp)
+  [![The Other ways to start cards on OpenTac-CAD's start screen: Draw an outline, Import a DXF, Import an STL, and Open a saved design, each with its button.](../assets/screens/cad_ways_to_start.webp){ loading=lazy width="988" height="483" }](../assets/screens/cad_ways_to_start.webp)
   <figcaption>The ways in</figcaption>
 </figure>
 <figure markdown="span">
@@ -127,7 +127,7 @@ You do not have to open the case panel to get a case: **Download ZIP** puts the 
 ## Before you order
 
 <figure class="ot-fig ot-fig--clear ot-screen" markdown="span">
-  ![OpenTac-CAD's download bar: a Name field holding Yubi_finger_pad, the printable size, and buttons for the printable PDF, the velostat DXF, the velostat fold PDF and the ZIP.](../assets/screens/cad_download_bar.webp){ loading=lazy width="925" height="78" }
+  ![OpenTac-CAD's download bar: a Name field holding Yubi_finger_pad, the printable size, and buttons for the printable PDF, the Layer DXF and the Layer fold PDF (cut files for the piezoresistive layer), and the ZIP.](../assets/screens/cad_download_bar.webp){ loading=lazy width="925" height="78" }
   <figcaption>The download bar, at the foot of the tool: the name field and the downloads.</figcaption>
 </figure>
 
