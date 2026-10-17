@@ -127,7 +127,7 @@ You do not have to open the case panel to get a case: **Download ZIP** puts the 
 ## Before you order
 
 <figure class="ot-fig ot-fig--clear ot-screen" markdown="span">
-  ![OpenTac-CAD's download bar: a Name field holding Yubi_finger_pad, the printable size, and buttons for the printable PDF, the Layer DXF and the Layer fold PDF (cut files for the piezoresistive layer), and the ZIP.](../assets/screens/cad_download_bar.webp){ loading=lazy width="925" height="78" }
+  ![OpenTac-CAD's download bar: a Name field holding Yubi_finger_pad, the printable size, and buttons for the printable PDF, the piezo layer DXF and fold PDF (cut files for the piezoresistive layer), and the ZIP.](../assets/screens/cad_download_bar.webp){ loading=lazy width="925" height="78" }
   <figcaption>The download bar, at the foot of the tool: the name field and the downloads.</figcaption>
 </figure>
 
