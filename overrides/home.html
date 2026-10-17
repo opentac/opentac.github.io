@@ -44,12 +44,6 @@
         <span class="ot-author"><sup>2</sup>Johns Hopkins University</span>
         <span class="ot-author"><sup>†</sup>Equal advising</span>
       </p>
-      <p class="ot-hero__contact">
-        Contact:
-        {%- for name, mail in [("Ariel Slepyan", "aslepyan@mit.edu"), ("Krishna Murthy Jatavallabhula", "kmj@jhu.edu"), ("Nitish V. Thakor", "nitish@jhu.edu")] %}
-        <span class="ot-author">{{ name }}, <a href="mailto:{{ mail }}">{{ mail }}</a></span>{% if not loop.last %};{% endif %}
-        {%- endfor %}
-      </p>
       <p class="ot-hero__lede">
         Open tools to design, fabricate, read and simulate flex-PCB tactile skins
         that sense normal and shear force, shaped to any robot surface.
