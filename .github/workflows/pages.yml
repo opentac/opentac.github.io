@@ -44,6 +44,9 @@ jobs:
           mkdir -p site/cad
           rsync -a --exclude 'tests/' opentac/cad/web/ site/cad/
           test -f site/cad/index.html
+          # Each release gets its own file URLs, so a browser never mixes a
+          # new script with an older cached module (Pages caches for 10 min).
+          python3 scripts/stamp_cad_assets.py site/cad "${GITHUB_SHA::8}"
 
       - uses: actions/configure-pages@v5
 
