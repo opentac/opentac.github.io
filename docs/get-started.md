@@ -25,7 +25,7 @@ You need [git](https://git-scm.com/downloads) (or download the repository as a Z
 1. Get the code:
 
     ```bash
-    git clone --depth 1 https://github.com/opentac/opentac.github.io opentac
+    git clone --depth 1 https://github.com/opentac/opentac opentac
     ```
 
 2. Open the `opentac` folder and double-click the start script:
@@ -49,7 +49,7 @@ uv run opentac cad
 
 ## Design with an AI agent
 
-The repository includes a skill that teaches a coding agent to design sensors with the same compiler the CAD tool uses. [Claude Code](https://claude.com/claude-code) loads it automatically from `.claude/skills/opentac/` when you start it in the repository folder; other agents read [`AGENTS.md`](https://github.com/opentac/opentac.github.io/blob/main/AGENTS.md), which points them to the same instructions. Describe the sensor in your own words, with its size, shape and where the cable should leave. See [Design with an AI agent](design/agent.md).
+The repository includes a skill that teaches a coding agent to design sensors with the same compiler the CAD tool uses. [Claude Code](https://claude.com/claude-code) loads it automatically from `.claude/skills/opentac/` when you start it in the repository folder; other agents read [`AGENTS.md`](https://github.com/opentac/opentac/blob/main/AGENTS.md), which points them to the same instructions. Describe the sensor in your own words, with its size, shape and where the cable should leave. See [Design with an AI agent](design/agent.md).
 
 ## From a design to live readings
 
@@ -122,4 +122,4 @@ Example quotes from JLCPCB, October 2026, shipping extra:
 
 ## Getting help
 
-Questions and bug reports go to the repository's [issue tracker](https://github.com/opentac/opentac.github.io/issues). For a problem with a board or a sensor, include the output of `uv run opentac info`, run with the board plugged in, and attach the design ZIP if a design is involved.
+Questions and bug reports go to the repository's [issue tracker](https://github.com/opentac/opentac/issues). For a problem with a board or a sensor, include the output of `uv run opentac info`, run with the board plugged in, and attach the design ZIP if a design is involved.

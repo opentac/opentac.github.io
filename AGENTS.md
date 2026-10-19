@@ -1,7 +1,11 @@
-# Instructions for AI agents
+# Website development
 
-To design a tactile sensor with OpenTac, follow the skill at
-[.claude/skills/opentac/SKILL.md](.claude/skills/opentac/SKILL.md).
-Claude Code loads it automatically; other agents should read it first.
+This repository contains the OpenTac website. Application, firmware, hardware,
+and generator sources live in https://github.com/opentac/opentac.
 
-Run all Python through the repo's environment: `uv run python ...` from the repository root.
+Run Python through this repository's environment: `uv run python ...`.
+Build with `uv run python scripts/build_site.py` after checking out the code
+revision recorded in `code-revision.txt` into `.opentac/`.
+
+Keep website media and generated design downloads unchanged unless the requested
+change specifically requires updating them.

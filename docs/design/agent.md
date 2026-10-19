@@ -11,7 +11,7 @@ Some sensors are easier to describe than to draw: "a pressure-sensing insole, si
 
 1. Clone the repository ([Get started](../get-started.md)).
 2. **Claude Code:** start `claude` in the repository folder. It loads the skill from `.claude/skills/opentac/` by itself.
-3. **Other agents** (Codex, Cursor, Gemini CLI, ...): they read [`AGENTS.md`](https://github.com/opentac/opentac.github.io/blob/main/AGENTS.md) at the repository root, which points them to the skill's instructions, [`SKILL.md`](https://github.com/opentac/opentac.github.io/blob/main/.claude/skills/opentac/SKILL.md).
+3. **Other agents** (Codex, Cursor, Gemini CLI, ...): they read [`AGENTS.md`](https://github.com/opentac/opentac/blob/main/AGENTS.md) at the repository root, which points them to the skill's instructions, [`SKILL.md`](https://github.com/opentac/opentac/blob/main/.claude/skills/opentac/SKILL.md).
 
 The agent runs Python through the repository's own environment (`uv run python ...`), so it uses exactly the package versions the CAD tool uses. Nothing is sent to a server.
 
