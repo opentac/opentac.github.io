@@ -227,9 +227,9 @@ To make tactile experiments comparable, the paper recommends reporting, with eac
 
 ## Data and code { #data-and-code }
 
-Released in the [repository](https://github.com/opentac/opentac.github.io):
+Released in the [code repository](https://github.com/opentac/opentac) and [website repository](https://github.com/opentac/opentac.github.io):
 
 - OpenTac-CAD (`opentac/cad/`), the readout firmware (`firmware/`, with prebuilt binaries), the readout boards' KiCad and JLCPCB files (`hardware/`), and the `opentac` Python package for reading and recording sensors, OpenTac-Sim (`opentac.sim`) and OpenTac-Transfer (`opentac.transfer`).
 - The 31 fabricated designs, regenerated for the current readout boards, each with its Gerbers, KiCad board and manifest: [Ready-to-order designs](design/examples.md).
-- The nine recorded presses behind [How it works](learn/index.md) (three objects on three skins), in the form the page plays them, in `docs/learn/data/takes/`.
+- The nine recorded presses behind [How it works](learn/index.md) (three objects on three skins), in the form the page plays them, in [`docs/learn/data/takes/`](https://github.com/opentac/opentac.github.io/tree/main/docs/learn/data/takes/).
 

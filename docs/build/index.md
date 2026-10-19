@@ -38,7 +38,7 @@ That alignment is what makes the shear reading accurate. A sideways push tilts a
 | 1 | Design the sensor and download the ZIP: board files and the printed case | minutes | [Design](../design/index.md), [What the export contains](../design/export.md) |
 | 2 | Print the 1:1 PDF and check the fit on the part | 10 min | [Assembly](assembly.md#check-the-fit-on-paper) |
 | 3 | Order the flex PCB | days to weeks, shipping | [Order the sensor](order-sensor.md) |
-| 4 | Order a readout board, if you don't have one | days to weeks, shipping | [Order the readout board](order-readout.md); files in the repository's [`hardware/`](https://github.com/opentac/opentac.github.io/tree/main/hardware) folder |
+| 4 | Order a readout board, if you don't have one | days to weeks, shipping | [Order the readout board](order-readout.md); files in the repository's [`hardware/`](https://github.com/opentac/opentac/tree/main/hardware) folder |
 | 5 | Get the piezoresistive layer, TPU and tape | | [Materials and accessories](materials.md) |
 | 6 | Print the case from the ZIP's `case/` folder: the tray and the bumped lid, in TPU | a few hours | [The printed case](#the-printed-case), [Assembly](assembly.md#print-the-case) |
 | 7 | Cut the piezoresistive layer | 10 min | [Assembly](assembly.md#cut-the-piezoresistive-layer) |

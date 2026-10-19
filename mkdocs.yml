@@ -3,9 +3,9 @@ site_description: >-
   Open tools to design, fabricate, read and simulate flex-PCB tactile sensors
   that sense normal and shear force, for any robot surface.
 site_url: https://opentac.github.io/
-repo_url: https://github.com/opentac/opentac.github.io
-repo_name: opentac/opentac.github.io
-edit_uri: edit/main/docs/
+repo_url: https://github.com/opentac/opentac
+repo_name: opentac/opentac
+edit_uri: https://github.com/opentac/opentac.github.io/edit/main/docs/
 docs_dir: docs
 copyright: "OpenTac. Code MIT, hardware CERN-OHL-P-2.0, docs and media CC BY 4.0."
 
@@ -65,10 +65,10 @@ extra:
     3D Tactile Sensing
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/opentac/opentac.github.io
+      link: https://github.com/opentac/opentac
       name: OpenTac on GitHub
     - icon: octicons/issue-opened-16
-      link: https://github.com/opentac/opentac.github.io/issues
+      link: https://github.com/opentac/opentac/issues
       name: Questions and bug reports (GitHub Issues)
 
 markdown_extensions:

@@ -1,26 +1,5 @@
 .venv/
+.opentac/
+site/
 __pycache__/
 *.pyc
-.pytest_cache/
-dist/
-build/
-# ...but not the website's Build section
-!docs/build/
-site/
-.env
-.DS_Store
-
-# data stays out of git (Zenodo / Releases)
-recordings/
-/takes/
-*.npz
-
-# what the README and the skill's examples write when run from the repo root
-/insole_out/
-/*.zip
-
-# Third-party 3D models (LCSC/EasyEDA, manufacturers) are not redistributed: see hardware/README.md
-hardware/libs/3dmodels/
-
-# KiCad per-user view settings, written whenever a board is opened or plotted
-*.kicad_prl

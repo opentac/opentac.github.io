@@ -1,6 +1,6 @@
 """Preview opentac.github.io on this computer, as it will be published.
 
-    uv run --extra docs python scripts/preview_site.py [--port 8100] [--no-build] [--no-browser]
+    uv run --project .opentac --extra docs python scripts/preview_site.py [--port 8100] [--no-build] [--no-browser]
 
 Serves the website (built from docs/ into site/) at /, OpenTac-CAD at /cad/, and
 the CAD backend at the same address, so "Try it online" works without Render.
@@ -8,6 +8,7 @@ the CAD backend at the same address, so "Try it online" works without Render.
 from __future__ import annotations
 
 import argparse
+import os
 import subprocess
 import sys
 import threading
@@ -18,7 +19,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "site"
-WEB = ROOT / "opentac" / "cad" / "web"
+DEFAULT_CODE = ROOT / ".opentac" if (ROOT / ".opentac").is_dir() else ROOT.parent / "opentac"
+CODE_ROOT = Path(os.environ.get("OPENTAC_CODE_ROOT", DEFAULT_CODE)).resolve()
+WEB = CODE_ROOT / "opentac" / "cad" / "web"
+sys.path.insert(0, str(CODE_ROOT))
 
 
 def make_app():

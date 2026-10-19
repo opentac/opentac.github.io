@@ -13,7 +13,7 @@ description: The OpenTac paper, its abstract, and how to cite it.
 
 <small>Contact: <span class="ot-author">Ariel Slepyan, <a href="mailto:aslepyan@mit.edu">aslepyan@mit.edu</a></span>; <span class="ot-author">Krishna Murthy Jatavallabhula, <a href="mailto:kmj@jhu.edu">kmj@jhu.edu</a></span>; <span class="ot-author">Nitish V. Thakor, <a href="mailto:nitish@jhu.edu">nitish@jhu.edu</a></span></small>
 
-[Video](index.md#video){ .md-button .md-button--primary } [Code](https://github.com/opentac/opentac.github.io){ .md-button }
+[Video](index.md#video){ .md-button .md-button--primary } [Code](https://github.com/opentac/opentac){ .md-button }
 
 ## Abstract
 
