@@ -1,0 +1,77 @@
+name: Verify website-only split
+
+on:
+  push:
+    branches: [migration/prepare-website]
+    paths: [.github/workflows/prepare-website.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    env:
+      CODE_REVISION: 38bca7fc50a10594e7d1322087ca9a2152d3913c
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: bootstrap
+      - uses: actions/checkout@v4
+        with:
+          ref: dba4f9017ceb1c25389b2a56f7cd4de19db424d0
+          path: baseline
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          ref: dba4f9017ceb1c25389b2a56f7cd4de19db424d0
+          fetch-depth: 0
+          path: website
+      - uses: actions/checkout@v4
+        with:
+          repository: opentac/opentac
+          ref: 38bca7fc50a10594e7d1322087ca9a2152d3913c
+          path: code
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@v6
+      - name: Build the original website
+        run: |
+          uv sync --project code --locked --extra docs
+          cd baseline
+          uv run --project ../code --extra docs mkdocs build --strict -d ../before
+          mkdir -p ../before/cad
+          rsync -a --exclude=tests/ opentac/cad/web/ ../before/cad/
+          uv run --project ../code python scripts/stamp_cad_assets.py ../before/cad "${CODE_REVISION::8}"
+      - name: Prepare the website-only checkout
+        run: |
+          uv run --project code python bootstrap/migrate_website.py website "$CODE_REVISION"
+          cp bootstrap/.github/workflows/pages.yml website/.github/workflows/pages.yml
+          cd website
+          uv lock
+          uv sync --locked
+          uv run python scripts/build_site.py --code-root ../code
+      - name: Compare every source and generated asset
+        run: |
+          set -o pipefail
+          uv run --project website python bootstrap/verify_website.py baseline website code before website/site | tee verification.json
+      - name: Check QR and transfer compatibility
+        env:
+          OPENTAC_SITE_ROOT: ${{ github.workspace }}/website
+        run: |
+          uv run --project code python code/scripts/check_qr_page.py
+          uv run --project code python code/scripts/learn/check_transfer.py
+      - name: Publish the verified website branch
+        working-directory: website
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'Split: keep the website and consume the pinned code release'
+          git push origin dba4f9017ceb1c25389b2a56f7cd4de19db424d0:refs/heads/backup/before-code-split
+          git push origin HEAD:refs/heads/migration/website-only
+          git rev-parse HEAD >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: website-split-verification
+          path: verification.json
+          retention-days: 90
