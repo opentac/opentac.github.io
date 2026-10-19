@@ -1,7 +1,7 @@
 ---
 template: home.html
 title: OpenTac
-description: Open tools to design, fabricate, read and simulate flex-PCB tactile skins that sense normal and shear force, shaped to any robot surface.
+description: Open ecosystem to design, fabricate, read, and simulate resistive tactile skins that sense normal and shear force, shaped to any robot surface.
 hide:
   - navigation
   - toc
@@ -22,20 +22,33 @@ hide:
 -->
 
 <section class="ot-video" aria-labelledby="flow">
-<h2 id="flow" class="ot-section-title">From a robot surface to a sensor</h2>
+<h2 id="flow" class="ot-section-title">Automatically sensorize any surface on a robot</h2>
 <figure>
 <div class="ot-media ot-media--video">
   <video data-loop muted loop playsinline preload="none" poster="assets/loops/concept.jpg"
-         aria-label="Animation: a surface is picked on six robots, OpenTac-CAD lays out a sensor for each, and each sensor plugs into a readout board that streams contact data">
+         aria-label="As part of the OpenTac ecosystem, we develop OpenTac-CAD, a design tool to automatically sensorize any surface on a robot with OpenTac tactile sensors. In this visualization, we show examples for six different robots.">
     <source src="assets/loops/concept.mp4" type="video/mp4">
   </video>
 </div>
-<figcaption>Animation. The six layouts are OpenTac-CAD's output for these surfaces; the contacts are simulated. Robot models from <a href="https://github.com/google-deepmind/mujoco_menagerie">MuJoCo Menagerie</a> (Unitree G1 and Go2, LEAP Hand, AgileX Piper, Robotiq 2F-85, UMI gripper).</figcaption>
+<figcaption>As part of the OpenTac ecosystem, we develop OpenTac-CAD, a design tool to automatically sensorize any surface on a robot with OpenTac tactile sensors. In this visualization, we show examples for six different robots from them <a href="https://github.com/google-deepmind/mujoco_menagerie">MuJoCo Menagerie</a> (Unitree G1 and Go2, LEAP Hand, AgileX Piper, Robotiq 2F-85, UMI gripper).</figcaption>
 </figure>
 </section>
 
+<section class="ot-video" aria-labelledby="video">
+<h2 id="video" class="ot-section-title">Overview</h2>
+<p class="ot-video__lede">
+OpenTac is an ecosystem for highly customizable, scalable, and transferrable tactile sensing. We provide tools raning across sensor design, simulation, cross-sensor transfer, data visualization, tactile policy learning, and more.
+</p>
+<div class="ot-media ot-media--video">
+  <video controls preload="none" playsinline data-poster="assets/loops/overview.jpg"
+         aria-label="Four-minute narrated overview of OpenTac, with subtitles in the picture">
+    <source src="assets/loops/overview.mp4" type="video/mp4">
+  </video>
+</div>
+</section>
+
 <section class="ot-evidence" aria-labelledby="evidence" markdown>
-<h2 id="evidence" class="ot-section-title">Measured on real sensors</h2>
+<h2 id="evidence" class="ot-section-title">OpenTac tactile sensors in action</h2>
 
 <div class="ot-strip ot-strip--stack">
 <figure class="ot-strip__item ot-strip__item--wide">
@@ -50,60 +63,48 @@ hide:
          aria-label="A sensor is touched lightly, struck with a hammer, unplugged, thrown on the floor, stomped on and run over with an office chair, then plugged back in and touched again; an enlarged inset shows the live map">
     <source src="assets/loops/durability.mp4" type="video/mp4">
   </video>
-  <figcaption>Hammered, thrown, stomped on and run over with an office chair, then plugged back in: the sensor still reads touch.</figcaption>
+  <figcaption>Hammered, thrown, stomped on and run over with an office chair, then plugged back in: the sensor works just as well.</figcaption>
 </figure>
 <figure class="ot-strip__item ot-strip__item--tall">
   <video data-loop muted loop playsinline preload="none" data-poster="assets/video/dynamic_range_poster.jpg"
          aria-label="Pressure readings from about 0.1 newton to about 10 newtons">
     <source src="assets/video/dynamic_range.mp4" type="video/mp4">
   </video>
-  <figcaption>From about 0.1&nbsp;N to about 10&nbsp;N at 10&nbsp;k&Omega; feedback, the default gain; a lower gain reaches higher forces.</figcaption>
+  <figcaption>From about 0.1&nbsp;N to about 10&nbsp;N at 10&nbsp;k&Omega; feedback (default gains; can be tweaked to change range).</figcaption>
 </figure>
 <figure class="ot-strip__item ot-strip__item--tall">
   <video data-loop muted loop playsinline preload="none" data-poster="assets/video/heat_gun_poster.jpg"
-         aria-label="A heat gun blown at the sensor produces no false signal">
+         aria-label="Heat gun aimed at the sensor to test robustness to temperature variations.">
     <source src="assets/video/heat_gun.mp4" type="video/mp4">
   </video>
-  <figcaption>A heat gun gives no false signal.</figcaption>
+  <figcaption>Heat gun aimed at the sensor to test robustness to temperature variations.</figcaption>
 </figure>
 </div>
 
 <div class="ot-keys" markdown>
 
-| | Result in the paper |
+| | Some key results |
 |---|---|
-| Fabrication | 31 sensors laid out by OpenTac-CAD and fabricated; all passed the design-rule check and all work. |
-| Normal and shear | One two-layer flex PCB under a printed bump sheet. On a bumped 4&times;4 patch, R&sup2; of 0.95, 0.93 and 0.96 for F<sub>x</sub>, F<sub>y</sub> and F<sub>z</sub> against a reference force sensor (in-sample). |
-| Readout | On a 1024-taxel skin: 67 full frames/s by raster scanning; 1286 partial frames/s reading 16 taxels per frame (Xampling). |
-| Policy learning | SO-101 arm, normal and shear touch, no vision: 82% success on peg-in-hole and 62% on plug insertion, over 50 trials each. |
-| Grasp control | Dexmate Vega-1 Pro holding a cup under impulsive loading: held in 16 of 20 trials with shear feedback, 9 of 20 with wrist force/torque or normal-only feedback. |
+| Design and fabrication | We designed over 30 sensors automatically, using our OpenTac-CAD tool. All these designs passed design-rule checks, and resulted in sensors that were fabricated and tested. |
+| Normal and shear force accuracy | We validated against commercial 6-axis F/T sensors and find that OpenTac reliably estimates shear. E.g., on a 4&times;4 sensor patch, R&sup2; of 0.95, 0.93 and 0.96 for F<sub>x</sub>, F<sub>y</sub> and F<sub>z</sub> against reference forces. |
+| Fast readout | We use an adaptive readout mechanism for sparse and fast scanning. On a 1024-taxel skin, conventional (raster) scanning results in 67 frames/s; while our adaptive method (OpenTac-Xampling) results in 1286 frames/s for the same object-sensor interaction. |
+| Policy learning | We use the sensor in tactile policy learning experiments involving contact rich insertion tasks on the SO-101 robot arm and a bimanual YAM robot. We find that shear data is crucial in these tasks. |
+| Grasp control | We demonstrate, on a Dexmate Vega-1 Pro robot, that shear aids slip prevention when holding a cup under impulsive loading. |
 
 [All results](results.md){ .ot-more }
 
 </div>
 </section>
 
-<section class="ot-video" aria-labelledby="video">
-<h2 id="video" class="ot-section-title">Overview</h2>
-<p class="ot-video__lede">
-OpenTac turns a robot surface into a tactile skin: it designs the flex PCB, the printed case and a machine-readable description of the sensor, and the same description drives the readout, the simulator and data transfer between sensors.
-</p>
-<div class="ot-media ot-media--video">
-  <video controls preload="none" playsinline data-poster="assets/loops/overview.jpg"
-         aria-label="Four-minute narrated overview of OpenTac, with subtitles in the picture">
-    <source src="assets/loops/overview.mp4" type="video/mp4">
-  </video>
-</div>
-</section>
 
 <section class="ot-story" aria-labelledby="sense" markdown>
 <div class="ot-story__text" markdown>
 
-## Normal and shear force from one flex PCB { #sense }
+## Key idea: Shear forces can be mechanically encoded and computed from differential resistance across taxels { #sense }
 
-Each skin is a two-layer flex PCB with a grid of interdigitated electrodes (taxels), a piezoresistive film on top, and a 3D-printed lid with one soft bump over every 2&times;2 group of taxels.
+Each skin is a two-layer flexible PCB with a grid of interdigitated electrodes (taxels), a piezoresistive film on top, and a 3D-printed lid with one soft bump over every 2&times;2 group of taxels.
 
-Pressing a bump raises all four taxels together; a sideways push tilts it, so the four read differently. Their sum gives the normal force and their differences give the two shear components.
+Pressing a bump with a downward normal forcea bump results in an approximately uniform pressure distribution over the four underlying taxels. Tangential force tilts the bumps, creating a pressure (and consequently, resistance) differential over the underlying taxels, allowing us to estimate shear forces.
 
 [How it works](learn/index.md){ .ot-more }
 
@@ -119,11 +120,9 @@ Pressing a bump raises all four taxels together; a sideways push tilts it, so th
 <section class="ot-story ot-story--flip" aria-labelledby="design" markdown>
 <div class="ot-story__text" markdown>
 
-## Design a sensor for any surface { #design }
+## OpenTac-CAD: Design a sensor for any surface { #design }
 
-OpenTac-CAD fills a drawn outline, a DXF, or a surface picked on an STL model with taxels, routes every row and column to the connector, and writes the Gerbers, a printed case and the sensor's manifest. A coding agent can drive the same compiler from a one-sentence request.
-
-Five representative designs compile in 0.7&ndash;2.6&nbsp;s and cover 75&ndash;93% of their target regions.
+We develop a design tool, OpenTac-CAD, to automatically sensorize new surfaces. Given a 2D outline drawn within our tool, a DXF file, or an STL file, OpenTac-CAD lays out a taxel grid, places and routes wires, designs the connector, and produces a set of Gerber files (for the flexible PCB and readout board), a 3D-printable TPU bump case (for shear sensing and alignment), and a manifest file (for sharing sensor metadata across the OpenTac ecosystem). We find that automatic designs result in higher coverage area compared to hand-designed sensor layouts.
 
 [Try it online](cad/){ .ot-more } [Design guide](design/index.md){ .ot-more }
 
@@ -138,17 +137,15 @@ Five representative designs compile in 0.7&ndash;2.6&nbsp;s and cover 75&ndash;9
 
 <figure class="ot-wide" markdown="span">
   [![All 31 fabricated OpenTac flex PCBs laid out flat, from small fingertip pads to a 1024-taxel square.](assets/figures/fabricated.jpg){ loading=lazy }](assets/figures/fabricated.jpg)
-  <figcaption>The 31 sensors we have fabricated from OpenTac-CAD layouts. All passed the design-rule check and work.</figcaption>
+  <figcaption>The 31 sensors we show here were all designed using OpenTac-CAD and subsequently fabricated, and found to work reliably.</figcaption>
 </figure>
 
 <section class="ot-story" aria-labelledby="build" markdown>
 <div class="ot-story__text" markdown>
 
-## Order it, print it, press it together { #build }
+## Order and assemble an OpenTac sensor { #build }
 
-The flex PCB is an ordinary order from a board house; the case and bump sheet print in TPU on a desktop printer. Assembly is a stack: board into the printed tray, piezoresistive film on top, bump sheet pressed on.
-
-The bump sheet and the board come from the same design file, so the cross-shaped base of each bump drops into the gaps between taxels. No jig and no alignment step.
+Fabricating an OpenTac sensor involves 3 phases. First, we use the OpenTac-CAD tool to design a sensor for the surface we want to mount it on. Second, we fabricate the flexible PCB and readout board -- the generated Gerber file from the previous step can be uploaded to popular PCB manufacturers (JLCPCB, PCBWay, etc.) and ordered. Third, we 3D-print a TPU bump sheet (also generated by OpenTac-CAD) using a commodity 3D printer. Assembly is straightforward: the designed case makes it extremely convenient to stack the flexPCB, a piezoresistive film, and the TPU bump grid.
 
 [Assembly guide](build/assembly.md){ .ot-more } [Build steps](build/index.md){ .ot-more }
 
@@ -161,11 +158,11 @@ The bump sheet and the board come from the same design file, so the cross-shaped
 <section class="ot-story ot-story--flip" aria-labelledby="read" markdown>
 <div class="ot-story__text" markdown>
 
-## Read it over USB { #read }
+## USB readout boards can be re-used across designs { #read }
 
-The 60-pin readout board reads up to 30&times;30 taxels in 37&nbsp;&times;&nbsp;34.3&nbsp;mm and plugs straight into USB; a stacked 30-pin pair reads up to 15&times;15 in a 16&nbsp;&times;&nbsp;22.8&nbsp;mm footprint. Each board carries an IMU, and 30-pin boards can be daisy-chained over I2C to read a whole hand from one USB port.
+We provide two default readout board designs, based on the number of taxels / wires a sensor has. The 60-pin readout board reads up to 30&times;30 taxels in 37&nbsp;&times;&nbsp;34.3&nbsp;mm and plugs straight into USB; a stacked 30-pin pair reads up to 15&times;15 in a 16&nbsp;&times;&nbsp;22.8&nbsp;mm footprint. Each board carries an IMU, and 30-pin boards can be daisy-chained over I2C to read a whole hand from one USB port.
 
-The board stores the sensor's layout in its own flash, so after a one-time setup the live view knows where every taxel is.
+The board stores the sensor's layout in its own flash, so after a one-time setup the live view knows where every taxel is. It is possible to customize and design larger readout boards if needed -- we make our gerbers freely available for customization.
 
 [Readout boards](hardware.md){ .ot-more } [Read a sensor](use/sensor.md){ .ot-more }
 
@@ -181,11 +178,11 @@ The board stores the sensor's layout in its own flash, so after a one-time setup
 <section class="ot-story" aria-labelledby="xampling" markdown>
 <div class="ot-story__text" markdown>
 
-## Read faster where contact happens { #xampling }
+## Adaptive, kilohertz-rate sampling { #xampling }
 
-Xampling is compressive sampling for touch: instead of the whole array, each frame reads a small search sample of taxels and then grows around any contact until it is covered, so a large contact is read whole. It works on any sensor layout.
+OpenTac-Xampling is an adaptive sampling method that results in fast readouts. Instead of scanning every single taxel when reading out every frame, we leverage the idea that most contact events tend to be sparse. Each frame reads a small search sample of taxels and then grows around any contact until it is fully measured. This enables skipping through large swaths of empty taxels, and works on any sensor layout, and is guaranteed to be no worse than raster scanning.
 
-On a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels per frame gives 1286 partial frames/s. Raster scanning caught two of six ~3&nbsp;ms tennis-ball impacts; budgets of 16 to 256 taxels per frame caught all three impacts tested at each budget.
+This helps capture contacts that happen in a few milliseconds (and are missed by raster scanning). E.g., on a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels per frame gives 1286 frames/s. Raster scanning caught two of six ~3&nbsp;ms tennis-ball impacts; budgets of 16 to 256 taxels per frame caught all three impacts tested at each budget.
 
 [Xampling](use/xampling.md){ .ot-more }
 
@@ -204,11 +201,11 @@ On a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels 
 <section class="ot-story ot-story--flip ot-story--pair" aria-labelledby="sim" markdown>
 <div class="ot-story__text" markdown>
 
-## Simulate it, and share data between sensors { #sim }
+## Simulating OpenTac sensors and cross-sensor transfer { #sim }
 
-The manifest that drives the hardware also builds the sensor in simulation. OpenTac-Sim models flat skins. A plain skin uses a foam-contact model with two parameters, fitted on one skin and scored on three others it had not seen. A bump sheet is modelled as rigid bumps on spring joints that report normal force per taxel and shear per bump.
+The shared sensor manifest produced by OpenTac-CAD is used to specify mechanical and electronic properties of the sensor. This manifest can be used to create simulation models of the sensor. We build a simulation tool, OpenTac-Sim, to simulate sensor deformations using accurate FEM modeling. We also have a foam-contact model for plain skins (i.e., variants of OpenTac that do not require shear sensing and forgo the TPU bump grid.
 
-OpenTac-Transfer maps calibrated contact between skins of different shape and taxel pitch, in physical coordinates and without paired data. Across four skins it reached a median shape F1 of 0.750, against 0.714 and 0.634 for two array-resizing baselines.
+OpenTac-Transfer maps calibrated contact between skins of different shape and taxel pitch, in physical coordinates and without paired data. Across four skins it reached a median shape F1 of 0.750, against 0.714 and 0.634 for two array-resizing baselines. For now, OpenTac-Transfer works on flat skins. We welcome contributors extending this module further.
 
 [Simulate](sim.md){ .ot-more } [Transfer](transfer.md){ .ot-more }
 
@@ -238,18 +235,18 @@ OpenTac-Transfer maps calibrated contact between skins of different shape and ta
 <section class="ot-robots" aria-labelledby="robots" markdown>
 <div class="ot-robots__text" markdown>
 
-## On robots { #robots }
+## Robot control and manipulation policy learning { #robots }
 
-We deployed the skins on four robots and a handheld gripper. On an SO-101 arm, policies with normal and shear touch had the highest success on both insertion tasks (82% peg-in-hole, 62% plug insertion); on plug insertion, normal-only touch did not beat joint angles alone. On a Dexmate Vega-1 Pro holding a cup under impulsive loading, shear feedback kept the grasp in 16 of 20 trials, against 9 of 20 with wrist force/torque or normal-only feedback.
+We deployed the skins on four robots and a handheld UMI gripper. On an SO-101 arm, we evaluated two contact-rich tasks (peg-in-hole insertion, plug-in-socket insertion). On both tasks, shear sensors had the highest success rates. Particularly on the plug insertion task, shear was crucial -- merely adding normal force did not yield any improvements over proprioception alone. On a bimanual YAM robot, we designed a custom fixture for a lock-key insertion task, and only policies with shear information could achieve substantial success rates.
 
-The first two clips run three policies from the same start: OpenTac-3D (proprioception, normal and shear), OpenTac-1D (proprioception and normal) and proprioception only.
+**Note**: All our robot learning experiments solely use tactile information and proprioception. No visual information was used.
 
 [All results](results.md){ .ot-more }
 
 </div>
 <div class="ot-stack">
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/so101_plug.jpg" style="aspect-ratio: 1920 / 786" aria-label="Three SO-101 arms insert a plug from the same start pose: the OpenTac-3D policy succeeds, the OpenTac-1D and proprioception-only policies fail"><source src="assets/loops/so101_plug.mp4" type="video/mp4"></video></div><figcaption>SO-101 arm, plug insertion from one start pose with the same plug: OpenTac-3D inserts the plug; OpenTac-1D and proprioception only fail.</figcaption></figure>
-  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/yam_keylock.jpg" style="aspect-ratio: 1920 / 620" aria-label="Two YAM arms insert a key into a lock under three policies: the OpenTac-3D policy inserts the key, the OpenTac-1D and proprioception-only policies fail at the insertion"><source src="assets/loops/yam_keylock.mp4" type="video/mp4"></video></div><figcaption>Two YAM arms, key-lock insertion (sensors on the left gripper only): OpenTac-3D inserts the key; OpenTac-1D and proprioception only fail at the insertion.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/so101_plug.jpg" style="aspect-ratio: 1920 / 786" aria-label="SO-101 arm, plug-in-socket insertion: OpenTac-3D inserts the plug; while OpenTac-1D and proprioception-only fail"><source src="assets/loops/so101_plug.mp4" type="video/mp4"></video></div><figcaption>SO-101 arm, plug-in-socket insertion: OpenTac-3D inserts the plug; while OpenTac-1D and proprioception-only fail.</figcaption></figure>
+  <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/yam_keylock.jpg" style="aspect-ratio: 1920 / 620" aria-label="Lock-key insertion with bimanual YAM arms (sensors used only on the left gripper): OpenTac-3D inserts the key; OpenTac-1D and proprioception-only fail while attempting insertion"><source src="assets/loops/yam_keylock.mp4" type="video/mp4"></video></div><figcaption>Lock-key insertion with bimanual YAM arms (sensors used only on the left gripper): OpenTac-3D inserts the key; OpenTac-1D and proprioception-only fail while attempting insertion.</figcaption></figure>
 </div>
 <div class="ot-grid3">
   <figure class="ot-clip ot-clip--tall2"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="assets/loops/ur5_controllers.jpg" style="aspect-ratio: 720 / 804" aria-label="A UR5 moves a ball along the edge of a sensor plate under a normal-force controller (top) and a shear-force controller (bottom), each with its contact map"><source src="assets/loops/ur5_controllers.mp4" type="video/mp4"></video></div><figcaption>UR5 moving a ball along the plate's edge: the normal-force controller (top) is quicker but cuts across the sensor; the shear-force controller (bottom) is slower and does not.</figcaption></figure>
@@ -264,9 +261,9 @@ The first two clips run three policies from the same start: OpenTac-3D (proprioc
 <div class="ot-start__cols" markdown>
 <div markdown>
 
-## Use it { #start }
+## How to get started { #start }
 
-Everything runs on your own computer. Clone the repository and double-click `Start_OpenTac.command` (macOS) or `Start_OpenTac.bat` (Windows); the CAD tool opens in your browser. Or try the hosted version first, no install needed.
+Clone the repository and double-click `Start_OpenTac.command` (macOS) or `Start_OpenTac.bat` (Windows); the CAD tool opens in your browser. Or try the hosted version first, no install needed.
 
 ```bash
 git clone --depth 1 https://github.com/opentac/opentac opentac
@@ -281,7 +278,7 @@ Working with an AI coding agent? The repository ships a skill for designing sens
 </div>
 <figure class="ot-start__shot" markdown="span">
   ![OpenTac-CAD's start screen: the robot gallery, with cards for the ALOHA ViperX 300 gripper finger, the AgileX Piper jaw, an Allegro Hand fingertip and the Allegro Hand palm, each with its sensor surface in orange and a Use this shape button.](assets/screens/cad_robot_gallery.webp){ loading=lazy width="988" height="443" }
-  <figcaption>OpenTac-CAD's start screen, first row of the robot gallery. Orange is the surface the sensor covers, already unfolded.</figcaption>
+  <figcaption>OpenTac-CAD's start screen, first row of the robot gallery.</figcaption>
 </figure>
 </div>
 <div class="ot-hero__buttons ot-start__buttons">

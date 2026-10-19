@@ -5,22 +5,22 @@ description: Try OpenTac-CAD online, or clone the repository and run everything 
 
 # Get started
 
-OpenTac is one repository: the CAD tool, the readout firmware and Python package, the readout-board hardware files and this website. Most people clone it and run it locally. The hosted version is there to try the CAD tool without installing anything.
+We house the CAD tool, the readout firmware and Python package, and the readout-board hardware files at https://github.com/opentac/opentac. It is easy to clone and run locally. We provide a hosted version if one wants to try the CAD tool without installing anything on their machine, but it uses a much slower compute node (i.e., running locally will be *much* faster).
 
 ## Try it online
 
 Open [OpenTac-CAD](../cad/){ .md-button .md-button--primary } in your browser. You can draw an outline, import a DXF or STL, generate a board and download the files.
 
-The online tool runs its design engine on a free server that sleeps when idle, so the first **Generate** of the day can take up to a minute while it wakes. Locally, a design generates in a second or two and your files never leave your computer.
+The online tool runs its design engine on a free server that sleeps when idle, so the first call to **Generate** of the day can take up to a minute while it wakes. Locally, a design generates in a second or two. We recommend you use the local option if you prefer that files never leave your computer.
 
 <figure class="ot-fig ot-fig--clear ot-screen" markdown="span" style="max-width: 32rem">
   [![OpenTac-CAD after Generate on its Yubi finger pad example: the result panel lists 122 taxels, the 60-pin readout board, the board grown to fit the wiring, 2 copper layers, a 14.5 mm tail chosen automatically so the printed case clears the connector, and 0 design-check violations; below it the PCB preview of the routed board, and the download bar with the design name and buttons for the printable PDF, the piezo layer DXF and piezo layer fold PDF (cut files for the piezoresistive layer), and the ZIP.](assets/screens/cad_generated.webp){ loading=lazy width="939" height="995" }](assets/screens/cad_generated.webp)
-  <figcaption>OpenTac-CAD after <strong>Generate</strong> on one of its examples, the Yubi finger pad: the design check, the routed board, and the downloads.</figcaption>
+  <figcaption>OpenTac-CAD after <strong>Generate</strong> on one of its examples, the Yubi finger pad: the design check, the routed board, and the downloadable filex.</figcaption>
 </figure>
 
 ## Run it on your computer
 
-You need [git](https://git-scm.com/downloads) (or download the repository as a ZIP from GitHub) and nothing else: the start script installs [uv](https://docs.astral.sh/uv/), a small Python installer, if you don't have it.
+You only need [git](https://git-scm.com/downloads) (or download the repository as a ZIP from GitHub): the start script installs [uv](https://docs.astral.sh/uv/) if you don't have it already.
 
 1. Get the code:
 
@@ -51,9 +51,9 @@ uv run opentac cad
 
 The repository includes a skill that teaches a coding agent to design sensors with the same compiler the CAD tool uses. [Claude Code](https://claude.com/claude-code) loads it automatically from `.claude/skills/opentac/` when you start it in the repository folder; other agents read [`AGENTS.md`](https://github.com/opentac/opentac/blob/main/AGENTS.md), which points them to the same instructions. Describe the sensor in your own words, with its size, shape and where the cable should leave. See [Design with an AI agent](design/agent.md).
 
-## From a design to live readings
+## How to make an OpenTac sensor: A quick overview
 
-The whole path, with a page for each step. The [assembly guide](build/assembly.md) covers steps 2, 5 and 6 on one page, with photos and a video.
+For more details, we have the [assembly guide](build/assembly.md) that covers steps 2, 5 and 6.
 
 <div class="ot-photos ot-photos--three" markdown>
 <figure markdown="span">
@@ -117,7 +117,7 @@ The whole path, with a page for each step. The [assembly guide](build/assembly.m
 Example quotes from JLCPCB, October 2026, shipping extra:
 
 - $16 for 5 flex PCBs of an example two-layer sensor, 89 &times; 60&nbsp;mm, at a special-offer price ([Order the sensor](build/order-sensor.md));
-- $378 for 5 assembled 60-pin readout boards ([Order the readout board](build/order-readout.md));
+- $378 for 5 assembled 60-pin readout boards (~$75 per board), reusable across sensors ([Order the readout board](build/order-readout.md));
 - about $372 for 5 assembled 30-pin pairs ($205.85 for the top boards and $165.98 for the bottom boards).
 
 ## Getting help
