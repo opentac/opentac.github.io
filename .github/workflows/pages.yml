@@ -1,15 +1,9 @@
 name: pages
 
-# Builds opentac.github.io: the MkDocs site from docs/, plus the CAD tool's
-# static frontend at /cad/ (served from the package's own files, not a copy in
-# docs/; its config.js picks the API host at runtime).
-#
-# Needs: repository Settings > Pages > Source = "GitHub Actions". On the Free
-# plan Pages only works once the repository is public.
-
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -17,44 +11,43 @@ permissions:
   pages: write
   id-token: write
 
-# One deployment at a time; a newer push waits rather than cancelling a
-# deployment that is already running.
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
   build:
-    # Pages needs a public repository on the Free plan; skip quietly until then.
-    if: ${{ !github.event.repository.private }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
+      - id: code
+        run: echo "revision=$(cat code-revision.txt)" >> "$GITHUB_OUTPUT"
+      - uses: actions/checkout@v4
+        with:
+          repository: opentac/opentac
+          ref: ${{ steps.code.outputs.revision }}
+          path: .opentac
       - uses: astral-sh/setup-uv@v6
-
-      - name: Install the docs toolchain
-        run: uv sync --locked --extra docs
-
-      - name: Build the site
-        run: uv run mkdocs build -d site
-
-      - name: Add the CAD tool at /cad/
+      - name: Install the website toolchain
+        run: uv sync --locked
+      - name: Build the website and pinned CAD frontend
+        run: uv run python scripts/build_site.py
+      - name: Check QR and transfer compatibility
+        env:
+          OPENTAC_SITE_ROOT: ${{ github.workspace }}
         run: |
-          mkdir -p site/cad
-          rsync -a --exclude 'tests/' opentac/cad/web/ site/cad/
-          test -f site/cad/index.html
-          # Each release gets its own file URLs, so a browser never mixes a
-          # new script with an older cached module (Pages caches for 10 min).
-          python3 scripts/stamp_cad_assets.py site/cad "${GITHUB_SHA::8}"
-
+          uv sync --project .opentac --locked
+          uv run --project .opentac python .opentac/scripts/check_qr_page.py
+          uv run --project .opentac python .opentac/scripts/learn/check_transfer.py
       - uses: actions/configure-pages@v5
-
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
       - uses: actions/upload-pages-artifact@v3
+        if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
         with:
           path: site
 
   deploy:
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
     needs: build
     runs-on: ubuntu-latest
     environment:
