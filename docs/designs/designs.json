@@ -1,7 +1,7 @@
 [
  {
   "slug": "calibration-square-p1p5-gap0p2",
-  "title": "Calibration: square p1.5 gap0.2",
+  "title": "Square: 1.5 mm pitch, 0.2 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "01_square_p1.5_gap0.2",
   "taxels": 729,
@@ -25,7 +25,7 @@
  },
  {
   "slug": "calibration-square-p2p0-gap0p2",
-  "title": "Calibration: square p2.0 gap0.2",
+  "title": "Square: 2 mm pitch, 0.2 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "02_square_p2.0_gap0.2",
   "taxels": 400,
@@ -49,7 +49,7 @@
  },
  {
   "slug": "calibration-square-p4p0-gap0p2",
-  "title": "Calibration: square p4.0 gap0.2",
+  "title": "Square: 4 mm pitch, 0.2 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "03_square_p4.0_gap0.2",
   "taxels": 100,
@@ -73,7 +73,7 @@
  },
  {
   "slug": "calibration-square-p2p0-gap0p1",
-  "title": "Calibration: square p2.0 gap0.1",
+  "title": "Square: 2 mm pitch, 0.1 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "04_square_p2.0_gap0.1",
   "taxels": 400,
@@ -97,7 +97,7 @@
  },
  {
   "slug": "calibration-square-p2p0-gap0p3",
-  "title": "Calibration: square p2.0 gap0.3",
+  "title": "Square: 2 mm pitch, 0.3 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "05_square_p2.0_gap0.3",
   "taxels": 400,
@@ -121,7 +121,7 @@
  },
  {
   "slug": "calibration-square-p2p0-gap0p4",
-  "title": "Calibration: square p2.0 gap0.4",
+  "title": "Square: 2 mm pitch, 0.4 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "06_square_p2.0_gap0.4",
   "taxels": 400,
@@ -145,7 +145,7 @@
  },
  {
   "slug": "calibration-square-p2p0-gap0p5",
-  "title": "Calibration: square p2.0 gap0.5",
+  "title": "Square: 2 mm pitch, 0.5 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "07_square_p2.0_gap0.5",
   "taxels": 400,
@@ -169,7 +169,7 @@
  },
  {
   "slug": "calibration-rectangle-p2p0-gap0p2",
-  "title": "Calibration: rectangle p2.0 gap0.2",
+  "title": "Rectangle: 2 mm pitch, 0.2 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "08_rectangle_p2.0_gap0.2",
   "taxels": 406,
@@ -193,7 +193,7 @@
  },
  {
   "slug": "calibration-triangle-p2p0-gap0p2",
-  "title": "Calibration: triangle p2.0 gap0.2",
+  "title": "Triangle: 2 mm pitch, 0.2 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "09_triangle_p2.0_gap0.2",
   "taxels": 409,
@@ -217,7 +217,7 @@
  },
  {
   "slug": "calibration-hexagon-p2p0-gap0p2",
-  "title": "Calibration: hexagon p2.0 gap0.2",
+  "title": "Hexagon: 2 mm pitch, 0.2 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "10_hexagon_p2.0_gap0.2",
   "taxels": 406,
@@ -241,7 +241,7 @@
  },
  {
   "slug": "calibration-circle-p2p0-gap0p2",
-  "title": "Calibration: circle p2.0 gap0.2",
+  "title": "Circle: 2 mm pitch, 0.2 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "11_circle_p2.0_gap0.2",
   "taxels": 403,
@@ -265,7 +265,7 @@
  },
  {
   "slug": "calibration-lshape-p2p0-gap0p2",
-  "title": "Calibration: lshape p2.0 gap0.2",
+  "title": "L-shape: 2 mm pitch, 0.2 mm electrode gap",
   "group": "calibration",
   "fabricated_as": "12_lshape_p2.0_gap0.2",
   "taxels": 405,
@@ -363,7 +363,7 @@
  },
  {
   "slug": "strip-09x09-long",
-  "title": "9 x 9 patch, long tail",
+  "title": "9 × 9 patch, long tail",
   "group": "robot",
   "fabricated_as": "09x09_t2_27x136mm_81taxels",
   "taxels": 81,
@@ -389,7 +389,7 @@
  },
  {
   "slug": "strip-09x09",
-  "title": "9 x 9 patch",
+  "title": "9 × 9 patch",
   "group": "robot",
   "fabricated_as": "09x09_t2_27x40mm_81taxels",
   "taxels": 81,
@@ -487,7 +487,7 @@
  },
  {
   "slug": "finger-16x06",
-  "title": "Finger strip 16 x 6",
+  "title": "Finger strip 16 × 6",
   "group": "robot",
   "fabricated_as": "16x06_t4_36x94mm_96taxels",
   "taxels": 96,
@@ -585,7 +585,7 @@
  },
  {
   "slug": "strip-32x12",
-  "title": "Strip 32 x 12",
+  "title": "Strip 32 × 12",
   "group": "robot",
   "fabricated_as": "32x12_t2_44x111mm_384taxels",
   "taxels": 330,
@@ -633,7 +633,7 @@
  },
  {
   "slug": "large-32x32",
-  "title": "Large 32 x 32 array",
+  "title": "Large 32 × 32 array",
   "group": "robot",
   "fabricated_as": "32x32_t4_148x246mm_1024taxels",
   "taxels": 900,

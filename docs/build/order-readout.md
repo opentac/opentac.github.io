@@ -5,12 +5,12 @@ description: Ordering an assembled OpenTac readout board from JLCPCB with the Ge
 
 # Order the readout board
 
-The readout boards are ordered assembled (PCBA): the board house makes the PCB and solders the parts. Each board's `production/` folder in the [repository's `hardware/` folder](https://github.com/opentac/opentac/tree/main/hardware) has the three files JLCPCB needs; the links below download them. Which board to order: [Readout boards](../hardware.md).
+We order the readout boards with PCB assembly (PCBA): the manufacturer fabricates the board and mounts its components. Each board's `production/` directory in the [code repository](https://github.com/opentac/opentac/tree/main/hardware) contains the Gerber archive, bill of materials (BOM) and component-placement file (CPL) required for this process. Choose the appropriate hardware using [Readout boards](../hardware.md), then download the corresponding files below.
 
 !!! info "As of October 2026"
     Option names, prices and file names below are from October 2026; the screenshots were taken on 16 October 2026 with the files in this repository. Check the [PCB assembly capabilities](https://jlcpcb.com/capabilities/pcb-assembly-capabilities) and [assembly price](https://jlcpcb.com/help/article/pcb-assembly-price) pages for current terms.
 
-## The files
+## Fabrication and assembly files { #the-files }
 
 | Board | Folder | Gerber ZIP | BOM | Placement (CPL) |
 |---|---|---|---|---|
@@ -23,15 +23,15 @@ The 30-pin version is two boards, so it is two PCBA orders (they can go in the s
 
 The BOM lists every part with its LCSC number (the `LCSC Part #` column), which is how JLCPCB matches parts. The CPL gives each part's position, rotation and side.
 
-## The order
+## Configure the assembly order { #the-order }
 
-### Gerbers
+### Upload the Gerbers { #gerbers }
 
 1. On jlcpcb.com, start a quote and **Add gerber file** with the board's Gerber ZIP. Layers and size are read from the files: the 60-pin board and the 30-pin top board are 4-layer, the 30-pin bottom board is 2-layer, all 1.6&nbsp;mm FR-4.
 2. Leave the PCB options at their defaults unless you have a reason to change them.
 
 <figure class="ot-fig" markdown="span">
-  [![JLCPCB quote form after uploading stm-i2c-60-switch.zip: top and bottom renders of the green board, the line "Detected 4 layer board of 34.28x37mm" and Layers 4 outlined in orange, Base Material FR-4.](../assets/photos/jlcpcb/readout-60pin-upload.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-upload.png)
+  [![JLCPCB identifies the 60-pin readout Gerbers as a four-layer FR-4 board measuring 34.28 × 37 mm.](../assets/photos/jlcpcb/readout-60pin-upload.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-upload.png)
   <figcaption>The 60-pin board uploaded: 4 layers, 34.28 &times; 37&nbsp;mm. The 30-pin boards read as 22.79 &times; 16.01&nbsp;mm, 4 layers (top) and 22.7 &times; 16.01&nbsp;mm, 2 layers (bottom).</figcaption>
 </figure>
 
@@ -44,12 +44,12 @@ Turn on **PCB Assembly** with the switch on its bar, below the PCB options. Then
 - **Parts Selection:** leave **By Customer (Self-Service)**, the free option. The steps below are for that option.
 
 <figure class="ot-fig" markdown="span">
-  [![The PCB Assembly section for the 60-pin board: switch on, top side selected, PCBA Type Standard, Assembly Side Top Side, Edge Rails/Fiducials Added by JLCPCB with the note that the board size is changed to 71 by 70.28 mm, and Parts Selection By Customer (Self-Service), each outlined in orange.](../assets/photos/jlcpcb/readout-60pin-assembly.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-assembly.png)
+  [![Assembly settings for the 60-pin board: Standard PCBA, top-side placement, manufacturer-added rails to 71 × 70.28 mm, and customer-selected parts.](../assets/photos/jlcpcb/readout-60pin-assembly.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-assembly.png)
   <figcaption>The 60-pin board: Standard, top side, edge rails added by JLCPCB, parts chosen by you.</figcaption>
 </figure>
 
 <figure class="ot-fig" markdown="span">
-  [![The PCB Assembly section for the 30-pin bottom board: both sides selected for assembly, PCBA Type Standard, Assembly Side Both Sides and Edge Rails/Fiducials Added by JLCPCB outlined in orange, with the note that the board size is changed to 70.01 by 70.7 mm because Standard PCBA needs each side longer than 70 mm.](../assets/photos/jlcpcb/readout-30pin-assembly-standard.png){ loading=lazy }](../assets/photos/jlcpcb/readout-30pin-assembly-standard.png)
+  [![Assembly settings for the 30-pin bottom board: Standard PCBA on both sides, with manufacturer-added rails to 70.01 × 70.7 mm.](../assets/photos/jlcpcb/readout-30pin-assembly-standard.png){ loading=lazy }](../assets/photos/jlcpcb/readout-30pin-assembly-standard.png)
   <figcaption>A 30-pin board (here the bottom one): Standard, both sides. Economic is greyed out once both sides are selected.</figcaption>
 </figure>
 
@@ -62,19 +62,19 @@ Press **NEXT** in the price panel. JLCPCB asks you to sign in here, then walks t
 **2. Bill of Materials.** Upload the **BOM** (`*_bom.csv`) and the **CPL** (`*_positions.csv`) from the board's `production/` folder, then press **Process BOM & CPL**.
 
 <figure class="ot-fig" markdown="span">
-  [![The Bill of Materials tab with stm-i2c-60-switch_bom.csv and stm-i2c-60-switch_positions.csv attached, and the Process BOM & CPL button outlined in orange.](../assets/photos/jlcpcb/readout-60pin-bom-upload.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-bom-upload.png)
+  [![BOM and CPL files attached for the 60-pin readout board, ready for Process BOM & CPL.](../assets/photos/jlcpcb/readout-60pin-bom-upload.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-bom-upload.png)
   <figcaption>BOM and CPL attached for the 60-pin board.</figcaption>
 </figure>
 
-**3. Check every line.** Every BOM line should be matched to an LCSC part and ticked. The counts to expect: **32** parts on the 60-pin board, **14** on the 30-pin top board and **10** on the 30-pin bottom board, each shown as *parts detected* and *parts confirmed*. A line with no part selected needs one: search by the LCSC number from the BOM. For a resistor or capacitor out of stock, a part of the same value, rating and package is fine. For a chip or connector, don't substitute; wait for stock or ask on the repository's issue tracker.
+**3. Verify component selection.** Every BOM entry must be matched to the specified LCSC part and selected for assembly. The counts to expect: **32** parts on the 60-pin board, **14** on the 30-pin top board and **10** on the 30-pin bottom board, each shown as *parts detected* and *parts confirmed*. A line with no part selected needs one: search by the LCSC number from the BOM. For a resistor or capacitor out of stock, a part of the same value, rating and package is fine. For a chip or connector, don't substitute; wait for stock or ask on the repository's issue tracker.
 
 <figure class="ot-fig" markdown="span">
-  [![The JLCPCB parts list for the 60-pin board: Top Side, 32 parts detected and 32 confirmed; each BOM line (designators, value, footprint) matched to an LCSC part with quantity, source JLCPCB, Basic or Extended, cost, and a ticked Select box.](../assets/photos/jlcpcb/readout-60pin-bom-parts.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-bom-parts.png)
-  <figcaption>The 60-pin board's parts list, first rows: every line matched and ticked.</figcaption>
+  [![Component list for the 60-pin board: 32 parts detected and confirmed, with each BOM entry matched to an LCSC part and selected for assembly.](../assets/photos/jlcpcb/readout-60pin-bom-parts.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-bom-parts.png)
+  <figcaption>Component selection for the 60-pin board: each BOM entry is matched to an LCSC part and selected for assembly.</figcaption>
 </figure>
 
 <figure class="ot-fig" markdown="span">
-  [![The JLCPCB parts list for the 30-pin top board: Both Sides, 14 parts detected and 14 confirmed, with separate Top Designator and Bottom Designator columns; the microcontroller IC3 and the stacking headers J1 and J3 are on the bottom side.](../assets/photos/jlcpcb/readout-30pin-top-bom-parts.png){ loading=lazy }](../assets/photos/jlcpcb/readout-30pin-top-bom-parts.png)
+  [![Component list for the 30-pin top board: 14 parts detected and confirmed across both sides. IC3 and stacking headers J1 and J3 are assigned to the bottom.](../assets/photos/jlcpcb/readout-30pin-top-bom-parts.png){ loading=lazy }](../assets/photos/jlcpcb/readout-30pin-top-bom-parts.png)
   <figcaption>A two-sided board (the 30-pin top board): the list has a column per side. The microcontroller and the 1.27&nbsp;mm stacking headers J1 and J3 are on the bottom.</figcaption>
 </figure>
 
@@ -95,13 +95,13 @@ Press **NEXT** in the price panel. JLCPCB asks you to sign in here, then walks t
   <figcaption>The 30-pin bottom board, top side (left) and bottom side (right), with the sensor connector.</figcaption>
 </figure>
 
-**5. Quote & Order.** The assembly price is itemised here. Press **SAVE TO CART** and pay as for any order.
+**5. Quote & Order.** Review the itemised fabrication and assembly charges before selecting **SAVE TO CART**.
 
 <figure class="ot-fig" markdown="span">
   [![The Quote & Order tab for five 60-pin boards: PCB $8.00; Standard PCBA $370.26 made of setup fee $25.75, stencil $8.27, components (32 items) $273.81, feeders loading fee $49.60, SMT assembly $4.08, X-ray inspection $8.25 and packaging $0.50; total $378.26.](../assets/photos/jlcpcb/readout-60pin-quote.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-quote.png)
-  <figcaption>Example quote, 16 October 2026, five 60-pin boards: $378.26 before shipping. Components are most of it; the multiplexer and the microcontroller alone are about $38 a board. Five of each 30-pin board came to $205.85 (top) and $165.98 (bottom); each is its own order, with a setup fee per side.</figcaption>
+  <figcaption>Example quote, 16 October 2026, five 60-pin boards: $378.26 before shipping. Components account for most of the total; the multiplexer and microcontroller together cost about $38 per board in this quote. Five of each 30-pin board came to $205.85 (top) and $165.98 (bottom); each is its own order, with a setup fee per side.</figcaption>
 </figure>
 
-## When the boards arrive
+## Flash the assembled boards { #when-the-boards-arrive }
 
 Plug the board into USB and [flash the firmware](../use/flash.md). A new board has no firmware, so the first flash needs the BOOT0 button held while plugging in; after that, the firmware can restart itself into the bootloader.

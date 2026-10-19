@@ -1,11 +1,11 @@
 ---
 title: Assembly guide
-description: Check the fit, print the case, cut the piezoresistive layer, assemble an OpenTac sensor, and read it over USB. No glue, screws or alignment jig.
+description: Check the fit, print the case, cut the piezoresistive layer, assemble an OpenTac sensor, and read it over USB. Includes fit verification, stack alignment and initial readout checks.
 ---
 
 # Assembly guide
 
-This page takes a downloaded design to a working sensor: check the fit on paper, print the case, cut the piezoresistive layer, assemble, then plug the sensor in and read it. Assembly itself takes a few minutes and needs no tools beyond scissors. The tray, the piezoresistive cut and the bump sheet are all generated from the board's own outline, so each part drops onto the one below it in the right place.
+This guide describes how to assemble and configure a sensor from an OpenTac-CAD export. First verify the board outline against the mounting surface, then print the case, cut the piezoresistive layer, assemble the stack and connect the readout board. The tray, cutting template and bump sheet share the PCB's design geometry, which constrains their alignment. Once the parts are available, assembly takes a few minutes and requires scissors and thin double-sided tape.
 
 <div class="ot-media ot-media--video" style="margin: 1.2em 0 .4em">
   <video controls preload="none" playsinline poster="../../assets/video/assembly_poster.jpg"
@@ -15,7 +15,7 @@ This page takes a downloaded design to a working sensor: check the fit on paper,
   </video>
 </div>
 
-The video shows the five steps of [Assemble](#assemble) below: the parts laid out; the board into the tray; the textile on top; the bump sheet pressed on, which aligns itself; the tail into the readout board.
+The video follows the five [assembly steps](#assemble): arrange the parts, seat the PCB in the tray, add the piezoresistive textile, attach the bump sheet, and connect the tail to the readout board.
 
 ## What you need
 
@@ -30,7 +30,7 @@ The photos below are from a 15&times;11-taxel sensor for the jaw of an AgileX Pi
 
 ## Check the fit on paper { #check-the-fit-on-paper }
 
-Do this before ordering boards. It takes a minute and catches a wrong outline.
+Verify the outline and tail routing before ordering the PCB. A paper template lets you check these dimensions directly on the intended mounting surface.
 
 1. Print `printable_1to1.pdf` from the export at **100% / Actual size**, not *Fit to page*.
 2. Measure the ruler on the sheet: it must be exactly 100&nbsp;mm. If not, reprint.
@@ -41,19 +41,19 @@ The PDF draws the board's real manufactured edge, including the tail, not just t
 <div class="ot-photos" markdown>
 <figure markdown="span">
   ![The printed 1:1 PDF with the board outline and taxel grid.](../assets/photos/steps/fit-pdf-printed.jpg){ loading=lazy }
-  <figcaption>The 1:1 print.</figcaption>
+  <figcaption>Full-scale board template.</figcaption>
 </figure>
 <figure markdown="span">
   ![The paper outline cut out.](../assets/photos/steps/fit-cutout.jpg){ loading=lazy }
-  <figcaption>Cut out.</figcaption>
+  <figcaption>Cut along the manufactured board outline.</figcaption>
 </figure>
 <figure markdown="span">
   ![The paper cutout held against the gripper jaw.](../assets/photos/steps/fit-held-to-jaw.jpg){ loading=lazy }
-  <figcaption>Held to the part.</figcaption>
+  <figcaption>Check the sensing region against the gripper jaw.</figcaption>
 </figure>
 <figure markdown="span">
   ![The paper tail wrapped around the jaw toward the readout board.](../assets/photos/steps/fit-wrapped-on-jaw.jpg){ loading=lazy }
-  <figcaption>Tail wrapped to the board.</figcaption>
+  <figcaption>Check the tail path to the readout board.</figcaption>
 </figure>
 </div>
 
@@ -71,7 +71,7 @@ Print both in TPU (85&ndash;95A). The bumps must be soft enough to tip; a rigid 
 <div class="ot-photos ot-photos--three" markdown>
 <figure markdown="span">
   ![The two printed orange case parts side by side.](../assets/photos/steps/case-both-parts.jpg){ loading=lazy }
-  <figcaption>Top and bottom, in TPU.</figcaption>
+  <figcaption>TPU bump sheet and bottom tray.</figcaption>
 </figure>
 <figure markdown="span">
   ![Close-up of the top piece with rows of bumps and cross-shaped slits between them.](../assets/photos/steps/case-lid-bumps.jpg){ loading=lazy }
@@ -79,13 +79,13 @@ Print both in TPU (85&ndash;95A). The bumps must be soft enough to tip; a rigid 
 </figure>
 <figure markdown="span">
   ![The bottom piece with its recess and rib slots.](../assets/photos/steps/case-bottom-tray.jpg){ loading=lazy }
-  <figcaption>The tray: its pocket is the board outline.</figcaption>
+  <figcaption>Tray with a recess matching the PCB outline.</figcaption>
 </figure>
 </div>
 
 ## Cut the piezoresistive layer { #cut-the-piezoresistive-layer }
 
-The export has the sensing area's outline twice: `velostat/velostat_cut.dxf` for a laser cutter or cutting plotter, and `velostat/velostat_fold_template.pdf` for scissors. The fold template draws the outline twice, mirrored across a dashed line, so a thin sheet that curls can be held flat between two layers of paper while you cut. It covers the taxels only, not the tail.
+The export includes two versions of the sensing-area outline: `velostat/velostat_cut.dxf` for a laser cutter or cutting plotter, and `velostat/velostat_fold_template.pdf` for cutting with scissors. The PDF places mirrored outlines on either side of a fold line. Folding the paper around a thin film or textile holds it flat during cutting. The template covers the taxels and excludes the connector tail.
 
 1. Print the fold template at 100%.
 2. Fold it on the dashed line, printed side out, and trim the folded paper roughly around the shape.
@@ -95,28 +95,28 @@ The export has the sensing area's outline twice: `velostat/velostat_cut.dxf` for
 <div class="ot-photos" markdown>
 <figure markdown="span">
   ![The fold template: two mirrored outlines and a dashed fold line.](../assets/photos/steps/fold-template-printed.jpg){ loading=lazy }
-  <figcaption>1. The template.</figcaption>
+  <figcaption>1. Print the cutting template at full scale.</figcaption>
 </figure>
 <figure markdown="span">
   ![The template folded on the dashed line.](../assets/photos/steps/fold-template-folded.jpg){ loading=lazy }
-  <figcaption>2. Folded.</figcaption>
+  <figcaption>2. Fold along the dashed line.</figcaption>
 </figure>
 <figure markdown="span">
   ![The folded template on the black piezoresistive fabric.](../assets/photos/steps/fabric-inside-fold.jpg){ loading=lazy }
-  <figcaption>3. Sheet inside the fold.</figcaption>
+  <figcaption>3. Place the piezoresistive sheet between the paper layers.</figcaption>
 </figure>
 <figure markdown="span">
   ![The finished black fabric piece in the shape of the sensing area.](../assets/photos/steps/fabric-cut-piece.jpg){ loading=lazy }
-  <figcaption>4. The cut piece.</figcaption>
+  <figcaption>4. Cut the sheet to the sensing-area outline.</figcaption>
 </figure>
 </div>
 
 ## Assemble { #assemble }
 
 1. **Lay out the parts:** the printed tray, the flex PCB, the piezoresistive piece and the bump sheet.
-2. **Board into the tray.** Put thin double-sided tape on the back of the flex and press it into the tray's pocket, taxels up. The pocket is the board's outline, so it drops into place.
+2. **Board into the tray.** Put thin double-sided tape on the back of the flex and press it into the tray's pocket, taxels up. Seat the PCB flat within the matching outline.
 3. **Piezoresistive layer on top.** Lay the cut piece over the taxels. It is cut from the same outline, so it covers every taxel.
-4. **Press the bump sheet on.** Press it down all the way around the edge; a rib holds it shut. The bump sheet comes from the same design file as the board, so the cross-shaped base of each bump falls into the gaps between taxels and each bump centres itself over its 2&times;2 group. There is nothing to line up.
+4. **Press the bump sheet on.** Press it down all the way around the edge; a rib holds it shut. The bump sheet comes from the same design file as the board, so the cross-shaped base of each bump falls into the gaps between taxels and each bump centres itself over its 2&times;2 group. Check that the lid is seated around the full perimeter.
 5. **Tail into the readout board.** Flip up the connector's latch, slide the tail in all the way with the stiffener (the taxel side) facing up and the contacts facing down, and press the latch closed. Then plug in USB.
 
 <div class="ot-photos" markdown>
@@ -126,27 +126,27 @@ The export has the sensing area's outline twice: `velostat/velostat_cut.dxf` for
 </figure>
 <figure markdown="span">
   ![Black piezoresistive fabric laid over the taxels in the tray.](../assets/photos/steps/assembly-fabric-on-flex.jpg){ loading=lazy }
-  <figcaption>3. Fabric on top.</figcaption>
+  <figcaption>3. Piezoresistive fabric covering the taxels.</figcaption>
 </figure>
 <figure markdown="span">
   ![The assembled sensor with the bumped top piece closed over it.](../assets/photos/steps/assembly-lid-on.jpg){ loading=lazy }
-  <figcaption>4. Bump sheet on.</figcaption>
+  <figcaption>4. Bump sheet seated on the tray.</figcaption>
 </figure>
 <figure markdown="span">
   ![The stiffened tail fully inserted in the readout board's connector, latch closed.](../assets/photos/steps/connector-inserted.jpg){ loading=lazy }
-  <figcaption>5. Tail in, latch down.</figcaption>
+  <figcaption>5. Connector tail fully inserted, with the latch closed.</figcaption>
 </figure>
 </div>
 
 <figure class="ot-fig ot-fig--clear" markdown="span">
   ![Close-up of the printed bump sheet seated on the flex PCB: the cross-shaped base of each bump sits in the gaps between the gold taxel electrodes.](../assets/photos/alignment.jpg){ loading=lazy }
-  <figcaption>Why no jig is needed: the bump sheet and the board come from the same design file, so the cross-shaped bases of the bumps seat in the gaps between taxels.</figcaption>
+  <figcaption>Mechanical alignment of the bump sheet: each cross-shaped base seats in the gaps between the four underlying taxels. The PCB and lid share the same design geometry.</figcaption>
 </figure>
 
 
 ## Read the sensor { #read-the-sensor }
 
-With the tail in the readout board, the sensor is ready to read. The first time takes about ten minutes. Run the commands in the repository folder ([Get started](../get-started.md#run-it-on-your-computer)).
+After connecting the tail, flash the readout board, upload the sensor manifest and verify the response in the live viewer. Initial setup takes about ten minutes. Run the commands from the code repository ([Get started](../get-started.md#run-it-on-your-computer)).
 
 1. **Plug the readout board into the computer** with a micro-USB cable that carries data (some cables only charge). The board shows up as a serial port, with no adapter or programmer.
 2. **Flash the firmware, once per board.** Install `dfu-util` (macOS: `brew install dfu-util`; Linux: `sudo apt install dfu-util`), or STM32CubeProgrammer on Windows, then:
@@ -155,14 +155,14 @@ With the tail in the readout board, the sensor is ready to read. The first time 
     uv run opentac flash
     ```
 
-    It asks the board which board it is, restarts it into its bootloader and writes the matching firmware. A board fresh from assembly has no firmware and cannot answer: hold its BOOT0 button while you plug it in, release it, and name the board, `uv run opentac flash --board readout60` for the 60-pin board or `--board node16` for the 30-pin pair. [Flash the firmware](../use/flash.md) has the details and two other ways to flash.
+    The command identifies the board, restarts it in bootloader mode and writes the corresponding firmware. A board fresh from assembly has no firmware and cannot answer: hold its BOOT0 button while you plug it in, release it, and name the board, `uv run opentac flash --board readout60` for the 60-pin board or `--board node16` for the 30-pin pair. [Flash the firmware](../use/flash.md) has the details and two other ways to flash.
 
     <figure class="ot-fig" markdown="span">
-      ![Top-view renders of the 60-pin board and the top board of the 30-pin pair, with the BOOT0 push button circled on each: near the bottom-left corner of the 60-pin board, at the right edge of the 30-pin top board.](../assets/diagrams/boot0_button.jpg){ loading=lazy width="1461" height="830" }
+      ![BOOT0 buttons circled on the 60-pin board, near its lower-left corner, and the 30-pin top board, at its right edge.](../assets/diagrams/boot0_button.jpg){ loading=lazy width="1461" height="830" }
       <figcaption>The BOOT0 button (S4), circled. Renders of the boards' KiCad files, not to scale with each other.</figcaption>
     </figure>
 
-3. **Tell the board which sensor it has, once per sensor.** Give it the ZIP you downloaded from OpenTac-CAD (or the `manifest.json` inside it):
+3. **Upload the sensor manifest whenever the sensor changes.** Give it the ZIP you downloaded from OpenTac-CAD (or the `manifest.json` inside it):
 
     ```bash
     uv run opentac setup my_design.zip
@@ -178,12 +178,14 @@ With the tail in the readout board, the sensor is ready to read. The first time 
 
     Click the window, then press `b` with nothing touching the sensor. That zeroes it: the reading at rest is subtracted from every frame.
 
-### What you should see
+### Verify normal and shear response { #what-you-should-see }
 
-The window draws every taxel where it sits on the sensor, inside the outline you drew, with axes in millimetres. After zeroing, every taxel is dark. Press one bump with a fingertip: the taxels under it turn bright, and the title line shows the frame rate and the peak reading. The colour scale is in raw ADC counts, 0 to 4095, not newtons. Then push the bump sideways without lifting your finger: with `--shear` and the bump sheet on, an arrow on that bump points the way you push. A bump gets an arrow only once its taxels read a few hundred counts in total. With a flat or hatched lid the arrows mean nothing; leave out `--shear`.
+The viewer places each taxel at its physical coordinates, with axes in millimetres. With the sensor unloaded, press `b` to subtract the baseline; the taxels should then be near the bottom of the colour scale. Press a bump and observe the increase in its underlying taxel readings. The title reports the frame rate and peak reading. These values are raw ADC counts, from 0 to 4095, rather than calibrated forces in newtons.
+
+With a bump sheet and `--shear` enabled, apply a tangential load without lifting your finger. An arrow at the bump should indicate the push direction. Arrows appear only after the group's summed reading exceeds a threshold of a few hundred counts. Flat and hatched lids do not provide the bump-mediated response assumed by this estimator; omit `--shear` for those lids.
 
 <figure class="ot-fig" markdown="span" style="max-width: 24rem">
-  ![The opentac view window drawing one frame: the AgileX jaw skin's 502 taxels at their positions inside the outline, axes in millimetres, a bright block of taxels where a square block presses and dark taxels elsewhere, a colour bar in counts from 0 to 4095, and the title line "peak 3890 (zeroed)".](../assets/diagrams/view_frame.jpg){ loading=lazy width="890" height="948" }
+  ![Live-view rendering of a recorded 502-taxel AgileX jaw contact. A square press appears as a bright region; the colour scale spans 0–4095 ADC counts and the zeroed peak is 3890.](../assets/diagrams/view_frame.jpg){ loading=lazy width="890" height="948" }
   <figcaption>The live view's drawing (<code>opentac/view.py</code>) of one recorded frame: a square block pressed by hand on a 502-taxel skin for an AgileX jaw, with no bump sheet, so no arrows.</figcaption>
 </figure>
 
@@ -196,10 +198,10 @@ The window draws every taxel where it sits on the sensor, inside the outline you
     <source src="../../assets/loops/real_sensor.mp4" type="video/mp4">
   </video>
 </div>
-<figcaption>A finger presses and twists a sensor with a bump sheet. Colour is normal force; arrows are shear. The map in this clip was not drawn by <code>opentac view</code>, which shows the same two things in its own colours.</figcaption>
+<figcaption>A finger presses and twists a sensor with a bump sheet. Colour is normal force; arrows are shear. The clip uses a separate visualisation; <code>opentac view</code> displays taxel readings and shear arrows with a different colour scheme.</figcaption>
 </figure>
 
-### If something looks wrong
+### Troubleshoot the readout { #if-something-looks-wrong }
 
 | What you see | What to check |
 |---|---|
@@ -211,6 +213,6 @@ The window draws every taxel where it sits on the sensor, inside the outline you
 | Taxels show a reading with nothing touching | Press `b` with hands off to zero again. |
 | A firm press turns many taxels to the top of the scale, on the 60-pin board | Lower the gain: `uv run opentac view --set GAIN_SW=2` ([Gain](../use/sensor.md#gain-60-pin-board)). |
 
-## Next
+## Recording and multi-sensor readout { #next }
 
 [Read a sensor](../use/sensor.md) covers recording takes, reading frames in Python, the board's settings and calibration to newtons. To read several 30-pin boards over one USB port, see [Daisy-chain boards](../use/daisy-chain.md).

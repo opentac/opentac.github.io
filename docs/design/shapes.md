@@ -1,15 +1,15 @@
 ---
 title: Shapes and surfaces
-description: Which surfaces a flex-PCB sensor can cover, how to unfold them from an STL, and how to approximate doubly curved parts with flat facets.
+description: Determine which surfaces can be covered by a flex PCB, unfold STL patches, and approximate doubly curved regions.
 ---
 
 # Shapes and surfaces
 
-A flex PCB is a thin sheet. It bends easily, but only one way at a time, the way a sheet of paper does. That decides which surfaces OpenTac can sensorize directly.
+A flex PCB can bend around a surface, but it cannot conform to arbitrary curvature without in-plane deformation. The relevant distinction is whether the target surface can be unfolded into a flat sheet without stretching. This determines whether one continuous board can cover it, or whether the design needs cuts, facets or partial coverage.
 
-## Surfaces that work
+## Developable surfaces { #surfaces-that-work }
 
-**Flat and singly curved surfaces** can be covered with one board: a gripper jaw, the flat pad of a finger, a cylinder, a cone, or a strip that wraps around a corner. These are *developable* surfaces: they unroll flat without stretching, so the unfolded outline is exactly the board you need.
+**Flat and developable surfaces** can be covered by a board cut to their unfolded outline. Examples include a planar gripper pad, a cylindrical surface, a cone, or a strip folded around a corner. These surfaces flatten without in-plane stretching, so their unfolded geometry provides the PCB outline.
 
 In the STL importer, pick the surface in one of four ways:
 
@@ -23,40 +23,40 @@ In the STL importer, pick the surface in one of four ways:
 <div class="ot-shots" markdown>
 <figure markdown="span">
   ![The AgileX Piper jaw in OpenTac-CAD's 3D view, its curved contact surface selected in orange.](../assets/screens/cad_stl_surface.webp){ loading=lazy width="374" height="417" }
-  <figcaption>On the model</figcaption>
+  <figcaption>Contact surface selected on the 3D model.</figcaption>
 </figure>
 <figure markdown="span">
-  ![The same surface unfolded flat in the outline editor: a tapered outline 56 mm across the top and 20 mm across the bottom, with each edge length marked.](../assets/screens/cad_stl_unfolded.webp){ loading=lazy width="780" height="512" }
-  <figcaption>Unfolded</figcaption>
+  ![AgileX Piper contact surface unfolded into a tapered outline, 56 mm wide at the top and 20 mm at the bottom, with edge lengths annotated.](../assets/screens/cad_stl_unfolded.webp){ loading=lazy width="780" height="512" }
+  <figcaption>Selected surface unfolded at true scale.</figcaption>
 </figure>
 </div>
 <figcaption>The AgileX Piper jaw from the robot gallery: its curved contact surface, selected on the model and unfolded at true scale into the board outline.</figcaption>
 </figure>
 
-## Surfaces that don't
+## Doubly curved surfaces { #surfaces-that-dont }
 
-**Doubly curved surfaces** (a sphere, a dome, the rounded cap of a fingertip, a saddle) cannot be covered by one flat sheet without wrinkling or stretching it, and copper does not stretch. Such a surface cannot be sensorized directly.
+**Doubly curved surfaces**, such as a sphere, dome, rounded fingertip cap or saddle, cannot be flattened without distortion. A continuous flex PCB therefore cannot conform to them exactly without stretching, wrinkling or cuts. For these regions, change the surface approximation or restrict the coverage.
 
-Approximate it instead:
+There are three practical options:
 
 1. **Split it into flat facets.** Model the curved region as a set of flat faces, and design the sensor over those faces. The facets fold along straight lines, which a flex PCB does well.
-2. **Prefer hexagons where they fit.** A hexagonal facet pattern follows a rounded surface more closely than squares with the same number of folds. The D'Claw fingertip below is a hexagonal prism: six side faces, a hexagon on the tip, and a leaf on each face that folds onto the chamfer between them.
-3. **Or sensorize only the part that matters.** The paper's agent-designed Allegro fingertip covers the palmar face plus the first 7&nbsp;mm of the curved tip cap, and leaves the rest of the cap bare (see [Design with an AI agent](agent.md)).
+2. **Choose facets to match the part.** The D'Claw fingertip below uses a hexagonal prism: six side faces, a hexagonal tip, and a leaf on each side that folds over the intervening chamfer. This provides a faceted approximation to the fingertip's curved contact region.
+3. **Restrict coverage to the contact region.** The paper's agent-designed Allegro fingertip covers the palmar face plus the first 7&nbsp;mm of the curved tip cap, and leaves the rest of the cap bare (see [Design with an AI agent](agent.md)).
 
 <div class="ot-photos ot-photos--two ot-photos--contain" markdown>
 <figure markdown="span">
   ![The D'Claw fingertip sensor unfolded: six strips of taxels side by side, each with a pointed leaf at the top, a small hexagon above the first strip, and a single tail running down to a 60-pin connector.](../assets/photos/shapes/dclaw-hex-flat.jpg){ loading=lazy }
-  <figcaption>Unfolded: six faces with a leaf each, the hexagon for the tip, one tail.</figcaption>
+  <figcaption>Unfolded D'Claw sensor: six side faces with chamfer tabs, a hexagonal tip, and one connector tail.</figcaption>
 </figure>
 <figure markdown="span">
   ![The same sensor folded onto the hexagonal fingertip core, taxels on all six sides and on the leaves around the tip.](../assets/photos/shapes/dclaw-hex-folded.jpg){ loading=lazy }
-  <figcaption>Folded onto the printed core: 546 taxels, 2&nbsp;mm, five columns centred on every face and leaf, 25 &times; 30 on the 60-pin board.</figcaption>
+  <figcaption>Sensor folded onto the printed fingertip core: 546 taxels of 2&nbsp;mm, with five columns centred on each face and tab. The 25 &times; 30 grid uses the 60-pin readout board.</figcaption>
 </figure>
 </div>
 
-## Practical rules
+## Constraints on the outline and tail { #practical-rules }
 
-- **The cable edge should be a real straight edge** at least as wide as the connector. On a smooth outline, cut a short flat where the cable should leave.
-- **Concave shapes are fine.** Where a notch cuts a row or column in two, the router joins the pieces with a link that runs around the notch, so the row is still one wire. Deep notches cost taxels in fixed-outline mode; four copper layers recover most of them.
+- **Select a straight cable edge** at least as wide as the connector. On a smooth outline, cut a short flat where the cable should leave.
+- **Concave outlines require additional routing.** Where a notch cuts a row or column in two, the router joins the pieces with a link that runs around the notch, so the row is still one wire. In fixed-outline mode, this routing reduces the area available for taxels. Four copper layers can recover coverage by moving row connections to the inner layers.
 - **Leave room for the tail.** The tail runs from the cable edge to the readout board. Set its length in the **Tail** section so it reaches; print the 1:1 PDF and wrap it around the part to check.
-- **Pairs of grippers:** design the left jaw, then **Mirror** it for the right. The cable edge stays on the same physical edge.
+- **Paired gripper jaws:** design the left jaw, then **Mirror** it for the right. The cable edge stays on the same physical edge.

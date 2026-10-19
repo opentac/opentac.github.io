@@ -1,6 +1,6 @@
 ---
 title: Paper
-description: The OpenTac paper, its abstract, and how to cite it.
+description: Abstract, authors, citation and related work for OpenTac.
 ---
 
 # Paper
@@ -21,7 +21,7 @@ We present OpenTac, a novel sensor and a full-stack ecosystem for tactile skins 
 
 <figure class="ot-fig" markdown="span">
   [![The OpenTac ecosystem: tactile skins on robot hands, grippers and feet; OpenTac-CAD turning a text request, a 2D drawing or a 3D model into Gerbers, a shear-bump case and a sensor manifest; OpenTac-Sim, Transfer and Xampling using the manifest; deployments on four robots.](assets/figures/overview.jpg){ loading=lazy }](assets/figures/overview.jpg)
-  <figcaption>The OpenTac ecosystem. (A) Custom normal-and-shear skins for robot hands, grippers, arms and feet. (B) OpenTac-CAD compiles a text description, 2D outline or 3D surface into a fabrication-ready flex-PCB tactile sensor, including the sensing layout, routing and shear-bump case. A shared sensor manifest connects the design to OpenTac-Sim, OpenTac-Transfer and OpenTac-Xampling. (C) Deployments on four robot platforms.</figcaption>
+  <figcaption>The OpenTac ecosystem. (A) Custom tactile skins for normal and shear sensing on robot hands, grippers, arms and feet. (B) OpenTac-CAD compiles a text description, 2D outline or 3D surface into a flex-PCB tactile sensor design, including the sensing layout, routing and shear-bump case. A shared sensor manifest connects the design to OpenTac-Sim, OpenTac-Transfer and OpenTac-Xampling. (C) Deployments on four robot platforms.</figcaption>
 </figure>
 
 ## Citation
@@ -35,6 +35,6 @@ We present OpenTac, a novel sensor and a full-stack ecosystem for tactile skins 
 }
 ```
 
-## Background
+## Related work { #background }
 
 OpenTac-Xampling builds on adaptive compressive tactile subsampling: A. Slepyan et al., *Adaptive compressive tactile subsampling: Enabling high spatiotemporal resolution in scalable robotic skin*, [arXiv:2410.13847](https://arxiv.org/abs/2410.13847), 2024.

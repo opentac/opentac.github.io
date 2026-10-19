@@ -10,11 +10,11 @@
   var N = 4;
 
   var LAYER_TEXT = {
-    all: 'Contact presses the lid; the film under it conducts more between the copper fingers; the readout measures that conductance taxel by taxel.',
+    all: "Loading the contact layer reduces the resistance between each pair of taxel electrodes. The readout measures the resulting conductance across the matrix.",
     lid: null,
     film: null,
     pcb: 'Two-layer flex PCB. Each taxel is two interdigitated combs. The row comb reaches the row trace on the back through a via; the column comb joins the column trace on the front.',
-    base: 'A printed base, or the robot part itself. It holds the stack and takes no part in sensing.'
+    base: "The printed base or robot surface supports the sensing stack; it is not an electrical sensing element."
   };
 
   L.study('anatomy', function (fig) {
@@ -24,11 +24,11 @@
 
       var controls = L.el('div', {class: 'otl-controls'});
       var cSkin = L.seg('Taxel pitch', SKINS, st.skin, function (v) { st.skin = v; redraw(); });
-      var cLayer = L.seg('Show', [['all', 'All'], ['lid', 'Lid'], ['film', 'Film'], ['pcb', 'Flex PCB'], ['base', 'Base']],
+      var cLayer = L.seg("Visible layer", [['all', 'All'], ['lid', 'Lid'], ['film', 'Film'], ['pcb', 'Flex PCB'], ['base', 'Base']],
                          st.layer, function (v) { st.layer = v; redraw(); });
       var cFilm = L.seg('Film', [['v2', 'LINQSTAT'], ['v3', 'Yunjia textile']], st.film, function (v) { st.film = v; redraw(); });
-      var cLid = L.seg('Top', [['bumps', 'Bump lid'], ['flat', 'Flat (foam)']], st.lid, function (v) { st.lid = v; redraw(); });
-      var cSep = L.slider('Separate', 0, 1, 0.01, st.sep, function (v) { return Math.round(v * 100) + '%'; }, function (v) { st.sep = v; redraw(); });
+      var cLid = L.seg("Contact layer", [['bumps', 'Bump lid'], ['flat', 'Flat (foam)']], st.lid, function (v) { st.lid = v; redraw(); });
+      var cSep = L.slider("Layer separation", 0, 1, 0.01, st.sep, function (v) { return Math.round(v * 100) + '%'; }, function (v) { st.sep = v; redraw(); });
       [cSkin, cLayer, cFilm, cLid, cSep].forEach(function (c) { controls.appendChild(c.el); });
       fig.appendChild(controls);
 
@@ -46,7 +46,7 @@
         if (st.layer === 'lid') {
           return st.lid === 'bumps'
             ? 'Printed TPU lid with one bump over each 2 × 2 block of taxels: ' + bp.height + ' mm tall, base ' + bp.base_frac + ' × the bump pitch, top ' + bp.top_ratio + ' × the base (bump-sheet defaults). The bumps turn shear into a difference between the four taxels (study 2).'
-            : 'A flat top, foam or a printed case lid, spreads the press. It reads pressure only: no bumps, no shear.';
+            : "A flat foam layer or case lid distributes normal load. Without bumps, this configuration does not provide the differential response used to estimate shear.";
         }
         if (st.layer === 'film') {
           var p = meta.profiles[st.film];
@@ -67,7 +67,7 @@
         var layers = [
           {key: 'base', z: 0, t: 2.2 * vz, fill: t.base, label: 'Base'},
           {key: 'pcb', t: 0.5 * vz, fill: t.pcb, label: 'Flex PCB'},
-          {key: 'film', t: 0.45 * vz, fill: st.film === 'v2' ? t.film : t.textile, label: st.film === 'v2' ? 'Film (LINQSTAT)' : 'Film (Yunjia textile)'},
+          {key: 'film', t: 0.45 * vz, fill: st.film === 'v2' ? t.film : t.textile, label: st.film === 'v2' ? 'Film (LINQSTAT)' : "Yunjia textile"},
           {key: 'lid', t: st.lid === 'bumps' ? bp.sheet * N * p / 16 * 1.2 : 2 * vz, fill: t.tpu,
            label: st.lid === 'bumps' ? 'TPU bump lid' : 'Flat top (foam)'}
         ];
@@ -206,8 +206,8 @@
     bar.style.borderTop = '0';
     var bStep = L.button('Next taxel', function () { stop(); step(); });
     var bScan = L.button('Scan', function () { if (st.playing) stop(); else play(); });
-    var cHold = L.check('Hold other rows at the sense potential', st.hold, function (v) { st.hold = v; paint(); });
-    var bGhost = L.button('Press three corners', function () {
+    var cHold = L.check("Ground unselected rows", st.hold, function (v) { st.hold = v; paint(); });
+    var bGhost = L.button("Load three corners", function () {
       st.press = [[1, 1, 0, 0], [0, 1, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]; st.row = 1; st.col = 0; paint();
     });
     var bClear = L.button('Release all', function () { st.press = st.press.map(function (r) { return r.map(function () { return 0; }); }); paint(); });
@@ -344,9 +344,9 @@
       var ghost = !pressed && counts > 50;
       info.className = 'otl-status' + (ghost ? ' warn' : '');
       info.textContent = 'Reading R' + (st.row + 1) + ' C' + (st.col + 1) + ': ' + (pressed ? 'pressed' : 'not pressed') + ', ' + counts + ' counts. ' +
-        (ghost ? 'A ghost: current reached the amplifier through three pressed taxels, because the other rows floated.'
-               : (st.hold ? 'Every row but the driven one sits at the amplifier\'s potential, so only this taxel can pass current to it.'
-                          : 'Other rows float. Press three corners of a rectangle to see current take a detour.'));
+        (ghost ? "Crosstalk: floating rows allow current through three pressed taxels to produce a response at the unpressed fourth corner."
+               : (st.hold ? "Unselected rows share the amplifier input potential, suppressing current through their taxels on the measured column."
+                          : "Unselected rows are floating. Load three corners of a rectangle to examine the unintended current path."));
       svg.setAttribute('aria-label', info.textContent);
     }
     function step() {

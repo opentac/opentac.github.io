@@ -1,8 +1,10 @@
+---
+description: Use the released foam and bump contact models, convert forces to ADC counts, and interpret the model assumptions.
+---
+
 # Simulation
 
-OpenTac-Sim, the `opentac.sim` module, presses an object into a flat OpenTac
-sensor and returns a `Frame`: the same type a real board returns. Code written against frames runs
-on simulated and real data alike.
+OpenTac-Sim (`opentac.sim`) models contact with a flat sensor and returns the same `Frame` interface used by the physical readout. It provides a foam-contact model for normal response and a bump model for normal and shear response. This shared interface lets downstream code consume simulated and recorded data, while the assumptions and calibration of each model determine how closely those frames correspond to a physical sensor.
 
 ```python
 from opentac import manifest
@@ -18,34 +20,27 @@ frame.image(m)      # the same values as a 2-D array laid out like the sensor
 
 `examples/sim_press.py` presses a 10 mm ball at 5 N and shows the image.
 
-## Two models
+## Choose a contact model { #two-models }
 
 | | `"foam"` | `"mujoco"` |
 |---|---|---|
 | Sensor | velostat under foam, **no bump sheet** | with the printed **TPU bump sheet** |
-| Physics | rigid indenter into a foam layer | rigid bumps on springy joints (press, shear, tip) |
+| Physics | Rigid indenter acting on a foam foundation | Rigid bumps with compliant normal, tangential and tilt coordinates |
 | Output | normal force per taxel | normal force per taxel, plus shear per bump |
 | Needs | numpy | numpy; the full solver also needs `mujoco` (`uv sync --extra sim`) |
 
-**The default is always `"foam"`.** Pass `model="mujoco"` if you print the
-bump sheet. The manifest cannot decide this for you: OpenTac-CAD writes a
-`shear` block (where bumps *would* go) into every manifest, whether or not a
-sheet is printed. The skins in the paper had `shear` blocks and no bump sheet.
+**The default model is `"foam"`.** Select `model="mujoco"` explicitly when modelling a sensor with a bump sheet. The manifest alone cannot establish which lid was physically installed: OpenTac-CAD includes a `shear` block describing possible bump groups even when no bump sheet is printed. The skins used in the paper's foam and transfer evaluation had these blocks but no bump sheets.
 
 The `"mujoco"` model needs the `shear` block and refuses a manifest without
 one.
 
 ## Foam model
 
-The skin is velostat under a foam layer. Pressure follows a Winkler
-foundation:
+The foam model represents a piezoresistive layer beneath a compliant foam layer. A rigid indenter applies pressure according to a Winkler-foundation approximation:
 
     p(x, y) = k · max(δ − z(x, y), 0)
 
-`z` is the height of the indenter's surface above the skin and `δ` the
-indentation depth. The pressure field is blurred by a Gaussian of width σ (the
-foam spreads load sideways) and summed over each taxel. `δ` is solved so the
-pressure adds up to the force you ask for, so the contact grows with load.
+`z(x, y)` is the height of the indenter surface relative to the sensor, and `δ` is the indentation depth. Their difference gives local compression wherever contact occurs. The stiffness density `k`, in N/mm³, converts that compression into pressure in N/mm². A Gaussian with width σ approximates lateral load spreading through the foam, and the resulting pressure is integrated over the taxel sampling windows. The solver chooses `δ` to match the requested applied force, allowing the contact region to grow with load.
 
 Two parameters, fitted once in the paper on one skin (robotiq_long: 96 taxels,
 4 mm pitch) and used unchanged on every other skin:
@@ -72,11 +67,7 @@ the skin. Load that falls outside the taxels (an indenter over the edge, foam
 spreading past the outline) is not read, so a frame can sum to less than
 `force_n`.
 
-**Known quirk.** Each taxel sums the pressure over a square of
-`(2·round(pitch) + 1) × 0.5` mm, not exactly one pitch. Where that is wider
-than the pitch, neighbouring taxels overlap and a frame sums to more than the
-force pressed. The port keeps this because the paper's numbers were made with
-it. `tests/sim/test_foam.py` checks the formula.
+**Integration-window convention.** Each taxel integrates pressure over a square window of width `(2·round(pitch) + 1) × 0.5` mm, which is not necessarily equal to the pitch. Windows wider than the pitch overlap, so the summed taxel forces can exceed the applied force. This convention is retained to reproduce the paper's results; `tests/sim/test_foam.py` checks the formula. It must be considered when interpreting total force.
 
 | pitch (mm) | window (mm) | under uniform pressure, a taxel reads |
 |---|---|---|
@@ -86,12 +77,12 @@ it. `tests/sim/test_foam.py` checks the formula.
 | 4.0 | 4.5 | 1.27 × |
 | 4.2 | 4.5 | 1.15 × |
 
-### How well it matches real presses
+### Comparison with measured contacts { #how-well-it-matches-real-presses }
 
 From the paper's hand-press experiment (`results_pose.json`): four skins
 (409, 502, 96 and 174 taxels; 2.0 and 4.0 mm pitch), five objects, pressed by
 hand and scored at 1, 2, 4, 6 and 8 N by each skin's own force calibration.
-The model never saw the three skins it was scored on. The pose of each press
+The fitted parameters were evaluated on three held-out skins. The pose of each press
 was given to the model. "Shape F1" is the overlap between the taxels each
 frame reads above about a quarter of its own peak, after smoothing over one
 taxel, so it compares contact shape, not intensity.
@@ -102,18 +93,14 @@ taxel, so it compares contact shape, not intensity.
 | another press on the same skin (repeatability limit) | 0.80 | 1857 |
 
 The model put the contact centre closer than a repeat press did (median
-1.56 mm against 2.29 mm), but predicted a contact area 1.44 times too large.
+1.56 mm against 2.29 mm), but predicted a contact area 1.44 times the measured area.
 `tests/sim/test_paper_numbers.py` recomputes these numbers from the stored
 result rows, `results_pose.json` (29 MB). That file is not in this repository,
 so the test is skipped unless `OPENTAC_PAPER_RESULTS` points at a copy.
 
 ## Bump model (`"mujoco"`)
 
-Ported from TactileSim as `opentac.sim.mujoco`. Each bump of the bump sheet is
-a rigid body on a joint with five springs: press, shear in x and y, and tip
-about x and y. Shear is not measured directly. A bump pushed sideways tips and
-loads the 2×2 taxels under it unevenly; `decode_shear` reads that difference
-back as a force per bump.
+The bump model is ported from TactileSim as `opentac.sim.mujoco`. Each bump is a rigid body coupled through five compliant coordinates: normal displacement, two tangential displacements, and two tilts. Tangential loading tilts the bump and redistributes load across its underlying 2×2 taxels. `decode_shear` estimates force per bump from that differential response.
 
 ```python
 s = Sensor(m, model="mujoco")                      # BumpParams fields as keywords, e.g. e_eff_mpa=3.5
@@ -143,15 +130,11 @@ The shear grows while the bumps stick and levels off once they slip, here from
 unevenly, and `decode_shear` reads that as shear too.
 
 <figure class="ot-fig" markdown="span" style="max-width: 36rem">
-  [![Two frames of the bump model on the 48-taxel board of the example, with a green dot at each bump centre and an arrow for its decoded shear. Pressed at 8 N, the four bumps around the centre read shear pointing in toward it. After a 1 degree turn, the shear the turn added on those four bumps runs around the centre, each arrow also tilted outward.](assets/diagrams/sim_bumps.jpg){ loading=lazy width="1213" height="512" }](assets/diagrams/sim_bumps.jpg)
+  [![Decoded bump responses under an 8 N spherical press and after an additional 1° twist. Radial shear appears under the curved indenter; the twist adds a circulating field around the central bump.](assets/diagrams/sim_bumps.jpg){ loading=lazy width="1213" height="512" }](assets/diagrams/sim_bumps.jpg)
   <figcaption>The example above, drawn: <code>decode_shear</code> per bump after the press (left: the curved ball alone reads as shear toward the centre), and what the 1&deg; turn added (right). The centre bump only turns in place and reads none. Colour is normal force per taxel.</figcaption>
 </figure>
 
-**Use an object that touches several bumps.** The object turns about
-`center_mm`, by default the centre of one bump. That bump only turns in place
-and reads no shear, so the turn shows up on the bumps around it. On this board
-a 40 mm ball at 8 N touches only the centre bump and decodes 0.0 N at every
-angle; the 250 mm ball above, close to flat, also loads its four neighbours.
+**Twist requires contact across multiple bumps.** The object rotates about `center_mm`, which defaults to a bump centre. A bump on the rotation axis has no tangential displacement in this model, so neighbouring loaded bumps provide the twist response. On the example board, a 40 mm ball at 8 N loads only the central bump and decodes 0.0 N at every tested angle. The flatter 250 mm ball also loads four neighbouring bumps.
 
 Shapes: `"sphere"`, `"cylinder"` (axis along y) and `"plane"` (`tilt_deg`).
 `center_mm` defaults to a bump near the middle of the board: between bumps a
@@ -172,12 +155,12 @@ Two solvers:
 During `twist`, the surrogate holds the normal force constant; the full solver
 holds the ball's height, so the force can drift.
 
-The material values are estimates, not measurements.
+The bump material parameters are estimates rather than measured properties.
 `opentac.sim.mujoco.ESTIMATE_RANGES` gives the plausible spans: effective
 modulus 3–44 MPa (default 15), friction 0.7–1.2, Poisson's ratio 0.40–0.49.
 Results move most with the modulus.
 
-## Counts instead of newtons
+## Map simulated forces to ADC counts { #counts-instead-of-newtons }
 
 Give a `readout` and frames come back in ADC counts above baseline
 (`frame.units == "counts"`):
@@ -186,7 +169,7 @@ Give a `readout` and frames come back in ADC counts above baseline
 s = Sensor(m, readout="v3")
 ```
 
-| profile | velostat | fitted on |
+| Profile | Piezoresistive material | Calibration conditions |
 |---|---|---|
 | `"v2"` | LINQSTAT | flat presses through foam, no bump sheet; 1.5, 2.0 and 4.0 mm pitch; up to 109 kPa |
 | `"v3"` | Yunjia Textiles | the same; up to 215 kPa |
@@ -198,11 +181,11 @@ a `counts(newtons)` method, such as a calibration fitted for your own skin.
 Frames are noise-free; `Readout.counts(..., rng=...)` adds read noise.
 
 <figure class="ot-fig" markdown="span" style="max-width: 36rem">
-  [![Counts above baseline against the force on one taxel, at 2 mm and 4 mm pitch, for the two profiles. The v2 curve rises steeply and reaches the ADC maximum of 3884 counts at about 0.4 N per taxel at 2 mm pitch and 0.3 N at 4 mm. The v3 curve rises more slowly and stays below the maximum over the forces shown. Dashed parts lie beyond the pressures each profile was fitted to.](assets/diagrams/sim_readout_profiles.png){ loading=lazy width="1410" height="550" }](assets/diagrams/sim_readout_profiles.png)
+  [![Force-to-counts curves for LINQSTAT and Yunjia textile at 2 and 4 mm pitch. LINQSTAT reaches the model ceiling of 3884 counts; dashed segments indicate extrapolation beyond the calibration pressure range.](assets/diagrams/sim_readout_profiles.png){ loading=lazy width="1410" height="550" }](assets/diagrams/sim_readout_profiles.png)
   <figcaption>The two profiles, counts against the force on one taxel. <code>"v2"</code> (LINQSTAT) reaches the ADC maximum, 3884 counts, at about 0.42&nbsp;N per taxel at 2&nbsp;mm pitch and 0.31&nbsp;N at 4&nbsp;mm; <code>"v3"</code> (Yunjia textile) stays below it over the forces shown. Dashed: beyond the pressures the profile was fitted to. Where a real board tops out depends on its gain setting and on the piezoresistive layer (<a href="../use/sensor/#gain-60-pin-board">Gain</a>).</figcaption>
 </figure>
 
-## Using frames in your own code
+## Integrate simulated frames { #using-frames-in-your-own-code }
 
 A simulated `Frame` has the same fields as one from a board:
 
@@ -211,25 +194,20 @@ A simulated `Frame` has the same fields as one from a board:
 - `mask`: all `True` (every taxel is simulated).
 - `t`: `0.0`. `imu`: empty.
 
-**Learning.** Loop over random centres, forces and shapes and stack
-`frame.taxels` into an array; that is the same vector a real board streams.
-For an image model use `np.nan_to_num(frame.image(m))`: rows and columns
-follow the taxels' positions, not the scan order. Compare like with like:
-either give the simulator the readout that matches your velostat, or convert
-the board's counts to newtons.
+**Generate model inputs.** Sample contact centres, forces and object shapes, then stack `frame.taxels` into the same vector representation used for recorded data. For an image model, use `np.nan_to_num(frame.image(m))`; image rows and columns follow physical positions rather than scan order. Keep units consistent by applying a readout profile that matches the piezoresistive material, or by converting measured ADC counts to newtons.
 
-**Your own physics simulator.** Neither model moves the object; both answer
-"what does the sensor read with the object here". Each step, take the contact
+**Couple to a physics simulator.** Use these contact queries to predict the
+sensor response for a specified object pose and load. Each step, take the contact
 point (in the manifest's millimetres) and the normal force from your
 simulator and call `press`. For the bump model, `s.tactile.taxel_forces(surface)`
 accepts any function `surface(x, y) -> z` giving the object's underside in
 metres, in the sensor's frame, with z = 0 on the sheet the bumps stand on (bump
 tips at `s.tactile.p.height`); for example from ray casts into your scene.
 
-**Randomise what is uncertain**: `sigma_mm` and `k_n_per_mm3` (foam);
+**Randomise uncertain model parameters**: `sigma_mm` and `k_n_per_mm3` (foam);
 `e_eff_mpa`, `mu` (bumps); the readout gain (`Readout.gain_range`) and noise.
 
-## Limits
+## Model assumptions and limitations { #limits }
 
 - **Flat sensors only.** A manifest with a `sim3d` block (a sensor wrapped on a
   curved part) is refused by both models.

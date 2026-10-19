@@ -29,15 +29,15 @@
       var controls = L.el('div', {class: 'otl-controls'});
       // a starting force that keeps the default contact below the ADC ceiling on each skin
       var FN0 = {circle: 10, agileX_2mm: 10, leap_palm: 2.5};
-      var cSkin = L.seg('Skin', SKINS, st.skin, function (v) { st.skin = v; st.c = null; st.fn = FN0[v]; cFn.set(st.fn); update(); });
+      var cSkin = L.seg("Sensor layout", SKINS, st.skin, function (v) { st.skin = v; st.c = null; st.fn = FN0[v]; cFn.set(st.fn); update(); });
       var cFn = L.slider('Normal force', 0, 25, 0.5, st.fn, function (v) { return v.toFixed(1) + ' N'; }, function (v) { st.fn = v; update(); });
-      var cSig = L.slider('Contact size σ', 2, 12, 0.5, st.sigma, function (v) { return v.toFixed(1) + ' mm'; }, function (v) { st.sigma = v; update(); });
-      var cSh = L.slider('Drag ratio', 0, 0.6, 0.01, st.shear, function (v) { return v.toFixed(2); }, function (v) { st.shear = v; update(); });
+      var cSig = L.slider("Contact width σ", 2, 12, 0.5, st.sigma, function (v) { return v.toFixed(1) + ' mm'; }, function (v) { st.sigma = v; update(); });
+      var cSh = L.slider("Shear/normal ratio", 0, 0.6, 0.01, st.shear, function (v) { return v.toFixed(2); }, function (v) { st.shear = v; update(); });
       var cDir = L.slider('Drag direction', -180, 180, 5, st.dir, function (v) { return v + '°'; }, function (v) { st.dir = v; update(); });
-      var cTw = L.slider('Twist', -0.6, 0.6, 0.01, st.twist, function (v) { return v.toFixed(2); }, function (v) { st.twist = v; update(); });
+      var cTw = L.slider("Twist amplitude", -0.6, 0.6, 0.01, st.twist, function (v) { return v.toFixed(2); }, function (v) { st.twist = v; update(); });
       var cArr = L.check('Show decoded shear', st.arrows, function (v) { st.arrows = v; canvas.redraw(); });
       var presets = L.el('div', {class: 'otl-ctl'}, [
-        L.el('span', {class: 'otl-lab', text: 'Try'}),
+        L.el('span', {class: 'otl-lab', text: "Load presets"}),
         L.button('Press', function () { set(0, 0, 0); }),
         L.button('Drag', function () { set(0.35, 30, 0); }),
         L.button('Twist', function () { set(0, 0, 0.4); }),
@@ -52,7 +52,7 @@
         'aria-label': 'A skin with modelled taxel readings and decoded shear arrows per bump. Drag on the skin, or use the arrow keys, to move the contact.'});
       cell.appendChild(cv); stage.appendChild(cell); fig.appendChild(stage);
       var m = L.metrics(fig, [['fz', 'Normal force, decoded (applied)'], ['ft', 'Net tangential force, decoded (applied)'],
-                              ['tz', 'Twisting moment, decoded (applied)'], ['grp', 'Bumps loaded · cut by the outline']]);
+                              ['tz', 'Twisting moment, decoded (applied)'], ['grp', "Loaded · incomplete groups"]]);
       var status = L.el('div', {class: 'otl-status'}); fig.appendChild(status);
 
       var cur = null, view = null;
@@ -94,10 +94,10 @@
         var sat = 0;
         counts.forEach(function (c) { if (prof.saturated(c)) sat++; });
         var msg, warn = false;
-        if (sat) { msg = sat + ' taxels are at the ADC ceiling; their groups decode low.'; warn = true; }
-        else if (Math.abs(st.twist) > 0.01 && st.shear < 0.01) msg = 'Twist: the bumps lean around the contact. Their shear nearly cancels in the net force, but the moment does not.';
-        else if (st.shear > 0.01) msg = 'Drag: every loaded bump leans the same way, by an amount proportional to its normal load.';
-        else msg = 'Press: the normal map alone. Groups the outline cut short (hollow circles) cannot resolve shear along an axis with taxels on one side only.';
+        if (sat) { msg = sat + " taxels are saturated; their groups underestimate the applied load."; warn = true; }
+        else if (Math.abs(st.twist) > 0.01 && st.shear < 0.01) msg = "Twist produces a circulating shear field. Opposing forces can cancel in the net shear while contributing to a nonzero twisting moment.";
+        else if (st.shear > 0.01) msg = "Drag applies tangential loading in a common direction, proportional to each bump’s normal load in this model.";
+        else msg = "Normal loading. Hollow circles mark incomplete groups, which cannot resolve shear along an axis represented on only one side.";
         status.textContent = msg;
         status.className = 'otl-status' + (warn ? ' warn' : '');
         canvas.redraw();
@@ -128,7 +128,7 @@
         L.draw.line(ctx, cx - 6, cy, cx + 6, cy, t.ink, 1); L.draw.line(ctx, cx, cy - 6, cx, cy + 6, t.ink, 1);
         L.draw.colorbar(ctx, 12, H - 34, 110, '0', full + ' counts', '');
         L.draw.scalebar(ctx, w - 12 - 10 * view.s, H - 22, 10 * view.s, '10 mm');
-        if (w >= 520) L.draw.text(ctx, 'ring: contact σ · arrows: shear decoded per bump, one scale', 140, H - 18, {size: 10});
+        if (w >= 520) L.draw.text(ctx, "ring: Gaussian width σ · arrows: decoded shear, common scale", 140, H - 18, {size: 10});
         else L.draw.text(ctx, 'ring: contact σ · arrows: decoded shear', 12, H - 2, {size: 10});
       });
 

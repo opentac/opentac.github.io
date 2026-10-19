@@ -1,11 +1,11 @@
 ---
 title: Readout boards
-description: The two OpenTac readout boards, the 60-pin board for up to 30x30 taxels and the stacked 30-pin pair for up to 15x15, and what they do.
+description: Architecture, interfaces and specifications of the 60-pin readout board and compact 30-pin pair.
 ---
 
 # Readout boards
 
-Every OpenTac sensor plugs into one of two readout boards. Both run the same firmware, read any layout the CAD tool makes, and talk to the computer over USB.
+OpenTac provides two readout-board designs: a 60-pin board for sensors with up to 30 rows and 30 columns, and a compact 30-pin pair for up to 15 rows and 15 columns. Both use the same firmware codebase and USB interface, with the sensor-specific layout supplied through its manifest.
 
 <div class="ot-boards">
 <figure>
@@ -36,12 +36,14 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 
 Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com/opentac/opentac/tree/main/firmware/prebuilt); `opentac flash` picks the right one ([Flash the firmware](use/flash.md)).
 
-## What the boards do
+## Readout architecture and interfaces { #what-the-boards-do }
 
 <ol class="ot-features" markdown>
 <li markdown>
 
-**Zero-potential readout, so taxels don't leak into each other.** A sensor is a passive grid: every taxel connects one row to one column. Read it naively, and current from the driven row also finds paths through other pressed taxels into the measured column, so a press shows up where nobody touched (crosstalk, or "ghosting"). The board drives one row to the supply voltage and holds every other row at ground. A multiplexer connects one column to an inverting amplifier whose + input is grounded, so that column sits at virtual ground: the same potential as the idle rows. The other taxels on that column have no voltage across them and carry no current, and current leaking through other pressed taxels drains into the grounded rows rather than into the amplifier. Each reading is the one taxel at the driven row and the selected column.
+**Zero-potential scanning suppresses crosstalk.** Each taxel is a resistive connection between a row and a column. In a passive matrix with floating, unselected rows, current can reach the measured column through other pressed taxels. The result is an apparent response at a location that was not pressed, often called ghosting.
+
+The readout drives the selected row to the supply voltage and grounds the remaining rows. A multiplexer connects the selected column to an inverting amplifier whose non-inverting input is grounded, holding the measured column near virtual ground. The other taxels on that column therefore have approximately zero voltage across them, suppressing their contribution to the measured current. The resistor-network animation below illustrates this mechanism.
 
 <figure class="ot-clip">
 <div class="ot-media ot-media--4x3">
@@ -56,7 +58,7 @@ Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com
 </li>
 <li markdown>
 
-**An IMU on the board.** Each board carries an ST LSM6DSV16BX inertial sensor. The firmware streams its accelerometer for vibration, at up to 1920&nbsp;Hz (960&nbsp;Hz by default), and its orientation as a quaternion computed on the chip by its own sensor-fusion block, at up to 480&nbsp;Hz (240&nbsp;Hz by default). On a gripper or a fingertip, that adds vibration and orientation alongside the tactile frames, from the same board.
+**Inertial measurements.** Each board carries an ST LSM6DSV16BX inertial sensor. The firmware streams its accelerometer for vibration, at up to 1920&nbsp;Hz (960&nbsp;Hz by default), and its orientation as a quaternion computed on the chip by its own sensor-fusion block, at up to 480&nbsp;Hz (240&nbsp;Hz by default). On a gripper or a fingertip, that adds vibration and orientation alongside the tactile frames, from the same board.
 
 <figure class="ot-clip">
 <div class="ot-media ot-media--4x3">
@@ -71,7 +73,7 @@ Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com
 </li>
 <li markdown>
 
-**Daisy-chain over I2C.** Each board has two 4-pin JST-SH connectors (5&nbsp;V, GND, SCL, SDA). Chain several 30-pin boards with JST-SH cables and read them all through one controller, a Teensy 4.0, to cover a whole hand or several fingers from one USB port. See [Daisy-chain boards](use/daisy-chain.md). Chaining runs on the 30-pin boards; the 60-pin board has the connectors too, but the frame buffers for a 30&nbsp;&times;&nbsp;30 sensor do not fit in a chain node's memory.
+**Multiple sensors over an I2C bus.** Each board has two 4-pin JST-SH connectors (5&nbsp;V, GND, SCL, SDA). Chain several 30-pin boards with JST-SH cables and read them all through one controller, a Teensy 4.0, to cover a whole hand or several fingers from one USB port. See [Daisy-chain boards](use/daisy-chain.md). Chaining runs on the 30-pin boards; the 60-pin board has the connectors too, but the frame buffers for a 30&nbsp;&times;&nbsp;30 sensor do not fit in a chain node's memory.
 
 <figure class="ot-clip">
 <div class="ot-media ot-media--4x3">
@@ -86,7 +88,7 @@ Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com
 </li>
 <li markdown>
 
-**Plugs straight into USB.** A micro-USB cable connects the board to the computer. It shows up as a serial port, with no adapter or programmer, and the same cable flashes new firmware ([Flash the firmware](use/flash.md)).
+**USB communication and firmware updates.** A micro-USB cable connects the board to the computer. It shows up as a serial port, with no adapter or programmer, and the same cable flashes new firmware ([Flash the firmware](use/flash.md)).
 
 <figure class="ot-clip">
 <div class="ot-media">
@@ -99,11 +101,11 @@ Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com
 </li>
 <li markdown>
 
-**Small.** The 60-pin board is 37&nbsp;&times;&nbsp;34.3&nbsp;mm. The 30-pin version splits the circuit over two 16&nbsp;&times;&nbsp;22.8&nbsp;mm boards stacked on 1.27&nbsp;mm headers: the bottom board carries the sensor connector and the analog front end, the top board the microcontroller, IMU, USB and daisy-chain connectors.
+**Board dimensions and component placement.** The 60-pin board is 37&nbsp;&times;&nbsp;34.3&nbsp;mm. The 30-pin version splits the circuit over two 16&nbsp;&times;&nbsp;22.8&nbsp;mm boards stacked on 1.27&nbsp;mm headers: the bottom board carries the sensor connector and the analog front end, the top board the microcontroller, IMU, USB and daisy-chain connectors.
 
 <figure class="ot-fig" markdown="span">
   [![Exploded render of the 30-pin readout pair: the bottom board with the sensor connector and the top board with the microcontroller, separated above it.](assets/boards/readout30_exploded.png){ loading=lazy }](assets/boards/readout30_exploded.png)
-  <figcaption>The 30-pin pair, pulled apart.</figcaption>
+  <figcaption>Exploded view of the 30-pin pair, showing the sensor interface below the controller board.</figcaption>
 </figure>
 
 </li>

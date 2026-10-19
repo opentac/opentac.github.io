@@ -41,7 +41,7 @@ OpenTac is an ecosystem for highly customizable, scalable, and transferrable tac
 </p>
 <div class="ot-media ot-media--video">
   <video controls preload="none" playsinline data-poster="assets/loops/overview.jpg"
-         aria-label="Four-minute narrated overview of OpenTac, with subtitles in the picture">
+         aria-label="Narrated overview of OpenTac, with subtitles in the picture">
     <source src="assets/loops/overview.mp4" type="video/mp4">
   </video>
 </div>
@@ -150,8 +150,12 @@ Fabricating an OpenTac sensor involves 3 phases. First, we use the OpenTac-CAD t
 [Assembly guide](build/assembly.md){ .ot-more } [Build steps](build/index.md){ .ot-more }
 
 </div>
-<figure class="ot-media" markdown="span">
-  ![Close-up of an orange printed bump sheet seated on a flex PCB: the cross-shaped base of each bump sits in the gaps between the gold taxel electrodes.](assets/photos/alignment.jpg){ loading=lazy }
+<figure class="ot-media">
+  <video data-loop muted loop playsinline preload="none"
+         data-poster="assets/video/assembly_poster.jpg"
+         aria-label="Sensor assembly at four times normal speed: placing the flex PCB in its tray, adding the piezoresistive film and bump sheet, and connecting the readout board">
+    <source src="assets/loops/assembly.mp4" type="video/mp4">
+  </video>
 </figure>
 </section>
 

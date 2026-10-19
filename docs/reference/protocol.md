@@ -1,13 +1,14 @@
+---
+description: USB serial records, commands, parameters, binary sensor configuration and bus-node addressing.
+---
+
 # Readout protocol
 
-The readout board is a USB serial device (CDC; the baud rate is ignored).
-Commands are text lines ending in `\n`. The board streams records all the time
-and answers commands in between. `opentac.device` implements this; this page
-is for writing another host.
+The readout board exposes a USB CDC serial interface; the nominal serial baud rate is ignored. Commands are text lines terminated by `\n`. Streaming records and command replies share the same connection, so a host must distinguish them by record type. The Python package implements this protocol in `opentac.device`; the specification below supports alternative host implementations.
 
 ## Records from the board
 
-The first field says what a line is.
+The first comma-separated field identifies the record type.
 
 ```
 F,<frame>,<gen>,<mode>,<dt_us>,<dropped>,<N values>,<IMU>
@@ -21,11 +22,11 @@ R,...
 | Record | Meaning |
 |---|---|
 | `F` | a raster frame: one value per taxel, in manifest `pixels` order, 12-bit counts |
-| `X` | a xampling frame: only the `n` taxels read. `<mask hex>` is ceil(N/8) bytes; bit k of byte j marks taxel 8j+k (LSB first). Values follow in taxel order, as counts above the board's zero. |
+| `X` | an Xampling frame: only the `n` taxels read. `<mask hex>` is ceil(N/8) bytes; bit k of byte j marks taxel 8j+k (LSB first). Values follow in taxel order, as counts above the board's zero. |
 | `V` | one accelerometer sample (mg), when `VIB_ENABLE` is 1 |
 | `M` | status, once a second and on any change |
 | `R` | a reply to a command |
-| `#` | a notice for people |
+| `#` | Human-readable diagnostic message |
 
 `<IMU>` is 13 fields: accelerometer (mg, 3), gyroscope (mdps, 3), quaternion
 (w, x, y, z) and Euler angles (roll, pitch, yaw, degrees). `<gen>` counts
@@ -37,7 +38,7 @@ A board with no sensor set up sends no `F` or `X` records.
 
 ## Commands
 
-| Command | Reply | Does |
+| Command | Reply | Operation |
 |---|---|---|
 | `?` | `R,CAPS,...`, one `R,PARAM` per parameter, `R,END` | capabilities and the parameter table |
 | `p <id> <value>` | `R,PARAM,<id>,<name>,<lo>,<hi>,<value>` | set a parameter; the reply gives the value stored (clamped to range) |
@@ -53,7 +54,7 @@ A board with no sensor set up sends no `F` or `X` records.
 | `c <r> <g> <b>` | `R,OK,C` | LED colour, in `LED_MODE` manual |
 | `B` | `R,OK,B` | reboot into the STM32 USB bootloader (DFU) for flashing |
 
-A refused command replies `R,ERR,<reason>`. Reasons include `NOBASE`
+A rejected command returns `R,ERR,<reason>`. Reasons include `NOBASE`
 (xampling before `Z`), `NOCFG` (no sensor set up), `NOTIMPL` (mode not
 implemented), `GAIN` (gain switch did not answer), `NOPARAM`, `SYNTAX`, and
 `FLASH,<stage>,<hal error>,<FLASH->SR>,<address>,<chip id>,<flash KB>`.
@@ -69,7 +70,7 @@ board's pad table from it.
 
 ## Parameters
 
-Session settings: they reset to these defaults when the board restarts.
+These parameters are session settings and return to their firmware defaults after a restart. The OpenTac host library overrides some defaults when opening a session, as indicated below.
 
 | id | Name | Range | Default |
 |---|---|---|---|
@@ -99,9 +100,9 @@ Session settings: they reset to these defaults when the board restarts.
 register 0x00). Each switch puts a resistor across the 10 kΩ feedback
 resistor: 4.7 kΩ, 1.1 kΩ, 270 Ω, 68 Ω.
 
-## The sensor config
+## Binary sensor configuration { #the-sensor-config }
 
-The bytes `S`/`D`/`E` send, little-endian, defined in
+The `S`/`D`/`E` transaction uploads the following little-endian structure, defined in
 `firmware/opentac_readout/ot_devcfg.h`:
 
 | Offset | Size | Field |
@@ -120,14 +121,14 @@ The bytes `S`/`D`/`E` send, little-endian, defined in
 | end | 4 | CRC-32 of everything before it |
 
 A line is 0-31 for a shift-register step (driven) or 32-63 for mux channel
-line-32 (read). The board checks everything before it erases flash, so a bad
-config leaves the old one in place.
+line-32 (read). The board validates the configuration before erasing flash;
+a rejected configuration leaves the existing one intact.
 
 ## Bus controller
 
 The Teensy bus controller speaks the same commands, addressed to a board:
 
-| Line | Does |
+| Line | Operation |
 |---|---|
 | `@<n> <command>` | send a command to node n |
 | `N` | list nodes: `R,NODES,<count>`, `R,NODE,<n>,<addr>,<uid>,<board>,<online>`, `R,END` |

@@ -1,6 +1,10 @@
+---
+description: Install prebuilt OpenTac firmware or compile it with the Arduino IDE or command-line tools.
+---
+
 # Flash the firmware
 
-A readout board runs one firmware, built for that board:
+Each readout-board design requires its corresponding firmware build. The table below identifies the prebuilt binaries supplied in the code repository.
 
 | Board | Firmware | File |
 |---|---|---|
@@ -9,11 +13,9 @@ A readout board runs one firmware, built for that board:
 | 30-pin pair in a daisy chain | `NODE16` bus node | `firmware/prebuilt/NODE16_bus.bin` ([daisy chain](daisy-chain.md)) |
 | earlier 70-pin board | `READOUT32` | `firmware/prebuilt/READOUT32.bin` |
 
-Flashing goes over the board's own USB cable. Once a board runs OpenTac
-firmware you do not need the BOOT0 button: the running firmware reboots into the STM32's built-in bootloader (DFU) when it
-receives the line `B`. The sensor the board holds survives a reflash.
+Firmware is written through the board's USB connection. A board already running OpenTac firmware can enter the STM32 device-firmware-upgrade (DFU) bootloader in response to the `B` command. A new or unresponsive board must enter the bootloader using BOOT0. Reflashing preserves the stored sensor configuration.
 
-There are three ways to flash. The first is the simplest.
+Use `opentac flash` to install a prebuilt binary. The Arduino IDE and `arduino-cli` workflows below are useful when compiling or modifying the firmware.
 
 ## 1. Prebuilt firmware with `opentac flash`
 
@@ -29,12 +31,11 @@ Plug the board in by USB, then:
 uv run opentac flash
 ```
 
-It asks the board which board it is, reboots it into the bootloader, and
-writes the matching file from `firmware/prebuilt/`:
+The command identifies the connected board, restarts it in bootloader mode, and writes the corresponding binary from `firmware/prebuilt/`:
 
 <figure class="ot-fig" markdown="span" style="max-width: 36rem">
-  [![Sequence between opentac flash and a 60-pin board. The computer sends a question mark; the OpenTac firmware answers R,CAPS ending in READOUT60. The computer sends B; the board reboots into the STM32 bootloader, USB DFU 0483:df11, and its serial port goes away. dfu-util writes firmware/prebuilt/READOUT60.bin from the start of flash, only the pages it covers, so the stored sensor is kept, then sends leave, and the board restarts into the new firmware. A new board has no firmware to answer: hold BOOT0 while plugging it in and name the board with --board.](../assets/diagrams/flash_sequence.svg){ loading=lazy }](../assets/diagrams/flash_sequence.svg)
-  <figcaption>What <code>opentac flash</code> does, shown for the 60-pin board; the 30-pin pair is the same with <code>NODE16.bin</code>. With STM32CubeProgrammer instead of dfu-util, only the writing step differs.</figcaption>
+  [![Firmware-update sequence: query the board, request the DFU bootloader with B, write READOUT60.bin, then restart. The stored sensor configuration is preserved. A new board requires BOOT0 and an explicit board selection.](../assets/diagrams/flash_sequence.svg){ loading=lazy }](../assets/diagrams/flash_sequence.svg)
+  <figcaption>Firmware-update sequence for the 60-pin board. The 30-pin pair follows the same sequence using <code>NODE16.bin</code>. With STM32CubeProgrammer instead of dfu-util, only the writing step differs.</figcaption>
 </figure>
 
 To see what it would do without changing anything:
@@ -49,7 +50,7 @@ in the bootloader. Unplug it, hold the BOOT0 button while plugging it back in,
 release it, and name the board:
 
 <figure class="ot-fig" markdown="span">
-  ![Top-view renders of the 60-pin board and the top board of the 30-pin pair, with the BOOT0 push button circled on each: near the bottom-left corner of the 60-pin board, at the right edge of the 30-pin top board.](../assets/diagrams/boot0_button.jpg){ loading=lazy width="1461" height="830" }
+  ![BOOT0 buttons circled on the 60-pin board, near its lower-left corner, and the 30-pin top board, at its right edge.](../assets/diagrams/boot0_button.jpg){ loading=lazy width="1461" height="830" }
   <figcaption>The BOOT0 button (S4), circled. Renders of the boards' KiCad files, not to scale with each other.</figcaption>
 </figure>
 
@@ -73,7 +74,7 @@ works when OpenTac is installed with pip instead of run from this repository.
 
 ### On Linux
 
-Two one-time steps let your user reach the board without `sudo`.
+Serial-port access and USB bootloader access require separate permissions. Configure each once for the account that will run OpenTac.
 
 The board's serial port (`/dev/ttyACM0`) belongs to the `dialout` group. If
 `opentac` says it found the port but cannot open it (permission denied), add
@@ -94,7 +95,7 @@ sudo udevadm control --reload-rules && sudo udevadm trigger
 
 ## 2. Arduino IDE
 
-One-time installs:
+Install the required tools and pinned dependencies:
 
 1. Arduino IDE 2.
 2. In *Settings*, add this to *Additional boards manager URLs*:
@@ -104,7 +105,7 @@ One-time installs:
    **Adafruit NeoPixel** (1.15.5).
 5. **STM32CubeProgrammer** from st.com. The IDE uploads with it.
 
-To flash:
+Configure and upload the firmware:
 
 1. Open `firmware/opentac_readout/opentac_readout.ino`.
 2. At the top of the file, delete the `//` in front of your board's line, for
@@ -122,7 +123,7 @@ To flash:
 
 ## 3. arduino-cli
 
-One-time installs (arduino-cli 1.x):
+Install the pinned STM32 core using arduino-cli 1.x:
 
 ```sh
 arduino-cli config add board_manager.additional_urls https://github.com/stm32duino/BoardManagerFiles/raw/main/package_stmicroelectronics_index.json
@@ -166,6 +167,6 @@ or by hand, after sending `B` to the board:
 dfu-util -a 0 -d 0483:df11 -s 0x08000000:leave -D firmware/build/READOUT60.bin
 ```
 
-## Next
+## Configure the sensor { #next }
 
-With the firmware on, tell the board which sensor it has and look at it: [Read a sensor](sensor.md).
+After flashing, upload the sensor manifest and verify the live response using [Read a sensor](sensor.md).

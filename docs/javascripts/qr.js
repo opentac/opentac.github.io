@@ -816,7 +816,7 @@
     var nb = core.r ? t.perm / core.r : 0;
     return [
       ["Format version", "0", t.version,
-       "Which bit layout follows. This page reads version 0."],
+       "Identifies the encoded field layout. This decoder supports version 0."],
       ["Grid", core.r + " rows x " + core.c + " columns", t.grid,
        "Row and column lines the readout scans; 6 bits each, so up to 63."],
       ["Taxels", nTaxels + " of " + nGrid + " grid positions" +
@@ -825,9 +825,9 @@
        (t.maskRle ? "Run-length coded here, which was shorter." : "Stored bit by bit here, which was shorter.")],
       ["Pitch", square ? mm2(core.pitch_x) + " mm, x and y" :
        "x " + mm2(core.pitch_x) + " mm, y " + mm2(core.pitch_y) + " mm", t.pitch,
-       "Distance between neighbouring taxel centres. One bit says whether x and y are equal."],
+       "Centre-to-centre taxel spacing. One bit records whether the x and y pitches are equal."],
       ["Taxel size", mm2(core.w) + " x " + mm2(core.h) + " mm", t.size,
-       "Outer size of one taxel's copper, stored as the difference from the pitch."],
+       "Outer dimensions of one taxel’s copper, encoded relative to its pitch."],
       ["Grid origin", "x " + mm2(core.x0) + ", y " + mm2(core.y0) + " mm", t.origin,
        "Centre of the leftmost column and the top row. Y points up; (0, 0) is the middle of the " +
        "cable edge and the origin of the grid printed on the back."],
@@ -850,7 +850,7 @@
       ["Reserved", "0", t.reserved, "Unused. It was a flag on early boards."],
       ["Padding", "", t.padding, "Fills the last byte."],
       ["Checksum", "CRC-8 0x" + ("0" + t.crcValue.toString(16).toUpperCase()).slice(-2) + ", matches",
-       t.crc, "Catches text changed after the scan, so a damaged code is refused rather than " +
+       t.crc, "Detects most changes to the encoded text, allowing damaged payloads to be rejected rather than " +
        "read as a different sensor."]
     ];
   }
@@ -905,12 +905,12 @@
                  "From the taxel height, trace and gap, as OpenTac-CAD lays them out."]);
     }
     if (core.pitch_x === core.pitch_y)
-      rows.push(["Calibration curve", "p" + OpenTacQR.pyRound(core.pitch_x, 1).toFixed(1) + "_gap" +
+      rows.push(["Calibration identifier", "p" + OpenTacQR.pyRound(core.pitch_x, 1).toFixed(1) + "_gap" +
                  OpenTacQR.pyRound(g.fp.gap, 1).toFixed(1),
-                 "The pitch and gap name the force curve opentac.calibrate uses. The curve is not in the code."]);
+                 "Pitch and gap identify a calibration entry. The material, readout settings and measured force mapping must be supplied separately."]);
     var table = el("table", { class: "ot-qr__table" });
     var head = el("tr");
-    ["Worked out", "Value"].forEach(function (h) { head.appendChild(el("th", {}, h)); });
+    ["Derived field", "Value"].forEach(function (h) { head.appendChild(el("th", {}, h)); });
     table.appendChild(el("thead")).appendChild(head);
     var body = table.appendChild(el("tbody"));
     rows.forEach(function (f) {
@@ -926,7 +926,7 @@
 
   function connections(g) {
     var det = el("details", { class: "ot-qr__details" });
-    det.appendChild(el("summary", {}, "Every row and column line (" + (g.core.r + g.core.c) + ")"));
+    det.appendChild(el("summary", {}, "Row and column assignments (" + (g.core.r + g.core.c) + ")"));
     [["Row", "y (mm)", g.rows, "y"], ["Column", "x (mm)", g.cols, "x"]].forEach(function (spec) {
       var table = el("table", { class: "ot-qr__table ot-qr__table--lines" });
       var head = el("tr");
@@ -959,10 +959,10 @@
       "The design recipe OpenTac-CAD needs to edit or rebuild the board: the drawn shape, copper " +
       "layer count, board mode and the other settings.",
       "Which taxels share a shear bump, and the printed case and velostat cut files.",
-      "A force calibration. The curve name above says which one applies."
+      "A force calibration. The identifier above refers to a curve; the measured calibration is not encoded."
     ].forEach(function (t) { ul.appendChild(el("li", {}, t)); });
     wrap.appendChild(ul);
-    var p = el("p", {}, "The design ZIP from OpenTac-CAD has all of it. See ");
+    var p = el("p", {}, "The design ZIP supplies the complete layout and design files. Force calibration must be provided separately. See ");
     p.appendChild(el("a", { href: "../use/qr-recovery/" }, "Recover a manifest from the QR code"));
     p.appendChild(document.createTextNode("."));
     wrap.appendChild(p);
@@ -997,7 +997,7 @@
       res = OpenTacQR.fromText(text);
     } catch (e) {
       out.appendChild(el("p", { class: "ot-qr__error" },
-        "Could not read this code: " + e.message + ". Scan it again, or paste the text below."));
+        "Unable to decode this QR content: " + e.message + ". Rescan the code or paste the complete scanned text below."));
       return;
     }
     var g = layout(res), core = g.core;
@@ -1020,14 +1020,14 @@
                                     "' -o manifest.json"));
     out.appendChild(pre);
 
-    out.appendChild(el("h2", {}, "The sensor"));
+    out.appendChild(el("h2", {}, "Recovered sensor layout"));
     var board = el("figure", { class: "ot-qr__fig ot-qr__fig--board" });
     board.appendChild(el("span"));
     board.appendChild(el("figcaption"));
     out.appendChild(board);
 
     if (g.geo) {
-      out.appendChild(el("h2", {}, "One taxel"));
+      out.appendChild(el("h2", {}, "Taxel electrode geometry"));
       var taxel = el("figure", { class: "ot-qr__fig ot-qr__fig--taxel" });
       taxel.appendChild(el("span"));
       var nRow = Math.ceil(g.geo.totalSlots / 2), nCol = Math.floor(g.geo.totalSlots / 2);
@@ -1042,7 +1042,7 @@
       out.appendChild(taxel);
     }
 
-    out.appendChild(el("h2", {}, "What the code carries"));
+    out.appendChild(el("h2", {}, "Encoded fields"));
     var wrap = el("div", { class: "ot-qr__tablewrap" });
     wrap.appendChild(fieldsTable(g));
     out.appendChild(wrap);
@@ -1051,7 +1051,7 @@
     out.appendChild(wrap2);
     out.appendChild(connections(g));
 
-    out.appendChild(el("h2", {}, "What the code does not carry"));
+    out.appendChild(el("h2", {}, "Fields omitted from the QR code"));
     out.appendChild(notCarried());
 
     figures(root);
@@ -1069,8 +1069,8 @@
       show(root, hash);
     } else {
       root.querySelector(".ot-qr__result").appendChild(el("p", {},
-        "No code in the address. Scan the code on the back of the sensor with a phone camera, " +
-        "paste the text a QR scanner read off it, or open one of the examples below."));
+        "No QR content was supplied. Scan the sensor’s code with a phone camera, " +
+        "paste the scanned text, or select an example below."));
     }
     form.addEventListener("submit", function (ev) {
       ev.preventDefault();

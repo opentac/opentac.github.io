@@ -1,5 +1,5 @@
 ---
-description: Five interactive studies of how an OpenTac skin turns contact into numbers - the taxel stack, normal and shear under one bump, shear and twist fields, transfer between skins, and partial updates with Xampling.
+description: Interactive explanations of piezoresistive readout, bump-mediated shear sensing, tactile fields, geometric transfer and adaptive sampling, with model assumptions and recorded examples.
 hide:
   - toc
 ---
@@ -8,51 +8,63 @@ hide:
 
 <link rel="stylesheet" href="learn.css">
 
-Five interactive studies of how an OpenTac skin turns contact into numbers, and what those numbers can and cannot tell you. The layouts come from real sensor manifests, and studies 4 and 5 replay real recordings. Where a figure uses a model instead of data, it says so under the figure.
+These five interactive examples follow the tactile signal from a resistance change at one taxel to a spatial contact field, then examine how that field can be transferred and sampled. The sensor geometries come from real manifests. The first three examples use models to isolate sensing mechanisms; the last two use recorded contacts to examine geometric transfer and sampling. Each example states which quantities are measured and which are modelled.
 
-## 1. How does a press become a number?
+## 1. Piezoresistive sensing and matrix readout { #1-how-does-a-press-become-a-number }
 
-<div class="otl otl-fig" data-study="anatomy"><div class="otl-loading">Loading…</div><noscript><p class="otl-loading">The figures on this page need JavaScript.</p></noscript></div>
+<div class="otl otl-fig" data-study="anatomy"><div class="otl-loading">Loading the sensor model…</div><noscript><p class="otl-loading">Enable JavaScript to use the interactive figures.</p></noscript></div>
 
-An OpenTac skin is a two-layer flex PCB with a taxel at every row-column crossing, a piezoresistive film over it, and a top layer: a printed bump lid, or a flat foam or case top. Each taxel is two interdigitated copper combs with 0.2 mm traces and 0.2 mm gaps, and pressing the film lowers the resistance between them. The readout drives one row at a time, holds the other rows at the potential of the sensing amplifier, and switches one column at a time through a multiplexer into a transimpedance amplifier and a 12-bit ADC, so each taxel gives one number per frame.
+The sensing stack consists of a flex PCB, a piezoresistive layer and a compliant contact layer. Each taxel has two interdigitated copper electrodes; in the illustrated geometry, the traces and gaps are both 0.2 mm wide. Pressure reduces the resistance of the material bridging the electrodes. The readout drives a row, selects a column through a multiplexer, and measures the resulting current with a transimpedance amplifier and 12-bit ADC.
 
-<p class="otl otl-note"><b>Shows:</b> the stack in order, the real taxel copper at three pitches (from the footprint generator), and why the undriven rows are held at the amplifier's potential: turn that off and press three corners of a rectangle. <b>Does not show:</b> real layer thicknesses, the routing between taxels, or amplifier gain. The counts in the matrix are schematic.</p>
+A passive row-column matrix can also conduct through neighbouring pressed taxels. To suppress these unintended paths, the board holds unselected rows at the sensing amplifier's potential. In the figure, press three corners of a rectangle and toggle this constraint. Compare the reading at the unpressed fourth corner: with floating rows, it can show an apparent contact response.
 
-## 2. How do four taxels under one bump separate normal load from shear?
+<p class="otl otl-note"><b>Model and controls.</b> Inspect the stack, choose a taxel pitch and select individual layers. The electrode patterns use the footprint generator's geometry. The matrix illustrates resistive crosstalk; its counts are schematic. Layer thicknesses are exaggerated, and inter-taxel routing and amplifier gain are omitted.</p>
 
-<div class="otl otl-fig" data-study="bump"><div class="otl-loading">Loading…</div></div>
+## 2. Normal and shear response beneath one bump { #2-how-do-four-taxels-under-one-bump-separate-normal-load-from-shear }
 
-A bump stands on a 2 × 2 block of taxels. Pressing it straight down loads all four; pushing it sideways tilts it, so the two taxels it leans toward read more and the other two read less. The sum h<sub>z</sub> = Σ z and the signed differences h<sub>x</sub> = Σ u·z and h<sub>y</sub> = Σ v·z separate the two, with each taxel's side (u, v = ±1) taken from the manifest's shear groups.
+<div class="otl otl-fig" data-study="bump"><div class="otl-loading">Loading the bump model…</div></div>
 
-<p class="otl otl-note"><b>Shows:</b> a real 2 × 2 block from each skin's manifest, and a lumped model of the bump (the statics of OpenTac-Sim's bump model, at the bump sheet's default size) read through the fitted film profiles, including saturation and one side unloading. A press off the bump's centre gives the same differential as shear. <b>Does not show:</b> measured data. Bump stiffness, friction and the calibration that maps h to newtons are left out; the decoded forces invert the model, not a calibration.</p>
+A bump spans a 2 × 2 group of taxels. A centred normal load compresses the group approximately symmetrically. A tangential load tilts the bump, increasing pressure on one side and reducing it on the other. This converts shear into a differential normal response that the piezoresistive layer can measure.
 
-## 3. What changes when a contact is sheared or twisted?
+Let z be a taxel's reading, and let u and v denote its side of the bump along x and y, with values ±1. Summing over the four taxels gives h<sub>z</sub> = Σ z; the signed sums h<sub>x</sub> = Σ u·z and h<sub>y</sub> = Σ v·z describe the differential response. These quantities are in ADC counts. Mapping them to force requires a model or calibration of the mechanical and electrical response.
 
-<div class="otl otl-fig" data-study="field"><div class="otl-loading">Loading…</div></div>
+Vary the normal and tangential loads, then offset a normal press from the bump centre. An off-centre normal load can produce a differential response similar to shear. Increasing the load also exposes two limits: one side may unload completely, or a taxel may saturate. In either case, information needed to recover the applied load is lost.
 
-Over a whole skin each bump group reports its own shear: a drag makes every loaded bump lean the same way, while a twist makes them lean around the contact, so their forces cancel in the sum but the twisting moment does not. Groups that the outline cut short (hollow circles) cannot resolve shear along an axis where all their taxels sit on one side.
+<p class="otl otl-note"><b>Model assumptions.</b> The geometry is a real 2 × 2 group from each manifest. Readings come from a lumped static bump model and fitted piezoresistive response profiles, including clipping and saturation. The displayed force estimates invert this model; they are not a measured force calibration. Bump stiffness and friction are omitted.</p>
 
-<p class="otl otl-note"><b>Shows:</b> real layouts and shear groups, and shear decoded group by group from modelled counts, the way a host would decode a real frame. <b>Does not show:</b> a recorded shear field. The load is constructed (a Gaussian press, with traction proportional to the local normal load), and there is no contact mechanics, slip or coupling between bumps.</p>
+## 3. Shear fields and twisting moments { #3-what-changes-when-a-contact-is-sheared-or-twisted }
 
-## 4. Why does moving contact between skins need physical coordinates?
+<div class="otl otl-fig" data-study="field"><div class="otl-loading">Loading the tactile field model…</div></div>
 
-<div class="otl otl-fig" data-study="transfer"><div class="otl-loading">Loading the recorded presses…</div></div>
+Applying the same decoder to each bump produces a spatial shear field. Under uniform dragging, loaded bumps respond in a common tangential direction. Under twisting, their responses circulate around the contact centre. The net shear can then be small even when the twisting moment is substantial, because forces at opposite sides cancel while their moments add.
 
-The same three objects were pressed by hand on three skins of different pitch. Through the manifests every taxel becomes the area it covers, so a press recorded on one skin can be placed on another at its real size; mapped by array index instead, it takes the other array's proportions. Measured at half of each press's peak, the allen key's bar came out 10.3, 9.7 and 9.5 mm wide on the three skins, but contact area did not transfer: it spread by 30–50% across the skins, always largest on the coarsest one.
+Compare the drag and twist presets, then move the contact toward the sensor boundary. Hollow circles mark bump groups truncated by the outline. A group cannot resolve shear along an axis if all its remaining taxels lie on the same side of that axis. The contact-width control specifies the Gaussian width σ in millimetres; the shear/normal ratio and twist amplitude scale tangential loading relative to the local normal load. Twist amplitude is dimensionless, rather than a rotation angle.
 
-<p class="otl otl-note"><b>Shows:</b> real recordings (LEAP palm, 4.2 mm pitch; quadruped foot, 3.1 mm; AgileX jaw, 2.0 mm), the hardest press of each take, and the geometric step of OpenTac-Transfer: each source cell is split into equal shares, and each share lands on the target taxel under it. Placement uses each press's measured pose (centre and main axis). Contact area and extent use taxels above 25% of each panel's peak. <b>Does not show:</b> calibrated force. Two of these skins have no force calibration, so counts are moved as a proxy and colour is normalised per panel. The presses were freehand, so force, place and angle differ from skin to skin.</p>
+<p class="otl otl-note"><b>Model assumptions.</b> Layouts and bump groups come from manifests; the contact field is constructed. Normal loading follows a Gaussian distribution, and tangential loading is proportional to the local normal load. Shear is decoded from the resulting modelled counts. This example does not simulate slip, coupled deformation between bumps or a measured shear field.</p>
 
-## 5. What does a partial update actually observe?
+## 4. Transfer in physical coordinates { #4-why-does-moving-contact-between-skins-need-physical-coordinates }
 
-<div class="otl otl-fig" data-study="sampling"><div class="otl-loading">Loading the recording…</div></div>
+<div class="otl otl-fig" data-study="transfer"><div class="otl-loading">Loading the recorded contacts…</div></div>
 
-A raster frame reads every taxel; OpenTac-Xampling reads only part of the sensor each frame: the taxels that triggered last frame, then M taxels of a coarse-to-fine search pattern, then the neighbours of anything above threshold, growing for as long as the contact continues, so a large contact is read whole rather than cut off. A smaller M gives faster frames (measured on the 32 × 32 skin: 67 fps raster, 376 fps at M = 128, 954 fps at M = 32); following a large contact adds reads, and time, to that frame. Here the firmware's selection (grow mode) is replayed on a raster recording, each xampling frame reading the latest recorded frame at the rate measured for its M.
+A tactile array index does not specify a physical distance: the same number of cells can span different areas on sensors with different pitches. A manifest provides each taxel's position and spatial extent, allowing a recorded contact to be resampled at its physical size. Compare this mapping with array resizing, which changes the contact's proportions to match the target array dimensions.
 
-<p class="otl otl-note"><b>Shows:</b> which taxels the firmware reads, frame by frame. The selection is a port of the firmware's <code>ot_xampling.h</code>, checked to make identical choices on every frame of these replays, with its default settings (threshold 30 counts above each taxel's own noise, 30 reads reserved for search). <b>Does not show:</b> a live xampling recording. The contact is held between recorded frames (about 8 ms apart), the frame rates come from the 32 × 32 skin, and the noise is the raster recording's.</p>
+The example uses three objects pressed by hand onto three skins. At half of each recording's peak response, the Allen key's bar measured 10.3, 9.7 and 9.5 mm wide. Contact area was less consistent, varying by approximately 30–50% and remaining largest on the coarsest skin. Geometric transfer preserves coordinate scale, but cannot recover a boundary that was unresolved by the source taxels.
+
+<p class="otl otl-note"><b>Data and mapping.</b> The recordings use a LEAP palm (4.2 mm pitch), quadruped foot (3.1 mm) and AgileX jaw (2.0 mm). The signal-level control selects a frame on the rising edge of each recording, relative to its peak summed response. Each source cell is divided into equal contributions and assigned to target taxels using the measured contact centre and principal axis. Contact area and extent use a threshold of 25% of each panel's peak. Two skins lack force calibration, so this example transfers counts as a proxy and normalises colour separately in each panel. It demonstrates geometric resampling, not calibrated force transfer. The freehand recordings also differ in force and pose.</p>
+
+## 5. What an adaptive update observes { #5-what-does-a-partial-update-actually-observe }
+
+<div class="otl otl-fig" data-study="sampling"><div class="otl-loading">Loading the sampling replay…</div></div>
+
+Raster scanning reads every taxel in each frame. OpenTac-Xampling instead prioritises previously detected contact, searches the remaining region, and expands into neighbours whose readings exceed a threshold. In grow mode, M specifies the search budget; contact expansion can add reads beyond M. The resulting update rate depends on both the search budget and the extent of detected contact.
+
+Step through the replay and compare the sampled frame with the recorded raster frame. An unread taxel is unknown at that instant. Holding its last reading provides temporal continuity in the display, but that retained value is not a new measurement. Smaller budgets can increase the update rate while delaying discovery of a new contact; expansion improves coverage once contact is detected.
+
+<p class="otl otl-note"><b>Replay assumptions.</b> The selection algorithm is a port of the firmware's <code>ot_xampling.h</code>, checked against the firmware on these replays. It uses a threshold of 30 counts above each taxel's noise and reserves 30 search reads before growth. Selection is replayed over raster recordings approximately 8 ms apart, with the contact held constant between recorded frames. Timing uses the measured 32 × 32-skin rates: 67 frames/s for raster, 376 at M = 128 and 954 at M = 32. These are reference rates for the replay, not measurements of live Xampling on the displayed skin. The replay uses a fixed period at each budget and does not add the hardware time required for contact expansion. It also cannot reveal changes faster than the underlying recording.</p>
 
 ---
 
-<p class="otl otl-credit">Based on interactive studies by Krishna. The data behind these figures is generated by <code>scripts/learn/build_data.py</code> from the sensor manifests, the recordings and the firmware sources; <code>scripts/learn/check_xampling.py</code> and <code>check_transfer.py</code> compare the page's code with the firmware and with <code>opentac/transfer.py</code>.</p>
+<p class="otl otl-credit">Based on interactive studies by Krishna. Geometry, recordings and firmware-derived selection data are prepared by <code>scripts/learn/build_data.py</code>. The accompanying <code>check_xampling.py</code> and <code>check_transfer.py</code> compare the browser implementations with the firmware and <code>opentac/transfer.py</code>.</p>
 
 <script src="js/lib.js"></script>
 <script src="js/bumpmodel.js"></script>

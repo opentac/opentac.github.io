@@ -6,7 +6,7 @@
   'use strict';
   var L = window.OTL, T = window.OTTransfer;
   var SKINS = [['leap_palm', 'LEAP 4.2 mm'], ['foot', 'Foot 3.1 mm'], ['agileX_2mm', 'AgileX 2.0 mm']];
-  var OBJECTS = [['tape roll', 'Tape roll'], ['square block', 'Square block'], ['allen key', 'Allen key']];
+  var OBJECTS = [['tape roll', 'Tape roll'], ['square block', 'Square block'], ['allen key', "Allen key"]];
   var ON_FRAC = 0.25;     // contact = taxels at or above 25% of the frame's peak (as in the paper's F1)
 
   function netFrames(take) {
@@ -85,15 +85,15 @@
       // ---- controls
       var controls = L.el('div', {class: 'otl-controls'});
       var cObj = L.seg('Object', OBJECTS, st.obj, function (v) { st.obj = v; st.rot = 0; st.off = [0, 0]; cRot.set(0); update(); });
-      var cA = L.seg('From', SKINS, st.a, function (v) { st.a = v; st.off = [0, 0]; update(); });
-      var cB = L.seg('To', SKINS, st.b, function (v) { st.b = v; st.off = [0, 0]; update(); });
-      var cMap = L.seg('Map by', [['manifest', 'Physical coordinates'], ['resize', 'Array index (resize)']], st.map,
+      var cA = L.seg("Source A", SKINS, st.a, function (v) { st.a = v; st.off = [0, 0]; update(); });
+      var cB = L.seg("Target B", SKINS, st.b, function (v) { st.b = v; st.off = [0, 0]; update(); });
+      var cMap = L.seg("Mapping", [['manifest', 'Physical coordinates'], ['resize', 'Array index (resize)']], st.map,
                        function (v) { st.map = v; update(); });
-      var cPlace = L.seg('Place', [['pose', "B's recorded pose"], ['centre', 'Centre of B']], st.place,
+      var cPlace = L.seg("Placement", [['pose', "B's recorded pose"], ['centre', 'Centre of B']], st.place,
                          function (v) { st.place = v; st.off = [0, 0]; update(); });
-      var cFrac = L.slider('Load', 0.1, 1, 0.05, st.frac, function (v) { return Math.round(v * 100) + '% of peak'; },
+      var cFrac = L.slider("Signal level", 0.1, 1, 0.05, st.frac, function (v) { return Math.round(v * 100) + '% of peak'; },
                            function (v) { st.frac = v; update(); });
-      var cRot = L.slider('Rotate', -180, 180, 1, st.rot, function (v) { return v + '°'; },
+      var cRot = L.slider("Rotation", -180, 180, 1, st.rot, function (v) { return v + '°'; },
                           function (v) { st.rot = v; update(); });
       var cOver = L.check("Mark B's recorded contact (dots)", st.overlay, function (v) { st.overlay = v; canvas.redraw(); });
       [cObj, cA, cB, cMap, cPlace, cFrac, cRot].forEach(function (c) { controls.appendChild(c.el); });
@@ -105,7 +105,7 @@
       var cv = L.el('canvas', {tabindex: '0', role: 'img',
         'aria-label': 'Three panels: the press recorded on skin A, the same press transferred onto skin B, and the press recorded on skin B. Drag the middle panel or use the arrow keys to move the transferred contact.'});
       cell.appendChild(cv); stage.appendChild(cell); fig.appendChild(stage);
-      var m = L.metrics(fig, [['kept', 'Landed on B taxels'], ['area', 'Contact area, mm² (A · A→B · B)'],
+      var m = L.metrics(fig, [['kept', "Source signal retained on B"], ['area', 'Contact area, mm² (A · A→B · B)'],
                               ['ext', 'Length × width, mm (A→B · B)'], ['iou', 'Overlap of A→B with B (IoU)']]);
       var status = L.el('div', {class: 'otl-status'}); fig.appendChild(status);
 
@@ -149,8 +149,8 @@
           m.iou.textContent = uni ? (inter / uni).toFixed(2) : '—';
           var msg;
           if (st.a === st.b) msg = 'Source and target are the same skin: the transfer maps a press onto a second press of the same object.';
-          else if (st.map === 'resize') msg = 'Array resizing stretches A\'s rows and columns to B\'s, so the contact takes B\'s array proportions, not its millimetres.';
-          else if (lost / Math.max(1, totalA) > 0.02) msg = Math.round(100 * lost / totalA) + '% of the contact fell outside B\'s taxels and is reported as lost, not renormalised.';
+          else if (st.map === 'resize') msg = "Array resizing matches row and column counts without preserving the contact’s physical dimensions.";
+          else if (lost / Math.max(1, totalA) > 0.02) msg = Math.round(100 * lost / totalA) + "% of the source signal falls outside B’s taxels. This contribution is reported as lost; the remainder is not renormalised.";
           else msg = 'Same millimetre scale in all three panels. Colour is normalised per panel: counts per mm² are not comparable across these skins.';
           status.textContent = msg;
           canvas.redraw();

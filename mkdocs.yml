@@ -119,9 +119,9 @@ nav:
   - Use:
       - Flash the firmware: use/flash.md
       - Read a sensor: use/sensor.md
-      - Xampling (compressive sampling): use/xampling.md
+      - Adaptive sampling (Xampling): use/xampling.md
       - Daisy-chain boards: use/daisy-chain.md
-      - Recover a manifest from the QR: use/qr-recovery.md
+      - Recover a sensor manifest: use/qr-recovery.md
       - Simulate: sim.md
       - Transfer between sensors: transfer.md
   - How it works: learn/index.md
@@ -129,4 +129,4 @@ nav:
   - Paper: paper.md
   - Reference:
       - Manifest: reference/manifest.md
-      - Wire protocol: reference/protocol.md
+      - Readout protocol: reference/protocol.md

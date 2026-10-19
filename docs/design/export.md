@@ -1,11 +1,11 @@
 ---
 title: What the export contains
-description: Every file in the OpenTac-CAD download, what it is for, and the QR code on the back of the board.
+description: Fabrication layers, sensor metadata, cutting templates and printed case files in an OpenTac-CAD export.
 ---
 
 # What the export contains
 
-**Download ZIP** gives one archive with everything needed to manufacture, assemble and read the sensor, and to reopen the design later.
+**Download ZIP** exports the files needed to fabricate and assemble the sensor, configure its readout, and reopen the design. The archive separates the board fabrication files, sensor metadata, cutting templates and printable case parts as follows.
 
 | File | What it is | Used for |
 |---|---|---|
@@ -25,7 +25,7 @@ description: Every file in the OpenTac-CAD download, what it is for, and the QR 
 
 The `*` is the design name. Print the bottom and one lid. The case is built from the settings in the case panel, or its defaults if you have not opened it. The primary lid is the one you last chose there, or the bumped lid if you have not chosen one. The case is added when you press **Download ZIP**, which takes a few seconds more on a typical board and longer on a large one. If it cannot be built for a design, the ZIP still downloads without it, and a note under the button says why.
 
-## The Gerbers
+## Fabrication layers { #the-gerbers }
 
 | File | Layer |
 |---|---|
@@ -41,24 +41,24 @@ The `*` is the design name. Print the bottom and one lid. The case is built from
 
 Zip the `gerber/` folder on its own for the board house. The two `User` layers are drawing layers: they are not fabricated as copper, they tell the board house where the stiffener goes and how thick the connector end must be.
 
-## The manifest
+## Sensor geometry and wiring { #the-manifest }
 
-`manifest.json` records, for every taxel, its physical position, its row and column scan index, its footprint, its bump group and its surface frame, plus the connector pad of every row and column. It is the one hand-off between the design and everything that reads it: the readout board stores it, the viewer draws with it, and the simulator and transfer tools build the sensor from it. The format is specified in [Manifest](../reference/manifest.md).
+`manifest.json` connects sensor design to readout, visualisation, simulation and transfer. For each taxel, it records physical position, scan row and column, footprint, bump group and surface frame; it also records the connector pad assigned to each row and column. These fields allow downstream tools to interpret measurements in the sensor's physical geometry. The readout board stores the manifest so the viewer can recover the layout without a separate file. See [Manifest](../reference/manifest.md) for the format.
 
 <figure class="ot-fig" markdown="span">
-  [![Two drawings of one manifest, a 45-taxel fingertip sensor. Left: each taxel at its position, labelled with its scan row and column, and the connector pad of each row and column; the lower four rows are numbered 7, 6, 5, 4 from the top. Right: the taxels coloured by shear bump, one bump over each 2 by 2 group, with the bump centres marked.](../assets/diagrams/manifest_fields.png){ loading=lazy }](../assets/diagrams/manifest_fields.png)
-  <figcaption>What a manifest holds, drawn from <code>examples/manifests/finger_8x6_60pin.json</code>: each taxel's position, scan row and column, and the pad of every row and column (left); the bump groups (right). Dashed: the drawn outline. Solid: the board edge as cut (<code>edge_cuts</code>).</figcaption>
+  [![Two views of a 45-taxel fingertip manifest: physical positions labelled by scan row, column and connector pad on the left; shear-bump groups and centres on the right. Lower-row indices run 7, 6, 5, 4 from top to bottom.](../assets/diagrams/manifest_fields.png){ loading=lazy }](../assets/diagrams/manifest_fields.png)
+  <figcaption>Geometry and wiring encoded in <code>examples/manifests/finger_8x6_60pin.json</code>: each taxel's position, scan row and column, and the pad of every row and column (left); the bump groups (right). Dashed: the drawn outline. Solid: the board edge as cut (<code>edge_cuts</code>).</figcaption>
 </figure>
 
-## The QR code on the back
+## Recovering sensor metadata from the QR code { #the-qr-code-on-the-back }
 
 <figure class="ot-fig ot-fig--clear ot-fig--aside" markdown="span">
   ![KiCad render of the back of the 9 by 9 patch example: amber flex with a white millimetre grid, the QR code in a white square, and the gold connector fingers at the end of the tail.](../assets/diagrams/qr_back.jpg){ loading=lazy width="601" height="900" }
   <figcaption>The back of the <a href="../examples/">9&nbsp;&times;&nbsp;9 patch</a> example, rendered by KiCad from its export: the QR code, the 5&nbsp;mm grid, and the connector fingers.</figcaption>
 </figure>
 
-The back silkscreen carries a small QR code and a millimetre registration grid. The QR holds the sensor's *taxel core*: grid size, pitches, taxel footprint, which connector pad drives each row and column, and which taxels exist. That is everything needed to read the sensor. A board that has been separated from its files can be read again from a photo of its back; see [Recover a manifest from the QR](../use/qr-recovery.md).
+The back silkscreen carries a small QR code and a millimetre registration grid. The QR holds the sensor's *taxel core*: grid size, pitches, taxel footprint, which connector pad drives each row and column, and which taxels exist. These fields are sufficient to reconstruct the taxel layout and wiring needed for readout. A board that has been separated from its files can be read again from a photo of its back; see [Recover a manifest from the QR](../use/qr-recovery.md).
 
 The code is a link, `HTTPS://OPENTAC.GITHUB.IO/Q/` followed by the taxel core. Scanned with a phone camera, it opens the [QR decoder page](../qr.md), which decodes it in the browser and offers the manifest as a download; `opentac manifest from-qr` reads the same text. The link is 28 characters longer than the bare taxel core, 1.4 mm more on each side of the code per QR version; on the 31 [example designs](examples.md) the code is 12.95 to 18.55 mm square, quiet zone included. A board without room for the link inside its outline gets the bare taxel core instead, which a phone shows as text to paste into the decoder page, and a board without room for that gets no code. The `/generate` response records which in `stats.back_qr`: `form` is `link`, `bare` or `null`, with a warning in `warnings` when it is not the link. Codes printed before the link, which carry the bare taxel core, still decode.
 
-The grid sits on the manifest's coordinate frame, so a point read off a photo is a taxel coordinate. The QR is printed mirrored so that it reads correctly on the physical back of the board; in a top-view Gerber viewer it looks backwards, which is expected.
+The registration grid uses the manifest's coordinate frame, allowing positions in a photograph to be related to taxel coordinates. The QR is printed mirrored so that it reads correctly on the physical back of the board; in a top-view Gerber viewer it looks backwards, which is expected.

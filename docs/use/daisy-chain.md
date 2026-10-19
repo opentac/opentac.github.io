@@ -1,17 +1,17 @@
-# Daisy chain
+---
+description: Connect 30-pin readout boards over I2C through a Teensy controller and read multiple sensors from one USB port.
+---
 
-Many 30-pin boards can share one USB cable. The boards are chained on an I²C
-bus behind a Teensy 4.0, and only the Teensy is plugged into the computer.
-Each board is set up and read the same way as a single board on USB.
+# Daisy-chain readout boards { #daisy-chain }
+
+Multiple 30-pin readout boards can share one USB connection through a Teensy 4.0 controller. The boards communicate with the controller over I²C, while the host uses the same sensor-configuration and readout interfaces as for a board connected directly over USB.
 
 <figure class="ot-fig" markdown="span">
   [![Wiring of a daisy chain: the computer connects by USB to a Teensy 4.0; four bus wires, 5 V from VIN, SDA from pin 18, SCL from pin 19 and GND, run from the Teensy through three 30-pin boards, each with a sensor below it; pull-up resistors from SDA and SCL to 3.3 V sit at the Teensy end; up to 18 boards.](../assets/diagrams/daisy_chain.svg){ loading=lazy }](../assets/diagrams/daisy_chain.svg)
-  <figcaption>Only the Teensy is on USB; the boards share four bus wires (5&nbsp;V, SDA, SCL, GND). Pins and pull-ups as in <a href="#3-wire">3. Wire</a>.</figcaption>
+  <figcaption>Only the Teensy is on USB; the boards share four bus wires (5&nbsp;V, SDA, SCL, GND). Pin assignments and pull-up requirements are given in <a href="#3-wire">Connect the I²C bus</a>.</figcaption>
 </figure>
 
-Up to 18 boards. The bus runs at 1 MHz. Measured on three 30-pin boards: 0
-errors over 7,213 bus transactions, about 240 frames per second per board with
-two boards streaming.
+The controller supports up to 18 nodes on a 1 MHz bus. In a test with three 30-pin boards, 7,213 bus transactions completed without errors. With two boards streaming, the measured rate was approximately 240 frames/s per board. These measurements describe the tested configurations, rather than the throughput of a fully populated chain.
 
 ## 1. Flash every board for the bus
 
@@ -51,7 +51,7 @@ Arduino IDE with Teensyduino: copy `firmware/libraries/OpenTactileBus` into
 your Arduino `libraries` folder, open `firmware/bus_controller/bus_controller.ino`,
 choose Board **Teensy 4.0** and USB Type **Serial**, and click Upload.
 
-## 3. Wire
+## 3. Connect the I²C bus { #3-wire }
 
 Each board has two 4-pin JST-SH bus connectors, wired the same way, so the
 cable goes in on one and out on the other:
@@ -86,7 +86,7 @@ With `--node pick`, one board's LED lights red. Press Space until the red LED
 is on the board that sensor is plugged into, then Enter. Each board remembers
 its sensor; a board that restarts keeps its node number.
 
-## 5. View and read
+## 5. View and read multiple sensors { #5-view-and-read }
 
 ```sh
 uv run opentac view                 # every board at once, one panel each
@@ -105,15 +105,13 @@ with Bus() as bus:
         print(node, frame.t_us, frame.taxels.max())
 ```
 
-`frame.t_us` is the Teensy's clock in microseconds, shared by every board, so
-frames from different sensors line up in time. `Sensor(node=2)` opens one
-board on the bus.
+`frame.t_us` uses the Teensy's clock in microseconds, placing frames from all nodes on a common time base. This supports temporal alignment across sensors; it does not imply that their taxels are sampled simultaneously. Use `Sensor(node=2)` to access one board on the bus.
 
-## Known limitation
+## Bus limitations { #known-limitation }
 
 Only run the OpenTac bus controller firmware against these boards. A
 controller that reads more bytes than a board sends makes the board hold SCL
-low, and the whole bus stays down until the boards are power-cycled.
+low, and the bus remains blocked until the boards are power-cycled.
 
 The bus firmware is for the 30-pin board only. A 60-pin board needs more
 memory for its frame buffers than its firmware has left.

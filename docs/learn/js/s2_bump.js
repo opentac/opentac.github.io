@@ -75,16 +75,16 @@
       var meta = res[0], skins = res[1], bump = meta.bump;
       var st = {skin: 'umi', film: 'v2', fz: 0.6, ex: 0};
       var controls = L.el('div', {class: 'otl-controls'});
-      var cSkin = L.seg('Skin', SKINS, st.skin, function (v) { st.skin = v; cEx.input.max = topR().toFixed(2); cEx.input.min = (-topR()).toFixed(2); update(); });
-      var cFilm = L.seg('Film', [['v2', 'LINQSTAT'], ['v3', 'Yunjia textile']], st.film, function (v) { st.film = v; update(); });
+      var cSkin = L.seg("Sensor layout", SKINS, st.skin, function (v) { st.skin = v; cEx.input.max = topR().toFixed(2); cEx.input.min = (-topR()).toFixed(2); update(); });
+      var cFilm = L.seg("Material", [['v2', 'LINQSTAT'], ['v3', 'Yunjia textile']], st.film, function (v) { st.film = v; update(); });
       var cFz = L.slider('Normal load', 0, 3, 0.05, st.fz, function (v) { return v.toFixed(2) + ' N'; }, function (v) { st.fz = v; update(); });
-      var cEx = L.slider('Press off centre', -2.2, 2.2, 0.05, 0, function (v) { return v.toFixed(2) + ' mm'; }, function (v) { st.ex = v; update(); });
+      var cEx = L.slider("Normal load offset", -2.2, 2.2, 0.05, 0, function (v) { return v.toFixed(2) + ' mm'; }, function (v) { st.ex = v; update(); });
       var pad = Pad(update);
       var presets = L.el('div', {class: 'otl-ctl'}, [
-        L.el('span', {class: 'otl-lab', text: 'Try'}),
-        L.button('Press', function () { set(0.6, 0, 0, 0); }),
+        L.el('span', {class: 'otl-lab', text: "Load presets"}),
+        L.button("Normal press", function () { set(0.6, 0, 0, 0); }),
         L.button('Shear +x', function () { set(0.6, 0.25, 0, 0); }),
-        L.button('Diagonal', function () { set(0.6, 0.18, 0.18, 0); }),
+        L.button("Diagonal shear", function () { set(0.6, 0.18, 0.18, 0); }),
         L.button('Off-centre press', function () { set(0.6, 0, 0, topR() * 0.6); })
       ]);
       function set(fz, fx, fy, ex) {
@@ -98,7 +98,7 @@
       var cv = L.el('canvas', {role: 'img', 'aria-label': 'Side section of one bump, top view of its four taxels, and the four readings as bars.'});
       cell.appendChild(cv); stage.appendChild(cell); fig.appendChild(stage);
       var m = L.metrics(fig, [['hz', 'h<sub>z</sub> = Σ z (counts)'], ['hx', 'h<sub>x</sub> = Σ u·z'], ['hy', 'h<sub>y</sub> = Σ v·z'],
-                              ['dec', 'Decoded F<sub>x</sub>, F<sub>y</sub>, F<sub>z</sub> (N)'], ['app', 'Applied (N)']]);
+                              ['dec', 'Decoded F<sub>x</sub>, F<sub>y</sub>, F<sub>z</sub> (N)'], ['app', "Applied F<sub>x</sub>, F<sub>y</sub>, F<sub>z</sub> (N)"]]);
       var status = L.el('div', {class: 'otl-status'}); fig.appendChild(status);
 
       var cur = null;
@@ -124,9 +124,9 @@
         var sat = counts.some(function (c) { return prof.saturated(c); });
         var lift = forces.some(function (f) { return f.raw < 0; });
         var msg, warn = true;
-        if (sat) msg = 'A taxel is at the ADC ceiling. Its reading is a lower bound, so the sums and differences no longer recover the load.';
+        if (sat) msg = "ADC saturation: a clipped reading is a lower bound on the response, so the applied load can no longer be recovered from these measurements.";
         else if (lift) msg = 'One side of the bump has unloaded completely (clipped at zero). The decoded shear underestimates the load.';
-        else if (Math.abs(st.ex) > 0.01) msg = 'An off-centre press tilts the readings the way shear does: it adds ' + f2(dec.fx - pad.fx) + ' N to the decoded Fx.';
+        else if (Math.abs(st.ex) > 0.01) msg = "An off-centre normal load also produces a differential response, adding " + f2(dec.fx - pad.fx) + ' N to the decoded Fx.';
         else { msg = 'Within range: hz follows the normal load, hx and hy follow the tangential load. Counts are not linear in force (film exponent b = ' + prof.p.b.toFixed(2) + ').'; warn = false; }
         status.textContent = msg;
         status.className = 'otl-status' + (warn ? ' warn' : '');
@@ -184,7 +184,7 @@
 
         // ---- top view of the real 2x2 block
         var T = R.top, comb = cur.skin.comb;
-        hdr(T, 'Top view, real block', cur.skin.label + ', bump ' + cur.g.index);
+        hdr(T, "Taxel layout (top view)", cur.skin.label + ', bump ' + cur.g.index);
         var ext = p + cur.skin.w / 2 + 0.6, ts = Math.min((T[2] - 24) / (2 * ext), (T[3] - 60) / (2 * ext));
         var ox = T[0] + T[2] / 2, oy = T[1] + 44 + (T[3] - 44) / 2;
         var tX = function (mx) { return ox + mx * ts; }, tY = function (my) { return oy - my * ts; };
@@ -213,7 +213,7 @@
 
         // ---- bars
         var Bx = R.bars;
-        hdr(Bx, 'Four readings', 'ADC counts, ' + cur.prof.p.material);
+        hdr(Bx, "Taxel responses", 'ADC counts, ' + cur.prof.p.material);
         var bx0 = Bx[0] + 34, bw = Bx[2] - 50, by0 = Bx[1] + Bx[3] - 34, bh = Bx[3] - 90;
         L.draw.line(ctx, bx0, by0 + .5, bx0 + bw, by0 + .5, t.ink3, 1);
         L.draw.line(ctx, bx0, by0 - bh, bx0 + bw, by0 - bh, t.ink2, 1, [4, 3]);

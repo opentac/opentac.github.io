@@ -5,12 +5,12 @@ description: Ordering the OpenTac sensor as a flex PCB from JLCPCB, with a polyi
 
 # Order the sensor (flex PCB)
 
-The sensor is a flex PCB: polyimide about 0.1&nbsp;mm thick, so it bends around the part. Any board house that makes flex PCBs can build it from the Gerbers. This page walks through an order at [JLCPCB](https://jlcpcb.com/), which made the boards in the paper.
+The sensing electrodes and wiring are fabricated as a flexible PCB on a polyimide substrate, approximately 0.1&nbsp;mm thick. The generated Gerbers can be supplied to a manufacturer that supports flex-PCB fabrication. The procedure below uses [JLCPCB](https://jlcpcb.com/), which manufactured the sensors evaluated in the paper.
 
 !!! info "As of October 2026"
     Option names, values and screenshots below are from JLCPCB's quote form and capability pages in October 2026; the screenshots were taken on 16 October 2026 with the dense AgileX Piper jaw (`agilex-piper-jaw-32x25`, 2 layers, 60-pin) from [Ready-to-order designs](../design/examples.md). Board houses change their forms; if something looks different, the [flex PCB capabilities page](https://jlcpcb.com/capabilities/flex-pcb-capabilities) is the reference.
 
-## Before you upload
+## Prepare the fabrication files { #before-you-upload }
 
 1. **Check the fit on paper first.** Print `printable_1to1.pdf` from the export at 100% and hold it against the part ([how](assembly.md#check-the-fit-on-paper)).
 2. **Zip the `gerber/` folder** from the export on its own. That ZIP is what you upload.
@@ -19,15 +19,15 @@ The sensor is a flex PCB: polyimide about 0.1&nbsp;mm thick, so it bends around 
 <div class="ot-photos ot-photos--two ot-photos--contain" markdown>
 <figure markdown="span">
   ![The fabricated flex PCB as delivered: yellow polyimide with a gold taxel grid, wires along the tail, and a darker stiffener on the connector end.](../assets/photos/steps/flex-pcb-delivered.jpg){ loading=lazy }
-  <figcaption>A board as delivered, stiffener on the connector end.</figcaption>
+  <figcaption>Fabricated flex PCB with a polyimide stiffener at the connector end.</figcaption>
 </figure>
 <figure markdown="span">
   ![Gerber view of a sensor: front copper red, back copper blue, cut line black, and the stiffener outline in amber over the connector contacts.](../assets/photos/steps/order-board-files.png){ loading=lazy }
-  <figcaption>Its files: front copper red, back copper blue, outline black, stiffener outline amber.</figcaption>
+  <figcaption>Gerber layers: top copper in red, bottom copper in blue, board outline in black, and stiffener outline in amber.</figcaption>
 </figure>
 </div>
 
-## The order form
+## Configure the PCB order { #the-order-form }
 
 On jlcpcb.com, start a quote and **Add gerber file** with your ZIP. The board size and the number of layers are read from the files. Leave every option at JLC's default except these:
 
@@ -41,10 +41,10 @@ On jlcpcb.com, start a quote and **Add gerber file** with your ZIP. The board si
 | Polyimide Thickness | **0.20mm** for a 2-layer sensor | what our sensors use; see below |
 | PCB Remark | the stiffener note below | the form has no option for the stiffener's side |
 
-That is all we change for our boards; substrate, board thickness (0.11&nbsp;mm), coverlay, finish and copper stay at the defaults.
+For the two-layer boards shown here, we retain the quoted defaults for substrate, board thickness (0.11&nbsp;mm), coverlay, surface finish and copper.
 
 <figure class="ot-fig" markdown="span">
-  [![JLCPCB quote form after uploading the sensor's Gerber ZIP: top and bottom renders of a yellow flex board, the line "Detected 2 layer board of 89.29x60mm", Base Material set to Flex and Layers set to 2, both outlined in orange.](../assets/photos/jlcpcb/sensor-upload-flex.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-upload-flex.png)
+  [![JLCPCB quote form identifying a two-layer, 89.29 × 60 mm board, with Flex selected as the base material.](../assets/photos/jlcpcb/sensor-upload-flex.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-upload-flex.png)
   <figcaption>The ZIP uploaded: JLC renders both sides and reads 2 layers, 89.29 &times; 60&nbsp;mm. Base Material set to Flex; Layers as read from the files.</figcaption>
 </figure>
 
@@ -53,21 +53,21 @@ That is all we change for our boards; substrate, board thickness (0.11&nbsp;mm),
 The readout boards use a Molex 505110 ZIF connector: a bottom-contact connector that takes a flex end **0.30&nbsp;mm** thick (&plusmn;0.05&nbsp;mm). The sensor tail's contacts are on its **bottom** copper; the export opens the solder mask there, at the connector fingers only, and leaves the top covered. A bare 2-layer flex is much thinner than 0.3&nbsp;mm, so the connector end gets a polyimide (PI) stiffener on the **top** of the tail (the taxel side), opposite the contacts.
 
 <figure class="ot-fig" markdown="span" style="max-width: 36rem">
-  [![Section along the tail's connector end: the 0.11 mm flex, a 0.20 mm polyimide stiffener on top over the last 6 mm, and the gold contacts on the bottom copper where the solder mask is open, 0.3 mm thick in total at the contacts, going into the readout board's bottom-contact connector.](../assets/diagrams/stiffener_section.svg){ loading=lazy }](../assets/diagrams/stiffener_section.svg)
+  [![Connector-tail cross-section: 0.11 mm flex with a 0.20 mm PI stiffener on top over the final 6 mm, and exposed contacts underneath, for approximately 0.3 mm total thickness at the connector.](../assets/diagrams/stiffener_section.svg){ loading=lazy }](../assets/diagrams/stiffener_section.svg)
   <figcaption>The connector end in section: stiffener on top, contacts underneath. Thicknesses not to scale.</figcaption>
 </figure>
 
-The export already describes it:
+The exported drawing layers specify the stiffener geometry and placement:
 
 - `board-User_Drawings.gbr` draws the stiffener outline: 6&nbsp;mm deep and as wide as the connector end (31.6&nbsp;mm for the 60-pin connector, 16.6&nbsp;mm for the 30-pin).
 - `board-User_Comments.gbr` carries the note, for example `31.6x6 PI stiffener on TOP (taxel side), T = 0.3 total, contacts on BOTTOM`.
 
-JLCPCB does not read these layers automatically, so set the options by hand.
+Specify these requirements in the order form as well; the drawing layers do not automatically populate the stiffener options.
 
-**Gold fingers.** Set **Gold Fingers** to **Yes** and **Gold Fingers Thickness** to **0.3**&nbsp;mm, the total at the fingers. Choosing Yes switches **Stiffener** to **Polyimide** and adds a **Polyimide Thickness** row. JLC does not work that out from the 0.3&nbsp;mm; you pick it.
+**Gold fingers.** Set **Gold Fingers** to **Yes** and **Gold Fingers Thickness** to **0.3**&nbsp;mm, the total at the fingers. Choosing Yes switches **Stiffener** to **Polyimide** and adds a **Polyimide Thickness** row. The total connector thickness does not automatically determine the PI thickness field; select it separately.
 
 <figure class="ot-fig" markdown="span">
-  [![The flex options on the JLCPCB form: Gold Fingers Yes, Gold Fingers Thickness 0.3 mm, EDA Software Other with a note that stiffeners from other software need manual review, Stiffener Polyimide, Polyimide Thickness 0.20mm. The four settings are outlined in orange.](../assets/photos/jlcpcb/sensor-gold-fingers-stiffener.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-gold-fingers-stiffener.png)
+  [![JLCPCB flex settings: Gold Fingers enabled, 0.3 mm total connector thickness, polyimide stiffener and 0.20 mm PI thickness. A note requires manual stiffener placement for non-EasyEDA files.](../assets/photos/jlcpcb/sensor-gold-fingers-stiffener.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-gold-fingers-stiffener.png)
   <figcaption>Gold fingers and stiffener set. The grey note under EDA Software is why the stiffener needs a remark: for files not made in EasyEDA Pro, JLC places the stiffener by hand.</figcaption>
 </figure>
 
@@ -78,14 +78,14 @@ JLCPCB does not read these layers automatically, so set the options by hand.
   <figcaption>The calculator for a 2-layer sensor: 0.30&nbsp;mm total, copper on the opposite side; it suggests 0.225&nbsp;mm PI. We use 0.20&nbsp;mm.</figcaption>
 </figure>
 
-**Which side.** The form has no option for the side or position of the stiffener. Write it in **PCB Remark** (the pencil at the bottom of the PCB options, 200 characters at most), for example: *"PI stiffener on the TOP side over the connector area, outline on layer User_Drawings, 0.3 mm total thickness at the gold fingers. Contacts are on the bottom."*
+**Stiffener side and placement.** The form has no option for the side or position of the stiffener. Write it in **PCB Remark** (the pencil at the bottom of the PCB options, 200 characters at most), for example: *"PI stiffener on the TOP side over the connector area, outline on layer User_Drawings, 0.3 mm total thickness at the gold fingers. Contacts are on the bottom."*
 
 <figure class="ot-fig" markdown="span">
-  [![The PCB Remark box on the JLCPCB form with the stiffener note typed in, 157 of 200 characters.](../assets/photos/jlcpcb/sensor-remark.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-remark.png)
-  <figcaption>The note in PCB Remark.</figcaption>
+  [![PCB Remark specifying the stiffener on the top side over the connector and a total finger thickness of 0.3 mm.](../assets/photos/jlcpcb/sensor-remark.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-remark.png)
+  <figcaption>PCB Remark specifying the stiffener side, placement and total connector thickness.</figcaption>
 </figure>
 
-### 2 or 4 layers: cost
+### Fabrication cost: two versus four layers { #2-or-4-layers-cost }
 
 A 4-layer flex costs noticeably more than a 2-layer one at the same size. Design on 2 layers unless 4 layers are what make your sensor fit (see [Two or four copper layers](../design/index.md#two-or-four-copper-layers)). The quote updates as you change the options, so compare both before deciding.
 
@@ -94,7 +94,7 @@ A 4-layer flex costs noticeably more than a 2-layer one at the same size. Design
   <figcaption>An example quote on 16 October 2026 for 5 of the board above, with the options on this page: $16.00 as 2 layers (a special-offer price), $104.56 as 4 layers. Shipping is extra (estimated at $31.44 by DHL).</figcaption>
 </figure>
 
-## If JLC asks
+## Respond to fabrication questions { #if-jlc-asks }
 
 After you pay, JLCPCB's engineers review the files and sometimes send an engineering question (EQ) before production. Answer it on the order page; production waits until you do. Questions we have seen or expect:
 
@@ -110,11 +110,11 @@ After you pay, JLCPCB's engineers review the files and sometimes send an enginee
 **"There is text or a drawing on a user layer; should it be fabricated?"**
 : No. User_Drawings and User_Comments are notes for the stiffener; they are not copper, mask or silkscreen.
 
-## When the boards arrive
+## Inspect the fabricated boards { #when-the-boards-arrive }
 
 Check the connector end against the readout board's connector before assembly: it should slide in under the open latch with light force. Then [assemble](assembly.md).
 
 <figure class="ot-fig ot-fig--clear" markdown="span" style="max-width: 20rem">
   ![The stiffened tail fully inserted in the readout board's connector, latch closed.](../assets/photos/steps/connector-inserted.jpg){ loading=lazy width="750" height="1000" }
-  <figcaption>A tail in the connector, stiffener up, latch closed.</figcaption>
+  <figcaption>Connector tail seated with the stiffener facing up and the latch closed.</figcaption>
 </figure>

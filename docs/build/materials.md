@@ -5,14 +5,14 @@ description: Piezoresistive layers, printing materials, and the flat cables and 
 
 # Materials and accessories
 
-Besides the flex PCB and the readout board, a sensor needs a piezoresistive layer, a 3D-printed case, and sometimes a cable to put distance between the sensor and the board.
+In addition to the flex PCB and readout board, assembly requires a piezoresistive layer and a compliant printed case. An FFC extension is needed only when the readout board cannot be mounted close enough to accept the sensor tail directly.
 
 !!! info "As of October 2026"
-    Links were checked in October 2026. Listings change; generic equivalents work.
+    The links below were checked in October 2026. For substitutes, match the relevant material properties, connector dimensions and contact arrangement.
 
 ## Piezoresistive layer
 
-The layer between the taxels and the lid is what turns pressure into a change in resistance. Its choice changes the sensor more than any other material: in the paper's load-cell tests, read at 1&nbsp;k&Omega; feedback, at 2.0&nbsp;mm pitch, LINQSTAT did not saturate through 60&nbsp;N, while Chibitronics Velostat saturated early ([Results](../results.md#material-and-spatial-response)).
+The piezoresistive layer converts local pressure into a resistance change between the taxel electrodes. Material choice therefore affects the response and saturation range. In the paper's load-cell measurements at 2.0&nbsp;mm pitch and 1&nbsp;k&Omega; feedback resistance, LINQSTAT did not saturate through 60&nbsp;N, whereas Chibitronics Velostat saturated earlier ([Results](../results.md#material-and-spatial-response)). These measurements apply to the tested stack and readout settings.
 
 | Material | What it is | Notes | Where |
 |---|---|---|---|
@@ -20,11 +20,11 @@ The layer between the taxels and the lid is what turns pressure into a change in
 | **Yunjia textile** | piezoresistive conductive fabric, 0.15&nbsp;mm | one of the three materials in the paper's comparison; used in the build-guide sensor | [Faraday Fiber (Yunjia Textile)](https://faradayfiber.com/en-us/products/pressure-sensor-piezoresistive-fabric) |
 | **Chibitronics Velostat** | pressure-sensitive conductive plastic sheet | saturated early in the paper's tests | [Chibitronics shop](https://shop.chibitronics.com/products/conductive-plastic-sheets-velostat-linqstat) |
 
-Cut it with the fold template or the DXF from the export ([Cut the piezoresistive layer](assembly.md#cut-the-piezoresistive-layer)). One sheet covers many sensors.
+Cut the layer using the fold template or DXF supplied in the export ([Cut the piezoresistive layer](assembly.md#cut-the-piezoresistive-layer)). One sheet covers many sensors.
 
 ## Printed parts
 
-- **TPU filament, shore 85&ndash;95A**, for the case and the bump sheet. The bumps must be soft to tip under shear; a rigid plastic does not read shear. Any brand that your printer handles works.
+- **TPU filament, Shore 85&ndash;95A**, for the case and the bump sheet. The bumps must deform under tangential load to produce the differential taxel response used for shear estimation. Use a TPU formulation compatible with your printer.
 - **Foam**, optional, as a compliant backing between the case and a rigid mount.
 - **Double-sided tape**, thin, to hold the flex PCB in the tray.
 
@@ -51,10 +51,10 @@ Both cables are **A type**: contacts on the same face at both ends, facing down 
 - every 180&deg; fold flips which face is down, so count folds.
 
 <figure class="ot-fig" markdown="span" style="max-width: 36rem">
-  [![Side views of a flat cable between an extension board and a readout board. Same side, A type: both connectors face up from their boards, and the cable's contacts face down at both ends. Opposite side, B type: the readout board is upside down, so the cable's contacts face down at one end and up at the other.](../assets/diagrams/ffc_types.svg){ loading=lazy }](../assets/diagrams/ffc_types.svg)
-  <figcaption>Which cable: at each end the contacts must face the connector's own contact, on its board's side.</figcaption>
+  [![FFC contact arrangements in side view. Type A has contacts on the same face at both ends; Type B has contacts on opposite faces. Each exposed contact faces its connector contact.](../assets/diagrams/ffc_types.svg){ loading=lazy }](../assets/diagrams/ffc_types.svg)
+  <figcaption>FFC contact orientation: exposed contacts at each cable end must face the contacts inside the corresponding connector.</figcaption>
 </figure>
 
-**Check the pin order** the first time you add an extension: press near one corner of the sensor and see that the viewer lights the same corner. A mirrored image means pin 1 arrives at the wrong end somewhere in the chain; check the cable type and which way round each end is inserted.
+**Verify the pin order** after adding an extension: press near one corner of the sensor and confirm that the response appears at the same corner in the viewer. A mirrored image means pin 1 arrives at the wrong end somewhere in the chain; check the cable type and which way round each end is inserted.
 
 For other lengths from a distributor, Molex's [Premo-Flex 15018 jumpers](https://www.digikey.com/en/products/result?keywords=Premo-Flex%2015018%200.5mm) come in 51 to 305&nbsp;mm, same side ("Type A") or opposite side ("Type D").

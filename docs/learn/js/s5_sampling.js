@@ -18,18 +18,18 @@
       var takes = {};
 
       var controls = L.el('div', {class: 'otl-controls'});
-      var cSkin = L.seg('Skin', SKINS, st.skin, function (v) { st.skin = v; load(); });
+      var cSkin = L.seg("Sensor layout", SKINS, st.skin, function (v) { st.skin = v; load(); });
       var cObj = L.seg('Object', OBJECTS, st.obj, function (v) { st.obj = v; load(); });
-      var cM = L.seg('Budget M', BUDGETS.map(function (b) { return [b, String(b)]; }), st.m,
+      var cM = L.seg("Search budget M", BUDGETS.map(function (b) { return [b, String(b)]; }), st.m,
                      function (v) { st.m = v; replay(); });
-      var cT = L.slider('Time', 0, 1, 0.1, 0, function (v) { return v.toFixed(1) + ' ms'; },
+      var cT = L.slider("Recording time", 0, 1, 0.1, 0, function (v) { return v.toFixed(1) + ' ms'; },
                         function (v) { st.t = v; stop(); draw(); });
       var bPlay = L.button('Play', function () { if (st.playing) stop(); else play(); });
       var bPrev = L.button('◀ frame', function () { stop(); stepFrame(-1); });
       var bNext = L.button('frame ▶', function () { stop(); stepFrame(1); });
-      bPrev.setAttribute('aria-label', 'Previous xampling frame');
-      bNext.setAttribute('aria-label', 'Next xampling frame');
-      var cHold = L.check('Hold last reading of unread taxels', st.hold, function (v) { st.hold = v; draw(); });
+      bPrev.setAttribute('aria-label', "Previous adaptive-sampling frame");
+      bNext.setAttribute('aria-label', "Next adaptive-sampling frame");
+      var cHold = L.check("Display last reading for unread taxels", st.hold, function (v) { st.hold = v; draw(); });
       [cSkin, cObj, cM].forEach(function (c) { controls.appendChild(c.el); });
       controls.appendChild(cT.el);
       [bPrev, bPlay, bNext].forEach(function (b) { controls.appendChild(b); });
@@ -41,8 +41,8 @@
       var cv = L.el('canvas', {tabindex: '0', role: 'img',
         'aria-label': 'Left: the recorded raster frame. Right: the taxels one xampling frame reads. Below: a timeline of how much of the contact each xampling frame reads. Click the timeline to move in time.'});
       cell.appendChild(cv); stage.appendChild(cell); fig.appendChild(stage);
-      var m = L.metrics(fig, [['rate', 'Xampling frame rate (measured)'], ['reads', 'Reads: seeds · search · growth'],
-                              ['hit', 'Contact taxels read, this frame'], ['mean', 'Share of contact read, after onset']]);
+      var m = L.metrics(fig, [['rate', "Replay rate (32 × 32 benchmark)"], ['reads', "Reads: prior contact · search · growth"],
+                              ['hit', 'Contact taxels read, this frame'], ['mean', "Mean contact coverage after onset"]]);
       var status = L.el('div', {class: 'otl-status'}); fig.appendChild(status);
 
       function load() {
@@ -237,8 +237,8 @@
         m.reads.textContent = fr.fromPriority + ' · ' + fr.fromPattern + ' · ' + fr.fromGrowth;
         m.hit.textContent = c[1] ? c[0] + ' of ' + c[1] : 'no contact';
         var msg;
-        if (c[1] > st.m) msg = 'The contact covers ' + c[1] + ' taxels, more than M = ' + st.m + ': growth reads past M to follow all of it, and that frame takes longer.';
-        else msg = 'Unread taxels are unknown in this frame, not zero.';
+        if (c[1] > st.m) msg = 'The contact covers ' + c[1] + ' taxels, more than M = ' + st.m + ": expansion adds reads beyond M. Hardware frames take longer; this replay keeps a fixed period.";
+        else msg = "Unread taxels have no new measurement in this frame.";
         status.textContent = msg;
       });
       function draw() { canvas.redraw(); }

@@ -1,36 +1,30 @@
+---
+description: Reconstruct sensor geometry and wiring from a QR code, with precision limits and omitted fields.
+---
+
 # Recover a manifest from the QR code
 
-Sensors made with OpenTac-CAD carry a QR code on the back silkscreen. It
-encodes the sensor's taxel grid: rows, columns, connector pads, which taxels
-exist, where they sit, and the taxel footprint. If a sensor has lost its
-files, the QR code is enough to read it.
+OpenTac-CAD includes a QR code on the back silkscreen when the board has sufficient space. It encodes the taxel grid, connector-pad assignments, active taxels, positions and footprint. This provides enough information to reconstruct a manifest for readout if the original design files are unavailable, subject to the omissions described below.
 
-## With a phone
+## Decode with a phone { #with-a-phone }
 
-Point the phone camera at the code and open the link it offers
-(`opentac.github.io/q/...`). The [QR decoder page](../qr.md) opens and
-decodes the code in the browser (nothing is uploaded). It draws the sensor to
-scale from the code: every taxel with its copper, the row and column numbers
-and the connector contact each one uses, the empty grid positions, and one
-taxel's electrode pattern with its dimensions. Below that it lists every field
-in the code with its value and the bits it takes, and it has a *Download
-manifest.json* button.
+Scan the code with a phone camera and open its `opentac.github.io/q/...` link. The [QR decoder page](../qr.md) reconstructs the sensor in the browser and provides a **Download manifest.json** button. It also displays the taxel layout, electrode geometry, scan indices and connector-pad assignments, followed by the encoded fields and their bit allocations. Decoding is performed locally in the browser.
 
 <figure class="ot-fig ot-fig--clear" markdown>
 <div class="ot-shots" markdown>
 <figure markdown="span">
   ![KiCad render of the back of the 9 by 9 patch example: amber flex with a white 5 mm grid, the QR code in a white square, and the gold connector fingers at the end of the tail.](../assets/diagrams/qr_back.jpg){ loading=lazy width="601" height="900" }
-  <figcaption>The code on the back</figcaption>
+  <figcaption>QR code on the back silkscreen.</figcaption>
 </figure>
 <figure markdown="span">
-  ![The QR decoder page's drawing of the same code: 81 taxels in 9 rows and 9 columns, each with its copper, row and column numbers, the connector contact of each row (7 to 15) and column (16 to 24) on a 30-contact cable, and a 5 mm scale bar.](../assets/screens/qr_decoder_drawing.webp){ loading=lazy width="592" height="721" }
-  <figcaption>What the decoder page draws from it</figcaption>
+  ![Decoded 9 × 9 sensor layout with 81 taxels, row contacts 7–15, column contacts 16–24, electrode patterns and a 5 mm scale bar.](../assets/screens/qr_decoder_drawing.webp){ loading=lazy width="592" height="721" }
+  <figcaption>Taxel geometry and wiring reconstructed from the code.</figcaption>
 </figure>
 </div>
 <figcaption>The 9&nbsp;&times;&nbsp;9 patch example design: its back silkscreen as KiCad renders it from the export, and the decoder page on the link that code holds. The lower four rows are numbered 8, 7, 6, 5 from the top: scan order, not geometric order.</figcaption>
 </figure>
 
-Set the board up with that file, as usual:
+Upload the recovered manifest to configure the readout board:
 
 ```sh
 uv run opentac setup manifest.json
@@ -40,7 +34,7 @@ To see what a code holds without a sensor, open the code of the
 [9 x 9 patch](../qr.md#YJ77YN9I2O-QN0AOBT.:VW3NG90){ data-design="strip-09x09" }
 example design in the decoder. The decoder page links a few more.
 
-## With the command line
+## Decode from the command line { #with-the-command-line }
 
 Any QR scanner app gives the code's text. Rebuild the manifest from it:
 
@@ -66,7 +60,7 @@ m.save("my_sensor.json")
 
 The decoder page and the command line write the same file, byte for byte.
 
-## Small boards
+## Codes on small boards { #small-boards }
 
 The link adds 28 characters to the code, which makes the QR one version
 larger (two on 1 of the 31 example designs), 1.4 mm more on each side per
@@ -82,21 +76,21 @@ Paste that text into the [QR decoder page](../qr.md) or pass it to
   <figcaption>The 9&nbsp;&times;&nbsp;9 patch's code both ways, at one scale, quiet zone included, as the export builds them (unmirrored here).</figcaption>
 </figure>
 
-## What comes back, and what does not
+## Recovered fields and limitations { #what-comes-back-and-what-does-not }
 
 A recovered manifest has the same rows, columns, pads and taxel mask as the
 original. The QR stores the grid origin and pitch to 0.01 mm, so every taxel is
 within 0.005 mm of its original position when the pitch is a whole number of
 0.01 mm. A pitch with a third decimal moves the far taxels further: up to
 0.12 mm on the example designs whose pitch was raised to fit the readout board.
-That is all the readout board and the viewer need.
+This representation supports taxel readout and display, but omits the fields listed below.
 
 <figure class="ot-fig" markdown="span" style="max-width: 34rem">
-  [![Two drawings of the 9 by 9 patch. Left, the manifest from the export: 81 taxels coloured by shear bump, the drawn outline dashed and the board edge solid. Right, the manifest rebuilt from its QR code: the same 81 taxels in the same places, with no outline, no board edge and no bump groups.](../assets/diagrams/qr_recovered.png){ loading=lazy width="1263" height="750" }](../assets/diagrams/qr_recovered.png)
+  [![Original and QR-recovered 9 × 9 manifests. Both retain the 81 taxel positions; the recovered version omits the drawn outline, board edge and shear-bump groups.](../assets/diagrams/qr_recovered.png){ loading=lazy width="1263" height="750" }](../assets/diagrams/qr_recovered.png)
   <figcaption>The 9&nbsp;&times;&nbsp;9 patch's manifest, and the one <code>opentac manifest from-qr</code> rebuilds from its code: the same rows, columns and positions (here 0.000&nbsp;mm apart, at a 2&nbsp;mm pitch), without the outline, the board edge or the bump groups.</figcaption>
 </figure>
 
-The QR does not carry:
+The QR payload omits:
 
 - `outline` and `edge_cuts`, the sensor's drawn shape and cut edge,
 - `design`, the recipe OpenTac-CAD needs to rebuild or edit the board,
@@ -109,5 +103,5 @@ one-character changes were refused in a test. Scan the code rather than type
 it.
 
 The recovered file is not byte-for-byte the original, so the board stores it
-under a different id. If you find the original manifest later, run
+under a different ID. If you find the original manifest later, run
 `opentac setup` with it again.

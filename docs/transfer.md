@@ -1,9 +1,10 @@
-# Transfer
+---
+description: Map calibrated normal-force distributions between sensor layouts in physical coordinates, with explicit resolution and coverage limits.
+---
 
-OpenTac-Transfer, the `opentac.transfer` module, takes a frame from skin A and gives the frame skin B would
-have read for the same contact. A and B can have different taxel sizes,
-outlines and taxel counts. Use it to reuse recorded or simulated data on a new
-sensor design.
+# Transfer between sensor layouts { #transfer }
+
+OpenTac-Transfer (`opentac.transfer`) maps a calibrated normal-force distribution from one sensor layout to another using their physical geometry. The sensors can differ in outline, taxel pitch and taxel count. This supports reuse of recorded or simulated contact data across layouts, subject to assumptions about spatial resolution, calibration and contact placement.
 
 ```python
 from opentac import manifest
@@ -19,15 +20,15 @@ frame_b = transfer(frame_a, a, b)      # frame_a in newtons per taxel
 
 <figure class="ot-fig" markdown="span">
   [![Three frames at one millimetre scale: a simulated ball press on a 4 mm grid, a bright 2 by 2 block; the same press transferred onto a 2.5 mm pitch board, a dimmer, finer spot; and the press simulated directly on that board, a similar spot.](assets/diagrams/transfer_example.jpg){ loading=lazy width="1412" height="497" }](assets/diagrams/transfer_example.jpg)
-  <figcaption><code>examples/transfer.py</code> drawn: a 10&nbsp;mm ball at 3&nbsp;N simulated on skin A (4&nbsp;mm pitch), its transfer onto skin B (2.5&nbsp;mm pitch), and the same press simulated on B. Each taxel shows the newtons on its own area, so B's smaller taxels read less each.</figcaption>
+  <figcaption>Example from <code>examples/transfer.py</code>: a 10&nbsp;mm ball at 3&nbsp;N simulated on skin A (4&nbsp;mm pitch), its transfer onto skin B (2.5&nbsp;mm pitch), and the same press simulated on B. Each taxel shows the newtons on its own area, so B's smaller taxels read less each.</figcaption>
 </figure>
 
-## Inputs
+## Input data and placement { #inputs }
 
 - `frame`: a `Frame` from skin A in **newtons** per taxel (`units == "N"`).
-  Frames in counts are refused: transfer adds forces, which is only right for
-  forces. Convert counts with the skin's calibration first. Unread taxels (NaN)
-  count as zero.
+  ADC-count frames are rejected because the resampling operation sums force
+  contributions. Convert counts with the source sensor's calibration first.
+  Unread taxels (NaN) are treated as zero.
 - `a`, `b`: the two skins' manifests (a `Manifest`, a manifest.json path, a
   design .zip, or a dict). Each skin's taxels must sit on one square grid; the
   two grids can have different pitches.
@@ -38,13 +39,13 @@ frame_b = transfer(frame_a, a, b)      # frame_a in newtons per taxel
 - `angle_deg`: turn the contact by this angle.
 - `kernel`: `"box"` (default) or `"tent"` (smoother when B is finer than A).
 
-## Output
+## Output and force conservation { #output }
 
 A `Frame` on B: newtons per taxel in B's `pixels` order, `units == "N"`, the
 input's `t`. `imu` is left empty, because it described A's board.
 
-Force is conserved: what B reads plus what fell outside B's taxels equals what
-A read. To see the lost part, or to apply one placement to many frames, use
+The resampling conserves force when the contribution outside the target is
+accounted for: force assigned to B plus force outside B equals the force on A. To see the lost part, or to apply one placement to many frames, use
 `Transfer` directly:
 
 ```python
@@ -55,10 +56,9 @@ fb = tr.force(frames_a)                        # (n_frames, n_A) -> (n_frames, n
 tr.lost(frame_a.taxels)                        # N that landed outside B's taxels
 ```
 
-## How it works
+## Resample in physical coordinates { #how-it-works }
 
-A taxel reads the force on its cell: a square one pitch wide around its
-centre. So a frame in newtons is a pressure that is constant over each cell.
+The transfer model assigns each taxel a square cell, centred on the taxel and one pitch wide. It treats the measured force as uniformly distributed over that cell. This piecewise-constant pressure approximation provides the basis for resampling in physical coordinates:
 
 1. **Place A on B.** Rotate A's taxel positions by `angle_deg`, then shift
    them, so the contact sits where you want it on B.
@@ -73,13 +73,9 @@ centre. So a frame in newtons is a pressure that is constant over each cell.
   <figcaption>The three steps for the two skins of <code>examples/transfer.py</code>, with A turned 20&deg;. The share points are the ones <code>Transfer</code> bins; of the cell over B's edge, 47% lands on B.</figcaption>
 </figure>
 
-## What transfers and what does not
+## Evaluation and limitations { #what-transfers-and-what-does-not }
 
-The paper scored transfer on hand presses: four skins (409, 502, 96 and 174
-taxels; 2.0 and 4.0 mm pitch), five objects, 1 to 8 N. Every method was given
-the pose of the press it predicted. "Shape F1" is the overlap between the
-taxels each frame reads above about a quarter of its own peak, so it compares
-where the contact is and its shape, not how bright it is.
+The paper evaluates transfer using hand-applied contacts on four skins with 409, 502, 96 and 174 taxels, at 2.0 and 4.0 mm pitch. Five objects were evaluated at forces from 1 to 8 N. Every method was given the target contact pose. Shape F1 compares thresholded contact regions, using approximately one quarter of each frame's peak; it evaluates contact shape and location rather than force-magnitude accuracy.
 
 | predicting skin B's frame from | median shape F1 | frames |
 |---|---|---|
@@ -93,7 +89,7 @@ where the contact is and its shape, not how bright it is.
 (`results_pose.json`, not in this repository; the test is skipped without it,
 see [Simulation](sim.md#how-well-it-matches-real-presses)).
 
-**Carries over: contact shape and size.** In a separate demo, three objects
+**Contact shape and spatial extent.** In a separate demo, three objects
 were pressed freehand on skins of 4.2, 3.1 and 2.0 mm pitch. An allen key read
 10.3, 9.7 and 9.5 mm wide on the three.
 
@@ -104,22 +100,22 @@ were pressed freehand on skins of 4.2, 3.1 and 2.0 mm pitch. An allen key read
     <source src="../assets/loops/transfer.mp4" type="video/mp4">
   </video>
 </div>
-<figcaption>From that demo: one block pressed into three skins of different shape and pitch, each placed on one millimetre grid through its manifest.</figcaption>
+<figcaption>A block pressed onto three skins of different shape and pitch. The manifests place all three recordings on a common physical coordinate grid in millimetres.</figcaption>
 </figure>
 
-**Does not carry over:**
+The mapping has several limitations:
 
-- **Detail finer than A's taxels.** Going from 4 mm to 2 mm taxels invents
-  nothing. `"tent"` only smooths it.
-- **Contact area as a coarse skin measures it.** A partly covered taxel
+- **Detail finer than A's taxels.** Resampling a 4 mm grid onto a 2 mm grid cannot recover
+  structure below the source resolution. The `"tent"` kernel smooths the result.
+- **Contact area at coarse resolution.** A partly covered taxel
   reports its whole area. In the demo, the 4.2 mm skin read 28–54 % more
   contact area than the 2.0 mm skin for the same object (tape roll: 1504
-  against 976 mm²). Transfer cannot undo what A's coarse taxels already
-  blurred.
-- **Counts.** The same objects peaked at about 200 counts per mm² on the 4.2 mm
+  against 976 mm²). Transfer cannot recover the unresolved contact boundary within
+  a coarse source cell.
+- **Uncalibrated signal magnitude.** The same objects peaked at about 200 counts per mm² on the 4.2 mm
   skin and 620–780 on the 2.0 mm skin. Counts depend on the design and the
   velostat, which is why transfer works in newtons.
 - **Saturation.** A taxel that hit the ADC maximum on A is a lower bound, and
   stays one on B.
-- **Placement.** Transfer does not know where the object sat on B. It centres
+- **Contact placement.** The mapping does not infer the object's target pose. It centres
   the contact unless you give a target, shift or angle.

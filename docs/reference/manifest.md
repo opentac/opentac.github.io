@@ -1,8 +1,10 @@
+---
+description: Sensor geometry, scan indices, connector assignments, shear groups and validation requirements in manifest.json.
+---
+
 # Manifest
 
-`manifest.json` describes one sensor. OpenTac-CAD writes it into every design
-`.zip`. It is JSON, lengths are in millimetres, and coordinates are Y up with
-the cable edge at the bottom.
+`manifest.json` is the shared description of a sensor's geometry, wiring and optional shear groups. OpenTac-CAD includes it in every design ZIP. Lengths are expressed in millimetres, with Y increasing upward and the cable edge at the bottom. Downstream code should use the physical coordinates in `pixels` rather than infer geometry from scan indices.
 
 ```python
 from opentac import manifest
@@ -13,7 +15,7 @@ m.xy, m.row, m.col, m.w, m.h            # taxel centres (mm), scan indices, taxe
 `opentac manifest check FILE` validates a manifest and says which readout
 boards it fits.
 
-## Versions
+## Format versions { #versions }
 
 The field `v` is the version. Each version added fields and changed none, so
 code written for version 3 reads all of them.
@@ -25,11 +27,11 @@ code written for version 3 reads all of them.
 | 5 | `shear`: which taxels share a shear bump |
 | 6 | `sim3d`: where each taxel sits on the 3-D part it was unrolled from |
 
-## Fields
+## Manifest fields { #fields }
 
 | Field | Meaning |
 |---|---|
-| `pixels` | one `[x, y, row, col]` per taxel. The authority on where taxels are. Its order is the order of every frame's values. |
+| `pixels` | one `[x, y, row, col]` per taxel. Defines physical taxel positions and the ordering of values in each frame. |
 | `w`, `h` | one taxel's width and height |
 | `footprint` | the rest of the taxel copper: `trace_w`, `gap`, `center_clear`, `edge_clear`, `via_drill`, `via_dia` |
 | `outline` | the shape the user drew |
@@ -37,25 +39,22 @@ code written for version 3 reads all of them.
 | `r`, `c` | number of scan rows and columns |
 | `m` | which taxels exist: `r` strings of `c` characters, `1` for a taxel |
 | `rp`, `cp` | connector pad of each scan row and column |
-| `px`, `py`, `ox`, `oy` | scan-order pitch and origin. Not geometry; use `pixels`. |
+| `px`, `py`, `ox`, `oy` | scan-order pitch and origin. Use `pixels` for physical geometry. |
 | `shear` | `bumps`: bump centres. `b`: one entry per taxel, parallel to `pixels`, the taxel's bump index or -1 for none. |
 | `design` | the CAD recipe (v4 on) |
 | `sim3d` | 3-D placement (v6, sensors designed on a mesh) |
-| `_readme` | notes for people; ignored by programs |
+| `_readme` | Human-readable notes; ignored by programs |
 
-Scan row and column indices are in connector pad order, which is not
-geometric order: OpenTac-CAD reverses the lower half of the rows so they meet
-the routing on the right side. So `ox + col * px` does not place a taxel.
-`pixels` does.
+Scan indices follow connector-pad order, which can differ from spatial order. OpenTac-CAD reverses the lower half of the row indices to match routing on the right side. Consequently, expressions such as `ox + col * px` do not generally reconstruct taxel positions. Use the explicit coordinates in `pixels`.
 
 <figure class="ot-fig" markdown="span">
-  [![Two drawings of one manifest, a 45-taxel fingertip sensor. Left: each taxel at its position, labelled with its scan row and column, with the pad of each row on the left and of each column underneath; the lower four rows are numbered 7, 6, 5, 4 from the top. Right: the taxels coloured by shear bump, one bump over each 2 by 2 group, with the bump centres marked.](../assets/diagrams/manifest_fields.png){ loading=lazy }](../assets/diagrams/manifest_fields.png)
-  <figcaption><code>examples/manifests/finger_8x6_60pin.json</code> drawn: <code>pixels</code> with their scan rows (r) and columns (c), <code>rp</code> and <code>cp</code> (pads), and <code>shear</code> (right). Rows 4&ndash;7, the lower half, run upward. Dashed: <code>outline</code>; solid: <code>edge_cuts</code>.</figcaption>
+  [![Two views of a 45-taxel fingertip manifest: physical positions labelled by scan row, column and connector pad on the left; shear-bump groups and centres on the right. Lower-row indices run 7, 6, 5, 4 from top to bottom.](../assets/diagrams/manifest_fields.png){ loading=lazy }](../assets/diagrams/manifest_fields.png)
+  <figcaption>Fields of <code>examples/manifests/finger_8x6_60pin.json</code>: <code>pixels</code> with their scan rows (r) and columns (c), <code>rp</code> and <code>cp</code> (pads), and <code>shear</code> (right). Rows 4&ndash;7, the lower half, run upward. Dashed: <code>outline</code>; solid: <code>edge_cuts</code>.</figcaption>
 </figure>
 
-## Rules a manifest must follow
+## Validation constraints { #rules-a-manifest-must-follow }
 
-`manifest.load()` checks these and names the first one broken:
+`manifest.load()` validates the following constraints and reports the first violation:
 
 - `m` has `r` rows of `c` characters of `0`/`1`.
 - `pixels` lists exactly the taxels `m` marks, in the order of reading `m`
@@ -67,16 +66,11 @@ the routing on the right side. So `ox + col * px` does not place a taxel.
 A readout board also needs the taxels on one regular grid: every taxel
 position must be a whole number of pitches from the first one.
 
-## What the readout board gets
+## Configuration stored on the readout board { #what-the-readout-board-gets }
 
-`opentac setup` sends the board only what it needs to scan (241 bytes for a 9 x 9 sensor, at most 2,336):
-the array size, the connector line of each row and column, which taxels exist,
-the pitch and grid position of each row and column, and the shear grouping.
-`pixels`, `outline`, `design` and the rest stay on the computer. The board
-stores the CRC-32 of the manifest file's bytes as the sensor's id; the
-computer keeps the file under that id in `~/.opentac/manifests/`.
+`opentac setup` uploads a compact scanning configuration: array dimensions, connector-line assignments, active-taxel mask, grid pitch and positions, and shear grouping. This uses 241 bytes for a 9 × 9 sensor and at most 2,336 bytes. The full `pixels`, `outline`, `design` and other fields remain on the host. The board stores the CRC-32 of the original manifest bytes as the sensor ID, and the host caches the file under that ID in `~/.opentac/manifests/`.
 
-## Pads and readout boards
+## Map connector pads to readout lines { #pads-and-readout-boards }
 
 A pad number in `rp`/`cp` is the pad on the sensor's cable tail. Which line of
 the readout board it reaches belongs to the board, and is listed per board in

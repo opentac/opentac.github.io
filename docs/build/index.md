@@ -1,26 +1,26 @@
 ---
 title: Build a sensor
-description: The steps from a downloaded design to an assembled OpenTac sensor plugged into its readout board.
+description: Fabrication, stack alignment and assembly of an OpenTac sensor and its readout.
 ---
 
 # Build a sensor
 
-A sensor is four layers and a cable: a printed tray, the flex PCB, a piezoresistive sheet, and a printed lid (flat, hatched, or with shear bumps), with the flex tail plugged into a readout board. OpenTac-CAD generates the tray, the lid and the piezoresistive cut from the same design as the flex PCB, so the parts fit each other without measuring.
+An OpenTac sensor combines a flex PCB and a piezoresistive layer inside a printed TPU case. The case comprises a tray and a lid; the lid can be flat, hatched, or fitted with bumps for shear sensing. OpenTac-CAD generates the board, case and cutting template from the same geometry, so the sensing layers and mechanical features align during assembly. The flex tail connects the assembled sensor to a readout board.
 
 <figure class="ot-fig ot-fig--clear" markdown="span" style="max-width: 34rem">
   ![The parts of one sensor laid out on a desk: the printed TPU tray, the flex PCB with its tail, the black piezoresistive textile cut to shape, and the printed bump sheet.](../assets/video/assembly_poster.jpg){ loading=lazy width="1280" height="720" }
   <figcaption>The four layers of one sensor, from left: printed tray, flex PCB, piezoresistive textile, bump sheet (the lid).</figcaption>
 </figure>
 
-The [assembly guide](assembly.md) covers the whole build on one page, with photos and a video: the paper fit check, printing the case, cutting the piezoresistive layer, assembly, and plugging the sensor in to see live readings. The other pages in this section cover ordering, materials and the [readout boards](../hardware.md).
+The [assembly guide](assembly.md) follows the complete procedure: verify the fit with a paper template, print the case, cut the piezoresistive layer, assemble the sensor, and inspect its readings. The remaining pages cover PCB ordering, materials and the [readout boards](../hardware.md).
 
 [Assembly guide](assembly.md){ .md-button .md-button--primary }
 
 ## The printed case { #the-printed-case }
 
-OpenTac-CAD generates the case from the same design as the flex PCB: a bottom tray whose pocket is the board's outline, and a lid with one bump over each 2&times;2 group of taxels (the bump sheet). Because both come from one design, each bump lands over its group when the lid is pressed on, with no jig and nothing to line up by hand.
+The case fixes the relative positions of the PCB, piezoresistive layer and bump sheet. Its bottom tray follows the board outline, while the lid places one bump over each 2&times;2 group of taxels. Generating both from the same design removes the need for a separate alignment jig.
 
-That alignment is what makes the shear reading accurate. A sideways push tilts a bump and shifts its load toward two of its four taxels, and the sensor reads shear from that imbalance ([How it works](../learn/index.md#2-how-do-four-taxels-under-one-bump-separate-normal-load-from-shear)); a bump that sat off-centre would split even a straight press unequally and report shear that is not there.
+Alignment matters because shear is estimated from differences in loading across the four taxels beneath a bump. Tangential force tilts the bump and shifts load toward one side ([How it works](../learn/index.md#2-how-do-four-taxels-under-one-bump-separate-normal-load-from-shear)). If the bump is off-centre, even a normal load can produce unequal readings and an apparent shear response.
 
 <figure class="ot-fig ot-fig--clear" markdown="span">
   ![Close-up of a printed bump sheet seated on a flex PCB: each bump's cross-shaped base sits in the gaps between the gold taxel electrodes.](../assets/photos/alignment.jpg){ loading=lazy }
@@ -29,7 +29,7 @@ That alignment is what makes the shear reading accurate. A sideways push tilts a
 
 **Download ZIP** in OpenTac-CAD puts the case in the ZIP's `case/` folder: the bottom, the bumped lid as the primary one, the flat and hatched lids, and a README with the settings used ([What the export contains](../design/export.md)). The case panel in OpenTac-CAD (**Add a printed case**) previews the parts and changes their settings. The ZIPs of the [ready-to-order designs](../design/examples.md) include it too. Printing and fitting are in the assembly guide: [Print the case](assembly.md#print-the-case) and [Assemble](assembly.md#assemble).
 
-## Steps
+## Fabrication and assembly sequence { #steps }
 
 <div class="ot-steps" markdown>
 
@@ -47,4 +47,4 @@ That alignment is what makes the shear reading accurate. A sideways push tilts a
 
 </div>
 
-Steps 3 and 4 are the long ones. Order both at once, and print the case while you wait.
+PCB fabrication and shipping usually dominate the elapsed time. Order the sensor and readout boards together, and print the case while they are being manufactured.
