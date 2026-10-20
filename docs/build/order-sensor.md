@@ -39,7 +39,7 @@ On jlcpcb.com, start a quote and **Add gerber file** with your ZIP. The board si
 | Gold Fingers Thickness | **0.3** mm | total thickness of the connector end; see [Stiffener](#stiffener) |
 | Stiffener | **Polyimide** | selected by itself when Gold Fingers is Yes |
 | Polyimide Thickness | **0.20mm** for a 2-layer sensor | what our sensors use; see below |
-| PCB Remark | the stiffener note below | the form has no option for the stiffener's side |
+| PCB Remark | the remark below | the form has no option for the stiffener's side |
 
 For the two-layer boards shown here, we retain the quoted defaults for substrate, board thickness (0.11&nbsp;mm), coverlay, surface finish and copper.
 
@@ -85,6 +85,8 @@ Specify these requirements in the order form as well; the drawing layers do not 
   <figcaption>PCB Remark specifying the stiffener side, placement and total connector thickness.</figcaption>
 </figure>
 
+**No SMT, exposed electrodes.** Also add *"Flex tactile sensor, no SMT assembly. Exposed fine-pitch electrode areas inside the coverlay openings are intended."* With the stiffener note that is over 200 characters; this remark holds both (197 characters): *"PI stiffener on TOP over connector (User_Drawings), 0.3 mm total at gold fingers. Flex tactile sensor, no SMT assembly. Exposed fine-pitch electrode areas inside the coverlay openings are intended."*
+
 ### Fabrication cost: two versus four layers { #2-or-4-layers-cost }
 
 A 4-layer flex costs noticeably more than a 2-layer one at the same size. Design on 2 layers unless 4 layers are what make your sensor fit (see [Two or four copper layers](../design/index.md#two-or-four-copper-layers)). The quote updates as you change the options, so compare both before deciding.
@@ -109,6 +111,15 @@ After you pay, JLCPCB's engineers review the files and sometimes send an enginee
 
 **"There is text or a drawing on a user layer; should it be fabricated?"**
 : No. User_Drawings and User_Comments are notes for the stiffener; they are not copper, mask or silkscreen.
+
+**"Shall we retain or remove the solder mask openings of vias on the bottom side?" / "Almost all holes have solder mask openings; are they via openings?"**
+: Via openings on the bottom are not needed: the export opens the bottom mask only at the gold fingers. If JLC still finds any, remove them. On the top, each via sits inside its taxel's opening and is exposed with the electrodes; that is intended.
+
+**"Pad-to-pad spacing is under 0.18&nbsp;mm; solder bridging risk in SMT."**
+: Produce according to the file. The sensor has no SMT assembly, and the electrode gaps (0.2&nbsp;mm by default) are intended.
+
+**"Opening-to-opening spacing is under 0.3&nbsp;mm and cannot be made with the coverlay process."**
+: The export makes one coverlay opening per taxel, at least 0.3&nbsp;mm from the next. If asked, keep each taxel's opening as drawn: the exposed electrodes are intended.
 
 ## Inspect the fabricated boards { #when-the-boards-arrive }
 
