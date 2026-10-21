@@ -60,9 +60,7 @@ extra_javascript:
 extra:
   generator: false
   # The share-card title of the home page (overrides/main.html).
-  paper_title: >-
-    OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable
-    3D Tactile Sensing
+  social_title: OpenTac — Customizable 3D tactile sensing
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/opentac/opentac

@@ -1,7 +1,7 @@
 ---
 template: home.html
 title: OpenTac
-description: Open ecosystem to design, fabricate, read, and simulate resistive tactile skins that sense normal and shear force, shaped to any robot surface.
+description: Customizable 3D tactile sensing for any robot surface. Open tools to design, build, read, and simulate tactile skins.
 hide:
   - navigation
   - toc
@@ -40,7 +40,7 @@ hide:
 OpenTac is an ecosystem for highly customizable, scalable, and transferable tactile sensing. We provide tools ranging across sensor design, simulation, cross-sensor transfer, data visualization, tactile policy learning, and more.
 </p>
 <div class="ot-media ot-media--video">
-  <video controls preload="none" playsinline data-poster="assets/loops/overview.jpg"
+  <video controls preload="none" playsinline poster="assets/loops/overview.jpg"
          aria-label="Narrated overview of OpenTac, with subtitles in the picture">
     <source src="assets/loops/overview.mp4" type="video/mp4">
   </video>

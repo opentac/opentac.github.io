@@ -198,6 +198,19 @@
 .ot-hero__authors a:hover { color: var(--ot-amber-soft); }
 .ot-hero__authors sup,
 .ot-hero__affil sup { font-size: .7em; margin-left: .05em; }
+.ot-hero__logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem 1rem;
+  margin: .6rem auto 0;
+}
+.ot-hero__logos a { display: block; padding: .25rem; }
+.ot-hero__logos a:focus-visible { outline: 2px solid var(--ot-amber-soft); outline-offset: 4px; }
+.ot-hero__logo { display: block; height: auto; }
+.ot-hero__logo--jhu { width: clamp(190px, 55vw, 240px); }
+.ot-hero__logo--mit { width: 76px; }
 .ot-hero__lede {
   margin: .9rem auto 0;
   max-width: 32rem;

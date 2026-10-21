@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenTac share card artwork</title>
+  <!--
+    Editable source for docs/assets/social-opentac-v2.jpg.
+    Capture .card at 1200 × 630 CSS pixels, device scale 1, as JPEG quality 92
+    after document.fonts.ready and the photo's decode() have completed.
+    Serve from the repository root so the original photo resolves correctly.
+    The original hardware photograph is never retouched or regenerated.
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;600;700&amp;display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body { background: #161c23; font-family: "IBM Plex Sans", sans-serif; }
+    .card { width: 1200px; height: 630px; overflow: hidden; }
+    .heading {
+      position: relative;
+      height: 174px;
+      padding: 10px 44px 0;
+      border-bottom: 4px solid #e08a2c;
+      color: #eef0f2;
+    }
+    .wordmark {
+      margin: 0;
+      font-size: 86px;
+      line-height: 1.15;
+      font-weight: 700;
+      letter-spacing: -3px;
+    }
+    .tagline {
+      margin: 2px 0 0 3px;
+      color: #f7c98c;
+      font-size: 30px;
+      line-height: 1.35;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .url {
+      position: absolute;
+      top: 34px;
+      right: 44px;
+      color: #aab3bd;
+      font-size: 21px;
+      line-height: 1.4;
+    }
+    .photo {
+      display: block;
+      width: 1200px;
+      height: 456px;
+      object-fit: cover;
+      object-position: 50% 15%;
+    }
+  </style>
+</head>
+<body>
+  <main class="card" aria-label="OpenTac social share card">
+    <header class="heading">
+      <h1 class="wordmark">OpenTac</h1>
+      <p class="tagline">Customizable 3D tactile sensing for any robot surface.</p>
+      <span class="url">opentac.github.io</span>
+    </header>
+    <img class="photo" src="../docs/assets/photos/skins.jpg" width="2200" height="938"
+         alt="Orange OpenTac tactile skins fitted to robot grippers, fingers and curved surfaces, with flex PCBs in front.">
+  </main>
+</body>
+</html>

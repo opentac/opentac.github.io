@@ -18,21 +18,21 @@
       <p class="ot-hero__title">An open ecosystem for customizable, scalable, and transferable 3D tactile sensing</p>
       {#- The paper's author list: (name, website or "", affiliation, mark). -#}
       {%- set authors = [
-        ("Ariel Slepyan", "https://arielslepyan.me/", "1", ""),
-        ("Geeta Chandra Raju Bethala", "https://bethalageetachandraraju.github.io/", "2", ""),
-        ("Jiafeng Gu", "", "2", ""),
-        ("Anagha Rajendra Dangle", "https://anaghad01.github.io/", "2", ""),
-        ("Yinzhe Zhou", "https://stevenzhoooooooooooooou.github.io/", "2", ""),
-        ("Hongyuan Fu", "", "2", ""),
-        ("Jade Sim", "", "2", ""),
-        ("Tuhin Basu", "", "2", ""),
-        ("Xinyi Yin", "", "2", ""),
-        ("Md Faizal Karim", "https://faizalkarim280280.github.io/", "2", ""),
-        ("Gregory Hager", "https://www.cs.jhu.edu/hager/", "2", "†"),
-        ("Homanga Bharadhwaj", "https://homangab.github.io/", "2", "†"),
-        ("Anand Bhattad", "https://anandbhattad.github.io/", "2", "†"),
-        ("Krishna Murthy Jatavallabhula", "https://krrish94.github.io/", "2", "†"),
-        ("Nitish V. Thakor", "https://neuroengineering.bme.jhu.edu/", "2", "†"),
+        ("Ariel Slepyan", "https://arielslepyan.me/", "J, M", ""),
+        ("Geeta Chandra Raju Bethala", "https://bethalageetachandraraju.github.io/", "J", ""),
+        ("Jiafeng Gu", "", "J", ""),
+        ("Anagha Rajendra Dangle", "https://anaghad01.github.io/", "J", ""),
+        ("Yinzhe Zhou", "https://stevenzhoooooooooooooou.github.io/", "J", ""),
+        ("Hongyuan Fu", "", "J", ""),
+        ("Jade Sim", "", "J", ""),
+        ("Tuhin Basu", "https://48tuhin-jpg.github.io/", "J", ""),
+        ("Xinyi Yin", "", "J", ""),
+        ("Md Faizal Karim", "https://faizalkarim280280.github.io/", "J", ""),
+        ("Gregory Hager", "https://www.cs.jhu.edu/hager/", "J", "†"),
+        ("Homanga Bharadhwaj", "https://homangab.github.io/", "J", "†"),
+        ("Anand Bhattad", "https://anandbhattad.github.io/", "J", "†"),
+        ("Krishna Murthy Jatavallabhula", "https://krrish94.github.io/", "J", "†"),
+        ("Nitish V. Thakor", "https://neuroengineering.bme.jhu.edu/", "J", "†"),
       ] %}
       <p class="ot-hero__authors">
         {%- for name, url, aff, mark in authors %}
@@ -40,10 +40,21 @@
         {%- endfor %}
       </p>
       <p class="ot-hero__affil">
-        <span class="ot-author"><sup>1</sup>Massachusetts Institute of Technology</span>
-        <span class="ot-author"><sup>2</sup>Johns Hopkins University</span>
+        <span class="ot-author"><sup>J</sup>Johns Hopkins University</span>
+        <span class="ot-author"><sup>M</sup>Massachusetts Institute of Technology</span>
         <span class="ot-author"><sup>†</sup>Equal advising</span>
       </p>
+      <div class="ot-hero__logos" aria-label="Author institutions">
+        {# Official artwork: brand.jhu.edu/download-resources/primary-logo/ and www.mit.edu. #}
+        <a href="https://www.jhu.edu/">
+          <img class="ot-hero__logo ot-hero__logo--jhu" src="{{ 'assets/logos/jhu-white.svg' | url }}"
+               alt="Johns Hopkins University" width="240" height="73">
+        </a>
+        <a href="https://www.mit.edu/">
+          <img class="ot-hero__logo ot-hero__logo--mit" src="{{ 'assets/logos/mit-white.svg' | url }}"
+               alt="Massachusetts Institute of Technology" width="76" height="40">
+        </a>
+      </div>
       <p class="ot-hero__lede">
         Open tools to design, fabricate, read and simulate flex-PCB tactile skins
         that sense normal and shear force, shaped to any robot surface.

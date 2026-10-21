@@ -2,16 +2,16 @@
   Every page: share previews (Open Graph and Twitter/X card tags) and PNG
   icons for browsers and phones that do not use the SVG favicon.
 
-  The card image is assets/social.jpg (1200 x 630, cropped from the hero
-  photo). The description is the page's front-matter `description`, or the
-  site description. home.html and 404.html extend this file; a page that
-  overrides `extrahead` keeps these tags with {{ super() }}.
+  The card image is assets/social-opentac-v2.jpg (1200 x 630, composed from
+  scripts/social-card.html). The description is the page's front-matter
+  `description`, or the site description. home.html and 404.html extend this
+  file; a page that overrides `extrahead` keeps these tags with {{ super() }}.
 -#}
 {% extends "base.html" %}
 
 {% block extrahead %}
   {%- if page and page.is_homepage -%}
-    {%- set og_title = config.extra.paper_title -%}
+    {%- set og_title = config.extra.social_title -%}
   {%- elif page and page.meta and page.meta.title -%}
     {%- set og_title = page.meta.title ~ " - " ~ config.site_name -%}
   {%- elif page and page.title -%}
@@ -24,8 +24,8 @@
   {%- else -%}
     {%- set og_desc = config.site_description -%}
   {%- endif -%}
-  {%- set og_image = config.site_url ~ "assets/social.jpg" -%}
-  {%- set og_alt = "OpenTac skins on robot parts: orange bump sheets over flex PCBs on gripper fingers, a fingertip, a foot and a curved pad, with bare flex PCBs in front." -%}
+  {%- set og_image = config.site_url ~ "assets/social-opentac-v2.jpg" -%}
+  {%- set og_alt = "OpenTac — Customizable 3D tactile sensing for any robot surface. Orange tactile skins on robot grippers, fingers and curved surfaces, with flex PCBs in front." -%}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ config.site_name }}">
   <meta property="og:title" content="{{ og_title | e }}">
