@@ -37,4 +37,16 @@ We present OpenTac, a novel sensor and a full-stack ecosystem for tactile skins 
 
 ## Related work { #background }
 
-OpenTac-Xampling builds on adaptive compressive tactile subsampling: A. Slepyan et al., *Adaptive compressive tactile subsampling: Enabling high spatiotemporal resolution in scalable robotic skin*, [arXiv:2410.13847](https://arxiv.org/abs/2410.13847), 2024.
+OpenTac relates to open tactile skins and to adaptive readout methods for large tactile arrays.
+
+**Tactile skins.**
+
+- **FlexiTac** (B. Huang and Y. Li, *FlexiTac: A Low-Cost, Open-Source, Scalable Tactile Sensing Solution for Robotic Systems*, [arXiv:2604.28156](https://arxiv.org/abs/2604.28156), 2026; [project page](https://flexitac.github.io/)) is an open-source piezoresistive skin in which the piezoresistive film is laminated between two flexible PCBs carrying the row and column electrodes. Contact load reaches the film through the outer flexible PCB, which must deform for a signal to form, and the sensor estimates normal force only. OpenTac places interdigitated row and column electrodes on a single flexible PCB beneath the film, so the load acts on the film directly, and adds bumps for shear sensing.
+- **TacGooseBumps (TacGB)** (W. Li, B. Yang, Y. Chen, A. Wang and M. Tomizuka, *TacGooseBumps (TacGB): Retrofitting Normal-Only Tactile Sensors with Shear Encoding for Learning Contact-Rich Manipulation*, [arXiv:2609.34006](https://arxiv.org/abs/2609.34006), 2026; [project page](https://jeffwli.github.io/tacgb/)) retrofits normal-only tactile sensors with a film of elastomeric domes. The domes are not aligned to the taxels: shear changes the recorded pressure pattern, and a learned policy uses that pattern directly, so shear is encoded in the signal but not recovered as a force. In OpenTac, OpenTac-CAD generates the bump sheet with the board, each bump sits over a known 2&times;2 group of taxels, and shear is decoded per bump from their differential response.
+
+**Adaptive readout.**
+
+- **ACTS** (A. Slepyan, D. Li, A. Aug, S. Sankar, T. Tran and N. Thakor, *Adaptive Compressive Tactile Subsampling: Enabling High Spatiotemporal Resolution in Scalable Robotic Skin*, [arXiv:2410.13847](https://arxiv.org/abs/2410.13847)) samples a tactile array adaptively and reconstructs contact by sparse recovery.
+- **ReLACS** (D. Poppert, A. Slepyan, N. Thakor and T. Tran, *ReLACS: Responsive Learned Adaptive Compressive Subsampling for Efficient Readout of Large-Area Tactile Skins*, [Data Compression Conference 2026](https://ieeexplore.ieee.org/abstract/document/11510445)) learns an adaptive sampling policy for the readout of large-area tactile skins.
+
+Both are readout methods demonstrated on other sensor hardware. OpenTac-Xampling builds on ACTS and runs in the readout-board firmware on any OpenTac skin, configured from the skin's manifest.
