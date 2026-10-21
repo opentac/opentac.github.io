@@ -212,7 +212,7 @@ This helps capture contacts that happen in a few milliseconds (and are missed by
 
 ## Simulating OpenTac sensors and cross-sensor transfer { #sim }
 
-The shared sensor manifest produced by OpenTac-CAD is used to specify mechanical and electronic properties of the sensor. This manifest can be used to create simulation models of the sensor. We build a simulation tool, OpenTac-Sim, which models each bump pad as a deformable mesh in MuJoCo. We also have a foam-contact model for plain skins (i.e., variants of OpenTac that do not require shear sensing and forgo the TPU bump grid).
+The shared sensor manifest produced by OpenTac-CAD is used to specify mechanical and electronic properties of the sensor. This manifest can be used to create simulation models of the sensor. We build a simulation tool, OpenTac-Sim, which models each bump as a rigid body on a five-degree-of-freedom compliant joint in MuJoCo. We also have a foam-contact model for plain skins (i.e., variants of OpenTac that do not require shear sensing and forgo the TPU bump grid).
 
 OpenTac-Transfer maps calibrated contact between skins of different shape and taxel pitch, in physical coordinates and without paired data. Across four skins it reached a median shape F1 of 0.750, against 0.714 and 0.634 for two array-resizing baselines. For now, OpenTac-Transfer works on flat skins. We welcome contributors extending this module further.
 
