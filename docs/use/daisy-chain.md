@@ -11,7 +11,7 @@ Multiple 30-pin readout boards can share one USB connection through a Teensy 4.0
   <figcaption>Only the Teensy is on USB; the boards share four bus wires (5&nbsp;V, SDA, SCL, GND). Pin assignments and pull-up requirements are given in <a href="#3-wire">Connect the I²C bus</a>.</figcaption>
 </figure>
 
-The controller supports up to 18 nodes on a 1 MHz bus. In a test with three 30-pin boards, 7,213 bus transactions completed without errors. With two boards streaming, the measured rate was approximately 240 frames/s per board. These measurements describe the tested configurations, rather than the throughput of a fully populated chain.
+The controller supports up to 18 nodes on a 1 MHz bus. In a test with three 30-pin boards, 7,213 bus transactions completed without errors. With two boards streaming, the measured rate was approximately 240 frames/s per board.
 
 ## 1. Flash every board for the bus
 
