@@ -186,7 +186,7 @@ With a bump sheet and `--shear` enabled, apply a tangential load without lifting
 
 <figure class="ot-fig" markdown="span" style="max-width: 24rem">
   ![Live-view rendering of a recorded 502-taxel AgileX jaw contact. A square press appears as a bright region; the colour scale spans 0–4095 ADC counts and the zeroed peak is 3890.](../assets/diagrams/view_frame.jpg){ loading=lazy width="890" height="948" }
-  <figcaption>The live view's drawing (<code>opentac/view.py</code>) of one recorded frame: a square block pressed by hand on a 502-taxel skin for an AgileX jaw, with no bump sheet, so no arrows.</figcaption>
+  <figcaption>The live view's drawing of one recorded frame: a square block pressed by hand on a 502-taxel skin for an AgileX jaw, with no bump sheet, so no arrows.</figcaption>
 </figure>
 
 `a` switches autoscaling of the colours, `s` shows or hides the arrows, and `q` quits. [Read a sensor](../use/sensor.md) lists every key and covers recording, reading frames in Python, and converting counts to newtons.

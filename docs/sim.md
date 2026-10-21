@@ -94,9 +94,8 @@ taxel, so it compares contact shape, not intensity.
 
 The model put the contact centre closer than a repeat press did (median
 1.56 mm against 2.29 mm), but predicted a contact area 1.44 times the measured area.
-`tests/sim/test_paper_numbers.py` recomputes these numbers from the stored
-result rows, `results_pose.json` (29 MB). That file is not in this repository,
-so the test is skipped unless `OPENTAC_PAPER_RESULTS` points at a copy.
+These values are recomputed from the paper's stored per-press results by
+`tests/sim/test_paper_numbers.py`.
 
 ## Bump model (`"mujoco"`)
 

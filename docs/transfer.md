@@ -85,9 +85,8 @@ The paper evaluates transfer using hand-applied contacts on four skins with 409,
 | skin A's counts, area-averaged onto B (no calibration) | 0.71 | 5291 |
 | skin A's counts, stretched by row and column (no manifest) | 0.63 | 5077 |
 
-`tests/sim/test_paper_numbers.py` recomputes these from the stored result rows
-(`results_pose.json`, not in this repository; the test is skipped without it,
-see [Simulation](sim.md#how-well-it-matches-real-presses)).
+These values are recomputed from the paper's stored per-press results by
+`tests/sim/test_paper_numbers.py`.
 
 **Contact shape and spatial extent.** In a separate demo, three objects
 were pressed freehand on skins of 4.2, 3.1 and 2.0 mm pitch. An allen key read
