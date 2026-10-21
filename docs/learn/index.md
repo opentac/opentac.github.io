@@ -1,5 +1,5 @@
 ---
-description: Interactive explanations of piezoresistive readout, bump-mediated shear sensing, tactile fields, geometric transfer and adaptive sampling, with model assumptions and recorded examples.
+description: Interactive explanations of piezoresistive readout, bump-mediated shear sensing, tactile fields, geometric transfer and adaptive acquisition, with model assumptions and recorded examples.
 hide:
   - toc
 ---
@@ -56,11 +56,11 @@ The example uses three objects pressed by hand onto three skins. At half of each
 
 <div class="otl otl-fig" data-study="sampling"><div class="otl-loading">Loading the sampling replay…</div></div>
 
-Raster scanning reads every taxel in each frame. OpenTac-Xampling instead prioritises previously detected contact, searches the remaining region, and expands into neighbours whose readings exceed a threshold. In grow mode, M specifies the search budget; contact expansion can add reads beyond M. The resulting update rate depends on both the search budget and the extent of detected contact.
+Raster scanning reads every taxel in each frame. OpenTac-Xampling instead prioritises previously detected contact, searches the remaining region, and expands into neighbours whose readings exceed a threshold. In grow mode, M specifies the search budget; contact expansion can add reads beyond M, so detected contacts are sampled in full. The resulting update rate depends on both the search budget and the extent of detected contact.
 
 Step through the replay and compare the sampled frame with the recorded raster frame. An unread taxel is unknown at that instant. Holding its last reading provides temporal continuity in the display, but that retained value is not a new measurement. Smaller budgets can increase the update rate while delaying discovery of a new contact; expansion improves coverage once contact is detected.
 
-<p class="otl otl-note"><b>Replay assumptions.</b> The selection algorithm is a port of the firmware's <code>ot_xampling.h</code>, checked against the firmware on these replays. It uses a threshold of 30 counts above each taxel's noise and reserves 30 search reads before growth. Selection is replayed over raster recordings approximately 8 ms apart, with the contact held constant between recorded frames. Timing uses the measured 32 × 32-skin rates: 67 frames/s for raster, 376 at M = 128 and 954 at M = 32. These are reference rates for the replay, not measurements of live Xampling on the displayed skin. The replay uses a fixed period at each budget and does not add the hardware time required for contact expansion. It also cannot reveal changes faster than the underlying recording.</p>
+<p class="otl otl-note"><b>Replay assumptions.</b> The selection algorithm is a port of the firmware's <code>ot_xampling.h</code>, verified to make the same selections as the firmware on every frame of these replays. It uses a threshold of 30 counts above each taxel's noise and reserves 30 search reads before growth. Selection is replayed over raster recordings approximately 8 ms apart, with the contact held constant between recorded frames. Timing uses the measured 32 × 32-skin rates: 67 frames/s for raster, 376 at M = 128 and 954 at M = 32. These are reference rates for the replay, not measurements of live Xampling on the displayed skin. The replay uses a fixed period at each budget and does not add the hardware time required for contact expansion. It also cannot reveal changes faster than the underlying recording.</p>
 
 ---
 

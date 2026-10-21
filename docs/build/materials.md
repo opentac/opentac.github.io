@@ -12,7 +12,7 @@ In addition to the flex PCB and readout board, assembly requires a piezoresistiv
 
 ## Piezoresistive layer
 
-The piezoresistive layer converts local pressure into a resistance change between the taxel electrodes. Material choice therefore affects the response and saturation range. In the paper's load-cell measurements at 2.0&nbsp;mm pitch and 1&nbsp;k&Omega; feedback resistance, LINQSTAT did not saturate through 60&nbsp;N, whereas Chibitronics Velostat saturated earlier ([Results](../results.md#material-and-spatial-response)). These measurements apply to the tested stack and readout settings.
+The piezoresistive layer converts local pressure into a resistance change between the taxel electrodes. Material choice therefore affects the response and saturation range. In the paper's load-cell measurements at 2.0&nbsp;mm pitch and 1&nbsp;k&Omega; feedback resistance, LINQSTAT did not saturate through 60&nbsp;N, whereas Chibitronics Velostat saturated earlier ([Results](../results.md#material-and-spatial-response)).
 
 | Material | What it is | Notes | Where |
 |---|---|---|---|

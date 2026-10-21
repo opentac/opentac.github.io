@@ -30,36 +30,8 @@ an `opentac` checkout beside this repository. Asset-generation scripts live in
 the code repository and accept `OPENTAC_SITE_ROOT` for this website checkout.
 
 GitHub Actions builds and checks pull requests. Changes merged into `main` are
-published through GitHub Pages. The hosted CAD backend is deployed separately;
-its URL remains `https://opentac-cad.onrender.com`.
-
-## Pending Render migration
-
-The website and code repositories are separated, but the existing `opentac-cad`
-Render service still needs its owner to reconnect it to the code repository.
-The website continues to call the existing backend at the same URL.
-
-Until that switch is confirmed, include `[skip render]` in every commit or merge
-commit that reaches this repository's `main` branch. This is Render's documented
-[per-commit deployment skip](https://render.com/docs/deploys#skipping-an-auto-deploy);
-it does not skip GitHub Pages. Do not manually deploy the latest commit from this
-website repository on Render: it no longer contains the backend.
-
-The service owner should update the existing service, preserving its URL and
-environment variables, including `GEMINI_API_KEY`:
-
-| Setting | Value |
-| --- | --- |
-| Repository | `https://github.com/opentac/opentac` |
-| Branch | `main` |
-| Dockerfile | `./deploy/Dockerfile` |
-| Docker build context | `.` |
-| Health check | `/health` |
-
-If the service is managed by a Render Blueprint, reconnect that existing
-Blueprint as well so a later sync cannot restore the old repository settings.
-After deploying, check `/health` and a CAD generation through the website. Then
-remove this temporary section and the corresponding note in `AGENTS.md`.
+published through GitHub Pages. The hosted CAD backend is deployed separately
+from the code repository, at `https://opentac-cad.onrender.com`.
 
 The pre-split source remains available on `backup/before-code-split` at
 `dba4f9017ceb1c25389b2a56f7cd4de19db424d0`.

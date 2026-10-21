@@ -1,11 +1,11 @@
 ---
 title: Results
-description: Evaluation of sensor fabrication, force response, durability, adaptive sampling, cross-sensor transfer, simulation and tactile robot control.
+description: Evaluation of sensor fabrication, force response, durability, adaptive acquisition, cross-sensor transfer, simulation and tactile robot control.
 ---
 
 # Results
 
-We evaluate OpenTac across sensor fabrication, force estimation, adaptive acquisition, cross-sensor transfer, simulation, and robot control and policy learning. This page presents the [paper](paper.md)'s measurements alongside two additional tests: [repeated pressing over 10 hours](#repeated-pressing) and [mechanical durability](#durability). Each result should be interpreted within its sensor configuration, calibration and evaluation protocol.
+We evaluate OpenTac across sensor fabrication, force estimation, adaptive acquisition, cross-sensor transfer, simulation, and robot control and policy learning. This page presents the [paper](paper.md)'s measurements alongside two additional tests: [repeated pressing over 10 hours](#repeated-pressing) and [mechanical durability](#durability).
 
 ## Sensor response demonstrations { #demos }
 
@@ -109,7 +109,7 @@ Each sensor has its own pose-only baseline, and the bumps change contact mechani
   <figcaption>Success over 50 trials per condition, without vision. "Pose": joint angles only; "full": joint angles and touch. Conditions that share no letter differ significantly (&gt;90% confidence).</figcaption>
 </figure>
 
-The following clips compare individual rollouts of policies using proprioception with normal and shear readings (OpenTac-3D), proprioception with normal readings (OpenTac-1D), or proprioception alone. Each comparison begins from the same start configuration. In addition to SO-101 plug insertion, the clips show key-lock insertion with two YAM arms. For that task, only the left gripper, which holds the key, carries tactile sensors; the right gripper holds the lock without tactile sensing. These clips illustrate behaviours rather than aggregate success rates.
+The following clips compare individual rollouts of policies using proprioception with normal and shear readings (OpenTac-3D), proprioception with normal readings (OpenTac-1D), or proprioception alone. Each comparison begins from the same start configuration. In addition to SO-101 plug insertion, the clips show key-lock insertion with two YAM arms. For that task, only the left gripper, which holds the key, carries a tactile sensor on each finger; the right gripper holds the lock without tactile sensing.
 
 <div class="ot-stack">
   <figure class="ot-clip"><div class="ot-media"><video data-loop muted loop playsinline preload="none" data-poster="../assets/loops/so101_plug.jpg" style="aspect-ratio: 1920 / 786" aria-label="Three SO-101 arms insert a plug from the same start pose: the OpenTac-3D policy succeeds, the OpenTac-1D and proprioception-only policies fail"><source src="../assets/loops/so101_plug.mp4" type="video/mp4"></video></div><figcaption>SO-101 plug insertion from one start pose with the same plug: OpenTac-3D inserts the plug; OpenTac-1D and proprioception only fail.</figcaption></figure>
@@ -134,7 +134,7 @@ A Dexmate Vega-1 Pro holds a paper cup between two OpenTac probes under proprioc
 
 Held: trials reaching 40&nbsp;s. Slip: net displacement, mean &plusmn; standard deviation; &mdash;: dropped.
 
-In the ball-rolling task, a UR5 carries a 32&times;32 skin on a square end effector and attempts to keep a ball near its edges without observing the ball position. The shear controller steers toward a shear vector aligned with the intended edge. It returns from the borderline region to the valid region more reliably than the normal-force controller. In the clip, normal-force feedback produces faster, straighter motion but cuts across the sensor; shear feedback produces slower, oscillatory motion, particularly at corners, while maintaining the edge-following behaviour.
+In the ball-rolling task, a UR5 carries a 32&times;32 skin on a square end effector and rolls a ball along its edges without observing the ball position. The shear controller steers toward a shear vector aligned with the intended edge. It returns from the borderline region to the valid region more reliably than the normal-force controller. In the clip, normal-force feedback produces faster, straighter motion but cuts across the sensor; shear feedback produces slower, oscillatory motion, particularly at corners, while maintaining the edge-following behaviour.
 
 A separate demonstration uses a skin on a Dexmate forearm to provide contact feedback for compliant motion. The arm yields in the direction of an applied push and holds its resulting pose when contact ends.
 

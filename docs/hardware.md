@@ -43,7 +43,7 @@ Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com
 
 **Zero-potential scanning suppresses crosstalk.** Each taxel is a resistive connection between a row and a column. In a passive matrix with floating, unselected rows, current can reach the measured column through other pressed taxels. The result is an apparent response at a location that was not pressed, often called ghosting.
 
-The readout drives the selected row to the supply voltage and grounds the remaining rows. A multiplexer connects the selected column to an inverting amplifier whose non-inverting input is grounded, holding the measured column near virtual ground. The other taxels on that column therefore have approximately zero voltage across them, suppressing their contribution to the measured current. The resistor-network animation below illustrates this mechanism.
+The readout drives the selected row to the supply voltage and grounds the remaining rows. A multiplexer connects the selected column to an inverting amplifier whose non-inverting input is grounded, holding the measured column near virtual ground. The other taxels on that column therefore have approximately zero voltage across them and conduct negligible current. Current through other pressed taxels flows into the grounded rows rather than into the amplifier, so each reading reflects only the taxel at the driven row and selected column. The resistor-network animation below illustrates this mechanism.
 
 <figure class="ot-clip">
 <div class="ot-media ot-media--4x3">
