@@ -45,6 +45,11 @@ OpenTac is an ecosystem for highly customizable, scalable, and transferable tact
     <source src="assets/loops/overview.mp4" type="video/mp4">
   </video>
 </div>
+<figure class="ot-fig">
+  <a href="assets/figures/ecosystem.png"><img src="assets/figures/ecosystem.png" width="1800" height="345" loading="lazy"
+       alt="The OpenTac ecosystem: robot geometry given as text, a 2D outline or a 3D model goes into OpenTac-CAD, which produces the fabrication files (flex PCB Gerbers, shear-bump case, readout board) and a shared sensor manifest describing geometry, taxels, wiring, bumps and design; OpenTac-Sim, OpenTac-Transfer and OpenTac-Xampling read that manifest."></a>
+  <figcaption>The OpenTac ecosystem. OpenTac-CAD turns a text description, a 2D outline or a 3D model into a fabrication-ready sensor: flex-PCB Gerbers and a 3D-printed shear-bump case, read out by a reusable USB readout board. Every design also has a sensor manifest, which OpenTac-Sim, OpenTac-Transfer and OpenTac-Xampling use to simulate the sensor, map data across designs and acquire it at high frame rates.</figcaption>
+</figure>
 </section>
 
 <section class="ot-evidence" aria-labelledby="evidence" markdown>
