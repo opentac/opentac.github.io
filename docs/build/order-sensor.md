@@ -39,7 +39,7 @@ On jlcpcb.com, start a quote and **Add gerber file** with your ZIP. The board si
 | Gold Fingers Thickness | **0.3** mm | total thickness of the connector end; see [Stiffener](#stiffener) |
 | Stiffener | **Polyimide** | selected by itself when Gold Fingers is Yes |
 | Polyimide Thickness | **0.20mm** for a 2-layer sensor | what our sensors use; see below |
-| PCB Remark | the remark below | the form has no option for the stiffener's side |
+| PCB Remark | the stiffener note below | the form has no option for the stiffener's side |
 
 For the two-layer boards shown here, we retain the quoted defaults for substrate, board thickness (0.11&nbsp;mm), coverlay, surface finish and copper.
 
@@ -84,8 +84,6 @@ Specify these requirements in the order form as well; the drawing layers do not 
   [![PCB Remark specifying the stiffener on the top side over the connector and a total finger thickness of 0.3 mm.](../assets/photos/jlcpcb/sensor-remark.png){ loading=lazy }](../assets/photos/jlcpcb/sensor-remark.png)
   <figcaption>PCB Remark specifying the stiffener side, placement and total connector thickness.</figcaption>
 </figure>
-
-**No SMT, exposed electrodes.** Also add *"Flex tactile sensor, no SMT assembly. Exposed fine-pitch electrode areas inside the coverlay openings are intended."* With the stiffener note that is over 200 characters; this remark holds both (197 characters): *"PI stiffener on TOP over connector (User_Drawings), 0.3 mm total at gold fingers. Flex tactile sensor, no SMT assembly. Exposed fine-pitch electrode areas inside the coverlay openings are intended."*
 
 ### Fabrication cost: two versus four layers { #2-or-4-layers-cost }
 
