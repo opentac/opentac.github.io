@@ -23,5 +23,5 @@ text { font-family: IBM Plex Sans, Helvetica, Arial, sans-serif; fill: #161c23; 
 <line x1="604" y1="80" x2="632" y2="80" class="lead"/><line x1="604" y1="147" x2="632" y2="147" class="lead"/><line x1="624" y1="80" x2="624" y2="147" stroke="#161c23" marker-start="url(#ah)" marker-end="url(#ah)"/><text x="636" y="112" class="b">0.3 mm</text><text x="636" y="129" class="s m">total at</text><text x="636" y="144" class="s m">the contacts</text>
 <line x1="330" y1="194" x2="330" y2="226" class="lead" stroke-dasharray="3 3"/><line x1="600" y1="194" x2="600" y2="226" class="lead" stroke-dasharray="3 3"/><line x1="330" y1="220" x2="600" y2="220" stroke="#161c23" marker-start="url(#ah)" marker-end="url(#ah)"/><text x="465.0" y="213" class="mid s">6 mm</text>
 <text x="40" y="224" class="s m">&#8592; to the sensor</text><text x="600" y="250" class="end s m">into the readout board's bottom-contact connector &#8594;</text>
-<text x="40" y="278" class="s m">Tail cross-section. Thicknesses are exaggerated relative to lengths.</text>
+<text x="40" y="278" class="s m">Longitudinal section of the tail. Thicknesses are exaggerated relative to lengths.</text>
 </svg>

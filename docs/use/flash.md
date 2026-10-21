@@ -11,7 +11,6 @@ Each readout-board design requires its corresponding firmware build. The table b
 | 60-pin board | `READOUT60` | `firmware/prebuilt/READOUT60.bin` |
 | 30-pin pair | `NODE16` | `firmware/prebuilt/NODE16.bin` |
 | 30-pin pair in a daisy chain | `NODE16` bus node | `firmware/prebuilt/NODE16_bus.bin` ([daisy chain](daisy-chain.md)) |
-| earlier 70-pin board | `READOUT32` | `firmware/prebuilt/READOUT32.bin` |
 
 Firmware is written through the board's USB connection. A board already running OpenTac firmware can enter the STM32 device-firmware-upgrade (DFU) bootloader in response to the `B` command. A new or unresponsive board must enter the bootloader using BOOT0. Reflashing preserves the stored sensor configuration.
 
@@ -61,8 +60,7 @@ uv run opentac flash --board node16        # the 30-pin pair
 
 Do the same if the board's firmware does not answer, or if the board never
 appears in the bootloader. A board in the bootloader cannot say which board it
-is, so `--board` is needed there. `--board` also takes `60pin` and `30pin`
-(and `readout32` or `70pin` for the earlier 70-pin board). With `--board`,
+is, so `--board` is needed there. `--board` also takes `60pin` and `30pin`. With `--board`,
 `--dry-run` prints the command it would run even with no board attached.
 
 dfu-util may print `Error during download get_status` after

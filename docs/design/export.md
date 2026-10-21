@@ -43,7 +43,7 @@ Zip the `gerber/` folder on its own for the board house. The two `User` layers a
 
 ## Sensor geometry and wiring { #the-manifest }
 
-`manifest.json` connects sensor design to readout, visualisation, simulation and transfer. For each taxel, it records physical position, scan row and column, footprint, bump group and surface frame; it also records the connector pad assigned to each row and column. These fields allow downstream tools to interpret measurements in the sensor's physical geometry. The readout board stores the manifest so the viewer can recover the layout without a separate file. See [Manifest](../reference/manifest.md) for the format.
+`manifest.json` connects sensor design to readout, visualisation, simulation and transfer. For each taxel, it records physical position, scan row and column, footprint, bump group and surface frame; it also records the connector pad assigned to each row and column. These fields allow downstream tools to interpret measurements in the sensor's physical geometry. The readout board stores the sensor's scanning configuration and a manifest identifier; the viewer uses this identifier to retrieve the full manifest from the host. See [Manifest](../reference/manifest.md) for the format.
 
 <figure class="ot-fig" markdown="span">
   [![Two views of a 45-taxel fingertip manifest: physical positions labelled by scan row, column and connector pad on the left; shear-bump groups and centres on the right. Lower-row indices run 7, 6, 5, 4 from top to bottom.](../assets/diagrams/manifest_fields.png){ loading=lazy }](../assets/diagrams/manifest_fields.png)

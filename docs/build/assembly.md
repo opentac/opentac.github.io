@@ -1,6 +1,6 @@
 ---
 title: Assembly guide
-description: Check the fit, print the case, cut the piezoresistive layer, assemble an OpenTac sensor, and read it over USB. Includes fit verification, stack alignment and initial readout checks.
+description: Check the fit, print the case, cut the piezoresistive layer, assemble an OpenTac sensor, and read it over USB. Includes fit verification, stack alignment and initial readout checks. No adhesive, fasteners or alignment jig are required.
 ---
 
 # Assembly guide
@@ -180,7 +180,7 @@ After connecting the tail, flash the readout board, upload the sensor manifest a
 
 ### Verify normal and shear response { #what-you-should-see }
 
-The viewer places each taxel at its physical coordinates, with axes in millimetres. With the sensor unloaded, press `b` to subtract the baseline; the taxels should then be near the bottom of the colour scale. Press a bump and observe the increase in its underlying taxel readings. The title reports the frame rate and peak reading. These values are raw ADC counts, from 0 to 4095, rather than calibrated forces in newtons.
+The viewer places each taxel at its physical coordinates, with axes in millimetres. With the sensor unloaded, press `b` to subtract the baseline; the taxels should then be near the bottom of the colour scale. Press a bump and observe the increase in its underlying taxel readings. The title reports the frame rate and the peak reading; readings are raw ADC counts from 0 to 4095, not calibrated forces in newtons.
 
 With a bump sheet and `--shear` enabled, apply a tangential load without lifting your finger. An arrow at the bump should indicate the push direction. Arrows appear only after the group's summed reading exceeds a threshold of a few hundred counts. Flat and hatched lids do not provide the bump-mediated response assumed by this estimator; omit `--shear` for those lids.
 
