@@ -62,10 +62,6 @@ Step through the replay and compare the sampled frame with the recorded raster f
 
 <p class="otl otl-note"><b>Replay assumptions.</b> The selection algorithm is a port of the firmware's <code>ot_xampling.h</code>, verified to make the same selections as the firmware on every frame of these replays. It uses a threshold of 30 counts above each taxel's noise and reserves 30 search reads before growth. Selection is replayed over raster recordings approximately 8 ms apart, with the contact held constant between recorded frames. Timing uses the measured 32 × 32-skin rates: 67 frames/s for raster, 376 at M = 128 and 954 at M = 32. These are reference rates for the replay, not measurements of live Xampling on the displayed skin. The replay uses a fixed period at each budget and does not add the hardware time required for contact expansion. It also cannot reveal changes faster than the underlying recording.</p>
 
----
-
-<p class="otl otl-credit">The figures use the sensor geometry, recordings and firmware selection logic from the OpenTac code. The browser implementations of OpenTac-Xampling and OpenTac-Transfer are checked against the readout firmware and the OpenTac Python library.</p>
-
 <script src="js/lib.js"></script>
 <script src="js/bumpmodel.js"></script>
 <script src="js/xampling.js"></script>
