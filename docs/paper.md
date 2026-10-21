@@ -11,7 +11,7 @@ description: Abstract, authors, citation and related work for OpenTac.
 
 <small><sup>J</sup>&nbsp;Johns Hopkins University &nbsp;·&nbsp; <sup>M</sup>&nbsp;Massachusetts Institute of Technology &nbsp;·&nbsp; <sup>†</sup>&nbsp;Equal advising</small>
 
-<small>Contact: <span class="ot-author">Ariel Slepyan, <a href="mailto:aslepyan@mit.edu">aslepyan@mit.edu</a></span></small>
+<small>Contact: <span class="ot-contact__person">Ariel Slepyan, <a href="mailto:aslepyan@mit.edu">aslepyan@mit.edu</a></span>; <span class="ot-contact__person">Krishna Murthy Jatavallabhula, <a href="mailto:kmj@jhu.edu">kmj@jhu.edu</a></span>; <span class="ot-contact__person">Nitish V. Thakor, <a href="mailto:nitish@jhu.edu">nitish@jhu.edu</a></span></small>
 
 [Video](index.md#video){ .md-button .md-button--primary } [Code](https://github.com/opentac/opentac){ .md-button }
 

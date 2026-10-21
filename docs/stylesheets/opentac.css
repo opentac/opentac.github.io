@@ -189,13 +189,24 @@
   color: var(--ot-on-dark-muted);
 }
 .ot-author { white-space: nowrap; }
-.ot-hero__authors a {
+.ot-contact__person { display: inline-block; max-width: 100%; }
+.ot-contact__person a { white-space: nowrap; }
+.ot-hero__contact {
+  margin: .5rem auto 0;
+  max-width: 52rem;
+  font-size: .72rem;
+  line-height: 1.6;
+  color: var(--ot-on-dark-muted);
+}
+.ot-hero__authors a,
+.ot-hero__contact a {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
   text-underline-offset: .15em;
 }
-.ot-hero__authors a:hover { color: var(--ot-amber-soft); }
+.ot-hero__authors a:hover,
+.ot-hero__contact a:hover { color: var(--ot-amber-soft); }
 .ot-hero__authors sup,
 .ot-hero__affil sup { font-size: .7em; margin-left: .05em; }
 .ot-hero__logos {
