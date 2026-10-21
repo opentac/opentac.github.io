@@ -105,11 +105,11 @@ OpenTac is an ecosystem for highly customizable, scalable, and transferable tact
 <section class="ot-story" aria-labelledby="sense" markdown>
 <div class="ot-story__text" markdown>
 
-## The OpenTac sensor: normal and shear force sensing { #sense }
+## The OpenTac sensor: normal and shear force from taxel-aligned bumps { #sense }
 
 Each skin is a flexible PCB with a grid of interdigitated electrodes (taxels), a piezoresistive film on top, and a 3D-printed lid with one soft bump over every 2&times;2 group of taxels.
 
-Pressing a bump with a downward normal force results in an approximately uniform pressure distribution over the four underlying taxels. Tangential force tilts the bumps, creating a pressure (and consequently, resistance) differential over the underlying taxels, allowing us to estimate shear forces. The sum of the four readings gives the normal force, and their differences give the two shear components.
+Pressing a bump with a downward normal force results in an approximately uniform pressure distribution over the four underlying taxels. Tangential force tilts the bumps, creating a pressure (and consequently, resistance) differential over the underlying taxels, allowing us to estimate shear forces. The sum of the four readings gives the normal force, and their differences give the two shear components. Because each bump is generated with the board and sits over a known 2&times;2 group of taxels, both components are computed directly from the four readings and can be calibrated to newtons against a reference sensor.
 
 [How it works](learn/index.md){ .ot-more }
 
