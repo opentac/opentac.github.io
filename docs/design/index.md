@@ -87,13 +87,13 @@ Both modes check trace clearances, crossings and copper outside the board bounda
 
 ### Two or four copper layers
 
-On **2 layers**, columns run on the top copper and rows on the bottom. Routing these connections to the connector requires space around the sensing region, reducing the area available for taxels when the board outline is fixed.
+On **2 layers**, columns run on the top copper and rows on the bottom. Routing these connections to the connector requires space around the sensing region: in grow mode the board extends beyond the drawn outline to carry this wiring, and in fixed-outline mode the wiring band reduces the area available for taxels.
 
-On **4 layers**, the rows use two inner copper layers. One routes rows through the sensing region toward the connector; the other reconnects row segments separated by notches in the outline. This removes the peripheral routing band needed for the rows, leaving more of a fixed outline available for taxels. The additional coverage can be useful on small or irregular surfaces, such as fingertips, at the cost of more expensive fabrication.
+On **4 layers**, the rows use two inner copper layers. One routes rows through the sensing region toward the connector; the other reconnects row segments separated by notches in the outline. This removes the peripheral routing band needed for the rows, so in grow mode the board stays close to the drawn outline, and in fixed-outline mode more of the outline remains available for taxels. Four layers are useful on small or irregular surfaces, such as fingertips, where the board must stay close to the sensing region, at the cost of more expensive fabrication.
 
 <figure class="ot-fig" markdown="span">
-  [![Three OpenTac-CAD previews of the same arch outline at one scale. Grow, 2 layers: the board spreads past the drawn shape and holds 144 taxels. Fixed outline, 2 layers: the board is the drawn shape, a wiring band runs inside its edge, 63 taxels. Fixed outline, 4 layers: rows run on the inner layers in amber and green, 83 taxels.](../assets/diagrams/design_modes.svg){ loading=lazy }](../assets/diagrams/design_modes.svg)
-  <figcaption>OpenTac-CAD's Arch example (60&nbsp;&times;&nbsp;40&nbsp;mm, 3&nbsp;mm taxels on a 3.2&nbsp;mm pitch) generated three ways, at one scale, the drawn shapes aligned; each tail length was left automatic. Red: columns, top copper. Blue: rows, bottom copper. Amber and green: rows on the two inner layers.</figcaption>
+  [![Two OpenTac-CAD previews of the same arch outline in grow mode, at one scale. Two layers: the board extends past the drawn shape to carry the row wiring around the sensing region, 144 taxels. Four layers: the rows run on the inner layers in amber and green, the board stays close to the drawn shape, 144 taxels.](../assets/diagrams/design_modes.svg){ loading=lazy }](../assets/diagrams/design_modes.svg)
+  <figcaption>OpenTac-CAD's Arch example (60&nbsp;&times;&nbsp;40&nbsp;mm, 3&nbsp;mm taxels on a 3.2&nbsp;mm pitch) generated in grow mode on two and on four copper layers, at one scale, with the drawn shapes aligned; each tail length was left automatic. Both boards hold 144 taxels. Red: columns, top copper. Blue: rows, bottom copper. Amber and green: rows on the two inner layers.</figcaption>
 </figure>
 
 ## The printed case
