@@ -124,8 +124,8 @@ nav:
       - Simulate: sim.md
       - Transfer between sensors: transfer.md
   - How it works: learn/index.md
-  - Results: results.md
-  - Paper: paper.md
-  - Reference:
+  - Manifest:
       - Manifest: reference/manifest.md
       - Readout protocol: reference/protocol.md
+  - Results: results.md
+  - Paper: paper.md
