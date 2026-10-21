@@ -217,6 +217,12 @@
   outline: 2px solid var(--ot-amber-soft);
   outline-offset: 3px;
 }
+.ot-hero__venue {
+  margin: .65rem auto 0;
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--ot-amber-soft);
+}
 .ot-hero__authors a {
   color: inherit;
   text-decoration: underline;
