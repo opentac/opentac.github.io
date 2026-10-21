@@ -64,7 +64,7 @@ Step through the replay and compare the sampled frame with the recorded raster f
 
 ---
 
-<p class="otl otl-credit">Based on interactive studies by Krishna. Geometry, recordings and firmware-derived selection data are prepared by <code>scripts/learn/build_data.py</code>. The accompanying <code>check_xampling.py</code> and <code>check_transfer.py</code> compare the browser implementations with the firmware and <code>opentac/transfer.py</code>.</p>
+<p class="otl otl-credit">The figures use the sensor geometry, recordings and firmware selection logic from the OpenTac code. The browser implementations of OpenTac-Xampling and OpenTac-Transfer are checked against the readout firmware and the OpenTac Python library.</p>
 
 <script src="js/lib.js"></script>
 <script src="js/bumpmodel.js"></script>
