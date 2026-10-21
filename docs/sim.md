@@ -143,7 +143,7 @@ small ball can touch nothing.
 Two solvers:
 
 - `solver="surrogate"` (default): each bump's force is its stiffness times how
-  far the object pushes into it. No MuJoCo. 0.3–0.4 ms per press on boards of
+  far the object pushes into it. No MuJoCo. 0.2–0.3 ms per press on boards of
   12–135 bumps.
 - `solver="mujoco"`: the full MuJoCo scene, a ball on position servos pressed
   into real frustum-shaped bumps. Sphere only. 0.02–0.08 s per press on the
