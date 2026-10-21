@@ -185,28 +185,45 @@
   gap: .1rem 1.1rem;
   margin: .3rem auto 0;
   max-width: 44rem;
-  font-size: .72rem;
+  font-size: .84rem;
   color: var(--ot-on-dark-muted);
 }
 .ot-author { white-space: nowrap; }
 .ot-contact__person { display: inline-block; max-width: 100%; }
 .ot-contact__person a { white-space: nowrap; }
 .ot-hero__contact {
-  margin: .5rem auto 0;
-  max-width: 52rem;
-  font-size: .72rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: .3rem .85rem;
+  margin: .65rem auto 0;
+  max-width: 56rem;
+  font-size: .63rem;
   line-height: 1.6;
-  color: var(--ot-on-dark-muted);
+  color: var(--ot-on-dark);
 }
-.ot-hero__authors a,
-.ot-hero__contact a {
+.ot-hero__contact strong { font-weight: 700; }
+.ot-hero__contact a { color: inherit; text-decoration: none; }
+.ot-hero__contact a:hover { text-decoration: underline; }
+.ot-hero__contact .ot-hero__email {
+  color: var(--ot-amber-soft);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, currentColor 50%, transparent);
+  text-underline-offset: .15em;
+}
+.ot-hero__contact .ot-hero__email:hover { color: #fff; }
+.ot-hero__contact a:focus-visible {
+  outline: 2px solid var(--ot-amber-soft);
+  outline-offset: 3px;
+}
+.ot-hero__authors a {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
   text-underline-offset: .15em;
 }
-.ot-hero__authors a:hover,
-.ot-hero__contact a:hover { color: var(--ot-amber-soft); }
+.ot-hero__authors a:hover { color: var(--ot-amber-soft); }
 .ot-hero__authors sup,
 .ot-hero__affil sup { font-size: .7em; margin-left: .05em; }
 .ot-hero__logos {
