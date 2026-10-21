@@ -79,7 +79,7 @@ spreading past the outline) is not read, so a frame can sum to less than
 
 ### Comparison with measured contacts { #how-well-it-matches-real-presses }
 
-From the paper's hand-press experiment (`results_pose.json`): four skins
+From the paper's hand-press experiment: four skins
 (409, 502, 96 and 174 taxels; 2.0 and 4.0 mm pitch), five objects, pressed by
 hand and scored at 1, 2, 4, 6 and 8 N by each skin's own force calibration.
 The fitted parameters were evaluated on three held-out skins. The pose of each press
@@ -94,8 +94,6 @@ taxel, so it compares contact shape, not intensity.
 
 The model put the contact centre closer than a repeat press did (median
 1.56 mm against 2.29 mm), but predicted a contact area 1.44 times the measured area.
-These values are recomputed from the paper's stored per-press results by
-`tests/sim/test_paper_numbers.py`.
 
 ## Bump model (`"mujoco"`)
 
