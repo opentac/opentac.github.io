@@ -6,11 +6,11 @@
  *   2. the quadtree search pattern (SEARCH_MIN points in FIXED), grown;
  *   3. FIXED only: the rest of M from the pattern; its triggers grow next frame.
  *
- * Entries are scan-plan entries (built by buildScanPlan() on the board, and by
- * scripts/learn/build_data.py here). Bitsets in the C code are iterated in
+ * Entries are scan-plan entries (built by buildScanPlan() on the board, and
+ * precomputed in the page data here). Bitsets in the C code are iterated in
  * increasing entry order; plain arrays scanned 0..n-1 reproduce that order.
- * scripts/learn/check_xampling.py runs this file against the C header compiled
- * on the host and checks the selections are identical.
+ * On the recorded replays, this file makes the same selections as the C header
+ * compiled on the host.
  *
  * Works in the browser (window.OTXamp) and in node (module.exports).
  */

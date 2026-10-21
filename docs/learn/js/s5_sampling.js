@@ -1,6 +1,6 @@
 /* Study 5: what an xampling frame (grow mode) reads, replayed on a real
  * raster recording. The selection is js/xampling.js, a port of the firmware's
- * ot_xampling.h checked against it (scripts/learn/check_xampling.py). Frame
+ * ot_xampling.h whose selections match the firmware's on these replays. Frame
  * rates are the measured ones (xampling_m_vs_fps.csv). */
 (function () {
   'use strict';
