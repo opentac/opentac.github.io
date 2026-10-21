@@ -57,7 +57,7 @@ The robot gallery on the start screen has surfaces of real grippers, hands and f
 
 **Cable edge.** Select the edge from which the flex tail should exit toward the readout board. This must be a straight segment at least as wide as the connector, with room to route the cable on the mounted part. **Generate** remains disabled until an edge is selected explicitly.
 
-**Tail geometry and length.** After routing, the tool narrows the flex tail around its traces, without removing taxels. Near the connector, the tail widens through a 1.5 mm step, with a 1 mm inner fillet and a 0.5 mm outer corner radius. The junction with the board also has 1 mm rounded corners. These transitions avoid sharp inner corners where the flex could tear.
+**Tail geometry and length.** After routing, the tool narrows the flex tail around its traces, without removing taxels. Near the connector, the tail widens to the connector width through a step 1.5 mm long, with a 1 mm inner fillet and a 0.5 mm outer corner radius. The junction with the board also has 1 mm rounded corners. These transitions avoid sharp inner corners where the flex could tear.
 
 **Tail length** specifies the distance from the board to the connector. Leaving it blank selects a length of at least 12 mm that allows the [printed case](../build/index.md#the-printed-case) to clear the connector; entering a value overrides this choice. After generation, **Redo padding** applies a new length without rerouting. It can extend the tail or shorten it as far as the existing straight trace segments allow. Further shortening requires **Generate** to route the board again.
 

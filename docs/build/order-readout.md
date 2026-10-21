@@ -8,7 +8,7 @@ description: Ordering an assembled OpenTac readout board from JLCPCB with the Ge
 We order the readout boards with PCB assembly (PCBA): the manufacturer fabricates the board and mounts its components. Each board's `production/` directory in the [code repository](https://github.com/opentac/opentac/tree/main/hardware) contains the Gerber archive, bill of materials (BOM) and component-placement file (CPL) required for this process. Choose the appropriate hardware using [Readout boards](../hardware.md), then download the corresponding files below.
 
 !!! info "As of October 2026"
-    Option names, prices and file names below are from October 2026; the screenshots were taken on 16 October 2026 with the files in this repository. Check the [PCB assembly capabilities](https://jlcpcb.com/capabilities/pcb-assembly-capabilities) and [assembly price](https://jlcpcb.com/help/article/pcb-assembly-price) pages for current terms.
+    Option names, prices and file names below are from October 2026; the screenshots were taken on 16 October 2026 with the files in the [code repository](https://github.com/opentac/opentac/tree/main/hardware). Check the [PCB assembly capabilities](https://jlcpcb.com/capabilities/pcb-assembly-capabilities) and [assembly price](https://jlcpcb.com/help/article/pcb-assembly-price) pages for current terms.
 
 ## Fabrication and assembly files { #the-files }
 
@@ -66,7 +66,7 @@ Press **NEXT** in the price panel. JLCPCB asks you to sign in here, then walks t
   <figcaption>BOM and CPL attached for the 60-pin board.</figcaption>
 </figure>
 
-**3. Verify component selection.** Every BOM entry must be matched to the specified LCSC part and selected for assembly. The counts to expect: **32** parts on the 60-pin board, **14** on the 30-pin top board and **10** on the 30-pin bottom board, each shown as *parts detected* and *parts confirmed*. A line with no part selected needs one: search by the LCSC number from the BOM. For a resistor or capacitor out of stock, a part of the same value, rating and package is fine. For a chip or connector, don't substitute; wait for stock or ask on the repository's issue tracker.
+**3. Verify component selection.** Every BOM entry must be matched to an LCSC part and selected for assembly. The counts to expect: **32** parts on the 60-pin board, **14** on the 30-pin top board and **10** on the 30-pin bottom board, each shown as *parts detected* and *parts confirmed*. A line with no part selected needs one: search by the LCSC number from the BOM. If a resistor or capacitor is out of stock, a part with the same value, rating and package may be substituted. Do not substitute ICs or connectors; wait for stock or open an issue on the repository's issue tracker.
 
 <figure class="ot-fig" markdown="span">
   [![Component list for the 60-pin board: 32 parts detected and confirmed, with each BOM entry matched to an LCSC part and selected for assembly.](../assets/photos/jlcpcb/readout-60pin-bom-parts.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-bom-parts.png)

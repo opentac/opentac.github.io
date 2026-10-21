@@ -5,7 +5,7 @@ description: Use a coding agent with the OpenTac skill to design a sensor from a
 
 # Design with an AI agent
 
-OpenTac-CAD can also be used through a coding agent. Given a description of the intended surface, dimensions and cable exit, the agent constructs an outline and calls the same compiler used by the graphical tool. The repository provides a skill with the design conventions, commands and checks needed for this workflow. The output includes KiCad files, Gerbers and a sensor manifest, which can be inspected or edited in OpenTac-CAD.
+OpenTac-CAD can also be used through a coding agent. Given a description of the target surface and cable exit, the agent determines the surface dimensions, constructs an outline and calls the same compiler used by the graphical tool. The repository provides a skill with the design conventions, commands and checks needed for this workflow. The output includes KiCad files, Gerbers and a sensor manifest, which can be inspected or edited in OpenTac-CAD.
 
 ## Configure the agent { #set-up }
 
@@ -17,7 +17,7 @@ The agent invokes the CAD compiler through the repository's environment (`uv run
 
 ## Specify the design request { #ask-for-a-sensor }
 
-Specify the contact surface, its dimensions, the cable-exit location, and whether the board outline must remain fixed. Where dimensions or mounting constraints are ambiguous, resolve them before fabrication. The following prompts were used in the paper:
+Specify the contact surface, the cable-exit location, and whether the board outline must remain fixed. Where a design choice is ambiguous, such as which of two plausible dimensions to match, the agent asks before generating. The following prompts were used in the paper:
 
 > Tactile skin for the fingertip pad of an Allegro Hand, cable running down toward the palm.
 
@@ -51,7 +51,7 @@ You can also open the agent's `design.json` (or the whole ZIP) in OpenTac-CAD to
 
 ## Use the Describe tab { #online-the-describe-tab }
 
-The hosted tool at [`/cad/`](../../cad/) provides a **Describe** tab that uses the same generator and loads the result into the editor. It requires no local installation, although generation is slower than running locally. To enable this assistant in a local installation, provide a Gemini API key from [Google AI Studio](https://aistudio.google.com/) and install the chat dependencies through the `demo` extra:
+The hosted tool at [`/cad/`](../../cad/) provides a **Describe** tab that uses the same generator and loads the result into the editor. It requires no local installation, although generation is slower than running locally and the hosted assistant cannot search the web for dimensions. To enable this assistant in a local installation, provide a Gemini API key from [Google AI Studio](https://aistudio.google.com/) and install the chat dependencies through the `demo` extra:
 
 ```sh
 export GEMINI_API_KEY=your-key        # or put GEMINI_API_KEY=... in opentac/cad/.env

@@ -2,7 +2,7 @@
 description: Configure adaptive taxel selection, compare fixed and grow modes, and interpret their sampling budgets and measured rates.
 ---
 
-# Adaptive sampling with OpenTac-Xampling { #xampling }
+# Adaptive acquisition with OpenTac-Xampling { #xampling }
 
 OpenTac-Xampling reduces the number of taxel reads required per frame by concentrating measurements around contact. A coarse-to-fine search identifies taxels above a threshold, then expands into their neighbours. This trades complete spatial sampling in each frame for a higher update rate when contact occupies only part of the sensor.
 
@@ -16,7 +16,7 @@ OpenTac-Xampling reduces the number of taxel reads required per frame by concent
 <figcaption>Two 30&nbsp;cm tennis-ball drops at 128&times; slow motion: raster scanning misses the impact; Xampling at <code>XAMP_M</code>&nbsp;=&nbsp;32 captures it in this example. The displayed 996 updates/s is the measured rate of that recording.</figcaption>
 </figure>
 
-## Enable adaptive sampling { #use-it }
+## Enable adaptive acquisition { #use-it }
 
 Measure the unloaded baseline before enabling Xampling. The following commands select either a search budget with contact expansion or a fixed total sampling budget:
 

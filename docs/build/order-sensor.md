@@ -53,7 +53,7 @@ For the two-layer boards shown here, we retain the quoted defaults for substrate
 The readout boards use a Molex 505110 ZIF connector: a bottom-contact connector that takes a flex end **0.30&nbsp;mm** thick (&plusmn;0.05&nbsp;mm). The sensor tail's contacts are on its **bottom** copper; the export opens the solder mask there, at the connector fingers only, and leaves the top covered. A bare 2-layer flex is much thinner than 0.3&nbsp;mm, so the connector end gets a polyimide (PI) stiffener on the **top** of the tail (the taxel side), opposite the contacts.
 
 <figure class="ot-fig" markdown="span" style="max-width: 36rem">
-  [![Connector-tail cross-section: 0.11 mm flex with a 0.20 mm PI stiffener on top over the final 6 mm, and exposed contacts underneath, for approximately 0.3 mm total thickness at the connector.](../assets/diagrams/stiffener_section.svg){ loading=lazy }](../assets/diagrams/stiffener_section.svg)
+  [![Longitudinal section of the connector tail: 0.11 mm flex with a 0.20 mm PI stiffener on top over the final 6 mm, and exposed contacts underneath, for approximately 0.3 mm total thickness at the connector.](../assets/diagrams/stiffener_section.svg){ loading=lazy }](../assets/diagrams/stiffener_section.svg)
   <figcaption>The connector end in section: stiffener on top, contacts underneath. Thicknesses not to scale.</figcaption>
 </figure>
 

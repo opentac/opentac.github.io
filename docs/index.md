@@ -30,14 +30,14 @@ hide:
     <source src="assets/loops/concept.mp4" type="video/mp4">
   </video>
 </div>
-<figcaption>As part of the OpenTac ecosystem, we develop OpenTac-CAD, a design tool to automatically sensorize any surface on a robot with OpenTac tactile sensors. In this visualization, we show examples for six different robots from them <a href="https://github.com/google-deepmind/mujoco_menagerie">MuJoCo Menagerie</a> (Unitree G1 and Go2, LEAP Hand, AgileX Piper, Robotiq 2F-85, UMI gripper).</figcaption>
+<figcaption>As part of the OpenTac ecosystem, we develop OpenTac-CAD, a design tool to automatically sensorize any surface on a robot with OpenTac tactile sensors. In this visualization, we show examples for six different robots from the <a href="https://github.com/google-deepmind/mujoco_menagerie">MuJoCo Menagerie</a> (Unitree G1 and Go2, LEAP Hand, AgileX Piper, Robotiq 2F-85, UMI gripper). Contact responses in the animation are simulated.</figcaption>
 </figure>
 </section>
 
 <section class="ot-video" aria-labelledby="video">
 <h2 id="video" class="ot-section-title">Overview</h2>
 <p class="ot-video__lede">
-OpenTac is an ecosystem for highly customizable, scalable, and transferrable tactile sensing. We provide tools raning across sensor design, simulation, cross-sensor transfer, data visualization, tactile policy learning, and more.
+OpenTac is an ecosystem for highly customizable, scalable, and transferable tactile sensing. We provide tools ranging across sensor design, simulation, cross-sensor transfer, data visualization, tactile policy learning, and more.
 </p>
 <div class="ot-media ot-media--video">
   <video controls preload="none" playsinline data-poster="assets/loops/overview.jpg"
@@ -74,10 +74,10 @@ OpenTac is an ecosystem for highly customizable, scalable, and transferrable tac
 </figure>
 <figure class="ot-strip__item ot-strip__item--tall">
   <video data-loop muted loop playsinline preload="none" data-poster="assets/video/heat_gun_poster.jpg"
-         aria-label="Heat gun aimed at the sensor to test robustness to temperature variations.">
+         aria-label="A heat gun directed at the sensor produces no false contact response.">
     <source src="assets/video/heat_gun.mp4" type="video/mp4">
   </video>
-  <figcaption>Heat gun aimed at the sensor to test robustness to temperature variations.</figcaption>
+  <figcaption>A heat gun directed at the sensor produces no false contact response.</figcaption>
 </figure>
 </div>
 
@@ -86,8 +86,8 @@ OpenTac is an ecosystem for highly customizable, scalable, and transferrable tac
 | | Some key results |
 |---|---|
 | Design and fabrication | We designed over 30 sensors automatically, using our OpenTac-CAD tool. All these designs passed design-rule checks, and resulted in sensors that were fabricated and tested. |
-| Normal and shear force accuracy | We validated against commercial 6-axis F/T sensors and find that OpenTac reliably estimates shear. E.g., on a 4&times;4 sensor patch, R&sup2; of 0.95, 0.93 and 0.96 for F<sub>x</sub>, F<sub>y</sub> and F<sub>z</sub> against reference forces. |
-| Fast readout | We use an adaptive readout mechanism for sparse and fast scanning. On a 1024-taxel skin, conventional (raster) scanning results in 67 frames/s; while our adaptive method (OpenTac-Xampling) results in 1286 frames/s for the same object-sensor interaction. |
+| Normal and shear force accuracy | Against an OptoForce reference, a bumped 4&times;4 patch achieves in-sample R&sup2; of 0.95, 0.93 and 0.96 for F<sub>x</sub>, F<sub>y</sub> and F<sub>z</sub>. |
+| Fast readout | We use an adaptive readout mechanism for sparse and fast scanning. On a 1024-taxel skin, conventional (raster) scanning results in 67 frames/s; while our adaptive method (OpenTac-Xampling) results in 1286 partial frames/s (16 taxels per frame). |
 | Policy learning | We use the sensor in tactile policy learning experiments involving contact rich insertion tasks on the SO-101 robot arm and a bimanual YAM robot. We find that shear data is crucial in these tasks. |
 | Grasp control | We demonstrate, on a Dexmate Vega-1 Pro robot, that shear aids slip prevention when holding a cup under impulsive loading. |
 
@@ -104,7 +104,7 @@ OpenTac is an ecosystem for highly customizable, scalable, and transferrable tac
 
 Each skin is a two-layer flexible PCB with a grid of interdigitated electrodes (taxels), a piezoresistive film on top, and a 3D-printed lid with one soft bump over every 2&times;2 group of taxels.
 
-Pressing a bump with a downward normal forcea bump results in an approximately uniform pressure distribution over the four underlying taxels. Tangential force tilts the bumps, creating a pressure (and consequently, resistance) differential over the underlying taxels, allowing us to estimate shear forces.
+Pressing a bump with a downward normal force results in an approximately uniform pressure distribution over the four underlying taxels. Tangential force tilts the bumps, creating a pressure (and consequently, resistance) differential over the underlying taxels, allowing us to estimate shear forces. The sum of the four readings gives the normal force, and their differences give the two shear components.
 
 [How it works](learn/index.md){ .ot-more }
 
@@ -122,7 +122,7 @@ Pressing a bump with a downward normal forcea bump results in an approximately u
 
 ## OpenTac-CAD: Design a sensor for any surface { #design }
 
-We develop a design tool, OpenTac-CAD, to automatically sensorize new surfaces. Given a 2D outline drawn within our tool, a DXF file, or an STL file, OpenTac-CAD lays out a taxel grid, places and routes wires, designs the connector, and produces a set of Gerber files (for the flexible PCB and readout board), a 3D-printable TPU bump case (for shear sensing and alignment), and a manifest file (for sharing sensor metadata across the OpenTac ecosystem). We find that automatic designs result in higher coverage area compared to hand-designed sensor layouts.
+We develop a design tool, OpenTac-CAD, to automatically sensorize new surfaces. Given a 2D outline drawn within our tool, a DXF file, or an STL file, OpenTac-CAD lays out a taxel grid, places and routes wires, designs the connector, and produces a set of Gerber files (for the flexible PCB), a 3D-printable TPU bump case (for shear sensing and alignment), and a manifest file (for sharing sensor metadata across the OpenTac ecosystem). Automatic designs cover more of the target surface than the largest rectangular array that fits, sensorizing 75&ndash;93% of the target area on five robot surfaces in 0.7&ndash;2.6&nbsp;s.
 
 [Try it online](cad/){ .ot-more } [Design guide](design/index.md){ .ot-more }
 
@@ -145,7 +145,7 @@ We develop a design tool, OpenTac-CAD, to automatically sensorize new surfaces. 
 
 ## Order and assemble an OpenTac sensor { #build }
 
-Fabricating an OpenTac sensor involves 3 phases. First, we use the OpenTac-CAD tool to design a sensor for the surface we want to mount it on. Second, we fabricate the flexible PCB and readout board -- the generated Gerber file from the previous step can be uploaded to popular PCB manufacturers (JLCPCB, PCBWay, etc.) and ordered. Third, we 3D-print a TPU bump sheet (also generated by OpenTac-CAD) using a commodity 3D printer. Assembly is straightforward: the designed case makes it extremely convenient to stack the flexPCB, a piezoresistive film, and the TPU bump grid.
+Fabricating an OpenTac sensor involves 3 phases. First, we use the OpenTac-CAD tool to design a sensor for the surface we want to mount it on. Second, we fabricate the flexible PCB from the generated Gerber files, which can be ordered from manufacturers such as JLCPCB or PCBWay, and the readout board from its released fabrication files. Third, we 3D-print a TPU bump sheet (also generated by OpenTac-CAD) using a commodity 3D printer. Assembly is straightforward: the designed case makes it extremely convenient to stack the flex PCB, a piezoresistive film, and the TPU bump grid.
 
 [Assembly guide](build/assembly.md){ .ot-more } [Build steps](build/index.md){ .ot-more }
 
@@ -184,7 +184,7 @@ The board stores the sensor's layout in its own flash, so after a one-time setup
 
 ## Adaptive, kilohertz-rate sampling { #xampling }
 
-OpenTac-Xampling is an adaptive sampling method that results in fast readouts. Instead of scanning every single taxel when reading out every frame, we leverage the idea that most contact events tend to be sparse. Each frame reads a small search sample of taxels and then grows around any contact until it is fully measured. This enables skipping through large swaths of empty taxels, and works on any sensor layout, and is guaranteed to be no worse than raster scanning.
+OpenTac-Xampling is an adaptive acquisition method that results in fast readouts. Instead of scanning every single taxel when reading out every frame, we leverage the idea that most contact events tend to be sparse. Each frame reads a small search sample of taxels and then grows around any contact until it is fully measured. This enables skipping through large swaths of empty taxels, works on any sensor layout, and, in grow mode, is guaranteed to be no worse than raster scanning.
 
 This helps capture contacts that happen in a few milliseconds (and are missed by raster scanning). E.g., on a 1024-taxel skin, full raster scanning gives 67 frames/s; reading 16 taxels per frame gives 1286 frames/s. Raster scanning caught two of six ~3&nbsp;ms tennis-ball impacts; budgets of 16 to 256 taxels per frame caught all three impacts tested at each budget.
 
@@ -207,7 +207,7 @@ This helps capture contacts that happen in a few milliseconds (and are missed by
 
 ## Simulating OpenTac sensors and cross-sensor transfer { #sim }
 
-The shared sensor manifest produced by OpenTac-CAD is used to specify mechanical and electronic properties of the sensor. This manifest can be used to create simulation models of the sensor. We build a simulation tool, OpenTac-Sim, to simulate sensor deformations using accurate FEM modeling. We also have a foam-contact model for plain skins (i.e., variants of OpenTac that do not require shear sensing and forgo the TPU bump grid.
+The shared sensor manifest produced by OpenTac-CAD is used to specify mechanical and electronic properties of the sensor. This manifest can be used to create simulation models of the sensor. We build a simulation tool, OpenTac-Sim, which models each bump pad as a deformable mesh in MuJoCo. We also have a foam-contact model for plain skins (i.e., variants of OpenTac that do not require shear sensing and forgo the TPU bump grid).
 
 OpenTac-Transfer maps calibrated contact between skins of different shape and taxel pitch, in physical coordinates and without paired data. Across four skins it reached a median shape F1 of 0.750, against 0.714 and 0.634 for two array-resizing baselines. For now, OpenTac-Transfer works on flat skins. We welcome contributors extending this module further.
 

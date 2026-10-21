@@ -40,7 +40,7 @@ In the STL importer, pick the surface in one of four ways:
 There are three practical options:
 
 1. **Split it into flat facets.** Model the curved region as a set of flat faces, and design the sensor over those faces. The facets fold along straight lines, which a flex PCB does well.
-2. **Choose facets to match the part.** The D'Claw fingertip below uses a hexagonal prism: six side faces, a hexagonal tip, and a leaf on each side that folds over the intervening chamfer. This provides a faceted approximation to the fingertip's curved contact region.
+2. **Prefer hexagonal facets where they fit.** A hexagonal facet pattern approximates a rounded surface more closely than a square pattern with the same number of folds. The D'Claw fingertip below uses a hexagonal prism: six side faces, a hexagonal tip, and a leaf on each side that folds over the intervening chamfer. This provides a faceted approximation to the fingertip's curved contact region.
 3. **Restrict coverage to the contact region.** The paper's agent-designed Allegro fingertip covers the palmar face plus the first 7&nbsp;mm of the curved tip cap, and leaves the rest of the cap bare (see [Design with an AI agent](agent.md)).
 
 <div class="ot-photos ot-photos--two ot-photos--contain" markdown>
@@ -57,6 +57,6 @@ There are three practical options:
 ## Constraints on the outline and tail { #practical-rules }
 
 - **Select a straight cable edge** at least as wide as the connector. On a smooth outline, cut a short flat where the cable should leave.
-- **Concave outlines require additional routing.** Where a notch cuts a row or column in two, the router joins the pieces with a link that runs around the notch, so the row is still one wire. In fixed-outline mode, this routing reduces the area available for taxels. Four copper layers can recover coverage by moving row connections to the inner layers.
+- **Concave outlines require additional routing.** Where a notch cuts a row or column in two, the router joins the pieces with a link that runs around the notch, so the row is still one wire. In fixed-outline mode, deep notches reduce the area available for taxels; four copper layers recover most of this coverage by moving row connections to the inner layers.
 - **Leave room for the tail.** The tail runs from the cable edge to the readout board. Set its length in the **Tail** section so it reaches; print the 1:1 PDF and wrap it around the part to check.
 - **Paired gripper jaws:** design the left jaw, then **Mirror** it for the right. The cable edge stays on the same physical edge.
