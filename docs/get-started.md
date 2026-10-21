@@ -122,4 +122,4 @@ Example quotes from JLCPCB, October 2026, shipping extra:
 
 ## Getting help
 
-Questions and bug reports go to the repository's [issue tracker](https://github.com/opentac/opentac/issues). For a problem with a board or a sensor, include the output of `uv run opentac info`, run with the board plugged in, and attach the design ZIP if a design is involved. For other questions, contact Ariel Slepyan at [aslepyan@mit.edu](mailto:aslepyan@mit.edu).
+Ask questions and share designs in [GitHub Discussions](https://github.com/opentac/opentac/discussions), and report bugs on the repository's [issue tracker](https://github.com/opentac/opentac/issues). For a problem with a board or a sensor, include the output of `uv run opentac info`, run with the board plugged in, and attach the design ZIP if a design is involved. For other questions, contact Ariel Slepyan at [aslepyan@mit.edu](mailto:aslepyan@mit.edu).

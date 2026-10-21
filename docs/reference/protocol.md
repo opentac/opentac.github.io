@@ -62,7 +62,7 @@ Match replies to commands by content, not by count: some commands answer with
 more than one line.
 
 `R,CAPS,<api>,<steps>,<channels>,<max taxels>,<modes hex>,<LED modes hex>,<params>,<modes needing shear hex>,<board>`.
-`<board>` is `READOUT60`, `NODE16` or `READOUT32`; the host picks that
+`<board>` is `READOUT60` or `NODE16`; the host picks that
 board's pad table from it.
 
 `R,CFG,<version>,<rows>,<cols>,<active>,<pitch x um>,<pitch y um>,<shear>,<id hex>,<crc hex>,<bytes>`.

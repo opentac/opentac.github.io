@@ -32,9 +32,8 @@ Use the **60-pin board** for most sensors. Use the **30-pin pair** where space i
 |---|---|
 | 60-pin board | `READOUT60` |
 | 30-pin pair (two stacked boards) | `NODE16`, or `NODE16_bus` for each board in a daisy chain ([Daisy-chain boards](use/daisy-chain.md)) |
-| Earlier 70-pin board | `READOUT32`, for boards already built |
 
-Prebuilt binaries for all three are in [`firmware/prebuilt/`](https://github.com/opentac/opentac/tree/main/firmware/prebuilt); `opentac flash` picks the right one ([Flash the firmware](use/flash.md)).
+Prebuilt binaries for both boards are in [`firmware/prebuilt/`](https://github.com/opentac/opentac/tree/main/firmware/prebuilt); `opentac flash` picks the right one ([Flash the firmware](use/flash.md)).
 
 ## Readout architecture and interfaces { #what-the-boards-do }
 
@@ -134,5 +133,3 @@ The connector is a bottom-contact ZIF type that takes a 0.30&nbsp;mm thick flex 
 ## Files and ordering
 
 Each board's folder in the repository ([`hardware/readout_60pin`](https://github.com/opentac/opentac/tree/main/hardware/readout_60pin), [`hardware/readout_30pin`](https://github.com/opentac/opentac/tree/main/hardware/readout_30pin)) has the KiCad project (schematic and layout) and a `production/` folder ready for JLCPCB assembly: a Gerber ZIP, a bill of materials with LCSC part numbers, and a placement (CPL) file. [Order the readout board](build/order-readout.md) walks through the order.
-
-An earlier 70-pin board (READOUT32) is still supported by the firmware for boards already in use, but new designs use the 60-pin board or the 30-pin pair ([Firmware](#firmware)).

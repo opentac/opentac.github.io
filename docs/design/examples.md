@@ -150,6 +150,6 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 </figure>
 </div>
 
-\* The original fabricated design exceeded 30 rows or columns and used an earlier
-70-pin readout board. This export increases the pitch sufficiently to fit
-the 60-pin board; its grid dimensions therefore differ from the original design name.
+\* The original fabricated design exceeded 30 rows or columns. This export increases
+the pitch sufficiently to fit the 60-pin board; its grid dimensions therefore differ
+from the original design name.
