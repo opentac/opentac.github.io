@@ -20,7 +20,7 @@
   "cable_length_mm": 17.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1115,
+  "zip_kb": 1117,
   "case_warnings": []
  },
  {
@@ -44,7 +44,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 774,
+  "zip_kb": 775,
   "case_warnings": []
  },
  {
@@ -92,7 +92,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 775,
+  "zip_kb": 776,
   "case_warnings": []
  },
  {
@@ -116,7 +116,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 774,
+  "zip_kb": 775,
   "case_warnings": []
  },
  {
@@ -140,7 +140,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 773,
+  "zip_kb": 774,
   "case_warnings": []
  },
  {
@@ -164,7 +164,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 773,
+  "zip_kb": 774,
   "case_warnings": []
  },
  {
@@ -188,7 +188,7 @@
   "cable_length_mm": 14.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 760,
+  "zip_kb": 762,
   "case_warnings": []
  },
  {
@@ -212,7 +212,7 @@
   "cable_length_mm": 16.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1118,
+  "zip_kb": 1119,
   "case_warnings": []
  },
  {
@@ -236,7 +236,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 959,
+  "zip_kb": 961,
   "case_warnings": []
  },
  {
@@ -260,7 +260,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 961,
+  "zip_kb": 963,
   "case_warnings": []
  },
  {
@@ -284,7 +284,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 921,
+  "zip_kb": 922,
   "case_warnings": []
  },
  {
@@ -358,12 +358,12 @@
   "cable_length_mm": 18.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 674,
+  "zip_kb": 676,
   "case_warnings": []
  },
  {
   "slug": "strip-09x09-long",
-  "title": "9 × 9 patch, long tail",
+  "title": "9 \u00d7 9 patch, long tail",
   "group": "robot",
   "fabricated_as": "09x09_t2_27x136mm_81taxels",
   "taxels": 81,
@@ -389,7 +389,7 @@
  },
  {
   "slug": "strip-09x09",
-  "title": "9 × 9 patch",
+  "title": "9 \u00d7 9 patch",
   "group": "robot",
   "fabricated_as": "09x09_t2_27x40mm_81taxels",
   "taxels": 81,
@@ -408,7 +408,7 @@
   "cable_length_mm": 12.0,
   "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 366,
+  "zip_kb": 367,
   "case_warnings": [
    "Perimeter is only 111mm, so the rib pattern was scaled to 13.9mm period / 7.0mm gap to keep enough bridges holding the lid together."
   ]
@@ -434,7 +434,7 @@
   "cable_length_mm": 15.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 732,
+  "zip_kb": 733,
   "case_warnings": []
  },
  {
@@ -482,12 +482,12 @@
   "cable_length_mm": 12.0,
   "cable_length_reason": "minimum 12 mm",
   "drc_violations": 0,
-  "zip_kb": 582,
+  "zip_kb": 583,
   "case_warnings": []
  },
  {
   "slug": "finger-16x06",
-  "title": "Finger strip 16 × 6",
+  "title": "Finger strip 16 \u00d7 6",
   "group": "robot",
   "fabricated_as": "16x06_t4_36x94mm_96taxels",
   "taxels": 96,
@@ -556,7 +556,7 @@
   "cable_length_mm": 15.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1117,
+  "zip_kb": 1118,
   "case_warnings": []
  },
  {
@@ -580,12 +580,12 @@
   "cable_length_mm": 14.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 642,
+  "zip_kb": 641,
   "case_warnings": []
  },
  {
   "slug": "strip-32x12",
-  "title": "Strip 32 × 12",
+  "title": "Strip 32 \u00d7 12",
   "group": "robot",
   "fabricated_as": "32x12_t2_44x111mm_384taxels",
   "taxels": 330,
@@ -628,12 +628,12 @@
   "cable_length_mm": 13.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1293,
+  "zip_kb": 1294,
   "case_warnings": []
  },
  {
   "slug": "large-32x32",
-  "title": "Large 32 × 32 array",
+  "title": "Large 32 \u00d7 32 array",
   "group": "robot",
   "fabricated_as": "32x32_t4_148x246mm_1024taxels",
   "taxels": 900,
@@ -652,7 +652,7 @@
   "cable_length_mm": 16.5,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 1662,
+  "zip_kb": 1664,
   "case_warnings": []
  },
  {
@@ -676,7 +676,7 @@
   "cable_length_mm": 20.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 677,
+  "zip_kb": 679,
   "case_warnings": []
  },
  {
@@ -748,7 +748,7 @@
   "cable_length_mm": 15.0,
   "cable_length_reason": "printed case clearance",
   "drc_violations": 0,
-  "zip_kb": 971,
+  "zip_kb": 972,
   "case_warnings": []
  }
 ]

@@ -24,7 +24,7 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 </figure>
 <figure class="ot-design" markdown="span">
 [![YUBI finger pad: board preview, 165 taxels, 8 × 27 grid](../designs/files/yubi-finger-pad-08x27.svg){ width="240" height="153" loading="lazy" }](../designs/files/yubi-finger-pad-08x27.svg)
-<figcaption markdown="span">**YUBI finger pad**<br>165 taxels, 8 × 27 grid<br><span class="ot-nowrap">3 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (674 KB)](../designs/files/yubi-finger-pad-08x27.zip)</figcaption>
+<figcaption markdown="span">**YUBI finger pad**<br>165 taxels, 8 × 27 grid<br><span class="ot-nowrap">3 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (676 KB)](../designs/files/yubi-finger-pad-08x27.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![9 × 9 patch, long tail: board preview, 81 taxels, 9 × 9 grid](../designs/files/strip-09x09-long.svg){ width="124" height="180" loading="lazy" }](../designs/files/strip-09x09-long.svg)
@@ -32,11 +32,11 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 </figure>
 <figure class="ot-design" markdown="span">
 [![9 × 9 patch: board preview, 81 taxels, 9 × 9 grid](../designs/files/strip-09x09.svg){ width="124" height="180" loading="lazy" }](../designs/files/strip-09x09.svg)
-<figcaption markdown="span">**9 × 9 patch**<br>81 taxels, 9 × 9 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">30-pin board</span><br>[Download ZIP (366 KB)](../designs/files/strip-09x09.zip)</figcaption>
+<figcaption markdown="span">**9 × 9 patch**<br>81 taxels, 9 × 9 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">30-pin board</span><br>[Download ZIP (367 KB)](../designs/files/strip-09x09.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![SO-101 gripper jaw (wide): board preview, 231 taxels, 9 × 26 grid](../designs/files/so101-jaw-09x26.svg){ width="240" height="150" loading="lazy" }](../designs/files/so101-jaw-09x26.svg)
-<figcaption markdown="span">**SO-101 gripper jaw (wide)**<br>231 taxels, 9 × 26 grid<br><span class="ot-nowrap">3 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (732 KB)](../designs/files/so101-jaw-09x26.zip)</figcaption>
+<figcaption markdown="span">**SO-101 gripper jaw (wide)**<br>231 taxels, 9 × 26 grid<br><span class="ot-nowrap">3 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (733 KB)](../designs/files/so101-jaw-09x26.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![LEAP Hand fingertip: board preview, 84 taxels, 14 × 8 grid](../designs/files/leap-fingertip-14x07.svg){ width="101" height="180" loading="lazy" }](../designs/files/leap-fingertip-14x07.svg)
@@ -44,7 +44,7 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 </figure>
 <figure class="ot-design" markdown="span">
 [![AgileX Piper jaw: board preview, 102 taxels, 15 × 11 grid](../designs/files/agilex-piper-jaw-15x11.svg){ width="126" height="180" loading="lazy" }](../designs/files/agilex-piper-jaw-15x11.svg)
-<figcaption markdown="span">**AgileX Piper jaw**<br>102 taxels, 15 × 11 grid<br><span class="ot-nowrap">4.2 mm pitch,</span> <span class="ot-nowrap">30-pin board</span><br>[Download ZIP (582 KB)](../designs/files/agilex-piper-jaw-15x11.zip)</figcaption>
+<figcaption markdown="span">**AgileX Piper jaw**<br>102 taxels, 15 × 11 grid<br><span class="ot-nowrap">4.2 mm pitch,</span> <span class="ot-nowrap">30-pin board</span><br>[Download ZIP (583 KB)](../designs/files/agilex-piper-jaw-15x11.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Finger strip 16 × 6: board preview, 96 taxels, 16 × 6 grid](../designs/files/finger-16x06.svg){ width="78" height="180" loading="lazy" }](../designs/files/finger-16x06.svg)
@@ -56,11 +56,11 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 </figure>
 <figure class="ot-design" markdown="span">
 [![LEAP Hand palm: board preview, 467 taxels, 28 × 18 grid](../designs/files/leap-palm-28x18.svg){ width="115" height="180" loading="lazy" }](../designs/files/leap-palm-28x18.svg)
-<figcaption markdown="span">**LEAP Hand palm**<br>467 taxels, 28 × 18 grid<br><span class="ot-nowrap">4.2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1117 KB)](../designs/files/leap-palm-28x18.zip)</figcaption>
+<figcaption markdown="span">**LEAP Hand palm**<br>467 taxels, 28 × 18 grid<br><span class="ot-nowrap">4.2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1118 KB)](../designs/files/leap-palm-28x18.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![UMI soft finger (narrow): board preview, 116 taxels, 29 × 4 grid](../designs/files/umi-finger-29x04.svg){ width="47" height="180" loading="lazy" }](../designs/files/umi-finger-29x04.svg)
-<figcaption markdown="span">**UMI soft finger (narrow)**<br>116 taxels, 29 × 4 grid<br><span class="ot-nowrap">4 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (642 KB)](../designs/files/umi-finger-29x04.zip)</figcaption>
+<figcaption markdown="span">**UMI soft finger (narrow)**<br>116 taxels, 29 × 4 grid<br><span class="ot-nowrap">4 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (641 KB)](../designs/files/umi-finger-29x04.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Strip 32 × 12: board preview, 330 taxels, 30 × 11 grid](../designs/files/strip-32x12.svg){ width="87" height="180" loading="lazy" }](../designs/files/strip-32x12.svg)
@@ -68,15 +68,15 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 </figure>
 <figure class="ot-design" markdown="span">
 [![AgileX Piper jaw (dense): board preview, 441 taxels, 30 × 24 grid](../designs/files/agilex-piper-jaw-32x25.svg){ width="124" height="180" loading="lazy" }](../designs/files/agilex-piper-jaw-32x25.svg)
-<figcaption markdown="span">**AgileX Piper jaw (dense)**<br>441 taxels, 30 × 24 grid<br><span class="ot-nowrap">2.122 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1293 KB)](../designs/files/agilex-piper-jaw-32x25.zip)</figcaption>
+<figcaption markdown="span">**AgileX Piper jaw (dense)**<br>441 taxels, 30 × 24 grid<br><span class="ot-nowrap">2.122 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1294 KB)](../designs/files/agilex-piper-jaw-32x25.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Large 32 × 32 array: board preview, 900 taxels, 30 × 30 grid](../designs/files/large-32x32.svg){ width="170" height="180" loading="lazy" }](../designs/files/large-32x32.svg)
-<figcaption markdown="span">**Large 32 × 32 array**<br>900 taxels, 30 × 30 grid<br><span class="ot-nowrap">4.244 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1662 KB)](../designs/files/large-32x32.zip)</figcaption>
+<figcaption markdown="span">**Large 32 × 32 array**<br>900 taxels, 30 × 30 grid<br><span class="ot-nowrap">4.244 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1664 KB)](../designs/files/large-32x32.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![YUBI finger pad (variant): board preview, 164 taxels, 8 × 27 grid](../designs/files/yubi-finger-pad-08x27-b.svg){ width="240" height="157" loading="lazy" }](../designs/files/yubi-finger-pad-08x27-b.svg)
-<figcaption markdown="span">**YUBI finger pad (variant)**<br>164 taxels, 8 × 27 grid<br><span class="ot-nowrap">3 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (677 KB)](../designs/files/yubi-finger-pad-08x27-b.zip)</figcaption>
+<figcaption markdown="span">**YUBI finger pad (variant)**<br>164 taxels, 8 × 27 grid<br><span class="ot-nowrap">3 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (679 KB)](../designs/files/yubi-finger-pad-08x27-b.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![UMI soft finger: board preview, 174 taxels, 29 × 6 grid](../designs/files/umi-finger-29x06.svg){ width="57" height="180" loading="lazy" }](../designs/files/umi-finger-29x06.svg)
@@ -93,7 +93,7 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 </figure>
 <figure class="ot-design" markdown="span">
 [![Unitree B2 foot (short): board preview, 390 taxels, 13 × 30 grid](../designs/files/unitree-b2-foot-short.svg){ width="240" height="154" loading="lazy" }](../designs/files/unitree-b2-foot-short.svg)
-<figcaption markdown="span">**Unitree B2 foot (short)**<br>390 taxels, 13 × 30 grid<br><span class="ot-nowrap">3.289 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (971 KB)](../designs/files/unitree-b2-foot-short.zip)</figcaption>
+<figcaption markdown="span">**Unitree B2 foot (short)**<br>390 taxels, 13 × 30 grid<br><span class="ot-nowrap">3.289 mm pitch\*,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (972 KB)](../designs/files/unitree-b2-foot-short.zip)</figcaption>
 </figure>
 </div>
 
@@ -102,11 +102,11 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 <div class="ot-designs" markdown>
 <figure class="ot-design" markdown="span">
 [![Square: 1.5 mm pitch, 0.2 mm electrode gap: board preview, 729 taxels, 27 × 27 grid](../designs/files/calibration-square-p1p5-gap0p2.svg){ width="155" height="180" loading="lazy" }](../designs/files/calibration-square-p1p5-gap0p2.svg)
-<figcaption markdown="span">**Square: 1.5 mm pitch, 0.2 mm electrode gap**<br>729 taxels, 27 × 27 grid<br><span class="ot-nowrap">1.5 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1115 KB)](../designs/files/calibration-square-p1p5-gap0p2.zip)</figcaption>
+<figcaption markdown="span">**Square: 1.5 mm pitch, 0.2 mm electrode gap**<br>729 taxels, 27 × 27 grid<br><span class="ot-nowrap">1.5 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1117 KB)](../designs/files/calibration-square-p1p5-gap0p2.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Square: 2 mm pitch, 0.2 mm electrode gap: board preview, 400 taxels, 20 × 20 grid](../designs/files/calibration-square-p2p0-gap0p2.svg){ width="151" height="180" loading="lazy" }](../designs/files/calibration-square-p2p0-gap0p2.svg)
-<figcaption markdown="span">**Square: 2 mm pitch, 0.2 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (774 KB)](../designs/files/calibration-square-p2p0-gap0p2.zip)</figcaption>
+<figcaption markdown="span">**Square: 2 mm pitch, 0.2 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (775 KB)](../designs/files/calibration-square-p2p0-gap0p2.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Square: 4 mm pitch, 0.2 mm electrode gap: board preview, 100 taxels, 10 × 10 grid](../designs/files/calibration-square-p4p0-gap0p2.svg){ width="144" height="180" loading="lazy" }](../designs/files/calibration-square-p4p0-gap0p2.svg)
@@ -114,39 +114,39 @@ The supplied layouts use two copper layers and grow mode, which allows the board
 </figure>
 <figure class="ot-design" markdown="span">
 [![Square: 2 mm pitch, 0.1 mm electrode gap: board preview, 400 taxels, 20 × 20 grid](../designs/files/calibration-square-p2p0-gap0p1.svg){ width="151" height="180" loading="lazy" }](../designs/files/calibration-square-p2p0-gap0p1.svg)
-<figcaption markdown="span">**Square: 2 mm pitch, 0.1 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (775 KB)](../designs/files/calibration-square-p2p0-gap0p1.zip)</figcaption>
+<figcaption markdown="span">**Square: 2 mm pitch, 0.1 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (776 KB)](../designs/files/calibration-square-p2p0-gap0p1.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Square: 2 mm pitch, 0.3 mm electrode gap: board preview, 400 taxels, 20 × 20 grid](../designs/files/calibration-square-p2p0-gap0p3.svg){ width="151" height="180" loading="lazy" }](../designs/files/calibration-square-p2p0-gap0p3.svg)
-<figcaption markdown="span">**Square: 2 mm pitch, 0.3 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (774 KB)](../designs/files/calibration-square-p2p0-gap0p3.zip)</figcaption>
+<figcaption markdown="span">**Square: 2 mm pitch, 0.3 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (775 KB)](../designs/files/calibration-square-p2p0-gap0p3.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Square: 2 mm pitch, 0.4 mm electrode gap: board preview, 400 taxels, 20 × 20 grid](../designs/files/calibration-square-p2p0-gap0p4.svg){ width="151" height="180" loading="lazy" }](../designs/files/calibration-square-p2p0-gap0p4.svg)
-<figcaption markdown="span">**Square: 2 mm pitch, 0.4 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (773 KB)](../designs/files/calibration-square-p2p0-gap0p4.zip)</figcaption>
+<figcaption markdown="span">**Square: 2 mm pitch, 0.4 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (774 KB)](../designs/files/calibration-square-p2p0-gap0p4.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Square: 2 mm pitch, 0.5 mm electrode gap: board preview, 400 taxels, 20 × 20 grid](../designs/files/calibration-square-p2p0-gap0p5.svg){ width="151" height="180" loading="lazy" }](../designs/files/calibration-square-p2p0-gap0p5.svg)
-<figcaption markdown="span">**Square: 2 mm pitch, 0.5 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (773 KB)](../designs/files/calibration-square-p2p0-gap0p5.zip)</figcaption>
+<figcaption markdown="span">**Square: 2 mm pitch, 0.5 mm electrode gap**<br>400 taxels, 20 × 20 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (774 KB)](../designs/files/calibration-square-p2p0-gap0p5.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Rectangle: 2 mm pitch, 0.2 mm electrode gap: board preview, 406 taxels, 14 × 29 grid](../designs/files/calibration-rectangle-p2p0-gap0p2.svg){ width="230" height="180" loading="lazy" }](../designs/files/calibration-rectangle-p2p0-gap0p2.svg)
-<figcaption markdown="span">**Rectangle: 2 mm pitch, 0.2 mm electrode gap**<br>406 taxels, 14 × 29 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (760 KB)](../designs/files/calibration-rectangle-p2p0-gap0p2.zip)</figcaption>
+<figcaption markdown="span">**Rectangle: 2 mm pitch, 0.2 mm electrode gap**<br>406 taxels, 14 × 29 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (762 KB)](../designs/files/calibration-rectangle-p2p0-gap0p2.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Triangle: 2 mm pitch, 0.2 mm electrode gap: board preview, 409 taxels, 26 × 30 grid](../designs/files/calibration-triangle-p2p0-gap0p2.svg){ width="166" height="180" loading="lazy" }](../designs/files/calibration-triangle-p2p0-gap0p2.svg)
-<figcaption markdown="span">**Triangle: 2 mm pitch, 0.2 mm electrode gap**<br>409 taxels, 26 × 30 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1118 KB)](../designs/files/calibration-triangle-p2p0-gap0p2.zip)</figcaption>
+<figcaption markdown="span">**Triangle: 2 mm pitch, 0.2 mm electrode gap**<br>409 taxels, 26 × 30 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (1119 KB)](../designs/files/calibration-triangle-p2p0-gap0p2.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Hexagon: 2 mm pitch, 0.2 mm electrode gap: board preview, 406 taxels, 20 × 26 grid](../designs/files/calibration-hexagon-p2p0-gap0p2.svg){ width="175" height="180" loading="lazy" }](../designs/files/calibration-hexagon-p2p0-gap0p2.svg)
-<figcaption markdown="span">**Hexagon: 2 mm pitch, 0.2 mm electrode gap**<br>406 taxels, 20 × 26 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (959 KB)](../designs/files/calibration-hexagon-p2p0-gap0p2.zip)</figcaption>
+<figcaption markdown="span">**Hexagon: 2 mm pitch, 0.2 mm electrode gap**<br>406 taxels, 20 × 26 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (961 KB)](../designs/files/calibration-hexagon-p2p0-gap0p2.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![Circle: 2 mm pitch, 0.2 mm electrode gap: board preview, 403 taxels, 20 × 24 grid](../designs/files/calibration-circle-p2p0-gap0p2.svg){ width="162" height="180" loading="lazy" }](../designs/files/calibration-circle-p2p0-gap0p2.svg)
-<figcaption markdown="span">**Circle: 2 mm pitch, 0.2 mm electrode gap**<br>403 taxels, 20 × 24 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (961 KB)](../designs/files/calibration-circle-p2p0-gap0p2.zip)</figcaption>
+<figcaption markdown="span">**Circle: 2 mm pitch, 0.2 mm electrode gap**<br>403 taxels, 20 × 24 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (963 KB)](../designs/files/calibration-circle-p2p0-gap0p2.zip)</figcaption>
 </figure>
 <figure class="ot-design" markdown="span">
 [![L-shape: 2 mm pitch, 0.2 mm electrode gap: board preview, 405 taxels, 27 × 27 grid](../designs/files/calibration-lshape-p2p0-gap0p2.svg){ width="160" height="180" loading="lazy" }](../designs/files/calibration-lshape-p2p0-gap0p2.svg)
-<figcaption markdown="span">**L-shape: 2 mm pitch, 0.2 mm electrode gap**<br>405 taxels, 27 × 27 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (921 KB)](../designs/files/calibration-lshape-p2p0-gap0p2.zip)</figcaption>
+<figcaption markdown="span">**L-shape: 2 mm pitch, 0.2 mm electrode gap**<br>405 taxels, 27 × 27 grid<br><span class="ot-nowrap">2 mm pitch,</span> <span class="ot-nowrap">60-pin board</span><br>[Download ZIP (922 KB)](../designs/files/calibration-lshape-p2p0-gap0p2.zip)</figcaption>
 </figure>
 </div>
 
