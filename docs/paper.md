@@ -7,13 +7,13 @@ description: Abstract, authors, citation and related work for OpenTac.
 
 **OpenTac: An Open Ecosystem for Customizable, Scalable, and Transferable 3D Tactile Sensing**
 
-<span class="ot-author">[Ariel Slepyan](https://arielslepyan.me/)<sup>J, M</sup></span>, <span class="ot-author">[Geeta Chandra Raju Bethala](https://bethalageetachandraraju.github.io/)<sup>J</sup></span>, <span class="ot-author">Jiafeng Gu<sup>J</sup></span>, <span class="ot-author">[Anagha Rajendra Dangle](https://anaghad01.github.io/)<sup>J</sup></span>, <span class="ot-author">[Yinzhe Zhou](https://stevenzhoooooooooooooou.github.io/)<sup>J</sup></span>, <span class="ot-author">Hongyuan Fu<sup>J</sup></span>, <span class="ot-author">Jade Sim<sup>J</sup></span>, <span class="ot-author">[Tuhin Basu](https://48tuhin-jpg.github.io/)<sup>J</sup></span>, <span class="ot-author">Xinyi Yin<sup>J</sup></span>, <span class="ot-author">[Md Faizal Karim](https://faizalkarim280280.github.io/)<sup>J</sup></span>, <span class="ot-author">[Gregory Hager](https://www.cs.jhu.edu/hager/)<sup>J†</sup></span>, <span class="ot-author">[Homanga Bharadhwaj](https://homangab.github.io/)<sup>J†</sup></span>, <span class="ot-author">[Anand Bhattad](https://anandbhattad.github.io/)<sup>J†</sup></span>, <span class="ot-author">[Krishna Murthy Jatavallabhula](https://krrish94.github.io/)<sup>J†</sup></span>, <span class="ot-author">[Nitish V. Thakor](https://neuroengineering.bme.jhu.edu/)<sup>J†</sup></span>
+<span class="ot-author">[Ariel Slepyan](https://arielslepyan.me/)<sup>1,2</sup></span>, <span class="ot-author">[Geeta Chandra Raju Bethala](https://bethalageetachandraraju.github.io/)<sup>1</sup></span>, <span class="ot-author">Jiafeng Gu<sup>1</sup></span>, <span class="ot-author">[Anagha Rajendra Dangle](https://anaghad01.github.io/)<sup>1</sup></span>, <span class="ot-author">[Yinzhe Zhou](https://stevenzhoooooooooooooou.github.io/)<sup>1</sup></span>, <span class="ot-author">Hongyuan Fu<sup>1</sup></span>, <span class="ot-author">Jade Sim<sup>1</sup></span>, <span class="ot-author">[Tuhin Basu](https://48tuhin-jpg.github.io/)<sup>1</sup></span>, <span class="ot-author">Xinyi Yin<sup>1</sup></span>, <span class="ot-author">[Md Faizal Karim](https://faizalkarim280280.github.io/)<sup>1</sup></span>, <span class="ot-author">[Gregory Hager](https://www.cs.jhu.edu/hager/)<sup>†1</sup></span>, <span class="ot-author">[Homanga Bharadhwaj](https://homangab.github.io/)<sup>†1</sup></span>, <span class="ot-author">[Anand Bhattad](https://anandbhattad.github.io/)<sup>†1</sup></span>, <span class="ot-author">[Krishna Murthy Jatavallabhula](https://krrish94.github.io/)<sup>†1</sup></span>, <span class="ot-author">[Nitish V. Thakor](https://neuroengineering.bme.jhu.edu/)<sup>†1</sup></span>
 
-<small><sup>J</sup>&nbsp;Johns Hopkins University &nbsp;·&nbsp; <sup>M</sup>&nbsp;Massachusetts Institute of Technology &nbsp;·&nbsp; <sup>†</sup>&nbsp;Equal advising</small>
+<small><sup>1</sup>&nbsp;Johns Hopkins University &nbsp;·&nbsp; <sup>2</sup>&nbsp;Massachusetts Institute of Technology &nbsp;·&nbsp; <sup>†</sup>&nbsp;Equal advising</small>
 
 <small>Contact: <span class="ot-contact__person">Ariel Slepyan, <a href="mailto:aslepyan@mit.edu">aslepyan@mit.edu</a></span>; <span class="ot-contact__person">Nitish V. Thakor, <a href="mailto:nitish@jhu.edu">nitish@jhu.edu</a></span></small>
 
-[Paper](assets/opentac-preprint.pdf){ .md-button .md-button--primary type="application/pdf" } [Video](index.md#video){ .md-button } [Code](https://github.com/opentac/opentac){ .md-button }
+[Paper](https://arxiv.org/abs/2610.31661){ .md-button .md-button--primary } [Video](index.md#video){ .md-button } [Code](https://github.com/opentac/opentac){ .md-button }
 
 ## Abstract
 
@@ -31,7 +31,11 @@ We present OpenTac, a novel sensor and a full-stack ecosystem for tactile skins 
   title         = {{OpenTac}: An Open Ecosystem for Customizable, Scalable, and Transferable {3D} Tactile Sensing},
   author        = {Slepyan, Ariel and Bethala, {Geeta Chandra Raju} and Gu, Jiafeng and Dangle, {Anagha Rajendra} and Zhou, Yinzhe and Fu, Hongyuan and Sim, Jade and Basu, Tuhin and Yin, Xinyi and Karim, {Md Faizal} and Hager, Gregory and Bharadhwaj, Homanga and Bhattad, Anand and Jatavallabhula, {Krishna Murthy} and Thakor, {Nitish V.}},
   year          = {2026},
-  url           = {https://opentac.github.io/}
+  eprint        = {2610.31661},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.RO},
+  doi           = {10.48550/arXiv.2610.31661},
+  url           = {https://arxiv.org/abs/2610.31661}
 }
 ```
 

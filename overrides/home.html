@@ -18,30 +18,30 @@
       <p class="ot-hero__title">An open ecosystem for customizable, scalable, and transferable 3D tactile sensing</p>
       {#- The paper's author list: (name, website or "", affiliation, mark). -#}
       {%- set authors = [
-        ("Ariel Slepyan", "https://arielslepyan.me/", "J, M", ""),
-        ("Geeta Chandra Raju Bethala", "https://bethalageetachandraraju.github.io/", "J", ""),
-        ("Jiafeng Gu", "", "J", ""),
-        ("Anagha Rajendra Dangle", "https://anaghad01.github.io/", "J", ""),
-        ("Yinzhe Zhou", "https://stevenzhoooooooooooooou.github.io/", "J", ""),
-        ("Hongyuan Fu", "", "J", ""),
-        ("Jade Sim", "", "J", ""),
-        ("Tuhin Basu", "https://48tuhin-jpg.github.io/", "J", ""),
-        ("Xinyi Yin", "", "J", ""),
-        ("Md Faizal Karim", "https://faizalkarim280280.github.io/", "J", ""),
-        ("Gregory Hager", "https://www.cs.jhu.edu/hager/", "J", "†"),
-        ("Homanga Bharadhwaj", "https://homangab.github.io/", "J", "†"),
-        ("Anand Bhattad", "https://anandbhattad.github.io/", "J", "†"),
-        ("Krishna Murthy Jatavallabhula", "https://krrish94.github.io/", "J", "†"),
-        ("Nitish V. Thakor", "https://neuroengineering.bme.jhu.edu/", "J", "†"),
+        ("Ariel Slepyan", "https://arielslepyan.me/", "1,2", ""),
+        ("Geeta Chandra Raju Bethala", "https://bethalageetachandraraju.github.io/", "1", ""),
+        ("Jiafeng Gu", "", "1", ""),
+        ("Anagha Rajendra Dangle", "https://anaghad01.github.io/", "1", ""),
+        ("Yinzhe Zhou", "https://stevenzhoooooooooooooou.github.io/", "1", ""),
+        ("Hongyuan Fu", "", "1", ""),
+        ("Jade Sim", "", "1", ""),
+        ("Tuhin Basu", "https://48tuhin-jpg.github.io/", "1", ""),
+        ("Xinyi Yin", "", "1", ""),
+        ("Md Faizal Karim", "https://faizalkarim280280.github.io/", "1", ""),
+        ("Gregory Hager", "https://www.cs.jhu.edu/hager/", "1", "†"),
+        ("Homanga Bharadhwaj", "https://homangab.github.io/", "1", "†"),
+        ("Anand Bhattad", "https://anandbhattad.github.io/", "1", "†"),
+        ("Krishna Murthy Jatavallabhula", "https://krrish94.github.io/", "1", "†"),
+        ("Nitish V. Thakor", "https://neuroengineering.bme.jhu.edu/", "1", "†"),
       ] %}
       <p class="ot-hero__authors">
         {%- for name, url, aff, mark in authors %}
-        <span class="ot-author">{% if url %}<a href="{{ url }}">{{ name }}</a>{% else %}{{ name }}{% endif %}<sup>{{ aff }}{{ mark }}</sup></span>{% if not loop.last %},{% endif %}
+        <span class="ot-author">{% if url %}<a href="{{ url }}">{{ name }}</a>{% else %}{{ name }}{% endif %}<sup>{{ mark }}{{ aff }}</sup></span>{% if not loop.last %},{% endif %}
         {%- endfor %}
       </p>
       <p class="ot-hero__affil">
-        <span class="ot-author"><sup>J</sup>Johns Hopkins University</span>
-        <span class="ot-author"><sup>M</sup>Massachusetts Institute of Technology</span>
+        <span class="ot-author"><sup>1</sup>Johns Hopkins University</span>
+        <span class="ot-author"><sup>2</sup>Massachusetts Institute of Technology</span>
         <span class="ot-author"><sup>†</sup>Equal advising</span>
       </p>
       <p class="ot-hero__contact">
@@ -49,7 +49,7 @@
         <span class="ot-contact__person"><a href="https://arielslepyan.me/">Ariel Slepyan</a>, <a class="ot-hero__email" href="mailto:aslepyan@mit.edu">aslepyan@mit.edu</a></span>
         <span class="ot-contact__person"><a href="https://neuroengineering.bme.jhu.edu/">Nitish V. Thakor</a>, <a class="ot-hero__email" href="mailto:nitish@jhu.edu">nitish@jhu.edu</a></span>
       </p>
-      <p class="ot-hero__venue">Preprint; catch us at CoRL 2026 for a live demo</p>
+      <p class="ot-hero__venue"><a href="https://arxiv.org/abs/2610.31661">arXiv:2610.31661</a>; catch us at CoRL 2026 for a live demo</p>
       <div class="ot-hero__logos" aria-label="Author institutions">
         {# Official artwork: brand.jhu.edu/download-resources/primary-logo/ and www.mit.edu. #}
         <a href="https://www.jhu.edu/">
@@ -69,7 +69,7 @@
         <a class="ot-btn ot-btn--primary" href="{{ 'cad/' | url }}">Try it online</a>
         <a class="ot-btn" href="{{ 'build/' | url }}">Build a sensor</a>
         <a class="ot-btn" href="{{ 'get-started/' | url }}">Get started</a>
-        <a class="ot-btn" href="{{ 'assets/opentac-preprint.pdf' | url }}" type="application/pdf">Paper</a>
+        <a class="ot-btn" href="https://arxiv.org/abs/2610.31661">Paper</a>
         <a class="ot-btn" href="{{ config.repo_url }}">Code</a>
       </div>
     </div>
