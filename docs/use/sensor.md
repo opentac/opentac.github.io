@@ -138,6 +138,10 @@ the nearest setting and returns the feedback in ohms.
 uv run opentac view --set GAIN_SW=2
 ```
 
+To measure light and heavy contact in the same frame rather than choose one gain, use
+[high dynamic range (HDR)](hdr.md), which reads each taxel at the highest gain that does
+not saturate it.
+
 ## Record tactile data { #record }
 
 ```sh

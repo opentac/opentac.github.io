@@ -21,8 +21,8 @@ R,...
 
 | Record | Meaning |
 |---|---|
-| `F` | a raster frame: one value per taxel, in manifest `pixels` order, 12-bit counts |
-| `X` | an Xampling frame: only the `n` taxels read. `<mask hex>` is ceil(N/8) bytes; bit k of byte j marks taxel 8j+k (LSB first). Values follow in taxel order, as counts above the board's zero. |
+| `F` | a raster frame: one value per taxel, in manifest `pixels` order, 12-bit counts. With `HDR_GAINS` set, a re-read value carries its pass in bits 12-15 (see below) |
+| `X` | an Xampling frame: only the `n` taxels read. `<mask hex>` is ceil(N/8) bytes; bit k of byte j marks taxel 8j+k (LSB first). Values follow in taxel order, as counts above the board's zero; with `HDR_GAINS` set, a re-read value is a raw reading carrying its pass in bits 12-15 |
 | `V` | one accelerometer sample (mg), when `VIB_ENABLE` is 1 |
 | `M` | status, once a second and on any change |
 | `R` | a reply to a command |
@@ -95,10 +95,23 @@ These parameters are session settings and return to their firmware defaults afte
 | 33 | `XAMP_BUMP_FILL` | 0/1 | 0 |
 | 34 | `XAMP_CONFIRM_US` | 0..500 | 50 |
 | 35 | `GAIN_SW` | 0..15, 60-pin board only | 0 |
+| 36 | `HDR_GAINS` | 0..0xFFFF, 60-pin board only; 0 = off | 0 |
+| 37 | `HDR_CLIP` | 1..4095, 60-pin board only | 3800 |
 
 `GAIN_SW` bit k closes switch k+1 of the MAX14662 gain switch (I²C 0x4C,
 register 0x00). Each switch puts a resistor across the 10 kΩ feedback
 resistor: 4.7 kΩ, 1.1 kΩ, 270 Ω, 68 Ω.
+
+`HDR_GAINS` turns on [high dynamic range](../use/hdr.md) raster scanning. Each
+hexadecimal digit, lowest first up to the first 0, is the `GAIN_SW` of one more
+pass after the raster scan; a pass re-reads only the taxels whose reading in the
+pass before reached `HDR_CLIP`. `0x8421` re-reads at `GAIN_SW` 1, 2, 4 and 8. A
+re-read value replaces the earlier one with its pass in bits 12-15:
+value = raw + 4096 &times; pass, so `value >> 12` is the pass and `value & 0x0FFF`
+the raw reading. The gain is back at `GAIN_SW` before the frame is sent. In
+Xampling the passes re-read only the taxels the frame sampled; a value from pass 0
+is counts above the board's zero, as without HDR, and a re-read value is the raw
+reading at its gain. `Z` ignores `HDR_GAINS`.
 
 ## Binary sensor configuration { #the-sensor-config }
 

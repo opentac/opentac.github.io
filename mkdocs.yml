@@ -119,6 +119,7 @@ nav:
       - Flash the firmware: use/flash.md
       - Read a sensor: use/sensor.md
       - Adaptive acquisition (Xampling): use/xampling.md
+      - High dynamic range (HDR): use/hdr.md
       - Daisy-chain boards: use/daisy-chain.md
       - Recover a sensor manifest: use/qr-recovery.md
       - Simulate: sim.md
