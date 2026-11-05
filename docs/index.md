@@ -293,6 +293,7 @@ Working with an AI coding agent? The repository ships a skill for designing sens
 <div class="ot-hero__buttons ot-start__buttons">
   <a class="ot-btn ot-btn--primary" href="cad/">Try it online</a>
   <a class="ot-btn ot-btn--dark" href="get-started/">Get started</a>
-  <a class="ot-btn ot-btn--dark" href="paper/">Paper and citation</a>
+  <a class="ot-btn ot-btn--dark" href="assets/opentac-preprint.pdf">Paper</a>
+  <a class="ot-btn ot-btn--dark" href="https://arxiv.org/abs/2610.31661">arXiv</a>
 </div>
 </section>
