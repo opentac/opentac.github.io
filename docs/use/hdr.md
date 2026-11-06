@@ -23,7 +23,7 @@ With one fixed gain, a sensor either resolves light touch or measures heavy load
     <source src="../../assets/loops/hdr.mp4" type="video/mp4">
   </video>
 </div>
-<figcaption><b>Figure 2.</b> A small weight on the right half of a sensor; stacked weights, then a dumbbell pressed by hand, on the left half. With HDR off, the stack saturates 42 taxels and the left half reads 0.78&nbsp;kg. With HDR on, both halves are measured; with the dumbbell, the clip pauses on a frame in which they differ by 1,170&nbsp;:&nbsp;1. Readings in grams are approximate: the calibration is coarse, and the bump case carries part of the load off the sensing film.</figcaption>
+<figcaption><b>Figure 2.</b> A small weight on the right half of a sensor; stacked weights, then a dumbbell pressed by hand, on the left half. With HDR off, the stack saturates 42 taxels and the left half reads 0.78&nbsp;kg. With HDR on, both halves are measured; with the dumbbell, the clip pauses on a frame in which they differ by 1,170&nbsp;:&nbsp;1. Readings in grams are approximate.</figcaption>
 </figure>
 
 ## Measured against a scale { #measured }
