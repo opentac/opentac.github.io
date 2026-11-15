@@ -108,8 +108,8 @@ After you pay, JLCPCB's engineers review the files and sometimes send an enginee
 **"Pad-to-pad spacing is under 0.18&nbsp;mm; solder bridging risk in SMT."**
 : Produce according to the file. The sensor has no SMT assembly, and the electrode gaps (0.2&nbsp;mm by default) are intended.
 
-**"Opening-to-opening spacing is under 0.3&nbsp;mm and cannot be made with the coverlay process."**
-: The export makes one coverlay opening per taxel, at least 0.3&nbsp;mm from the next. If asked, keep each taxel's opening as drawn: the exposed electrodes are intended.
+**"Opening-to-opening spacing is under 0.3&nbsp;mm and cannot be made with the coverlay process." / "The coverlay bridge between openings is too narrow for laser cutting."**
+: The solder mask of a flex PCB is a polyimide film, the coverlay, with a laser-cut opening over each taxel. The question concerns the strip of film left between two neighbouring openings. Reply that the narrow strips may be removed, so that the openings merge into one large opening over the taxels. This is how we answered for our own orders.
 
 ## Inspect the fabricated boards { #when-the-boards-arrive }
 

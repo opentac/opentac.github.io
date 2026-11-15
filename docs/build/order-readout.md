@@ -66,7 +66,15 @@ Press **NEXT** in the price panel. JLCPCB asks you to sign in here, then walks t
   <figcaption>BOM and CPL attached for the 60-pin board.</figcaption>
 </figure>
 
-**3. Verify component selection.** Every BOM entry must be matched to an LCSC part and selected for assembly. The counts to expect: **32** parts on the 60-pin board, **14** on the 30-pin top board and **10** on the 30-pin bottom board, each shown as *parts detected* and *parts confirmed*. A line with no part selected needs one: search by the LCSC number from the BOM. If a resistor or capacitor is out of stock, a part with the same value, rating and package may be substituted. Do not substitute ICs or connectors; wait for stock or open an issue on the repository's issue tracker.
+**3. Verify component selection.** Every BOM entry must be matched to an LCSC part and selected for assembly. The counts to expect: **32** parts on the 60-pin board, **14** on the 30-pin top board and **10** on the 30-pin bottom board, each shown as *parts detected* and *parts confirmed*. A line with no part selected needs one: search by the LCSC number from the BOM. If a resistor or capacitor is out of stock, a part with the same value, rating and package may be substituted. Do not substitute ICs or connectors, except with the alternates below. To use one, search its LCSC number on that line.
+
+| Board | Part | In the BOM | Alternate |
+|---|---|---|---|
+| 60-pin | IC4, 32:1 multiplexer | ADG732BSUZ-REEL (C114845) | ADG732BSUZ (C579103) |
+| 60-pin, 30-pin top | IC3, microcontroller | STM32G431KBU6 (C529358) | STM32G431KBU3 (C1341901) |
+| 30-pin bottom | IC2, 16:1 multiplexer | ADG706BRUZ (C579088) | ADG706BRUZ-REEL7 (C408400) |
+
+If neither part is in stock, wait for stock or open an issue on the repository's issue tracker.
 
 <figure class="ot-fig" markdown="span">
   [![Component list for the 60-pin board: 32 parts detected and confirmed, with each BOM entry matched to an LCSC part and selected for assembly.](../assets/photos/jlcpcb/readout-60pin-bom-parts.png){ loading=lazy }](../assets/photos/jlcpcb/readout-60pin-bom-parts.png)

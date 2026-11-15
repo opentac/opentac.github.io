@@ -75,6 +75,8 @@ The robot gallery on the start screen has surfaces of real grippers, hands and f
 
 The sensor's connector follows the choice: 30 or 60 positions at 0.5&nbsp;mm pitch, wired to match that board's pads. See [Readout boards](../hardware.md).
 
+**Connector contacts.** The gold fingers that the connector presses on are on the bottom face of the tail, with the stiffener on the top. If the sensor is mounted so that the connector's contacts meet the other face, choose **Connector contacts on the top face (taxel side)**. The taxels and the wiring are the same either way.
+
 ### Grow the board, or keep the outline fixed
 
 | | Grow board to fit wiring (default) | Keep outline fixed, shrink sensor grid |

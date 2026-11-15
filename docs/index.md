@@ -207,6 +207,29 @@ This helps capture contacts that happen in a few milliseconds (and are missed by
 </figure>
 </section>
 
+<section class="ot-story" aria-labelledby="hdr" markdown>
+<div class="ot-story__text" markdown>
+
+## High dynamic range: light touch and heavy loads in one frame { #hdr }
+
+With one fixed gain, a sensor either resolves light touch or measures heavy loads, not both. On the 60-pin readout board, HDR reads every taxel at the highest gain, then re-reads the taxels that saturate at lower gains, down to 1/148, in the same frame. Each taxel is reported at the highest gain that does not saturate it.
+
+On a 360-taxel skin pressed against a scale, one fixed gain levels off near 9&nbsp;N; HDR follows the scale up to 80&nbsp;N, the largest load tested. A 3.7&nbsp;kg weight stack and a 20&nbsp;g weight on opposite ends of the skin are read in the same frame. A frame in which nothing saturates takes no longer than without HDR.
+
+[High dynamic range](use/hdr.md){ .ot-more }
+
+</div>
+<figure class="ot-clip">
+<div class="ot-media">
+  <video data-loop muted loop playsinline preload="none" data-poster="assets/loops/hdr.jpg"
+         aria-label="A small weight on one half of a sensor and stacked weights, then a dumbbell pressed by hand, on the other half; with HDR off the heavy half saturates, with HDR on both halves are measured">
+    <source src="assets/loops/hdr.mp4" type="video/mp4">
+  </video>
+</div>
+<figcaption>A small weight on one half of a sensor; stacked weights, then a dumbbell pressed by hand, on the other half. With HDR off, the heavy half saturates; with HDR on, both halves are measured.</figcaption>
+</figure>
+</section>
+
 <section class="ot-story ot-story--flip ot-story--pair" aria-labelledby="sim" markdown>
 <div class="ot-story__text" markdown>
 
