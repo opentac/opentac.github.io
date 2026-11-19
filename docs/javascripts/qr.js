@@ -121,7 +121,7 @@
 
   // `trace`, if given, is filled with how many bits each field took (keys:
   // version, pitch, footprint, cols, rows, reserved, padPitch, grid, size,
-  // origin, pads, perm, mask, padding, crc) and the mask coding. It is for the
+  // origin, pads, perm, mask, colorder, padding, crc) and the mask coding. It is for the
   // page's table only; the return value does not depend on it.
   function decode(data, trace) {
     if (data.length < 2) throw QRError("payload too short to be a taxel core");
@@ -139,7 +139,7 @@
     var fpDefault = b.u(1); tally("footprint");
     var sparseX = b.u(1); tally("cols");
     var sparseY = b.u(1); tally("rows");
-    b.u(1); tally("reserved");                // reserved
+    var hasColperm = b.u(1); tally("reserved"); // a column-order table follows the mask
     var padPitch05 = b.u(1); tally("padPitch");
     var r = b.u(6), c = b.u(6); tally("grid");
     var pitchX = b.uvarint() / Q;
@@ -183,6 +183,21 @@
     if (trace) trace.maskRle = b.bits[b.pos] === 1;
     var mask = readMask(b, r, c);
     tally("mask");
+    // The column-order table (taxel_core.decode). The same header bit was a
+    // flag on early boards, so it counts only if a whole permutation of the
+    // columns follows; the zero padding of a board without one is not.
+    var colperm = null;
+    if (hasColperm) {
+      var start = b.pos;
+      try {
+        var nbc = bitwidth(c), table = [];
+        for (k = 0; k < c; k++) table.push(b.u(nbc));
+        var sorted = table.slice().sort(function (p, q) { return p - q; });
+        if (sorted.every(function (v, i) { return v === i; })) colperm = table;
+      } catch (e) { /* no table: an early board's flag */ }
+      if (colperm === null) b.pos = start;
+    }
+    tally("colorder");
     if (trace) {
       trace.padding = b.bits.length - b.pos;
       trace.crc = 8;
@@ -194,7 +209,7 @@
     return {
       r: r, c: c, x0: x0, y0: y0, pitch_x: pitchX, pitch_y: pitchY, w: w, h: h,
       footprint: footprint, rp: rp, cp: cp, pad_pitch_mm: padPitch05 ? 0.5 : null,
-      perm: perm, kx: kx, ky: ky, m: mask
+      perm: perm, kx: kx, ky: ky, colperm: colperm, m: mask
     };
   }
 
@@ -354,7 +369,8 @@
     for (var ri = 0; ri < core.r; ri++) {
       for (var ci = 0; ci < core.c; ci++) {
         if (core.m[ri][ci] !== "1") continue;
-        var x = core.x0 + at(core.kx, ci) * core.pitch_x;
+        var slot = core.colperm ? core.colperm[ci] : ci;
+        var x = core.x0 + at(core.kx, slot) * core.pitch_x;
         var y = core.y0 - at(core.ky, at(core.perm, ri)) * core.pitch_y;
         out.push([pyRound(x, 4), pyRound(y, 4), ri, ci]);
       }
@@ -537,7 +553,7 @@
                   y: ky === null ? null : core.y0 - ky * core.pitch_y });
     }
     for (j = 0; j < c; j++) {
-      var kx = colN[j] ? core.kx[j] : null;
+      var kx = colN[j] ? core.kx[core.colperm ? core.colperm[j] : j] : null;
       cols.push({ i: j, pad: core.cp[j], n: colN[j], rank: kx,
                   x: kx === null ? null : core.x0 + kx * core.pitch_x });
     }
@@ -814,6 +830,8 @@
     var order = g.rows.filter(function (row) { return row.y !== null; })
       .sort(function (a, b) { return a.rank - b.rank; }).map(function (row) { return row.i; });
     var nb = core.r ? t.perm / core.r : 0;
+    var colOrder = core.colperm ? core.colperm.map(function (slot, j) { return [slot, j]; })
+      .sort(function (p, q) { return p[0] - q[0]; }).map(function (e) { return e[1]; }) : [];
     return [
       ["Format version", "0", t.version,
        "Identifies the encoded field layout. This decoder supports version 0."],
@@ -847,7 +865,10 @@
       ["Electrode pattern", (fpDefault ? "default: " : "") + fpText, t.footprint,
        "The interdigitated copper of each taxel, drawn above. One bit says all default; " +
        "otherwise each value that differs takes 8 bits."],
-      ["Reserved", "0", t.reserved, "Unused. It was a flag on early boards."],
+      ["Column order", core.colperm ? "left to right: " + runs(colOrder) : "column numbers run left to right",
+       t.reserved + (t.colorder || 0),
+       "One bit. When set, a table after the taxel map gives each column's place, left to right, " +
+       "for boards whose column numbers do not run left to right."],
       ["Padding", "", t.padding, "Fills the last byte."],
       ["Checksum", "CRC-8 0x" + ("0" + t.crcValue.toString(16).toUpperCase()).slice(-2) + ", matches",
        t.crc, "Detects most changes to the encoded text, allowing damaged payloads to be rejected rather than " +
