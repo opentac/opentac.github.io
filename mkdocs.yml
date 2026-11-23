@@ -66,6 +66,9 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/opentac/opentac
       name: OpenTac on GitHub
+    - icon: fontawesome/brands/discord
+      link: https://discord.gg/BcVsyaD7yx
+      name: OpenTac on Discord
     - icon: octicons/issue-opened-16
       link: https://github.com/opentac/opentac/issues
       name: Questions and bug reports (GitHub Issues)
