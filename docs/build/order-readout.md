@@ -72,6 +72,7 @@ Press **NEXT** in the price panel. JLCPCB asks you to sign in here, then walks t
 |---|---|---|---|
 | 60-pin | IC4, 32:1 multiplexer | ADG732BSUZ-REEL (C114845) | ADG732BSUZ (C579103) |
 | 60-pin, 30-pin top | IC3, microcontroller | STM32G431KBU6 (C529358) | STM32G431KBU3 (C1341901) |
+| 60-pin, 30-pin bottom | IC1, dual op-amp | TLV9362IDDFR (C5119287) | TLV9152IDDFR (C2861011) |
 | 30-pin bottom | IC2, 16:1 multiplexer | ADG706BRUZ (C579088) | ADG706BRUZ-REEL7 (C408400) |
 
 If neither part is in stock, wait for stock or open an issue on the repository's issue tracker.
